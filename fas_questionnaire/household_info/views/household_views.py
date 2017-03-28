@@ -98,7 +98,6 @@ class HouseholdDetailView(DetailView):
 class HouseholdCreateView(CreateView):
     model = Household
     form_class = HouseholdForm
-    # fields = ['head_name', 'sex', 'caste', 'religion', 'birth_village', 'father_name', 'father_occupation', 'telephone']
     template_name = "household_info/household_create.html"
     success_url = reverse_lazy("household_list")
 
@@ -151,7 +150,6 @@ class HouseholdCreateView(CreateView):
 class HouseholdUpdateView(UpdateView):
     model = Household
     form_class = HouseholdForm
-    # fields = ['head_name', 'sex', 'caste', 'religion', 'birth_village', 'father_name', 'father_occupation', 'telephone']
     template_name = "household_info/household_update.html"
     initial = {}
     slug_field = 'slug'

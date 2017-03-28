@@ -1,5 +1,6 @@
 {% extends "common/header.html" %}
 
+
 {% block content %}
 <form action="" method="post">{% csrf_token %}
     <table align="center">
@@ -12,5 +13,5 @@
     </table>
     <input type="submit" value="Submit" />
 </form>
-<a href={% url "household_members_create" %}>Next</a>
+<a href={% url "household_create" %}>Back</a>
 {% endblock %}

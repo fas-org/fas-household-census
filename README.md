@@ -6,4 +6,7 @@ python
 django
 
 To run the app: 
-python3 manage.py runserver
+cd fas_questionnaire
+python3 manage.py runserver 8080
+
+http://localhost:8080/home/

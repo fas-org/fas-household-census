@@ -1,0 +1,16 @@
+{% extends "common/header.html" %}
+
+{% block content %}
+    <div>
+        <div class="content container">
+            <h3>Search Household number</h3>
+            Household number: <input type="text" name="householdnumber">
+            <button type="submit" value="Edit">Edit</button>
+        </div>
+        or
+        <div>
+            <h3>Enter New details</h3>
+            <a href={% url "household_create" %}>Create</a>
+        </div>
+    </div>
+{% endblock %}

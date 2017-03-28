@@ -1,0 +1,16 @@
+{% extends "common/header.html" %}
+
+{% block title %}
+    Create Household
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "household_list" %}>Household</a></h1>
+<h2>Create Household</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "household_list" %}>Cancel</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "common/header.html" %}
+
+{% block title %}
+    Households
+{% endblock %}
+
+{% block content %}
+    <h1>Households</h1>
+    <h2><a href={% url "household_create" %}>Create new Household</a></h2>
+    <ul>
+    {% for household in household_list %}
+        <li><a href={% url "household_detail" household.pk %}>{{ household }}</a> | <a href={% url "household_update" household.pk %}>Update</a> | <form style="display:inline;" action={% url "household_delete" household.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ household }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No Households yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

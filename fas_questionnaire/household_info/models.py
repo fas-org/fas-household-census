@@ -15,6 +15,9 @@ class Household(models.Model):
     address = models.TextField(default=None)
     telephone = models.CharField(max_length=10)
 
+    def publish(self):
+        self.save()
+
 
 class HouseholdMembers(models.Model):
     Household_number = models.ForeignKey(Household, on_delete=models.CASCADE)
@@ -28,3 +31,6 @@ class HouseholdMembers(models.Model):
     literacy_status = models.CharField(max_length=40)
     education_level = models.CharField(max_length=40)
     enrolled_institution = models.CharField(max_length=100)
+
+    def publish(self):
+        self.save()

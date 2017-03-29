@@ -21,5 +21,5 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^home/', TemplateView.as_view(template_name='household_info/home.html'), name='home'),
     url(r'^admin/', admin.site.urls),
-    url(r'^households/', include('household_info.urls')),
+    url(r'^household/', include('household_info.urls')),
 ]

@@ -1,7 +1,10 @@
 {% extends "common/header.html" %}
 
 {% block content %}
-<form action="" method="post">{% csrf_token %}
+<form method="POST">{% csrf_token %}
+<!--{{ form.errors }}-->
+<!--{{ form.non_field_errors }}-->
+
     <table align="center">
     {% for field in form %}
         <tr>
@@ -10,7 +13,6 @@
         </tr>
     {% endfor %}
     </table>
-    <input type="submit" value="Submit" />
+    <button type="submit" class="save btn btn-default">Save</button>
 </form>
-<a href={% url "household_members_create" %}>Next</a>
 {% endblock %}

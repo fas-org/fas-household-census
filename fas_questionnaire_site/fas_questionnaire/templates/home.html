@@ -1,0 +1,37 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/app.css' %}"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="{% static 'js/introduction.js' %}"></script>
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header>
+            {% include 'common/header.html' %}
+        </header>
+
+        <!-- Top Nav -->
+        <!-- {% include 'common/topnav.html' %} -->
+
+        <main>
+            <div class='container-fluid'>
+
+                <h4 class='text-center'>FOUNDATION FOR AGRARIAN STUDIES<br>QUESTIONNAIRE FOR CENSUS OF HOUSEHOLDS, 2016</h4>
+
+                {% include 'household.html' %}
+
+                {% include 'introduction.html' %}
+
+            </div>
+        </main>
+
+        <footer>
+            {% include 'common/footer.html' %}
+        </footer>
+
+    </body>
+</html>

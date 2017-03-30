@@ -2,8 +2,8 @@
 
 {% block content %}
 <form method="POST">{% csrf_token %}
-<!--{{ form.errors }}-->
-<!--{{ form.non_field_errors }}-->
+{{ form.errors }}
+{{ form.non_field_errors }}
 
     <table align="center">
     {% for field in form %}

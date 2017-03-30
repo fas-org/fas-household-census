@@ -1,9 +1,8 @@
 from django.contrib import admin
 from .models import Household
-from django_baker.admin import ExtendedModelAdminMixin
 
 
-class HouseholdAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
+class HouseholdAdmin(admin.ModelAdmin):
     extra_list_display = []
     extra_list_filter = []
     extra_search_fields = []

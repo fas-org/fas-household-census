@@ -6,6 +6,7 @@
 }
 input, select {
     width: 100%;
+    color: #0000FF;
 }
 .table-cell {
     border: 1px solid #CCC;

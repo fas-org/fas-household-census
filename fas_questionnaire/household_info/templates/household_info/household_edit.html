@@ -1,4 +1,3 @@
-{% extends "common/header.html" %}
 
 {% block content %}
 <form method="POST">{% csrf_token %}
@@ -6,7 +5,7 @@
 {{ form.non_field_errors }}
 
     <table align="center">
-    {% for field in form %}
+    {% for field in household_intro_form %}
         <tr>
             <td>{{ field.label_tag }}</td>
             <td>{{ field }}</td>

@@ -24,6 +24,6 @@ input, select {
     border: 2px solid transparent;
     padding: .5px;
 }
-button {
+.btn-submit {
     margin: 10px;
 }

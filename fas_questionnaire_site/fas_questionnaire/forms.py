@@ -1,6 +1,17 @@
 from django import forms
-from .models import HouseholdIntroduction
+from .models import Household, HouseholdIntroduction
 
+class HouseholdForm(forms.ModelForm):
+
+    class Meta:
+        model = Household
+        fields = ['village', 'household_number']
+        exclude = []
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}
 
 class HouseholdIntroductionForm(forms.ModelForm):
 

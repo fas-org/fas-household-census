@@ -1,3 +1,4 @@
+{% load static %}
 <form method='POST' action='#' id="form_introduction">
     {% csrf_token %}
     <h5 class='text-center'>1.INTRODUCTION</h5>
@@ -96,6 +97,8 @@
         </div>
     </div>
     <div class='row text-center'>
-        <button class='btn btn-primary'>Save</button>
+        <button class='btn btn-primary btn-submit hide' type="submit">Save</button>
+        <button class='btn btn-primary btn-submit' type="button" onclick="saveIntroduction()">Save</button>
     </div>
 </form>
+<script src="{% static 'js/introduction.js' %}"></script>

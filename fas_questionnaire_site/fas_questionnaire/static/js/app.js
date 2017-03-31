@@ -12,8 +12,6 @@ function getFormData($formSelector) {
         formData[$this.attr('name')] = $this.val();
     });
 
-    formData['household'] = 1;
-
     return formData;
 
 };

@@ -6,6 +6,6 @@ def save(request):
     if form.is_valid():
         introduction = form.save(commit=False)
         introduction.save()
-        return HttpResponse('success');
+        return HttpResponse(introduction.id);
     else:
-        return HttpResponse('failed');
+        return HttpResponse(0);

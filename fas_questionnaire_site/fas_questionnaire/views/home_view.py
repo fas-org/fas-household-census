@@ -1,7 +1,18 @@
 from django.shortcuts import render
-from ..forms import HouseholdIntroductionForm
+from . import household, introduction
 
 
-def init(request):
-    print(request)
-    return render(request, 'home.html', {'introductionForm': HouseholdIntroductionForm()})
+def new(request):
+    return render(request, 'home.html')
+
+
+def update(request, pk):
+    householdObj = household.get(pk);
+    if householdObj:
+        introductionObj = introduction.get(householdObj.id);
+    else :
+        introductionObj = None
+    return render(request, 'home.html', {
+        'householdObj': householdObj,
+        'introductionObj': introductionObj
+    })

@@ -1,13 +1,14 @@
 <br>
 <form method='POST' action='#' id="form_household">
     {% csrf_token %}
+    <input type='number' name='id' id='id' value="{{ householdObj.id }}" class="hide"/>
     <div class='row'>
         <div class='col-md-5'>
             <div class='col-md-2 table-cell'>
                 <label>Village</label>
             </div>
             <div class='col-md-10 table-cell'>
-                <input type='text' name='village' id='village' required/>
+                <input type='text' name='village' id='village' value="{{ householdObj.village }}" required/>
             </div>
         </div>
         <div class='col-md-offset-2 col-md-5'>
@@ -15,7 +16,7 @@
                 <label>Household number</label>
             </div>
             <div class='col-md-8 table-cell'>
-                <input type='text' name='household_number' id='household_number' required/>
+                <input type='text' name='household_number' id='household_number' value="{{ householdObj.household_number }}" required/>
             </div>
         </div>
     </div>

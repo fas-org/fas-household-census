@@ -10,23 +10,13 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class DjangoMigrations(models.Model):
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_migrations'
-
-
 class Household(models.Model):
     id = models.AutoField(primary_key=True)
     village = models.CharField(max_length=45)
     household_number = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'household'
         unique_together = (('id', 'village', 'household_number'),)
 
@@ -47,7 +37,7 @@ class HouseholdIntroduction(models.Model):
     telephone_no = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'household_introduction'
 
 
@@ -56,5 +46,5 @@ class Sex(models.Model):
     sex = models.CharField(unique=True, max_length=10)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sex'

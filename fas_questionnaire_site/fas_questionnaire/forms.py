@@ -1,6 +1,7 @@
 from django import forms
 from .models import Household, HouseholdIntroduction
 
+
 class HouseholdForm(forms.ModelForm):
 
     class Meta:
@@ -12,6 +13,7 @@ class HouseholdForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
 
 class HouseholdIntroductionForm(forms.ModelForm):
 

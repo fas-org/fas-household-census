@@ -1,26 +1,25 @@
-<br>
-<form method='POST' action='#' id="form_household">
+<form method='POST' id="form_household">
     {% csrf_token %}
-    <input type='number' name='id' id='id' value="{{ householdObj.id }}" class="hide"/>
+{#    {{ household_form.id }}#}
     <div class='row'>
         <div class='col-md-5'>
             <div class='col-md-2 table-cell'>
-                <label>Village</label>
+                {{ household_form.village.label_tag }}
             </div>
             <div class='col-md-10 table-cell'>
-                <input type='text' name='village' id='village' value="{{ householdObj.village }}" required/>
+                {{ household_form.village }}
             </div>
         </div>
         <div class='col-md-offset-2 col-md-5'>
             <div class='col-md-4 table-cell'>
-                <label>Household number</label>
+                {{ household_form.household_number.label_tag }}
             </div>
             <div class='col-md-8 table-cell'>
-                <input type='text' name='household_number' id='household_number' value="{{ householdObj.household_number }}" required/>
+                {{ household_form.household_number }}
             </div>
         </div>
     </div>
-    <div class='row text-center hide'>
+    <div class='row text-center'>
         <button class='btn btn-primary btn-submit' type="submit">Save</button>
     </div>
 </form>

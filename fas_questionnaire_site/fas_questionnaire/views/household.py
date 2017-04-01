@@ -1,30 +1,34 @@
 from ..forms import HouseholdForm
-from django.http import HttpResponse
 from ..models import Household
 from django.shortcuts import get_object_or_404
 
 
 def new(request):
-    form = HouseholdForm(request.POST)
-    return save(form)
+    if request.method == "POST":
+        form = HouseholdForm(request.POST)
+        save(form)
+    else:
+        form = HouseholdForm()
+    return form
 
 
 def update(request, pk):
     try:
         household = get_object_or_404(Household, pk=pk)
-        form = HouseholdForm(request.POST, instance=household)
-        return save(form)
+        if request.method == "POST":
+            form = HouseholdForm(request.POST, instance=household)
+            save(form)
+        else:
+            form = HouseholdForm(instance=household)
+        return form
     except Household.DoesNotExist:
         return new(request)
 
 
 def save(form):
     if form.is_valid():
-        household = form.save(commit=False)
-        household.save()
-        return HttpResponse(household.id)
-    else:
-        return HttpResponse(0)
+        form = form.save(commit=False)
+        form.save()
 
 
 def get(pk):

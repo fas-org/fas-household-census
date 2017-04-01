@@ -1,7 +1,7 @@
 {% load static %}
-<form method='POST' action='#' id="form_introduction">
+<form method='POST' id="form_introduction">
     {% csrf_token %}
-    <input type='number' name='id' id='id' value="{{ introductionObj.id }}" class="hide"/>
+    {{ introduction_form.household.as_hidden }}
     <h5 class='text-center'>1.INTRODUCTION</h5>
     <div class='row'>
         <div class='col-md-5'>
@@ -9,7 +9,7 @@
                 <label>Name of head of household</label>
             </div>
             <div class='col-md-7 table-cell'>
-                <input type='text' name='household_head_name' id='household_head_name' value="{{ introductionObj.household_head_name }}" required/>
+                {{ introduction_form.household_head_name }}
             </div>
         </div>
         <div class='col-md-1'>
@@ -17,7 +17,7 @@
                 <label>Sex</label>
             </div>
             <div class='col-md-8 table-cell'>
-                <input type='text' name='sex' id='sex' value="{{ introductionObj.sex.id }}" required/>
+                {{ introduction_form.sex }}
             </div>
         </div>
         <div class='col-md-2'>
@@ -25,7 +25,7 @@
                 <label>Age (in years)</label>
             </div>
             <div class='col-md-6 table-cell'>
-                <input type='number' name='age' id='age' value="{{ introductionObj.age }}" required/>
+                {{ introduction_form.age }}
             </div>
         </div>
         <div class='col-md-2'>
@@ -33,7 +33,7 @@
                 <label>Caste/Tribe</label>
             </div>
             <div class='col-md-6 table-cell'>
-                <input type='text' name='caste_tribe' id='caste_tribe' value="{{ introductionObj.caste_tribe }}" required/>
+                {{ introduction_form.caste_tribe }}
             </div>
         </div>
         <div class='col-md-2'>
@@ -41,7 +41,7 @@
                 <label>Religion</label>
             </div>
             <div class='col-md-8 table-cell'>
-                <input type='text' name='religion' id='religion' value="{{ introductionObj.religion }}" required/>
+                {{ introduction_form.religion }}
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                 <label>Village and tehsil of birth </label>
             </div>
             <div class='col-md-7 table-cell'>
-                <input type='text' name='birth_village_tehsil' id='birth_village_tehsil' value="{{ introductionObj.birth_village_tehsil }}" required/>
+                {{ introduction_form.birth_village_tehsil }}
             </div>
         </div>
         <div class='col-md-2'>
@@ -59,7 +59,7 @@
                 <label>Year of migration</label>
             </div>
             <div class='col-md-4 table-cell'>
-                <input type='number' name='year_of_migration' id='year_of_migration' value="{{ introductionObj.year_of_migration }}"/>
+                {{ introduction_form.year_of_migration }}
             </div>
         </div>
         <div class='col-md-2'>
@@ -67,7 +67,7 @@
                 <label>Father's name</label>
             </div>
             <div class='col-md-6 table-cell'>
-                <input type='text' name='father_name' id='father_name' value="{{ introductionObj.father_name }}" required/>
+                {{ introduction_form.father_name }}
             </div>
         </div>
         <div class='col-md-3'>
@@ -75,7 +75,7 @@
                 <label>Father's occupation</label>
             </div>
             <div class='col-md-6 table-cell'>
-                <input type='text' name='father_occupation' id='father_occupation' value="{{ introductionObj.father_occupation }}" required/>
+                {{ introduction_form.father_occupation }}
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
                 <label>Address</label>
             </div>
             <div class='col-md-10 table-cell'>
-                <input type='text' name='address' id='address' value="{{ introductionObj.address }}" required/>
+                {{ introduction_form.address }}
             </div>
         </div>
         <div class='col-md-5'>
@@ -93,13 +93,11 @@
                 <label>Telephone no., if any</label>
             </div>
             <div class='col-md-8 table-cell'>
-                <input type='number' name='telephone_no' id='telephone_no' value="{{ introductionObj.telephone_no }}" required/>
+                {{ introduction_form.telephone_no }}
             </div>
         </div>
     </div>
     <div class='row text-center'>
-        <button class='btn btn-primary btn-submit hide' type="submit">Save</button>
-        <button class='btn btn-primary btn-submit' type="button" onclick="saveIntroduction()">Save</button>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
     </div>
 </form>
-<script src="{% static 'js/introduction.js' %}"></script>

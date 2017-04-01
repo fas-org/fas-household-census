@@ -1,18 +1,16 @@
-from django.shortcuts import render
 from . import household, introduction
+from django.shortcuts import render, redirect
 
 
 def new(request):
-    return render(request, 'home.html')
+    household_form = household.new(request)
+    introduction_form = introduction.new(request)
+    return render(request, 'home.html', {'household_form': household_form, 'introduction_form': introduction_form})
 
 
 def update(request, pk):
-    householdObj = household.get(pk);
-    if householdObj:
-        introductionObj = introduction.get(householdObj.id);
-    else :
-        introductionObj = None
-    return render(request, 'home.html', {
-        'householdObj': householdObj,
-        'introductionObj': introductionObj
-    })
+    household_form = household.update(request, pk)
+    introduction_form = introduction.update(request, pk)
+    # keep on adding update views
+    return render(request, 'home.html',
+                  {'household_form': household_form, 'introduction_form': introduction_form, 'household': pk})

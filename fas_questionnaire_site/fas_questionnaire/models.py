@@ -34,7 +34,7 @@ class HouseholdIntroduction(models.Model):
     father_name = models.CharField(max_length=45)
     father_occupation = models.CharField(max_length=45, blank=True, null=True)
     address = models.CharField(max_length=500)
-    telephone_no = models.IntegerField(blank=True, null=True)
+    telephone_no = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
         managed = True

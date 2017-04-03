@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from . import household, introduction
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='login')
 def new(request):
     return render(request, 'home.html')
 

@@ -27,3 +27,6 @@ input, select {
 .btn-submit {
     margin: 10px;
 }
+.long-div {
+  height:55px;
+}

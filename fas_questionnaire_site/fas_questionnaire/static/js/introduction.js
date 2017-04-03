@@ -25,7 +25,7 @@ $form_introduction.on('submit', function(event){
 
     $.post(householdUrl, householdFormData, function(id) {
         if($.isNumeric(id)) {
-            householdId = id;
+            householdId = id; //#TODO: this will not be set when we do not update this section. in that case other section household will be null. need to check where to place this household id
             var introductionFormData = getFormData($form_introduction);
             var introductionUrl = getUrl(URL_INTRODUCTION_NEW, URL_INTRODUCTION_UPDATE, introductionFormData, 'id');
             $.post(introductionUrl, introductionFormData);

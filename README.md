@@ -10,3 +10,6 @@ cd fas_questionnaire
 python3 manage.py runserver 8080
 
 http://localhost:8080/home/
+
+To create login user:
+python manage.py createsuperuser

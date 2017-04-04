@@ -1,29 +1,29 @@
-from ..forms import HouseholdIntroductionForm
-from ..models import HouseholdIntroduction
+from ..forms import LandSoldForm
+from ..models import LandSold
 from django.shortcuts import get_object_or_404
 from . import household
 
 
 def new(request):
     if request.method == "POST":
-        form = HouseholdIntroductionForm(request.POST)
+        form = LandSoldForm(request.POST)
         if form.is_valid():
-            introduction = form.save(commit=False)
-            introduction.household = household.get(request.session['household'])
-            introduction.save()
+            landsoldform = form.save(commit=False)
+            landsoldform.household = household.get(request.session['household'])
+            landsoldform.save()
     else:
-        form = HouseholdIntroductionForm()
+        form = LandSoldForm()
     return form
 
 
 def update(request, pk):
     try:
-        introduction = get_object_or_404(HouseholdIntroduction, household=pk)
+        landsoldform = get_object_or_404(LandSold, household=pk)
         if request.method == "POST":
-            form = HouseholdIntroductionForm(request.POST, instance=introduction)
+            form = LandSoldForm(request.POST, instance=landsoldform)
             save(form)
         else:
-            form = HouseholdIntroductionForm(instance=introduction)
+            form = LandSoldForm(instance=landsoldform)
         return form
     # except HouseholdIntroduction.DoesNotExist:
     except Exception:

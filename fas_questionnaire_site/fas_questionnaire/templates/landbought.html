@@ -1,0 +1,84 @@
+<br>
+<form method='POST' action='#' id="form_landbought">
+    {% csrf_token %}
+    <input type='number' name='id' id='id' value="{{ landBoughtObj.id }}" class="hide"/>
+    <b>4.2 Land bought</b><br>
+    <div class='row'>
+        <div class='col-md-1 table-cell'>
+            <label>Year of Purchase</label>
+        </div>
+        <div class='col-md-1 table-cell'>
+            <label>Extent</label>
+        </div>
+
+        <div class='col-md-1 table-cell'>
+            <label>Type of land</label>
+        </div>
+
+        <div class='col-md-4 table-cell'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Seller</p>
+            </div>
+            <div class='row'>
+                <div class='col-md-4 table-cell'>
+                    <label>Name</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Caste</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Occupations</label>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-md-2 table-cell'>
+            <label>Price of land</label>
+
+        </div>
+
+        <div class='col-md-3 table-cell'>
+            <label>comments</label>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-1 table-cell'>
+            <input type='text' name='year_of_sale' id='year_of_sale' value="{{ landBoughtObj.year_of_purchase }}" required/>
+        </div>
+        <div class='col-md-1 table-cell'>
+            <input type='text' name='extent' id='extent' value="{{ landBoughtObj.extent }}" required/>
+        </div>
+
+        <div class='col-md-1 table-cell'>
+            <input type='text' name='type_of_land' id='type_of_land' value="{{ landBoughtObj.type_of_land }}" required/>
+        </div>
+
+        <div class='col-md-4 table-cell'>
+            <div class='row'>
+                <div class='col-md-4 table-cell'>
+                    <input type='text' name='seller_name' id='seller_name' value="{{ landBoughtObj.seller.name }}" required/>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <input type='text' name='seller_caste' id='seller_caste' value="{{ landBoughtObj.seller.caste }}" required/>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <input type='text' name='seller_occupations' id='seller_occupations' value="{{ landBoughtObj.seller.occupations }}" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-md-2 table-cell'>
+            <input type='text' name='price_of_land' id='price_of_land' value="{{ landBoughtObj.price_of_land }}" required />
+        </div>
+
+        <div class='col-md-3 table-cell'>
+            <input type='text' name='comments' id='comments' value="{{ landBoughtObj.comments }}" required/>
+        </div>
+    </div>
+
+
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>

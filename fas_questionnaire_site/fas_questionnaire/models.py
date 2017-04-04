@@ -48,3 +48,6 @@ class Sex(models.Model):
     class Meta:
         managed = True
         db_table = 'sex'
+
+    def __str__(self):
+        return self.sex

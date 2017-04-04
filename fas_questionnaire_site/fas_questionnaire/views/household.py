@@ -4,11 +4,13 @@ from django.shortcuts import get_object_or_404
 
 
 def new(request):
+    household_id = 0
     if request.method == "POST":
         form = HouseholdForm(request.POST)
-        save(form)
+        household_id = save(form)
     else:
         form = HouseholdForm()
+    request.session['household'] = household_id
     return form
 
 
@@ -21,14 +23,15 @@ def update(request, pk):
         else:
             form = HouseholdForm(instance=household)
         return form
-    except Household.DoesNotExist:
+    except Exception:
         return new(request)
 
 
 def save(form):
     if form.is_valid():
-        form = form.save(commit=False)
-        form.save()
+        new_object = form.save(commit=False)
+        new_object.save()
+        return new_object.pk
 
 
 def get(pk):

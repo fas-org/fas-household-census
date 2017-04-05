@@ -83,7 +83,7 @@ class LandSold(models.Model):
     year_of_sale = models.IntegerField(blank=True, null=True)
     extent = models.CharField(max_length=50, blank=True, null=True)
     type_of_land = models.ForeignKey('LandType', models.DO_NOTHING, db_column='type_of_land', blank=True, null=True)
-    buyer = models.ForeignKey(Buyer, models.DO_NOTHING, db_column='buyer', blank=True, null=True)
+    buyer = models.ForeignKey(Buyer, models.DO_NOTHING, db_column='buyer')
     price_of_land = models.IntegerField(blank=True, null=True)
     reasons_for_sale = models.CharField(max_length=250, blank=True, null=True)
 
@@ -98,6 +98,9 @@ class LandType(models.Model):
     class Meta:
         managed = True
         db_table = 'land_type'
+
+    def __str__(self):
+        return self.type
 
 
 class Seller(models.Model):

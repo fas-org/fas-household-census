@@ -1,25 +1,20 @@
-<form method='POST' id="form_household">
-    {% csrf_token %}
+{% csrf_token %}
 {#    {{ household_form.id }}#}
-    <div class='row'>
-        <div class='col-md-5'>
-            <div class='col-md-2 table-cell'>
-                {{ household_form.village.label_tag }}
-            </div>
-            <div class='col-md-10 table-cell'>
-                {{ household_form.village }}
-            </div>
+<div class='row'>
+    <div class='col-md-5'>
+        <div class='col-md-2 table-cell'>
+            {{ household_form.village.label_tag }}
         </div>
-        <div class='col-md-offset-2 col-md-5'>
-            <div class='col-md-4 table-cell'>
-                {{ household_form.household_number.label_tag }}
-            </div>
-            <div class='col-md-8 table-cell'>
-                {{ household_form.household_number }}
-            </div>
+        <div class='col-md-10 table-cell'>
+            {{ household_form.village }}
         </div>
     </div>
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    <div class='col-md-offset-2 col-md-5'>
+        <div class='col-md-4 table-cell'>
+            {{ household_form.household_number.label_tag }}
+        </div>
+        <div class='col-md-8 table-cell'>
+            {{ household_form.household_number }}
+        </div>
     </div>
-</form>
+</div>

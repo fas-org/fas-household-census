@@ -15,22 +15,29 @@
 
         <!-- Top Nav -->
 {#        {% include 'common/topnav.html' %}#}
-
         <main>
-            <div class='container-fluid'>
+            <form method='POST'>
+                <div class='container-fluid'>
 
-                <h4 class='text-center'>FOUNDATION FOR AGRARIAN STUDIES<br>QUESTIONNAIRE FOR CENSUS OF HOUSEHOLDS, 2016</h4>
+                    <h4 class='text-center'>FOUNDATION FOR AGRARIAN STUDIES<br>QUESTIONNAIRE FOR CENSUS OF HOUSEHOLDS, 2016</h4>
 
-                {% include 'household.html' %}
+                    {% include 'household.html' %}
 
-                {% include 'introduction.html' %}
+                    {% include 'introduction.html' %}
 
-                {% include 'landsold.html' %}
+                    {% include 'landsold.html' %}
 
-                {% include 'landbought.html' %}
+                    {% include 'landbought.html' %}
 
-            </div>
-        </main>
+                    <div class='row text-center'>
+                        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+                    </div>
+
+                </div>
+            </form>
+            </main>
+
+
 
         <footer>
 {#            {% include 'common/footer.html' %}#}

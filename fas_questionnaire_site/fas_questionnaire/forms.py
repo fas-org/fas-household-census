@@ -1,5 +1,5 @@
 from django import forms
-from .models import Household, HouseholdIntroduction, LandBought, LandSold
+from .models import Household, HouseholdIntroduction, LandBought, LandSold, Buyer, Seller
 
 
 class HouseholdForm(forms.ModelForm):
@@ -26,12 +26,42 @@ class HouseholdIntroductionForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    # this is to remove the mandatory fields
+    def __init__(self, *args, **kwargs):
+        super(HouseholdIntroductionForm, self).__init__(*args, **kwargs)
+        for key in self.fields:
+            self.fields[key].required = False
+
+
+class BuyerForm(forms.ModelForm):
+    class Meta:
+        model = Buyer
+        fields = ['name', 'caste', 'occupations', 'place_of_residence']
+        exclude = []
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}
+
+
+class SellerForm(forms.ModelForm):
+    class Meta:
+        model = Seller
+        fields = ['name', 'caste', 'occupations', 'place_of_residence']
+        exclude = []
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}
+
 
 class LandBoughtForm(forms.ModelForm):
     class Meta:
         model = LandBought
-        fields = ['year_of_purchase', 'extent', 'type_of_land', 'seller', 'price_of_land', 'comments']
-        exclude = []
+        fields = ['household', 'year_of_purchase', 'extent', 'type_of_land', 'seller', 'price_of_land', 'comments']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -42,8 +72,8 @@ class LandBoughtForm(forms.ModelForm):
 class LandSoldForm(forms.ModelForm):
     class Meta:
         model = LandSold
-        fields = ['year_of_sale', 'extent', 'type_of_land', 'buyer', 'price_of_land', 'reasons_for_sale']
-        exclude = []
+        fields = ['household', 'year_of_sale', 'extent', 'type_of_land', 'buyer', 'price_of_land', 'reasons_for_sale']
+        exclude = ['household', 'buyer']
         widgets = None
         localized_fields = None
         labels = {}

@@ -1,8 +1,10 @@
 from ..forms import HouseholdForm
 from ..models import Household
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='login')
 def new(request):
     if request.method == "POST":
         form = HouseholdForm(request.POST)
@@ -16,6 +18,7 @@ def new(request):
     return render(request, 'household.html', {'household_form': form})
 
 
+@login_required(login_url='login')
 def edit(request, pk):
     household = get_object_or_404(Household, pk=pk)
     if request.method == "POST":

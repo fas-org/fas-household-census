@@ -1,5 +1,5 @@
-from ..forms import HouseholdIntroductionForm
-from ..models import HouseholdIntroduction
+from ..forms.introduction_forms_section1 import HouseholdIntroductionForm
+from ..models.introduction_models_section1 import HouseholdIntroduction
 from django.shortcuts import get_object_or_404, render, redirect
 from . import household as household
 from django.contrib.auth.decorators import login_required

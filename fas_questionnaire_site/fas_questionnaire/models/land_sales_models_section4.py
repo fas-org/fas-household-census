@@ -8,49 +8,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
-
-class Household(models.Model):
-    id = models.AutoField(primary_key=True)
-    village = models.CharField(max_length=45)
-    household_number = models.CharField(max_length=45)
-
-    class Meta:
-        managed = True
-        db_table = 'household'
-        unique_together = (('id', 'village', 'household_number'),)
-
-
-class HouseholdIntroduction(models.Model):
-    id = models.AutoField(primary_key=True)
-    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    household_head_name = models.CharField(max_length=45)
-    sex = models.ForeignKey('Sex', models.DO_NOTHING, db_column='sex')
-    age = models.IntegerField()
-    caste_tribe = models.CharField(max_length=45)
-    religion = models.CharField(max_length=45)
-    birth_village_tehsil = models.CharField(max_length=200)
-    year_of_migration = models.IntegerField(blank=True, null=True)
-    father_name = models.CharField(max_length=45)
-    father_occupation = models.CharField(max_length=45, blank=True, null=True)
-    address = models.CharField(max_length=500)
-    telephone_no = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'household_introduction'
-
-
-class Sex(models.Model):
-    id = models.AutoField(primary_key=True)
-    sex = models.CharField(unique=True, max_length=10)
-
-    class Meta:
-        managed = True
-        db_table = 'sex'
-
-    def __str__(self):
-        return self.sex
+from .household_models import Household
 
 
 class Buyer(models.Model):

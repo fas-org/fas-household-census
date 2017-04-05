@@ -1,5 +1,5 @@
-from ..forms import SellerForm
-from ..models import Seller
+from ..forms.land_sales_forms_section4 import SellerForm
+from ..models.land_sales_models_section4 import Seller
 
 
 def new(request):

@@ -1,5 +1,5 @@
-from ..forms import HouseholdForm
-from ..models import Household
+from ..forms.household_forms import HouseholdForm
+from ..models.household_models import Household
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 

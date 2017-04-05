@@ -1,36 +1,5 @@
 from django import forms
-from .models import Household, HouseholdIntroduction, LandBought, LandSold, Buyer, Seller
-
-
-class HouseholdForm(forms.ModelForm):
-    class Meta:
-        model = Household
-        fields = ['village', 'household_number']
-        exclude = []
-        widgets = None
-        localized_fields = None
-        labels = {}
-        help_texts = {}
-        error_messages = {}
-
-
-class HouseholdIntroductionForm(forms.ModelForm):
-    class Meta:
-        model = HouseholdIntroduction
-        fields = ['household', 'household_head_name', 'sex', 'age', 'caste_tribe', 'religion', 'birth_village_tehsil',
-                  'year_of_migration', 'father_name', 'father_occupation', 'address', 'telephone_no']
-        exclude = ['household']
-        widgets = None
-        localized_fields = None
-        labels = {}
-        help_texts = {}
-        error_messages = {}
-
-    # this is to remove the mandatory fields
-    def __init__(self, *args, **kwargs):
-        super(HouseholdIntroductionForm, self).__init__(*args, **kwargs)
-        for key in self.fields:
-            self.fields[key].required = False
+from ..models.land_sales_models_section4 import LandBought, LandSold, Buyer, Seller
 
 
 class BuyerForm(forms.ModelForm):

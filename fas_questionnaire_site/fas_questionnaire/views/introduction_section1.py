@@ -6,6 +6,14 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='login')
+def init(request):
+    if request.session.get('household') is None:
+        return new(request)
+    else:
+        return edit(request, request.session['household'])
+
+
+@login_required(login_url='login')
 def new(request):
     if request.method == "POST":
         form = HouseholdIntroductionForm(request.POST)
@@ -13,7 +21,7 @@ def new(request):
             introduction = form.save(commit=False)
             introduction.household = household.get(request.session['household'])
             introduction.save()
-            return redirect('introduction_edit', pk=introduction.pk)
+            return redirect('introduction_edit', pk=request.session['household'])
     else:
         form = HouseholdIntroductionForm()
     return render(request, 'introduction_section1.html', {'introduction_form': form})
@@ -21,7 +29,8 @@ def new(request):
 
 @login_required(login_url='login')
 def edit(request, pk):
-    introduction = get_object_or_404(HouseholdIntroduction, pk=pk)
+    request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
+    introduction = get_object_or_404(HouseholdIntroduction, household=pk)
     if request.method == "POST":
         form = HouseholdIntroductionForm(request.POST, instance=introduction)
         if form.is_valid():

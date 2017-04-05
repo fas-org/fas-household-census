@@ -5,7 +5,17 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='login')
+def init(request):
+    if request.session.get('household') is None:
+        return new(request)
+    else:
+        return edit(request, request.session['household'])
+
+
+@login_required(login_url='login')
 def new(request):
+    if request.session.get('household') is not None:
+        del request.session['household']
     if request.method == "POST":
         form = HouseholdForm(request.POST)
         if form.is_valid():
@@ -20,6 +30,7 @@ def new(request):
 
 @login_required(login_url='login')
 def edit(request, pk):
+    request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
     household = get_object_or_404(Household, pk=pk)
     if request.method == "POST":
         form = HouseholdForm(request.POST, instance=household)

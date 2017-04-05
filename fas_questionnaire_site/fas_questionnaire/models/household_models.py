@@ -18,4 +18,4 @@ class Household(models.Model):
     class Meta:
         managed = True
         db_table = 'household'
-        unique_together = (('id', 'village', 'household_number'),)
+        unique_together = ('village', 'household_number')

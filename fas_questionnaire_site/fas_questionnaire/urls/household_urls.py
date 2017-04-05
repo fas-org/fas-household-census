@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from ..views import household_section1 as household
+from ..views import household as household
 
 urlpatterns = [
     url(r'^$', household.new, name='household_new'),

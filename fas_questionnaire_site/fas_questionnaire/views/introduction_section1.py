@@ -1,7 +1,7 @@
 from ..forms import HouseholdIntroductionForm
 from ..models import HouseholdIntroduction
 from django.shortcuts import get_object_or_404, render, redirect
-from . import household_section1 as household
+from . import household as household
 
 
 def new(request):
@@ -14,7 +14,7 @@ def new(request):
             return redirect('introduction_edit', pk=introduction.pk)
     else:
         form = HouseholdIntroductionForm()
-    return render(request, 'introduction_section2.html', {'introduction_form': form})
+    return render(request, 'introduction_section1.html', {'introduction_form': form})
 
 
 def edit(request, pk):
@@ -27,7 +27,7 @@ def edit(request, pk):
             return redirect('introduction_edit', pk=pk)
     else:
         form = HouseholdIntroductionForm(instance=introduction)
-    return render(request, 'introduction_section2.html', {'introduction_form': form})
+    return render(request, 'introduction_section1.html', {'introduction_form': form})
 
 
 def get(household):

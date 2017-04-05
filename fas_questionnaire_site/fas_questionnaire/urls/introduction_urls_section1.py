@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from ..views import introduction_section2 as introduction
+from ..views import introduction_section1 as introduction
 
 urlpatterns = [
     url(r'^$', introduction.new, name='introduction_new'),

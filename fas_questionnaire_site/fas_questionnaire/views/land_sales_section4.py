@@ -1,7 +1,7 @@
 from ..forms import LandSoldForm, LandBoughtForm, BuyerForm, SellerForm
 from ..models import LandSold, LandBought, Buyer, Seller
 from django.shortcuts import get_object_or_404, render, redirect
-from . import household_section1 as household
+from . import household as household
 from . import buyer, seller
 
 

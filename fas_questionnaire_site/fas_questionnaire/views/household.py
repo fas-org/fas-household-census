@@ -13,7 +13,7 @@ def new(request):
             return redirect('household_edit', pk=household.pk)
     else:
         form = HouseholdForm()
-    return render(request, 'household_section1.html', {'household_form': form})
+    return render(request, 'household.html', {'household_form': form})
 
 
 def edit(request, pk):
@@ -26,7 +26,7 @@ def edit(request, pk):
             return redirect('household_edit', pk=pk)
     else:
         form = HouseholdForm(instance=household)
-    return render(request, 'household_section1.html', {'household_form': form})
+    return render(request, 'household.html', {'household_form': form})
 
 
 def get(pk):

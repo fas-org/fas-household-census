@@ -30,17 +30,20 @@ def new(request):
 
 @login_required(login_url='login')
 def edit(request, pk):
-    request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
-    household = get_object_or_404(Household, pk=pk)
-    if request.method == "POST":
-        form = HouseholdForm(request.POST, instance=household)
-        if form.is_valid():
-            household = form.save(commit=False)
-            household.save()
-            return redirect('household_edit', pk=pk)
-    else:
-        form = HouseholdForm(instance=household)
-    return render(request, 'household.html', {'household_form': form})
+    try:
+        request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
+        household = get_object_or_404(Household, pk=pk)
+        if request.method == "POST":
+            form = HouseholdForm(request.POST, instance=household)
+            if form.is_valid():
+                household = form.save(commit=False)
+                household.save()
+                return redirect('household_edit', pk=pk)
+        else:
+            form = HouseholdForm(instance=household)
+        return render(request, 'household.html', {'household_form': form})
+    except Exception:
+        return new(request)
 
 
 def get(pk):

@@ -29,17 +29,20 @@ def new(request):
 
 @login_required(login_url='login')
 def edit(request, pk):
-    request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
-    introduction = get_object_or_404(HouseholdIntroduction, household=pk)
-    if request.method == "POST":
-        form = HouseholdIntroductionForm(request.POST, instance=introduction)
-        if form.is_valid():
-            introduction = form.save(commit=False)
-            introduction.save()
-            return redirect('introduction_edit', pk=pk)
-    else:
-        form = HouseholdIntroductionForm(instance=introduction)
-    return render(request, 'introduction_section1.html', {'introduction_form': form})
+    try:
+        request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
+        introduction = get_object_or_404(HouseholdIntroduction, household=pk)
+        if request.method == "POST":
+            form = HouseholdIntroductionForm(request.POST, instance=introduction)
+            if form.is_valid():
+                introduction = form.save(commit=False)
+                introduction.save()
+                return redirect('introduction_edit', pk=pk)
+        else:
+            form = HouseholdIntroductionForm(instance=introduction)
+        return render(request, 'introduction_section1.html', {'introduction_form': form})
+    except Exception:
+        return new(request)
 
 
 def get(household):

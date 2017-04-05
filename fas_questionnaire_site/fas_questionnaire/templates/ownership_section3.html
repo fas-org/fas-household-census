@@ -1,0 +1,69 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+<form method='POST' id="section_3_form">
+    {% csrf_token %}
+    {{ introduction_form.household.as_hidden }}
+    <h5 class='text-center'>3. CURRENT OWNERSHIP HOLDING</h5>
+    <div class='row'>
+        <div class='col-md-1 table-cell long-div'>
+            <label>Land Type</label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label>Extent of land</label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label>acquisition</label>
+        </div>
+        <div class='col-md-3'>
+            <div class='row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Irrigation</label>
+                </div>
+            </div>
+            <div class= 'row'>
+                <div class='col-md-4 table-cell'>
+                    <label>Source (code)</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Flow/lift (code)</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Ownership</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label>Value</label>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.land_type }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.extent_owned_land }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.acquisition_mode }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.irrigation_source }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.irrigation_flow }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.irrigation_ownership }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ ownership_form.value }}
+        </div>
+    </div>
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="button">Save</button>
+    </div>
+</form>
+{% endblock %}

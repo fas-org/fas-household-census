@@ -1,5 +1,5 @@
 function addHouseholdMembersRow() {
-    let form = $('<form>').attr('class', 'flex-container');
+    let form = $('<form>').attr('class', 'flex-container hhm-form');
 
     let name = $('<div>').attr('class', 'flex-item hhm-name').append($('<input>').attr({'name':'name'}));
 
@@ -9,7 +9,7 @@ function addHouseholdMembersRow() {
         { 'value': 2, 'text': "Female"}
     ];
 
-    let sex_select = $('<select>');
+    let sex_select = $('<select>').attr('name','sex');
     $(sex_options).each(function(){
         sex_select.append($('<option>').attr('value',this.value).text(this.text));
     })
@@ -20,7 +20,7 @@ function addHouseholdMembersRow() {
         { 'value':2 , 'text': "Month(s)"},
         { 'value':3 , 'text': "Day(s)"}
     ];
-    let age_unit = $('<select>');
+    let age_unit = $('<select>').attr('name','age_unit');
     $(age_unit_options).each(function(){
         age_unit.append($('<option>').attr('value',this.value).text(this.text));
     })
@@ -39,7 +39,7 @@ function addHouseholdMembersRow() {
 
     ];
 
-    let marital_status_select = $('<select>');
+    let marital_status_select = $('<select>').attr('name','marital_status');
     $(marital_status_options).each(function(){
         marital_status_select.append($('<option>').attr('value',this.value).text(this.text));
     })
@@ -64,7 +64,7 @@ function addHouseholdMembersRow() {
         { 'value': 2, 'text': "Can read and write"}
     ];
 
-    let literacy_status_select = $('<select>');
+    let literacy_status_select = $('<select>').attr('name','literacy_status');
     $(literacy_status_options).each(function(){
         literacy_status_select.append($('<option>').attr('value',this.value).text(this.text));
     })
@@ -77,4 +77,13 @@ function addHouseholdMembersRow() {
     form.append(name,sex, age, relationship, marital_status, occupations, place_of_work, literacy_status, education_level, add_of_institution);
 
     $('#hhm-rows').append(form);
+}
+
+function submitForms(post_url){
+    var forms = [];
+    $('.hhm-form').each(function(){
+        forms.push(JSON.stringify(getFormData($(this))));
+    });
+    if(!forms.length) return;
+    $.post( post_url, { 'forms[]': forms}, null);
 }

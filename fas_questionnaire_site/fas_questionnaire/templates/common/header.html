@@ -4,9 +4,13 @@
             <a class="navbar-brand" href="#">Foundation for Agrarian Studies</a>
         </div>
 
-        <form class="navbar-form navbar-right">
+        <form class="navbar-form navbar-right" action="search/" method="post">
+            {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Household Number">
+                <input type="text" class="form-control" placeholder="Village Name" id="Village_name" name="Village_name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Household Number" id="Household_number" name="Household_number">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
             <button type="submit" class="btn btn-default"><a href={% url "logout" %}>logout</a></button>

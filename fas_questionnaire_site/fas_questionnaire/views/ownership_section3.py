@@ -3,6 +3,7 @@ from ..models.ownership_models_section3 import CurrentOwnershipHolding
 from django.shortcuts import get_object_or_404, render, redirect
 from . import household as household
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='login')
@@ -21,6 +22,7 @@ def new(request):
             ownership = form.save(commit=False)
             ownership.household = household.get(request.session['household'])
             ownership.save()
+            messages.success(request, 'Data saved successfully')
             return redirect('ownership_edit', pk=request.session['household'])
     else:
         form = CurrentOwnershipHoldingForm()
@@ -37,6 +39,7 @@ def edit(request, pk):
             if form.is_valid():
                 ownership = form.save(commit=False)
                 ownership.save()
+                messages.success(request, 'Data saved successfully')
                 return redirect('ownership_edit', pk=pk)
         else:
             form = CurrentOwnershipHoldingForm(instance=ownership)

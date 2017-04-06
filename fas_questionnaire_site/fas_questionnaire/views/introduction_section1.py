@@ -3,6 +3,7 @@ from ..models.introduction_models_section1 import HouseholdIntroduction
 from django.shortcuts import get_object_or_404, render, redirect
 from . import household as household
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='login')
@@ -21,6 +22,7 @@ def new(request):
             introduction = form.save(commit=False)
             introduction.household = household.get(request.session['household'])
             introduction.save()
+            messages.success(request, 'Data saved successfully')
             return redirect('introduction_edit', pk=request.session['household'])
     else:
         form = HouseholdIntroductionForm()
@@ -37,6 +39,7 @@ def edit(request, pk):
             if form.is_valid():
                 introduction = form.save(commit=False)
                 introduction.save()
+                messages.success(request, 'Data saved successfully')
                 return redirect('introduction_edit', pk=pk)
         else:
             form = HouseholdIntroductionForm(instance=introduction)

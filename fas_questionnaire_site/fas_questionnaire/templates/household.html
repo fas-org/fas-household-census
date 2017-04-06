@@ -21,6 +21,14 @@
 {% endfor %}
 {% endif %}
 
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-success">
+        <strong>{{ message }}</strong>
+    </div>
+{% endfor %}
+{% endif %}
+
 <form method='POST' id="form_household">
 {% csrf_token %}
 {#    {{ household_form.id }}#}

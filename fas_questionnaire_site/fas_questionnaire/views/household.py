@@ -2,6 +2,7 @@ from ..forms.household_forms import HouseholdForm
 from ..models.household_models import Household
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='login')
@@ -21,6 +22,7 @@ def new(request):
         if form.is_valid():
             household = form.save(commit=False)
             household.save()
+            messages.success(request, 'Data saved successfully')
             request.session['household'] = household.pk
             return redirect('household_edit', pk=household.pk)
     else:
@@ -38,6 +40,7 @@ def edit(request, pk):
             if form.is_valid():
                 household = form.save(commit=False)
                 household.save()
+                messages.success(request, 'Data saved successfully')
                 return redirect('household_edit', pk=pk)
         else:
             form = HouseholdForm(instance=household)

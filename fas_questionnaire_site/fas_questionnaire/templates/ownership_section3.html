@@ -2,6 +2,13 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
 <form method='POST' id="section_3_form">
     {% csrf_token %}
     {{ introduction_form.household.as_hidden }}

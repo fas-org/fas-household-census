@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
 <form method='POST'>
 {% csrf_token %}
     <input type='number' name='id' value="{{ landsold_form.id }}" class="hide"/>
@@ -99,7 +107,7 @@
         </div>
 
         <div class='col-md-1 table-cell long-div'>
-            {{ landpurchased_form.price_of_land_purchased.label_tag }}
+            {{ landpurchased_form.type_of_land_purchased.label_tag }}
         </div>
 
         <div class='col-md-5 table-cell long-div'>

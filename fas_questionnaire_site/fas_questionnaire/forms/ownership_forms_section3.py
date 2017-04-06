@@ -58,7 +58,7 @@ class CurrentOwnershipHoldingForm(forms.ModelForm):
 
     class Meta:
         model = CurrentOwnershipHolding
-        fields = ['household', 'land_type', 'extent_owned_land', 'acquisition_mode', 'irrigation_source', 'irrigation_flow', 'irrigation_ownership', 'value']
+        fields = ['household', 'ownership_plot_no', 'land_type', 'extent_owned_land', 'acquisition_mode', 'irrigation_source', 'irrigation_flow', 'irrigation_ownership', 'value', 'comments']
         exclude = ['household']
         widgets = None
         localized_fields = None

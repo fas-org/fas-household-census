@@ -3,6 +3,7 @@ from ..models.land_sales_models_section4 import LandSold, LandPurchased
 from django.shortcuts import get_object_or_404, render, redirect
 from . import household as household
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='login')
@@ -28,6 +29,7 @@ def new(request):
             landpurchased.household = household.get(
                 request.session['household'])
             landpurchased.save()
+            messages.success(request, 'Data saved successfully')
 
             return redirect('landsales_edit',
                             household=request.session['household'])
@@ -56,6 +58,7 @@ def edit(request, pk):
 
                 landsold = landpurchasedform.save(commit=False)
                 landsold.save()
+                messages.success(request, 'Data saved successfully')
 
                 return redirect('landsales_edit', pk=pk)
         else:

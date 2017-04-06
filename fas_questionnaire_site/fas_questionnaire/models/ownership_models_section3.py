@@ -20,6 +20,9 @@ class AcquisitionMode(models.Model):
         managed = True
         db_table = 'acquisition_mode'
 
+    def __str__(self):
+        return self.acquisition
+
 
 class IrrigationFlow(models.Model):
     id = models.AutoField(primary_key=True)
@@ -28,6 +31,9 @@ class IrrigationFlow(models.Model):
     class Meta:
         managed = True
         db_table = 'irrigation_flow'
+
+    def __str__(self):
+        return self.type
 
 
 class IrrigationOwnership(models.Model):
@@ -38,6 +44,9 @@ class IrrigationOwnership(models.Model):
         managed = True
         db_table = 'irrigation_ownership'
 
+    def __str__(self):
+        return self.owner
+
 
 class IrrigationSource(models.Model):
     id = models.AutoField(primary_key=True)
@@ -47,18 +56,23 @@ class IrrigationSource(models.Model):
         managed = True
         db_table = 'irrigation_source'
 
+    def __str__(self):
+        return self.source
+
 
 class CurrentOwnershipHolding(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='land_type', blank=True, null=True)
-    extent_owned_land = models.IntegerField(blank=True, null=True)
+    ownership_plot_no = models.FloatField(db_column='Ownership plot no', blank=True, null=True)
+    land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
+    extent_owned_land = models.FloatField(db_column='Extent of owned land', blank=True, null=True)
     acquisition_mode = models.ForeignKey('AcquisitionMode', models.DO_NOTHING, db_column='acquisition_mode', blank=True, null=True)
-    irrigation_source = models.ForeignKey('IrrigationSource', models.DO_NOTHING, db_column='irrigation_source', blank=True, null=True)
-    irrigation_flow = models.ForeignKey('IrrigationFlow', models.DO_NOTHING, db_column='irrigation_flow', blank=True, null=True)
-    irrigation_ownership = models.ForeignKey('IrrigationOwnership', models.DO_NOTHING, db_column='irrigation_ownership', blank=True, null=True)
-    value = models.CharField(max_length=100, blank=True, null=True)
+    irrigation_source = models.ForeignKey('IrrigationSource', models.DO_NOTHING, db_column='Irrigation source', blank=True, null=True)
+    irrigation_flow = models.ForeignKey('IrrigationFlow', models.DO_NOTHING, db_column='Irrigation lift', blank=True, null=True)
+    irrigation_ownership = models.ForeignKey('IrrigationOwnership', models.DO_NOTHING, db_column='Irrigation ownership', blank=True, null=True)
+    value = models.FloatField(db_column='Value', blank=True, null=True)
+    comments = models.CharField(max_length=50, db_column='Comments', blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'current_ownership_holding'
+        db_table = 'Current ownership holding'

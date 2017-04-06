@@ -12,10 +12,22 @@ from django.db import models
 
 class Household(models.Model):
     id = models.AutoField(primary_key=True)
-    village = models.CharField(max_length=45)
+    village = models.ForeignKey('Village', models.DO_NOTHING, db_column='village')
     household_number = models.CharField(max_length=45)
 
     class Meta:
         managed = True
         db_table = 'household'
         unique_together = ('village', 'household_number')
+
+
+class Village(models.Model):
+    id = models.AutoField(primary_key=True)
+    village = models.CharField(unique=True, max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'village'
+
+    def __str__(self):
+        return self.village

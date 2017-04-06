@@ -1,0 +1,56 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/household-members.css' %}"/>
+<script src="{% static 'js/household-members.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+
+<div id="hhm-rows">
+  <div class="flex-container">
+    <div class="flex-item hhm-name" >
+      <label>Name</label>
+    </div>
+    <div class="flex-item hhm-sex" >
+
+      <label>Sex</label>
+    </div>
+    <div class="flex-item" >
+
+      <label>Age</label>
+    </div>
+    <div class="flex-item" >
+
+      <label>Relationship to head of household</label>
+    </div>
+    <div class="flex-item" >
+
+      <label>Marital Status</label>
+    </div>
+    <div class="flex-item hhm-occupations">
+
+      <label>Occupations<br />
+        (list primary, secondary and other occupations)</label>
+    </div>
+    <div class="flex-item" >
+
+      <label>Place of work</label> </div> <div class="flex-item" >
+
+    <label>Literacy Status</label>
+  </div>
+    <div class="flex-item" >
+
+      <label>Educational Level</label>
+    </div>
+    <div class="flex-item hhm-add-of-institution">
+
+      <label>If enrolled, give name and location of institution</label>
+    </div>
+  </div>
+</div>
+
+<button onclick="addHouseholdMembersRow()">Add Row</button>
+{% endblock %}

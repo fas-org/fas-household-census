@@ -1,0 +1,15 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+    <table>
+        {{ ownership_form.as_table }}
+    </table>
+{% endblock %}

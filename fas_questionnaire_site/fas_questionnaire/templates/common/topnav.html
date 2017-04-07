@@ -1,7 +1,8 @@
 <ul class="nav nav-tabs">
-    <li {% if 'household' in request.get_full_path %} class="active"{% endif %}><a href={% url 'household_init' %}>Home</a></li>
+    <li {% if 'household/' in request.get_full_path %} class="active"{% endif %}><a href={% url 'household_init' %}>Home</a></li>
     <li {% if 'introduction' in request.get_full_path %} class="active"{% endif %}><a href={% url 'introduction_init' %}>Section 1</a></li>
     <li {% if 'householdmembers' in request.get_full_path %} class="active"{% endif %}><a href={% url 'householdmembers_init' %}>Section 2</a></li>
-    <li {% if 'ownership' in request.get_full_path %} class="active"{% endif %}><a href={% url 'ownership_init' %}>Section 3</a></li>
+    <li {% if 'ownership/' in request.get_full_path %} class="active"{% endif %}><a href={% url 'ownership_init' %}>Section 3</a></li>
     <li {% if 'landsales' in request.get_full_path %} class="active"{% endif %}><a href={% url 'landsales_init' %}>Section 4</a></li>
+    <li {% if 'ownership' in request.get_full_path %} class="active"{% endif %}><a href={% url 'ownershipwells_init' %}>Section 9</a></li>
 </ul>

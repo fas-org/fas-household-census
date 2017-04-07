@@ -11,8 +11,7 @@
 {% endblock %}
 
 {% block content %}
-
-<div id="hhm-rows">
+<form id="hhm-rows" method="POST">
   <div class="flex-container">
     <div class="flex-item hhm-name" >
       <label>Name</label>
@@ -22,6 +21,9 @@
     </div>
     <div class="flex-item" >
       <label>Age</label>
+    </div>
+    <div class="flex-item" >
+      <label>D/M/Y</label>
     </div>
     <div class="flex-item" >
       <label>Relationship to head of household</label>
@@ -46,8 +48,50 @@
       <label>If enrolled, give name and location of institution</label>
     </div>
   </div>
+
+  {% csrf_token %}
+  {{ formset.management_form }}
+    {% for form in formset.forms %}
+    <div class="flex-container">
+        <div class="flex-item hhm-name" >
+            {{ form.name }}
+        </div>
+        <div class="flex-item hhm-sex" >
+          {{ form.sex }}
+        </div>
+        <div class="flex-item" >
+          {{ form.age }}
+        </div>
+        <div class="flex-item" >
+          {{ form.age_unit }}
+        </div>
+        <div class="flex-item" >
+          {{ form.relationship }}
+        </div>
+        <div class="flex-item" >
+          {{ form.marital_status }}
+        </div>
+        <div class="flex-item hhm-occupations">
+          {{ form.occupation }}
+        </div>
+        <div class="flex-item" >
+          {{ form.place_of_work }}
+        </div>
+        <div class="flex-item" >
+          {{ form.literacy_status }}
+        </div>
+        <div class="flex-item" >
+          {{ form.education_level }}
+        </div>
+        <div class="flex-item hhm-add-of-institution">
+          {{ form.name_location_of_institution }}
+        </div>
+  </div>
+    {% endfor %}
+
+    <input type="submit" value="Submit" />
+</form>
 </div>
 
-<button onclick="addHouseholdMembersRow()">Add Row</button>
-<center><button onclick="submitForms(submit_url)">Submit</button></center>
+{#<button onclick="addHouseholdMembersRow()">Add Row</button>#}
 {% endblock %}

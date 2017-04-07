@@ -4,9 +4,11 @@
 {% block content %}
 {% if messages %}
 {% for message in messages %}
-<div class="alert alert-success">
-    <strong>{{ message }}</strong>
-</div>
+    {% ifequal message.message 'Data saved successfully' %}
+        <div class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endifequal %}
 {% endfor %}
 {% endif %}
 <form method='POST' id="section_3_form">

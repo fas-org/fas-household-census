@@ -1,10 +1,6 @@
 {% extends "container.html" %}
 
 {% block content %}
-<a href={% url "household_new" %}>Enter new details</a>
-<br/>
-<br/>
-<br/>
 
 {% if household_form.errors %}
 {% for field in household_form %}
@@ -23,9 +19,11 @@
 
 {% if messages %}
 {% for message in messages %}
-    <div class="alert alert-success">
-        <strong>{{ message }}</strong>
-    </div>
+    {% ifequal message.message 'Data saved successfully' %}
+        <div class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endifequal %}
 {% endfor %}
 {% endif %}
 

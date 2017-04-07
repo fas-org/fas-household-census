@@ -2,6 +2,7 @@ from ..models.household_models import Household, Village
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 import re
+from django.contrib import messages
 
 
 def get_primary_key(village_name,household_number):
@@ -23,4 +24,9 @@ def search(request):
     pk = get_primary_key(village_name,household_number)
     reobj =re.match(r'(/fas/)(.*)(/search/)',request.path,0)
     requested_page = reobj.group(2) + "_edit"
-    return redirect(requested_page, pk=pk)
+    if pk is None:
+        return redirect('household_edit', pk=pk)
+    else:
+        return redirect(requested_page, pk=pk)
+        # TODO: set the session variable here instead of setting it in each edit view
+

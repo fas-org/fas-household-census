@@ -24,7 +24,7 @@ def new(request):
     current_ownership_formset = formset_factory(CurrentOwnershipHoldingForm, formset=BaseFormSet, extra=5)
     if request.method == "POST":
         forms = current_ownership_formset(request.POST)
-
+        form_saved = False
         if forms.is_valid():
             for form in forms:
                 if form.is_valid() and form.has_changed():
@@ -49,6 +49,7 @@ def edit(request, pk):
             CurrentOwnershipHolding.objects.filter(household=pk).delete()
             # TODO: everytime creating new rows. we need to update them right?
             # TODO: do we need to add validation for duplicate rows as well? verify with user
+            form_saved = False
             if forms.is_valid():
                 for form in forms:
                     if form.is_valid() and form.has_changed():

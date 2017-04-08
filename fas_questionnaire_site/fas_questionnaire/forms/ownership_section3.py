@@ -1,5 +1,5 @@
 from django import forms
-from ..models.ownership_models_section3 import AcquisitionMode, IrrigationFlow, IrrigationOwnership, IrrigationSource, CurrentOwnershipHolding
+from ..models.ownership_section3 import AcquisitionMode, IrrigationFlow, IrrigationOwnership, IrrigationSource, CurrentOwnershipHolding
 
 
 class AcquisitionModeForm(forms.ModelForm):

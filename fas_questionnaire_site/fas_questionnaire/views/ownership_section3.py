@@ -1,9 +1,11 @@
-from ..forms.ownership_forms_section3 import CurrentOwnershipHoldingForm
-from ..models.ownership_models_section3 import CurrentOwnershipHolding
+from ..forms.ownership_section3 import CurrentOwnershipHoldingForm
+from ..models.ownership_section3 import CurrentOwnershipHolding
 from django.shortcuts import get_object_or_404, render, redirect
 from . import household as household
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.forms.formsets import formset_factory, BaseFormSet
+from django.forms import modelformset_factory
 
 
 @login_required(login_url='login')
@@ -11,39 +13,56 @@ def init(request):
     if request.session.get('household') is None:
         return new(request)
     else:
+        result_set = CurrentOwnershipHolding.objects.filter(household=request.session.get('household'))
+        if len(result_set) == 0:
+            return new(request)
         return edit(request, request.session['household'])
 
 
 @login_required(login_url='login')
 def new(request):
+    current_ownership_formset = formset_factory(CurrentOwnershipHoldingForm, formset=BaseFormSet, extra=5)
     if request.method == "POST":
-        form = CurrentOwnershipHoldingForm(request.POST)
-        if form.is_valid():
-            ownership = form.save(commit=False)
-            ownership.household = household.get(request.session['household'])
-            ownership.save()
+        forms = current_ownership_formset(request.POST)
+
+        if forms.is_valid():
+            for form in forms:
+                if form.is_valid() and form.has_changed():
+                    ownership = form.save(commit=False)
+                    ownership.household = household.get(request.session['household'])
+                    ownership.save()
+                    form_saved = True  # TODO: add proper check to verify if all forms are saved
+        if form_saved:
             messages.success(request, 'Data saved successfully')
             return redirect('ownership_edit', pk=request.session['household'])
-    else:
-        form = CurrentOwnershipHoldingForm()
-    return render(request, 'ownership_section3.html', {'ownership_form': form})
+
+    return render(request, 'ownership_section3.html', {'formset': current_ownership_formset})
 
 
 @login_required(login_url='login')
 def edit(request, pk):
     try:
         request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
-        ownership = get_object_or_404(CurrentOwnershipHolding, household=pk)
         if request.method == "POST":
-            form = CurrentOwnershipHoldingForm(request.POST, instance=ownership)
-            if form.is_valid():
-                ownership = form.save(commit=False)
-                ownership.save()
+            current_ownership_formset = formset_factory(CurrentOwnershipHoldingForm, formset=BaseFormSet, extra=5)
+            forms = current_ownership_formset(request.POST)
+            CurrentOwnershipHolding.objects.filter(household=pk).delete()
+            # TODO: everytime creating new rows. we need to update them right?
+            # TODO: do we need to add validation for duplicate rows as well? verify with user
+            if forms.is_valid():
+                for form in forms:
+                    if form.is_valid() and form.has_changed():
+                        ownership = form.save(commit=False)
+                        ownership.save()
+                        form_saved = True  # TODO: add proper check to verify if all forms are saved
+            if form_saved:
                 messages.success(request, 'Data saved successfully')
-                return redirect('ownership_edit', pk=pk)
-        else:
-            form = CurrentOwnershipHoldingForm(instance=ownership)
-        return render(request, 'ownership_section3.html', {'ownership_form': form})
+
+        current_ownership_model_formset = modelformset_factory(CurrentOwnershipHolding, form=CurrentOwnershipHoldingForm, extra=5)
+        result_set = CurrentOwnershipHolding.objects.filter(household=pk)
+        formset = current_ownership_model_formset(queryset=result_set)
+        return render(request, 'ownership_section3.html', {'formset': formset})
+
     except Exception:
         return new(request)
 

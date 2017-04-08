@@ -25,7 +25,7 @@ def search(request):
     reobj =re.match(r'(/fas/)(.*)(/search/)',request.path,0)
     requested_page = reobj.group(2) + "_edit"
     if pk is None:
-        return redirect('household_edit', pk=pk)
+        return redirect('household_edit', pk=pk) # TODO: get user opinion on this.
     else:
         return redirect(requested_page, pk=pk)
         # TODO: set the session variable here instead of setting it in each edit view

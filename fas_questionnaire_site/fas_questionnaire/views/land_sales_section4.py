@@ -20,7 +20,7 @@ def new(request):
         landsoldform = LandSoldForm(request.POST)
         landpurchasedform = LandPurchasedForm(request.POST)
 
-        if landsoldform.is_valid():
+        if landsoldform.is_valid() and landpurchasedform.is_valid():
             landsold = landsoldform.save(commit=False)
             landsold.household = household.get(request.session['household'])
             landsold.save()
@@ -31,14 +31,12 @@ def new(request):
             landpurchased.save()
             messages.success(request, 'Data saved successfully')
 
-            return redirect('landsales_edit',
-                            household=request.session['household'])
+            return redirect('landsales_edit', pk=request.session['household'])
     else:
         landsoldform = LandSoldForm()
         landpurchasedform = LandPurchasedForm()
-    return render(request, 'land_sales_section4.html',
-                  {'landsold_form': landsoldform,
-                   'landpurchased_form': landpurchasedform})
+    return render(request, 'land_sales_section4.html', {'landsold_form': landsoldform,
+                                                        'landpurchased_form': landpurchasedform})
 
 
 @login_required(login_url='login')

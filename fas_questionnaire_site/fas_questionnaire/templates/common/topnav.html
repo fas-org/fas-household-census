@@ -20,10 +20,17 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href="#">5.LAND HOLDING: LEASED AND MORTGAGED</a>
     </li>
+
+    <li {% if 'extension' in request.get_full_path %} class="active"{% endif %}
+            {% if request.session.household == None %} class="disabled" {% endif %}>
+            <a href={% url 'extension_init' %}>Section 8</a>
+    </li>
+
     <li {% if 'wells' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'ownershipwells_init' %}>Section 9</a>
     </li>
+
 </ul>
 
 <script>

@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^landsales/', include('fas_questionnaire.urls.land_sales_urls_section4')),
     url(r'^ownership/', include('fas_questionnaire.urls.ownership_section3')),
     url(r'^wells/', include('fas_questionnaire.urls.ownership_wells_section9')),
+    url(r'^extension/', include('fas_questionnaire.urls.extension_urls_section8')),
     url(r'^.*/search/$', search.search, name='search'),
 ]

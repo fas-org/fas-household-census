@@ -1,0 +1,91 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<form method='POST'>
+    {% csrf_token %}
+    {{ extension_form.household.as_hidden }}
+    <br>
+    <b>8A.SOURCES AND TYPE OF EXTENSION SERVICES USED BY THE HOUSEHOLD</b>
+    <br><br>
+    <div class='row'>
+        <div class='col-md-5 table-cell'>
+            {{ extension_form.from_whom_advice_received.label_tag }}
+        </div>
+
+        <div class='col-md-7 table-cell text-center'>
+            {{ extension_form.type_of_advice_received_description.label_tag }}
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-5 table-cell'>
+            {{ extension_form.from_whom_advice_received }}
+        </div>
+        <div class='col-md-7 table-cell'>
+            {{ extension_form.type_of_advice_received_description }}
+        </div>
+    </div>
+<br>
+<br>
+<b>Table 8B. Institutional support</b>
+    <div class='row'>
+
+        <div class='col-md-3 table-cell'>
+            {{ institutional_support_form.category.label_tag }}
+        </div>
+
+        <div class='col-md-2 table-cell text-center'>
+            {{ institutional_support_form.name_of_institution.label_tag }}
+        </div>
+
+        <div class='col-md-3 table-cell text-center'>
+            {{ institutional_support_form.year_of_support.label_tag }}
+        </div>
+
+        <div class='col-md-2 table-cell text-center'>
+            {{ institutional_support_form.nature_of_support_or_purpose.label_tag }}
+        </div>
+        <div class='col-md-2 table-cell text-center'>
+            {{ institutional_support_form.comments.label_tag }}
+        </div>
+    </div>
+
+  <div class='row'>
+        <div class='col-md-3 table-cell'>
+            {{ institutional_support_form.category }}
+        </div>
+
+        <div class='col-md-2 table-cell text-center'>
+            {{ institutional_support_form.name_of_institution }}
+        </div>
+
+        <div class='col-md-3 table-cell text-center'>
+            {{ institutional_support_form.year_of_support }}
+        </div>
+
+        <div class='col-md-2 table-cell text-center'>
+            {{ institutional_support_form.nature_of_support_or_purpose }}
+        </div>
+        <div class='col-md-2 table-cell text-center'>
+            {{ institutional_support_form.comments }}
+        </div>
+    </div>
+
+    <br>
+<div class="row table-cell">
+    {{ institutional_support_comments_form.institutional_support_comments.label_tag }}
+    {{ institutional_support_comments_form.institutional_support_comments }}
+</div>
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+{% endblock %}

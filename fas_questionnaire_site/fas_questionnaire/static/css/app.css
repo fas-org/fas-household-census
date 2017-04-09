@@ -27,6 +27,21 @@ input, select {
 .btn-submit {
     margin: 10px;
 }
-.long-div {
-  height:55px;
+.flex-row {
+    display:flex;
+    align-items: stretch;
+    text-align: center;
 }
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.delete-row {
+    background: url('../images/delete.png') no-repeat 5px center;
+    width: 25px;
+    height: 25px;
+}
+

@@ -14,14 +14,14 @@
 <form method='POST' id="section_3_form">
     {% csrf_token %}
     <h5 class='text-center'>3. CURRENT OWNERSHIP HOLDING</h5>
-    <div class='row'>
-        <div class='col-md-1 table-cell long-div'>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Land Type</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Extent of land</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>acquisition</label>
         </div>
         <div class='col-md-3'>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Value</label>
         </div>
     </div>
@@ -50,7 +50,7 @@
     {% csrf_token %}
     {{ formset.management_form }}
     {% for form in formset.forms %}
-    <div class='row formset_row'>
+    <div class='row formset_row flex-row'>
         <div class='col-md-1 table-cell'>
             {{ form.land_type }}
         </div>

@@ -2,93 +2,101 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/household-members.css' %}"/>
 <script src="{% static 'js/household-members.js' %}"></script>
 <script src="{% static 'js/form-utils.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+<h5 class='text-center'>2.HOUSEHOLD MEMBERS : GENERAL INFORMATION</h5>
 <form id="hhm-rows" method="POST">
-  <div class="flex-container">
-    <div class="flex-item hhm-name" >
-      <label>Name</label>
+    <div class="row flex-row">
+        <div class="col-md-2 table-cell flex-column" >
+          <label>Name</label>
+        </div>
+        <div class="col-md-1 flex-row">
+            <div class="col-md-7 table-cell flex-column" >
+              <label>Sex</label>
+            </div>
+            <div class="col-md-5 table-cell flex-column" >
+              <label>Age</label>
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+          <label>D/M/Y</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+          <label>Relationship to head of household</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+          <label>Marital Status</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+          <label>Occupations<br />
+            (list primary, secondary and other occupations)</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+          <label>Place of work</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+          <label>Literacy Status</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+          <label>Educational Level</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+          <label>If enrolled, give name and location of institution</label>
+        </div>
     </div>
-    <div class="flex-item hhm-sex" >
-      <label>Sex</label>
-    </div>
-    <div class="flex-item" >
-      <label>Age</label>
-    </div>
-    <div class="flex-item" >
-      <label>D/M/Y</label>
-    </div>
-    <div class="flex-item" >
-      <label>Relationship to head of household</label>
-    </div>
-    <div class="flex-item" >
-      <label>Marital Status</label>
-    </div>
-    <div class="flex-item hhm-occupations">
-      <label>Occupations<br />
-        (list primary, secondary and other occupations)</label>
-    </div>
-    <div class="flex-item" >
-      <label>Place of work</label>
-    </div>
-    <div class="flex-item" >
-      <label>Literacy Status</label>
-    </div>
-    <div class="flex-item" >
-      <label>Educational Level</label>
-    </div>
-    <div class="flex-item hhm-add-of-institution">
-      <label>If enrolled, give name and location of institution</label>
-    </div>
-  </div>
 
-  {% csrf_token %}
-  {{ formset.management_form }}
+    {% csrf_token %}
+    {{ formset.management_form }}
     {% for form in formset.forms %}
-    <div class="flex-container">
-        <div class="flex-item hhm-name" >
+    <div class="row flex-row formset_row">
+        <div class="col-md-2 table-cell flex-column" >
             {{ form.name }}
         </div>
-        <div class="flex-item hhm-sex" >
-          {{ form.sex }}
+        <div class="col-md-1 flex-row">
+            <div class="col-md-7 table-cell flex-column" >
+              {{ form.sex }}
+            </div>
+            <div class="col-md-5 table-cell flex-column" >
+              {{ form.age }}
+            </div>
         </div>
-        <div class="flex-item" >
-          {{ form.age }}
-        </div>
-        <div class="flex-item" >
+        <div class="col-md-1 table-cell flex-column" >
           {{ form.age_unit }}
         </div>
-        <div class="flex-item" >
+        <div class="col-md-1 table-cell flex-column" >
           {{ form.relationship }}
         </div>
-        <div class="flex-item" >
+        <div class="col-md-1 table-cell flex-column" >
           {{ form.marital_status }}
         </div>
-        <div class="flex-item hhm-occupations">
+        <div class="col-md-1 table-cell flex-column">
           {{ form.occupation }}
         </div>
-        <div class="flex-item" >
+        <div class="col-md-1 table-cell flex-column" >
           {{ form.place_of_work }}
         </div>
-        <div class="flex-item" >
+        <div class="col-md-1 table-cell flex-column" >
           {{ form.literacy_status }}
         </div>
-        <div class="flex-item" >
+        <div class="col-md-1 table-cell flex-column" >
           {{ form.education_level }}
         </div>
-        <div class="flex-item hhm-add-of-institution">
+        <div class="col-md-1 table-cell flex-column">
           {{ form.name_location_of_institution }}
         </div>
-  </div>
+    </div>
     {% endfor %}
-
-    <input type="submit" value="Save" />
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
 </form>
 </div>
-
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row').formset();
+</script>
 {#<button onclick="addHouseholdMembersRow()">Add Row</button>#}
 {% endblock %}

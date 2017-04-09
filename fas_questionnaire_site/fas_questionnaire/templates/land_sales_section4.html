@@ -17,19 +17,19 @@
     <input type='number' name='id' value="{{ landsold_form.id }}" class="hide"/>
     <h5 class='text-center'>4. SALE AND PURCHASE OF AGRICULTURAL LAND</h5><br><br><br>
     <b>4.1 Land sold</b><br>
-    <div class='row'>
-        <div class='col-md-1 table-cell long-div'>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.year_of_sale.label_tag }}
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.extent_of_land_sold.label_tag }}
         </div>
 
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.type_of_land_sold.label_tag }}
         </div>
 
-        <div class='col-md-5 table-cell long-div'>
+        <div class='col-md-5'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Buyer</p>
             </div>
@@ -49,29 +49,29 @@
             </div>
         </div>
 
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.price_of_land_sold.label_tag }}
         </div>
 
-        <div class='col-md-3 table-cell long-div'>
+        <div class='col-md-3 table-cell flex-column'>
             {{ landsold_form.reasons_for_sale.label_tag }}
         </div>
     </div>
 
 
-    <div class='row'>
-        <div class='col-md-1 table-cell'>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.year_of_sale }}
         </div>
-        <div class='col-md-1 table-cell'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.extent_of_land_sold }}
         </div>
 
-        <div class='col-md-1 table-cell'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.type_of_land_sold }}
         </div>
 
-        <div class='col-md-5 table-cell'>
+        <div class='col-md-5'>
             <div class='row'>
                 <div class='col-md-3 table-cell'>
                     {{ landsold_form.name_of_buyer }}
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div class='col-md-1 table-cell'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landsold_form.price_of_land_sold }}
         </div>
 
@@ -100,19 +100,19 @@
     <br>
 <input type='number' name='id' value="{{ landpurchased_form.id }}" class="hide"/>
 <b>4.2 Land bought</b><br>
-    <div class='row'>
-        <div class='col-md-1 table-cell long-div'>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landpurchased_form.year_of_purchase.label_tag }}
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landpurchased_form.extent_of_land_bought.label_tag }}
         </div>
 
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landpurchased_form.type_of_land_purchased.label_tag }}
         </div>
 
-        <div class='col-md-5 table-cell long-div'>
+        <div class='col-md-5'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Seller</p>
             </div>
@@ -132,17 +132,17 @@
             </div>
         </div>
 
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell flex-column'>
             {{ landpurchased_form.price_of_land_purchased.label_tag }}
         </div>
 
-        <div class='col-md-3 table-cell long-div'>
+        <div class='col-md-3 table-cell flex-column'>
             {{ landpurchased_form.comments.label_tag }}
         </div>
     </div>
 
 
-    <div class='row'>
+    <div class='row flex-row'>
         <div class='col-md-1 table-cell'>
             {{ landpurchased_form.year_of_purchase }}
         </div>
@@ -154,7 +154,7 @@
             {{ landpurchased_form.type_of_land_purchased }}
         </div>
 
-        <div class='col-md-5 table-cell'>
+        <div class='col-md-5'>
             <div class='row'>
                 <div class='col-md-3 table-cell'>
                     {{ landpurchased_form.name_of_seller }}

@@ -76,7 +76,7 @@ def edit(request, pk):
 
             LandSold.objects.filter(household=pk).delete()
             LandPurchased.objects.filter(household=pk).delete()
-            LandPurchasedComments.objects.filter(household=pk).delete()
+            # LandPurchasedComments.objects.filter(household=pk).delete()
 
             form_saved = False
             if landsoldforms.is_valid() and landpurchasedforms.is_valid() and landpurchased_comments_form.is_valid():

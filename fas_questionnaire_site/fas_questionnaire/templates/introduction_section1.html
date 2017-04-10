@@ -17,9 +17,9 @@
     {{ introduction_form.household.as_hidden }}
     <h5 class='text-center'>1.INTRODUCTION</h5>
     <div class='row'>
-        <div class='col-md-5 flex-row'>
+        <div class='col-md-4 flex-row'>
             <div class='col-md-5 table-cell flex-column'>
-                <label>Name of head of household</label>
+                <label>Name of head of household{% if introduction_form.household_head_name.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-7 table-cell'>
                 {{ introduction_form.household_head_name }}
@@ -27,7 +27,7 @@
         </div>
         <div class='col-md-1 flex-row'>
             <div class='col-md-4 table-cell flex-column'>
-                <label>Sex</label>
+                <label>Sex{% if introduction_form.sex.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-8 table-cell'>
                 {{ introduction_form.sex }}
@@ -43,28 +43,36 @@
         </div>
         <div class='col-md-2 flex-row'>
             <div class='col-md-6 table-cell flex-column'>
-                <label>Caste/Tribe</label>
+                <label>Caste/Tribe{% if introduction_form.caste_tribe.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-6 table-cell'>
                 {{ introduction_form.caste_tribe }}
             </div>
         </div>
+        <div class='col-md-3 flex-row'>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Specify if SC/ST/Others{% if introduction_form.sc_st.field.required %}<span class="required">*</span>{% endif %}</label>
+            </div>
+            <div class='col-md-6 table-cell'>
+                {{ introduction_form.sc_st }}
+            </div>
+        </div>
+    </div>
+    <div class='row'>
         <div class='col-md-2 flex-row'>
             <div class='col-md-4 table-cell flex-column'>
-                <label>Religion</label>
+                <label>Religion{% if introduction_form.religion.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-8 table-cell'>
                 {{ introduction_form.religion }}
             </div>
         </div>
-    </div>
-    <div class='row'>
         <div class='col-md-5 flex-row'>
             <div class='col-md-5 table-cell flex-column'>
-                <label>Village and tehsil of birth </label>
+                <label>Village and tehsil of birth{% if introduction_form.birth_village.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-7 table-cell'>
-                {{ introduction_form.birth_village_tehsil }}
+                {{ introduction_form.birth_village }}
             </div>
         </div>
         <div class='col-md-2 flex-row'>
@@ -75,14 +83,16 @@
                 {{ introduction_form.year_of_migration }}
             </div>
         </div>
-        <div class='col-md-2 flex-row'>
+        <div class='col-md-3 flex-row'>
             <div class='col-md-6 table-cell flex-column'>
-                <label>Father's name</label>
+                <label>Father's name{% if introduction_form.father_name.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-6 table-cell'>
                 {{ introduction_form.father_name }}
             </div>
         </div>
+    </div>
+    <div class='row'>
         <div class='col-md-3 flex-row'>
             <div class='col-md-6 table-cell flex-column'>
                 <label>Father's occupation</label>
@@ -91,17 +101,15 @@
                 {{ introduction_form.father_occupation }}
             </div>
         </div>
-    </div>
-    <div class='row'>
-        <div class='col-md-7 flex-row'>
+        <div class='col-md-5 flex-row'>
             <div class='col-md-2 table-cell flex-column'>
-                <label>Address</label>
+                <label>Address{% if introduction_form.address.field.required %}<span class="required">*</span>{% endif %}</label>
             </div>
             <div class='col-md-10 table-cell'>
                 {{ introduction_form.address }}
             </div>
         </div>
-        <div class='col-md-5 flex-row'>
+        <div class='col-md-4 flex-row'>
             <div class='col-md-4 table-cell flex-column'>
                 <label>Telephone no., if any</label>
             </div>

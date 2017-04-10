@@ -99,6 +99,20 @@
                     <label>Area</label>
                 </div>
             </div>
+
+            {% csrf_token %}
+            {{ homesteadformset.management_form }}
+            {% for form in homesteadformset.forms %}
+            <div class='row homestead_formset_row flex-row'>
+                <div class='col-md-9 flex-column table-cell'>
+                    {{ form.components }}
+                </div>
+                <div class='col-md-3 flex-column table-cell'>
+                    {{ form.area }}
+                </div>
+            </div>
+            {% endfor %}
+
         </div>
     </div>
 
@@ -109,5 +123,6 @@
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.formset_row').formset();
+    $('.homestead_formset_row').formset();
 </script>
 {% endblock %}

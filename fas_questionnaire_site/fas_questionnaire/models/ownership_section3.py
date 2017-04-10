@@ -76,3 +76,26 @@ class CurrentOwnershipHolding(models.Model):
     class Meta:
         managed = True
         db_table = 'Current ownership holding'
+
+
+class HomesteadComponents(models.Model):
+    id = models.AutoField(primary_key=True)
+    components = models.CharField(max_length=250, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Homestead Components'
+
+    def __str__(self):
+        return self.components
+
+
+class HomesteadArea(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    components = models.ForeignKey(HomesteadComponents, models.DO_NOTHING, db_column='Components', blank=True, null=True)
+    area = models.FloatField(db_column='Area', blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Homestead Area'

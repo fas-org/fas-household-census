@@ -1,5 +1,5 @@
 from django import forms
-from ..models.ownership_section3 import AcquisitionMode, IrrigationFlow, IrrigationOwnership, IrrigationSource, CurrentOwnershipHolding
+from ..models.ownership_section3 import AcquisitionMode, IrrigationFlow, IrrigationOwnership, IrrigationSource, CurrentOwnershipHolding, HomesteadArea
 
 
 class AcquisitionModeForm(forms.ModelForm):
@@ -65,3 +65,17 @@ class CurrentOwnershipHoldingForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+
+class HomesteadAreaForm(forms.ModelForm):
+
+    class Meta:
+        model = HomesteadArea
+        fields = ['household', 'components', 'area']
+        exclude = ['household']
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}
+

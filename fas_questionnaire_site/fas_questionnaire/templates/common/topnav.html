@@ -116,8 +116,26 @@
 
 <script>
     $(document).ready(function() {
-        $(".nav li.disabled a").click(function() {
-            return false;
-        });
+    formmodified=0;
+
+    $(".nav li.disabled a").click(function() {
+        return false;
     });
+
+    $('form *').change(function(){
+        formmodified=1;
+    });
+
+    $("button[type='submit']").click(function() {
+        formmodified = 0;
+    });
+
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        if (formmodified == 1) {
+            return "Do you wish to leave un saved changes?";
+        }
+    }
+});
+
 </script>

@@ -16,9 +16,9 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'landsales_init' %}>4.SALE AND PURCHASE OF AGRICULTURAL LAND</a>
     </li>
-    <li
+    <li {% if 'landleasemortgage' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">5.LAND HOLDING: LEASED AND MORTGAGED</a>
+            <a href={% url 'landleasemortgage_init' %}>5.LAND HOLDING: LEASED AND MORTGAGED</a>
     </li>
 
     <li {% if 'cropProduction' in request.get_full_path %} class="active" {% endif %}

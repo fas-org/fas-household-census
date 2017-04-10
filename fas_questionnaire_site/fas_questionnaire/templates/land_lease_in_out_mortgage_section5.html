@@ -1,0 +1,347 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+{% ifequal message.message 'Data saved land mortgage in successfully' %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endifequal %}
+{% ifequal message.message 'Data saved land mortgage out successfully' %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endifequal %}
+{% endfor %}
+{% endif %}
+<form method='POST' id="land_mortgaged_in_section5">
+    {% csrf_token %}
+    <h5 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h5><br><br><br>
+    <b>5.2.1 Land mortgaged in</b><br>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Land Type</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Extent</label>
+        </div>
+        <div class='col-md-3'>
+            <div class='row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Mortgagor</label>
+                </div>
+            </div>
+            <div class= 'row'>
+                <div class='col-md-4 table-cell'>
+                    <label>Name</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Cast</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Occupation</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Year of mortgage</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Mortgage period</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Mortgage money</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Interest/usufruct</label>
+        </div>
+        <div class='col-md-2 table-cell'>
+            <label>comments</label>
+        </div>
+    </div>
+
+
+    {% csrf_token %}
+    {{ formset_lm_in.management_form }}
+    {% for form in formset_lm_in.forms %}
+    <div class='row flex-row formset_row_1'>
+        <div class='col-md-1 table-cell'>
+            {{ form.land_type }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.extent }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.name_of_mortgagor }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.caste_of_mortgagor }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.occupation_of_mortgagor }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.year_of_mortgage }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.mortgage_period }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.mortgage_money }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.interest_usufruct }}
+        </div>
+        <div class='col-md-2 table-cell'>
+            {{ form.comments }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <br><br>
+    <b>5.2.1 Land mortgaged out</b><br>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Land Type</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Extent</label>
+        </div>
+        <div class='col-md-3'>
+            <div class='row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Mortgagee</label>
+                </div>
+            </div>
+            <div class= 'row'>
+                <div class='col-md-4 table-cell'>
+                    <label>Name</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Cast</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Occupation</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Year of mortgage</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Mortgage period</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Mortgage money</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Interest/usufruct</label>
+        </div>
+        <div class='col-md-2 table-cell'>
+            <label>comments</label>
+        </div>
+    </div>
+
+    {% csrf_token %}
+    {{ formset_lm_out.management_form }}
+    {% for form in formset_lm_out.forms %}
+    <div class='row flex-row formset_row_2'>
+        <div class='col-md-1 table-cell'>
+            {{ form.land_type }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.extent }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.name_of_mortgagee }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.caste_of_mortgagee }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.occupation_of_mortgagee }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.year_of_mortgage }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.mortgage_period }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.mortgage_money }}
+        </div>
+        <div class='col-md-1 table-cell'>
+            {{ form.interest_usufruct }}
+        </div>
+        <div class='col-md-2 table-cell'>
+            {{ form.comments }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row_1').formset();
+    $('.formset_row_2').formset();
+</script>
+{% endblock %}
+
+<!--<form method='POST' id="land_leased_in_fixed_rent">-->
+<!--{% csrf_token %}-->
+<!--<h5 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h5>-->
+<!--<div class="row">-->
+<!--<div class='col-md-1 table-cell long-div'>-->
+<!--<label>Plot no</label>-->
+<!--</div>-->
+<!--<div class='col-md-1 table-cell long-div'>-->
+<!--<label>Land Type</label>-->
+<!--</div>-->
+<!--<div class='col-md-1 table-cell long-div'>-->
+<!--<label>Extent (specify units)</label>-->
+<!--</div>-->
+<!--<div class='col-md-3 table-cell long-div'>-->
+<!--<div class='row'>-->
+<!--<div class='col-md-12 table-cell '>-->
+<!--<p class='text-center'>Landowner</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class= 'row'>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Name</label>-->
+<!--</div>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Cast</label>-->
+<!--</div>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Occupation</label>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class='col-md-5 table-cell long-div'>-->
+<!--<div class='row'>-->
+<!--<div class='col-md-12 table-cell '>-->
+<!--<p class='text-center'>Tenurial status</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class= 'row'>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Registered/Unregistered</label>-->
+<!--</div>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Type of contract</label>-->
+<!--</div>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Since when leased in</label>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class='col-md-3 table-cell long-div'>-->
+<!--<div class='row'>-->
+<!--<div class='col-md-8 table-cell '>-->
+<!--<p class='text-center'>Annual fixed rent</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class= 'row'>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Cash</label>-->
+<!--</div>-->
+<!--<div class='col-md-4 table-cell '>-->
+<!--<label>Kind</label>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div class='col-md-1'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='row'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-30 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Annual fixed rent</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class= 'row'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-15 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Cash</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-15 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Kind</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell long-div'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Interest free borrowing</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell long-div'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Loan with interest</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell long-div'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Further interest payment on loan</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='row'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Inputs provided by owner</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class= 'row'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell long-div'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Quantity of hay taken</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>value of manure provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>value of fertiliser provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>value of seed provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>value of pesticide provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>value of electricity provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>if pumpset provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>if irrigation provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>if machinery provided</label>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div class='row'>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.land_type }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.extent_owned_land }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.acquisition_mode }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.irrigation_source }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.irrigation_flow }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.irrigation_ownership }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class='col-md-1 table-cell'>&ndash;&gt;-->
+<!--&lt;!&ndash;{{ ownership_form.value }}&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div class='row text-center'>-->
+<!--<button class='btn btn-primary btn-submit' type="button">Save</button>-->
+<!--</div>-->
+<!--</form>-->

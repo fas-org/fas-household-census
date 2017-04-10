@@ -1,0 +1,96 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form method='POST' id="section_6_form">
+        {% csrf_token %}
+        {{ production_and_sales_on_operational_holding_form.household.as_hidden }}
+        <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
+        <b>A. Cropping pattern and crop schedule</b><br>
+        <div class='row'>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.serial_no.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.crop.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.variety.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.tenurial_status.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.crop_homestead_land.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.extent.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.month_of_sowing.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.month_of_harvesting.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.source_of_irrigation.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.comments.label_tag}}
+            </div>
+
+        </div>
+
+        <div class='row'>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.serial_no}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.crop}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.variety}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.tenurial_status}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.crop_homestead_land}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.extent}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.month_of_sowing}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_on_operational_holding_form.comments}}
+            </div>
+
+        </div>
+
+        <div class='row' contenteditable="true">
+            <b>{{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}</b><br>
+            <div class='long-div'>
+                {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
+            </div>
+        </div>
+
+        <div class='row text-center'>
+            <button class='btn btn-primary btn-submit' type="submit">Save</button>
+        </div>
+    </form>
+{% endblock %}

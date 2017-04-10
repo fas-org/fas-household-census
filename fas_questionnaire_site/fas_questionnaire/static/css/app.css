@@ -44,4 +44,5 @@ input, select {
     width: 25px;
     height: 25px;
 }
-
+label { color: #666; }
+span.required { color: red; }

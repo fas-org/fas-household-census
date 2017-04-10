@@ -33,7 +33,9 @@
     <div class='row'>
         <div class='col-md-5 flex-row'>
             <div class='col-md-2 table-cell flex-column'>
-                {{ household_form.village.label_tag }}
+                <label>{{ household_form.village.label_tag }}
+                    {% if household_form.village.field.required %}<span class="required">*</span>{% endif %}
+                </label>
             </div>
             <div class='col-md-10 table-cell'>
                 {{ household_form.village }}
@@ -41,7 +43,9 @@
         </div>
         <div class='col-md-offset-2 col-md-5 flex-row'>
             <div class='col-md-4 table-cell flex-column'>
-                {{ household_form.household_number.label_tag }}
+                <label>{{ household_form.household_number.label_tag }}
+                    {% if household_form.household_number.field.required %}<span class="required">*</span>{% endif %}
+                </label>
             </div>
             <div class='col-md-8 table-cell'>
                 {{ household_form.household_number }}

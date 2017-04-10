@@ -23,7 +23,7 @@ class HouseholdIntroduction(models.Model):
     birth_village = models.CharField(max_length=50, db_column='Village of birth')
     birth_tehsil = models.CharField(max_length=50, db_column='Tehsil of birth', blank=True, null=True)
     birth_district = models.CharField(max_length=50, db_column='District of birth', blank=True, null=True)
-    year_of_migration = models.FloatField(db_column='Year of migration', blank=True, null=True)
+    year_of_migration = models.IntegerField(db_column='Year of migration', blank=True, null=True)
     caste_tribe = models.CharField(db_column='Caste/tribe', max_length=50)
     sc_st = models.CharField(db_column='If SC/ST?', max_length=50)
     religion = models.CharField(db_column='Religion',max_length=50)

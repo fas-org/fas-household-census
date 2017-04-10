@@ -47,7 +47,7 @@ def new(request):
                     landpurchased.save()
                     form_saved = True
 
-            if landpurchased_comments_form.is_valid() and landpurchased_comments_form.has_changed():
+            if landpurchased_comments_form.is_valid():
                 landpurchased_comments = landpurchased_comments_form.save(commit=False)
                 landpurchased_comments.household = household.get(request.session['household'])
                 landpurchased_comments.save()
@@ -65,6 +65,7 @@ def new(request):
 @login_required(login_url='login')
 def edit(request, pk):
     try:
+        request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
         landpurchased_comments = get_object_or_404(LandPurchasedComments, household=pk)
         if request.method == "POST":
             landsold_formset = formset_factory(LandSoldForm, formset=BaseFormSet, extra=5)
@@ -101,16 +102,15 @@ def edit(request, pk):
 
             if form_saved:
                 messages.success(request, 'Data saved successfully')
-                return redirect('landsales_edit', pk=request.session['household'])
 
-        landsold_formset = modelformset_factory(LandSold, form=LandSoldForm, extra=5)
-        landpurchased_formset = modelformset_factory(LandPurchased, form=LandPurchasedForm, extra=5)
-
+        landsold_model_formset = modelformset_factory(LandSold, form=LandSoldForm, extra=5)
         landsold_result_set = LandSold.objects.filter(household=pk)
-        landsoldformset = landsold_formset(queryset=landsold_result_set)
+        landsoldformset = landsold_model_formset(queryset=landsold_result_set)
 
+        landpurchased_model_formset = modelformset_factory(LandPurchased, form=LandPurchasedForm, extra=5)
         landpurchased_result_set = LandPurchased.objects.filter(household=pk)
-        landpurchasedformset = landpurchased_formset(queryset=landpurchased_result_set)
+        landpurchasedformset = landpurchased_model_formset(queryset=landpurchased_result_set)
+
 
         landpurchased_comments_form = LandPurchasedCommentsForm(instance=landpurchased_comments)
 

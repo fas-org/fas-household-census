@@ -48,7 +48,7 @@ def new(request):
                     institutional_support.household = household.get(request.session['household'])
                     institutional_support.save()
 
-            if institutional_support_comments_form.is_valid() and institutional_support_comments_form.has_changed():
+            if institutional_support_comments_form.is_valid():
                 institutional_support_comments = institutional_support_comments_form.save(commit=False)
                 institutional_support_comments.household = household.get(request.session['household'])
                 institutional_support_comments.save()

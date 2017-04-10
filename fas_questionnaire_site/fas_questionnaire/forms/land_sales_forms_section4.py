@@ -1,5 +1,5 @@
 from django import forms
-from ..models.land_sales_models_section4 import LandPurchased, LandSold
+from ..models.land_sales_models_section4 import LandPurchased, LandSold, LandPurchasedComments
 
 
 class LandPurchasedForm(forms.ModelForm):
@@ -13,15 +13,7 @@ class LandPurchasedForm(forms.ModelForm):
         exclude = ['household']
         widgets = None
         localized_fields = None
-        labels = {
-            'extent_of_land_bought': 'Extent',
-            'type_of_land_purchased': 'Type of Land',
-            'name_of_seller': 'Name',
-            'caste_of_seller': 'Caste',
-            'occupation_of_seller': 'Occupation',
-            'place_of_residence_of_seller': 'Place of residence',
-            'price_of_land_purchased': 'price of land'
-        }
+        labels = {}
         help_texts = {}
         error_messages = {}
 
@@ -36,15 +28,18 @@ class LandSoldForm(forms.ModelForm):
         exclude = ['household']
         widgets = None
         localized_fields = None
-        labels = {
-            'extent_of_land_sold': 'Extent',
-            'type_of_land_sold': 'Type of Land',
-            'name_of_buyer': 'Name',
-            'caste_of_buyer': 'Caste',
-            'occupation_of_buyer': 'Occupation',
-            'place_of_residence_of_buyer': 'Place of residence',
-            'price_of_land_sold': 'Price of land',
+        labels = {}
+        help_texts = {}
+        error_messages = {}
 
-        }
+
+class LandPurchasedCommentsForm(forms.ModelForm):
+    class Meta:
+        model = LandPurchasedComments
+        fields = ['household', 'landpurchased_comments']
+        exclude = ['household']
+        widgets = None
+        localized_fields = None
+        labels = {}
         help_texts = {}
         error_messages = {}

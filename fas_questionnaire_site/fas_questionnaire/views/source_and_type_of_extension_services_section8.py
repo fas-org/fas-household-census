@@ -1,9 +1,12 @@
-from ..forms.source_and_type_of_extension_services_forms_section8 import ExtensionForm, InstitutionalSupportForm, InstitutionalSupportCommentsForm
+from ..forms.source_and_type_of_extension_services_forms_section8 import ExtensionForm, InstitutionalSupportForm, \
+    InstitutionalSupportCommentsForm
 from ..models.source_and_type_of_extension_services_models_section8 import Extension, InstitutionalSupport, InstitutionalSupportComments
 from django.shortcuts import get_object_or_404, render, redirect
 from . import household as household
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.forms.formsets import formset_factory, BaseFormSet
+from django.forms import modelformset_factory
 
 
 @login_required(login_url='login')
@@ -11,73 +14,106 @@ def init(request):
     if request.session.get('household') is None:
         return new(request)
     else:
+        extension_result_set = Extension.objects.filter(household=request.session.get('household'))
+        initial_support_result_set = InstitutionalSupport.objects.filter(household=request.session.get('household'))
+        initial_support_comments_result_set = InstitutionalSupportComments.objects.filter(household=request.session.get('household'))
+
+        if len(extension_result_set) == 0 and len(initial_support_result_set) == 0 and len(initial_support_comments_result_set) == 0:
+            return new(request)
         return edit(request, request.session['household'])
 
 
 @login_required(login_url='login')
 def new(request):
+    extension_formset = formset_factory(ExtensionForm, formset=BaseFormSet, extra=5)
+    institutional_support_formset = formset_factory(InstitutionalSupportForm, formset=BaseFormSet, extra=5)
+    institutional_support_comments_form = InstitutionalSupportCommentsForm()
     if request.method == "POST":
-        extension_form = ExtensionForm(request.POST)
-        institutional_support_form = InstitutionalSupportForm(request.POST)
+        extensionforms = extension_formset(request.POST)
+        institutionalsupportforms = institutional_support_formset(request.POST)
         institutional_support_comments_form = InstitutionalSupportCommentsForm(request.POST)
 
-        if extension_form.is_valid() and institutional_support_form.is_valid() and institutional_support_comments_form.is_valid():
-            cultivation_adviser = extension_form.save(commit=False)
-            cultivation_adviser.household = household.get(request.session['household'])
-            cultivation_adviser.save()
+        form_saved = False
+        if extensionforms.is_valid() and institutionalsupportforms.is_valid() and institutional_support_comments_form.is_valid():
 
-            institutional_support = institutional_support_form.save(commit=False)
-            institutional_support.household = household.get(request.session['household'])
-            institutional_support.save()
+            for extension_form in extensionforms:
+                if extension_form.is_valid() and extension_form.has_changed():
+                    cultivation_adviser = extension_form.save(commit=False)
+                    cultivation_adviser.household = household.get(request.session['household'])
+                    cultivation_adviser.save()
 
-            institutional_support_comments = institutional_support_comments_form.save(commit=False)
-            institutional_support_comments.household = household.get(request.session['household'])
-            institutional_support_comments.save()
+            for institutional_support_form in institutionalsupportforms:
+                if institutional_support_form.is_valid() and institutional_support_form.has_changed():
+                    institutional_support = institutional_support_form.save(commit=False)
+                    institutional_support.household = household.get(request.session['household'])
+                    institutional_support.save()
 
+            if institutional_support_comments_form.is_valid() and institutional_support_comments_form.has_changed():
+                institutional_support_comments = institutional_support_comments_form.save(commit=False)
+                institutional_support_comments.household = household.get(request.session['household'])
+                institutional_support_comments.save()
+            form_saved = True
+
+        if form_saved:
             messages.success(request, 'Data saved successfully')
             return redirect('extension_edit', pk=request.session['household'])
-    else:
-        extension_form = ExtensionForm()
-        institutional_support_form = InstitutionalSupportForm()
-        institutional_support_comments_form = InstitutionalSupportCommentsForm()
 
     return render(request, 'source_and_type_of_extension_services_section8.html',
-                  {'extension_form': extension_form, 'institutional_support_form': institutional_support_form,
+                  {'extension_formset': extension_formset, 'institutional_support_formset': institutional_support_formset,
                    'institutional_support_comments_form': institutional_support_comments_form})
 
 
 @login_required(login_url='login')
 def edit(request, pk):
     try:
-        extension = get_object_or_404(Extension, household=pk)
-        institutional_support = get_object_or_404(InstitutionalSupport, household=pk)
         institutional_support_comments = get_object_or_404(InstitutionalSupportComments, household=pk)
 
         if request.method == "POST":
-            extension_form = ExtensionForm(request.POST, instance=extension)
-            institutional_support_form = InstitutionalSupportForm(request.POST, instance=institutional_support)
+            extension_formset = formset_factory(ExtensionForm, formset=BaseFormSet, extra=5)
+            institutional_support_formset = formset_factory(InstitutionalSupportForm, formset=BaseFormSet, extra=5)
+
+            extension_forms = extension_formset(request.POST)
+            institutional_support_forms = institutional_support_formset(request.POST)
             institutional_support_comments_form = InstitutionalSupportCommentsForm(request.POST, instance=institutional_support_comments)
 
-            if extension_form.is_valid() and institutional_support_form.is_valid():
-                cultivation_adviser = extension_form.save(commit=False)
-                cultivation_adviser.save()
+            Extension.objects.filter(household=pk).delete()
+            InstitutionalSupport.objects.filter(household=pk).delete()
+            InstitutionalSupportComments.objects.filter(household=pk).delete()
 
-                institutional_support = institutional_support_form.save(commit=False)
-                institutional_support.save()
+            form_saved = False
 
-                institutional_support_comments = institutional_support_comments_form.save(commit=False)
-                institutional_support_comments.save()
+            if extension_forms.is_valid() and institutional_support_forms.is_valid() and institutional_support_comments_form.is_valid():
+                for extension_form in extension_forms:
+                    if extension_form.is_valid() and extension_form.has_changed():
+                        cultivation_adviser = extension_form.save(commit=False)
+                        cultivation_adviser.save()
 
+                for institutional_support_form in institutional_support_forms:
+                    if institutional_support_form.is_valid() and institutional_support_form.has_changed():
+                        institutional_support = institutional_support_form.save(commit=False)
+                        institutional_support.save()
+
+                if institutional_support_comments_form.is_valid() and institutional_support_comments_form.has_changed():
+                    institutional_support_comments = institutional_support_comments_form.save(commit=False)
+                    institutional_support_comments.save()
+                form_saved = True
+
+            if form_saved:
                 messages.success(request, 'Data saved successfully')
-
                 return redirect('extension_edit', pk=pk)
-        else:
-            extension_form = ExtensionForm(instance=extension)
-            institutional_support_form = InstitutionalSupportForm(instance=institutional_support)
-            institutional_support_comments_form = InstitutionalSupportCommentsForm(instance=institutional_support_comments)
 
+        extension_formset = modelformset_factory(Extension, form=ExtensionForm, extra=5)
+        institutional_support_formset = modelformset_factory(InstitutionalSupport, form=InstitutionalSupportForm, extra=5)
+
+        extension_result_set = Extension.objects.filter(household=pk)
+        extensionformset = extension_formset(queryset=extension_result_set)
+
+        institutional_support_result_set = InstitutionalSupport.objects.filter(household=pk)
+        institutionalsupportformset = institutional_support_formset(queryset=institutional_support_result_set)
+
+        institutional_support_comments_form = InstitutionalSupportCommentsForm(instance=institutional_support_comments)
         return render(request, 'source_and_type_of_extension_services_section8.html',
-                      {'extension_form': extension_form, 'institutional_support_form': institutional_support_form,
+                      {'extension_formset': extensionformset, 'institutional_support_formset': institutionalsupportformset,
                        'institutional_support_comments_form': institutional_support_comments_form})
     except Exception:
         return new(request)
@@ -95,4 +131,4 @@ def get(household):
         institutional_support = None
         institutional_support_comments = None
 
-    return extension, institutional_support,institutional_support_comments
+    return extension, institutional_support, institutional_support_comments

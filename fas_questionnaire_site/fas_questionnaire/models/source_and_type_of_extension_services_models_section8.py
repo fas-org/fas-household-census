@@ -11,6 +11,7 @@ from django.db import models
 
 
 class Extension(models.Model):
+    id = models.AutoField(primary_key=True)
     type_of_advice_received_description = models.CharField(db_column='Type of advice received-description',
                                                            max_length=250, blank=True, null=True)
     from_whom_advice_received = models.ForeignKey('CultivationAdviser', models.DO_NOTHING,
@@ -23,6 +24,7 @@ class Extension(models.Model):
 
 
 class CultivationAdviser(models.Model):
+    id = models.AutoField(primary_key=True)
     adviser = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:

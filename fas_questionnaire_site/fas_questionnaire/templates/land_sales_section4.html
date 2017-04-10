@@ -3,184 +3,196 @@
 
 {% block content %}
 
-{% if messages %}
-{% for message in messages %}
-    {% ifequal message.message 'Data saved successfully' %}
-        <div class="alert alert-success">
-            <strong>{{ message }}</strong>
-        </div>
-    {% endifequal %}
-{% endfor %}
-{% endif %}
-<form method='POST'>
-{% csrf_token %}
-    <input type='number' name='id' value="{{ landsold_form.id }}" class="hide"/>
-    <h5 class='text-center'>4. SALE AND PURCHASE OF AGRICULTURAL LAND</h5><br><br><br>
-    <b>4.1 Land sold</b><br>
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.year_of_sale.label_tag }}
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.extent_of_land_sold.label_tag }}
-        </div>
+    {% if messages %}
+        {% for message in messages %}
+            {% ifequal message.message 'Data saved successfully' %}
+                <div class="alert alert-success">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endifequal %}
+        {% endfor %}
+    {% endif %}
+    <form method='POST'>
+        {% csrf_token %}
+        <h5 class='text-center'>4. SALE AND PURCHASE OF AGRICULTURAL LAND</h5><br><br><br>
 
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.type_of_land_sold.label_tag }}
-        </div>
-
-        <div class='col-md-5'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Buyer</p>
+        <b>4.1 Land sold</b><br>
+        <div class='row'>
+            <div class='col-md-1 table-cell long-div'>
+                <label> Year Of sale</label>
             </div>
-            <div class='row'>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.name_of_buyer.label_tag }}
+            <div class='col-md-1 table-cell long-div'>
+                <label> Extent </label>
+            </div>
+
+            <div class='col-md-1 table-cell long-div'>
+                <label> Type of Land </label>
+            </div>
+
+            <div class='col-md-5 table-cell long-div'>
+                <div class='col-md-12 table-cell'>
+                    <p class='text-center'>Buyer</p>
                 </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.caste_of_buyer.label_tag }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.occupation_of_buyer.label_tag }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.place_of_residence_of_buyer.label_tag }}
+                <div class='row'>
+                    <div class='col-md-3 table-cell'>
+                        <label> Name </label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label> Caste </label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label> Occupation </label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label> Place of residence </label>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.price_of_land_sold.label_tag }}
-        </div>
+            <div class='col-md-1 table-cell long-div'>
+            <label> Price of land </label>
+            </div>
 
-        <div class='col-md-3 table-cell flex-column'>
-            {{ landsold_form.reasons_for_sale.label_tag }}
-        </div>
-    </div>
-
-
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.year_of_sale }}
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.extent_of_land_sold }}
-        </div>
-
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.type_of_land_sold }}
-        </div>
-
-        <div class='col-md-5'>
-            <div class='row'>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.name_of_buyer }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.caste_of_buyer }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.occupation_of_buyer }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landsold_form.place_of_residence_of_buyer }}
-                </div>
+            <div class='col-md-3 table-cell long-div'>
+            <label>  Reason for sale </label>
             </div>
         </div>
 
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landsold_form.price_of_land_sold }}
-        </div>
+        {{ landsold_formset.management_form }}
+        {% for landsold_form in landsold_formset.forms %}
+            <div class='row landsale_formset_row'>
 
-        <div class='col-md-3 table-cell'>
-            {{ landsold_form.reasons_for_sale }}
-        </div>
-    </div>
-    <br>
-    <br>
-<input type='number' name='id' value="{{ landpurchased_form.id }}" class="hide"/>
-<b>4.2 Land bought</b><br>
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landpurchased_form.year_of_purchase.label_tag }}
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landpurchased_form.extent_of_land_bought.label_tag }}
-        </div>
+                <div class='col-md-1 table-cell'>
+                    {{ landsold_form.year_of_sale }}
+                </div>
+                <div class='col-md-1 table-cell'>
+                    {{ landsold_form.extent_of_land_sold }}
+                </div>
 
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landpurchased_form.type_of_land_purchased.label_tag }}
-        </div>
+                <div class='col-md-1 table-cell'>
+                    {{ landsold_form.type_of_land_sold }}
+                </div>
 
-        <div class='col-md-5'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Seller</p>
-            </div>
-            <div class='row'>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.name_of_seller.label_tag }}
+                <div class='col-md-5 table-cell'>
+                    <div class='row'>
+                        <div class='col-md-3 table-cell'>
+                            {{ landsold_form.name_of_buyer }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ landsold_form.caste_of_buyer }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ landsold_form.occupation_of_buyer }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ landsold_form.place_of_residence_of_buyer }}
+                        </div>
+                    </div>
                 </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.caste_of_seller.label_tag }}
+
+                <div class='col-md-1 table-cell'>
+                    {{ landsold_form.price_of_land_sold }}
                 </div>
+
                 <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.occupation_of_seller.label_tag }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.place_of_residence_of_seller.label_tag }}
+                    {{ landsold_form.reasons_for_sale }}
                 </div>
             </div>
-        </div>
+        {% endfor %}
 
-        <div class='col-md-1 table-cell flex-column'>
-            {{ landpurchased_form.price_of_land_purchased.label_tag }}
-        </div>
+        <br>
+        <br>
 
-        <div class='col-md-3 table-cell flex-column'>
-            {{ landpurchased_form.comments.label_tag }}
-        </div>
-    </div>
+        <b>4.2 Land bought</b><br>
+        <div class='row'>
+            <div class='col-md-1 table-cell long-div'>
+            <label> Year of purchase </label>
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                <label> Extent </label>
+            </div>
 
+            <div class='col-md-1 table-cell long-div'>
+                <label> Type of land </label>
+            </div>
 
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell'>
-            {{ landpurchased_form.year_of_purchase }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ landpurchased_form.extent_of_land_bought }}
-        </div>
-
-        <div class='col-md-1 table-cell'>
-            {{ landpurchased_form.type_of_land_purchased }}
-        </div>
-
-        <div class='col-md-5'>
-            <div class='row'>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.name_of_seller }}
+            <div class='col-md-5 table-cell long-div'>
+                <div class='col-md-12 table-cell'>
+                    <p class='text-center'>Seller</p>
                 </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.caste_of_seller }}
+                <div class='row'>
+                    <div class='col-md-3 table-cell'>
+                    <label> Name </label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label> Caste </label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label> Occupations </label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label> Place of residence </label>
+                    </div>
                 </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.occupation_of_seller }}
-                </div>
-                <div class='col-md-3 table-cell'>
-                    {{ landpurchased_form.place_of_residence_of_seller }}
-                </div>
+            </div>
+
+            <div class='col-md-1 table-cell long-div'>
+                <label> Price of land </label>
             </div>
         </div>
 
-        <div class='col-md-1 table-cell'>
-            {{ landpurchased_form.price_of_land_purchased }}
+        {{ landpurchased_formset.management_form }}
+        {% for landpurchased_form in landpurchased_formset.forms %}
+            <div class='row landpurchased_formset_row'>
+                <div class='col-md-1 table-cell'>
+                    {{ landpurchased_form.year_of_purchase }}
+                </div>
+                <div class='col-md-1 table-cell'>
+                    {{ landpurchased_form.extent_of_land_bought }}
+                </div>
+
+                <div class='col-md-1 table-cell'>
+                    {{ landpurchased_form.type_of_land_purchased }}
+                </div>
+
+                <div class='col-md-5 table-cell'>
+                    <div class='row'>
+                        <div class='col-md-3 table-cell'>
+                            {{ landpurchased_form.name_of_seller }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ landpurchased_form.caste_of_seller }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ landpurchased_form.occupation_of_seller }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ landpurchased_form.place_of_residence_of_seller }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-1 table-cell'>
+                    {{ landpurchased_form.price_of_land_purchased }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <label> Comments </label>
+                {{  landpurchased_comments_form.landpurchased_comments }}
         </div>
 
-        <div class='col-md-3 table-cell'>
-            {{ landpurchased_form.comments }}
+
+        <div class='row text-center'>
+            <button class='btn btn-primary btn-submit' type="submit">Save</button>
         </div>
-    </div>
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
+    </form>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.landsale_formset_row').formset();
+    </script>
+
+    <script type="text/javascript">
+        $('.landpurchased_formset_row').formset();
+    </script>
 {% endblock %}

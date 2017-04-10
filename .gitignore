@@ -3,3 +3,4 @@ __pycache__
 *.pyc
 migrations/
 db.sqlite3
+fas_questionnaire_site/settings.py

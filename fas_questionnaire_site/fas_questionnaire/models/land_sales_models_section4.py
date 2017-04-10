@@ -11,7 +11,18 @@ from django.db import models
 from .household_models import Household
 
 
+class LandPurchasedComments(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    landpurchased_comments = models.CharField(db_column='comments', max_length=250, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Land Purchased Comments'
+
+
 class LandType(models.Model):
+    id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
@@ -23,6 +34,7 @@ class LandType(models.Model):
 
 
 class LandPurchased(models.Model):
+    id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
     year_of_purchase = models.IntegerField(db_column='Year of purchase',
@@ -46,13 +58,16 @@ class LandPurchased(models.Model):
     price_of_land_purchased = models.IntegerField(db_column='Price of land',
                                                   blank=True, null=True)
     comments = models.CharField(max_length=50, blank=True, null=True)
-
+    landpurchased_comments = models.ForeignKey('LandPurchasedComments', models.DO_NOTHING,
+                                               db_column='land purchased comments',
+                                               blank=True, null=True)
     class Meta:
         managed = True
         db_table = 'land purchased'
 
 
 class LandSold(models.Model):
+    id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
     year_of_sale = models.IntegerField(db_column='Year of sale', blank=True,

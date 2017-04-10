@@ -18,6 +18,8 @@ class Tenurial(models.Model):
     class Meta:
         managed = True
         db_table = 'tenurial'
+    def __str__(self):
+        return self.status
 
 
 class CropProductionOnOperationalHolding(models.Model):

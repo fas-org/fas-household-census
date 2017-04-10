@@ -21,9 +21,10 @@
             <a href="#">5.LAND HOLDING: LEASED AND MORTGAGED</a>
     </li>
 
-    <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">6. PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</a>
+    <li {% if 'cropProduction' in request.get_full_path %} class="active" {% endif %}
+    {% if request.session.household == None %} class="disabled" {% endif %}>
+    <a href={% url 'production_and_sales_on_operational_holding_init' %}>6. PRODUCTION AND SALES ON OPERATIONAL HOLDING
+    IN THE LAST AGRICULTURAL YEAR</a>
     </li>
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>
@@ -109,10 +110,7 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href="#">27. COMMENTS AND INFORMATION ON INVESTIGATORS</a>
     </li>
-    <li {% if 'cropProduction' in request.get_full_path %} class="active"{% endif %}
-    {% if request.session.household == None %} class="disabled" {% endif %}>
-    <a href={% url 'production_and_sales_on_operational_holding_init' %}>6. PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</a>
-    </li>
+
 
 </ul>
 

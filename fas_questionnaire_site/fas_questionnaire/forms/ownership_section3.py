@@ -66,6 +66,11 @@ class CurrentOwnershipHoldingForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def clean(self):
+        if self.cleaned_data.get('land_type') is None:
+            raise forms.ValidationError('Land Type is mandatory for entering other details in the record')
+        return self.cleaned_data
+
 
 class HomesteadAreaForm(forms.ModelForm):
 
@@ -78,4 +83,9 @@ class HomesteadAreaForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+    def clean(self):
+        if self.cleaned_data.get('components') is None or self.cleaned_data.get('area') is None:
+            raise forms.ValidationError('Both Component and Area need to be entered')
+        return self.cleaned_data
 

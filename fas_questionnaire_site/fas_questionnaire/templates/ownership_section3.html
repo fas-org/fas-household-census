@@ -11,6 +11,23 @@
     {% endifequal %}
 {% endfor %}
 {% endif %}
+
+{% for dict in homesteadformset.errors %}
+    {% for error in dict.values %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% for dict in current_ownership_formset.errors %}
+    {% for error in dict.values %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+
 <form method='POST' id="section_3_form">
     {% csrf_token %}
 
@@ -133,12 +150,10 @@
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.current_ownership_formset_row').formset({
-        prefix: '{{ current_ownership_formset.prefix }}',
-        formCssClass: 'current_ownership_formset_row'
+        prefix: '{{ current_ownership_formset.prefix }}'
     });
     $('.homestead_formset_row').formset({
-        prefix: '{{ homesteadformset.prefix }}',
-        formCssClass: 'homestead_formset_row'
+        prefix: '{{ homesteadformset.prefix }}'
     });
 </script>
 {% endblock %}

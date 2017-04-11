@@ -62,12 +62,12 @@ def edit(request, pk):
             ownership_forms = current_ownership_formset(request.POST, prefix='owner')
             homestead_area_forms = homestead_area_formset(request.POST, prefix='homestead')
 
-            CurrentOwnershipHolding.objects.filter(household=pk).delete()
-            HomesteadArea.objects.filter(household=pk).delete()
             # TODO: everytime creating new rows. we need to update them right?
             # TODO: do we need to add validation for duplicate rows as well? verify with user
             form_saved = False
             if ownership_forms.is_valid() and homestead_area_forms.is_valid():
+                CurrentOwnershipHolding.objects.filter(household=pk).delete()
+                HomesteadArea.objects.filter(household=pk).delete()
                 for ownership_form in ownership_forms:
                     if ownership_form.is_valid() and ownership_form.has_changed():
                         ownership = ownership_form.save(commit=False)
@@ -84,6 +84,10 @@ def edit(request, pk):
 
             if form_saved:
                 messages.success(request, 'Data saved successfully')
+            else:
+                return render(request, 'ownership_section3.html',
+                              {'current_ownership_formset': ownership_forms,
+                               'homesteadformset': homestead_area_forms})
 
         current_ownership_model_formset = modelformset_factory(CurrentOwnershipHolding, form=CurrentOwnershipHoldingForm, extra=5)
         result_set = CurrentOwnershipHolding.objects.filter(household=pk)

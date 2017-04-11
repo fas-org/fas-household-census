@@ -26,7 +26,7 @@
     {{ extension_formset.management_form }}
     {% for extension_form in extension_formset.forms %}
 
-    <div class='row extension_formset_row'>
+    <div class='row flex-row extension_formset_row'>
         <div class='col-md-5 table-cell'>
             {{ extension_form.from_whom_advice_received }}
         </div>
@@ -38,7 +38,7 @@
 <br>
 <br>
 <b>Table 8B. Institutional support</b>
-    <div class='row'>
+    <div class='row flex-row'>
 
         <div class='col-md-3 table-cell'>
             <label> Category(Did you receive support from Government any of these) </label>

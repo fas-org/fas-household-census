@@ -17,8 +17,8 @@
         <h5 class='text-center'>4. SALE AND PURCHASE OF AGRICULTURAL LAND</h5><br><br><br>
 
         <b>4.1 Land sold</b><br>
-        <div class='row'>
-            <div class='col-md-1 table-cell long-div'>
+        <div class='row flex-row'>
+            <div class='col-md-1 table-cell  '>
                 <label> Year Of sale</label>
             </div>
             <div class='col-md-1 table-cell long-div'>
@@ -29,11 +29,11 @@
                 <label> Type of Land </label>
             </div>
 
-            <div class='col-md-5 table-cell long-div'>
+            <div class='col-md-4 table-cell long-div'>
                 <div class='col-md-12 table-cell'>
                     <p class='text-center'>Buyer</p>
                 </div>
-                <div class='row'>
+                <div class='row flex-row'>
                     <div class='col-md-3 table-cell'>
                         <label> Name </label>
                     </div>
@@ -53,6 +53,10 @@
             <label> Price of land </label>
             </div>
 
+            <div class='col-md-1 table-cell long-div'>
+            <label> Sale transaction number </label>
+            </div>
+
             <div class='col-md-3 table-cell long-div'>
             <label>  Reason for sale </label>
             </div>
@@ -60,7 +64,7 @@
 
         {{ landsold_formset.management_form }}
         {% for landsold_form in landsold_formset.forms %}
-            <div class='row landsale_formset_row'>
+            <div class='row flex-row landsale_formset_row'>
 
                 <div class='col-md-1 table-cell'>
                     {{ landsold_form.year_of_sale }}
@@ -73,8 +77,8 @@
                     {{ landsold_form.type_of_land_sold }}
                 </div>
 
-                <div class='col-md-5 table-cell'>
-                    <div class='row'>
+                <div class='col-md-4 table-cell'>
+                    <div class='row flex-row'>
                         <div class='col-md-3 table-cell'>
                             {{ landsold_form.name_of_buyer }}
                         </div>
@@ -94,6 +98,10 @@
                     {{ landsold_form.price_of_land_sold }}
                 </div>
 
+                <div class='col-md-1 table-cell'>
+                    {{ landsold_form.sale_transaction_number }}
+                </div>
+
                 <div class='col-md-3 table-cell'>
                     {{ landsold_form.reasons_for_sale }}
                 </div>
@@ -104,7 +112,7 @@
         <br>
 
         <b>4.2 Land bought</b><br>
-        <div class='row'>
+        <div class='row flex-row'>
             <div class='col-md-1 table-cell long-div'>
             <label> Year of purchase </label>
             </div>
@@ -116,11 +124,11 @@
                 <label> Type of land </label>
             </div>
 
-            <div class='col-md-5 table-cell long-div'>
+            <div class='col-md-4 table-cell long-div'>
                 <div class='col-md-12 table-cell'>
                     <p class='text-center'>Seller</p>
                 </div>
-                <div class='row'>
+                <div class='row flex-row'>
                     <div class='col-md-3 table-cell'>
                     <label> Name </label>
                     </div>
@@ -139,11 +147,15 @@
             <div class='col-md-1 table-cell long-div'>
                 <label> Price of land </label>
             </div>
+
+            <div class='col-md-1 table-cell long-div'>
+                <label> Purchased transaction number </label>
+            </div>
         </div>
 
         {{ landpurchased_formset.management_form }}
         {% for landpurchased_form in landpurchased_formset.forms %}
-            <div class='row landpurchased_formset_row'>
+            <div class='row flex-row landpurchased_formset_row'>
                 <div class='col-md-1 table-cell'>
                     {{ landpurchased_form.year_of_purchase }}
                 </div>
@@ -155,8 +167,8 @@
                     {{ landpurchased_form.type_of_land_purchased }}
                 </div>
 
-                <div class='col-md-5 table-cell'>
-                    <div class='row'>
+                <div class='col-md-4 table-cell'>
+                    <div class='row flex-row'>
                         <div class='col-md-3 table-cell'>
                             {{ landpurchased_form.name_of_seller }}
                         </div>
@@ -174,6 +186,10 @@
 
                 <div class='col-md-1 table-cell'>
                     {{ landpurchased_form.price_of_land_purchased }}
+                </div>
+
+                <div class='col-md-1 table-cell'>
+                    {{ landpurchased_form.purchase_transaction_number }}
                 </div>
             </div>
         {% endfor %}

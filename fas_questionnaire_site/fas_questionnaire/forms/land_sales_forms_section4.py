@@ -8,7 +8,7 @@ class LandPurchasedForm(forms.ModelForm):
         fields = ['household', 'year_of_purchase', 'extent_of_land_bought',
                   'type_of_land_purchased', 'name_of_seller',
                   'caste_of_seller', 'occupation_of_seller',
-                  'place_of_residence_of_seller', 'price_of_land_purchased',
+                  'place_of_residence_of_seller', 'price_of_land_purchased', 'purchase_transaction_number',
                   'comments']
         exclude = ['household']
         widgets = None
@@ -24,7 +24,7 @@ class LandSoldForm(forms.ModelForm):
         fields = ['household', 'year_of_sale', 'extent_of_land_sold',
                   'type_of_land_sold', 'name_of_buyer', 'caste_of_buyer',
                   'occupation_of_buyer', 'place_of_residence_of_buyer',
-                  'price_of_land_sold', 'reasons_for_sale']
+                  'price_of_land_sold', 'sale_transaction_number', 'reasons_for_sale']
         exclude = ['household']
         widgets = None
         localized_fields = None

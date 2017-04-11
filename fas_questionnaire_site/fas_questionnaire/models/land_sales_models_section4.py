@@ -57,13 +57,15 @@ class LandPurchased(models.Model):
         null=True)
     price_of_land_purchased = models.IntegerField(db_column='Price of land',
                                                   blank=True, null=True)
+    purchase_transaction_number = models.IntegerField(db_column='Purchase transaction number',
+                                                  blank=True, null=True)
     comments = models.CharField(max_length=50, blank=True, null=True)
     landpurchased_comments = models.ForeignKey('LandPurchasedComments', models.DO_NOTHING,
                                                db_column='land purchased comments',
                                                blank=True, null=True)
     class Meta:
         managed = True
-        db_table = 'land purchased'
+        db_table = 'Land bought'
 
 
 class LandSold(models.Model):
@@ -90,9 +92,11 @@ class LandSold(models.Model):
         null=True)
     price_of_land_sold = models.IntegerField(db_column='Price of land',
                                              blank=True, null=True)
+    sale_transaction_number = models.IntegerField(db_column='Sale transaction number',
+                                             blank=True, null=True)
     reasons_for_sale = models.CharField(db_column='Reasons for sale',
                                         max_length=250, blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'land sold'
+        db_table = 'Land sold'

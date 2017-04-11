@@ -1,0 +1,98 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+<h5 class='text-center'>10. OTHER COSTS INCURRED LAST YEAR</h5>
+<form method="POST" id="other-costs">
+    <div class="row flex-row">
+        <div class="col-md-3 table-cell" >
+            <label>Item(code)</label>
+        </div>
+        <div class="col-md-2 table-cell">
+            <label>Amount spent</label>
+        </div>
+        <div class="col-md-2 table-cell" >
+            <label>Month of Payment</label>
+        </div>
+        <div class="col-md-4 table-cell" >
+            <label>Comments</label>
+        </div>
+    </div>
+    <div class="row flex-row">
+        <div class="col-md-3 table-cell" >
+            <label>Crop Insurance (specify crop)</label>
+        </div>
+        <div class="col-md-2 table-cell">
+            <label></label>
+        </div>
+        <div class="col-md-2 table-cell" >
+            <label></label>
+        </div>
+        <div class="col-md-4 table-cell" >
+            <label></label>
+        </div>
+    </div>
+    {% csrf_token %}
+    {{ crops_formset.management_form }}
+    {% for form in crops_formset.forms %}
+    <div class="row formset_row_1 flex-row">
+        <div class="col-md-3 table-cell" >
+            {{ form.item }}
+        </div>
+        <div class="col-md-2 table-cell">
+            {{ form.amount_spent }}
+        </div>
+        <div class="col-md-2 table-cell" >
+            {{ form.month_of_payment}}
+        </div>
+        <div class="col-md-4 table-cell" >
+            {{ form.comments }}
+        </div>
+    </div>
+    {% endfor %}
+    {{ extra_formset.management_form }}
+    {% for form in extra_formset.forms %}
+    <div class="row formset_row_2 flex-row">
+        <div class="col-md-3 table-cell" >
+            {{ form.item }}
+        </div>
+        <div class="col-md-2 table-cell">
+            {{ form.amount_spent }}
+        </div>
+        <div class="col-md-2 table-cell" >
+            {{ form.month_of_payment}}
+        </div>
+        <div class="col-md-4 table-cell" >
+            {{ form.comments }}
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row flex-row">
+        <div class="col-md-3" >
+            <div class="col-md-5 table-cell">
+                <label>Others (specify)</label>
+            </div>
+            <div class="col-md-7 table-cell">
+                {{ form.item }}
+            </div>
+        </div>
+        <div class="col-md-2 table-cell">
+            {{ form.amount_spent }}
+        </div>
+        <div class="col-md-2 table-cell" >
+            {{ form.month_of_payment}}
+        </div>
+        <div class="col-md-4 table-cell" >
+            {{ form.comments }}
+        </div>
+    </div>
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+    $('.formset_row_1').formset({ prefix:'crop-form', 'addText': 'add another crop' });
+    $('.formset_row_2').formset({ prefix:'extra-form' });
+</script>
+</form>
+{% endblock %}

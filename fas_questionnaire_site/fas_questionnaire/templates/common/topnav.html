@@ -39,8 +39,8 @@
             <a href={% url 'ownershipwells_init' %}>Section 9</a>
     </li>
     <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">10. OTHER COSTS INCURRED LAST YEAR</a>
+            {% if request.session.household == None %} class="active" {% endif %}>
+            <a href={% url 'othercosts_init' %}>10. OTHER COSTS INCURRED LAST YEAR</a>
     </li>
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>

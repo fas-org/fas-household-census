@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^cropProduction/',include('fas_questionnaire.urls.production_and_sales_on_operational_holding_urls_section6')),
     url(r'^landleasemortgage/', include('fas_questionnaire.urls.land_lease_mortgae_section5')),
     url(r'^.*/search/$', search.search, name='search'),
+    url(r'^othercosts/',include('fas_questionnaire.urls.othercosts')),
 ]

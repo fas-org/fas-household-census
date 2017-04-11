@@ -1,12 +1,12 @@
 from django import forms
-from ..models.production_and_sales_on_operational_holding_section6 import CropProductionOnOperationalHolding
-from ..models.production_and_sales_on_operational_holding_section6 import CropProductionOnOperationalHoldingComments
+from ..models.production_and_sales_on_operational_holding_section6 import CroppingPatternAndCropSchedule
+from ..models.production_and_sales_on_operational_holding_section6 import CroppingPatternAndCropScheduleComments
 from ..models.production_and_sales_on_operational_holding_section6 import ProductionAndSales
 
 
-class CropProductionOnOperationalHoldingForm(forms.ModelForm):
+class CroppingPatternAndCropScheduleForm(forms.ModelForm):
     class Meta:
-        model = CropProductionOnOperationalHolding
+        model = CroppingPatternAndCropSchedule
         fields = ['household',
                   'serial_no',
                   'crop_number_first_digit',
@@ -52,9 +52,9 @@ class CropProductionOnOperationalHoldingForm(forms.ModelForm):
         error_messages = {}
 
 
-class CropProductionOnOperationalHoldingCommentsForm(forms.ModelForm):
+class CroppingPatternAndCropScheduleCommentsForm(forms.ModelForm):
     class Meta:
-        model = CropProductionOnOperationalHoldingComments
+        model = CroppingPatternAndCropScheduleComments
         fields = ['household', 'comments_notes']
         exclude = ['household']
         widgets = None

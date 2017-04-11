@@ -22,7 +22,7 @@ class Tenurial(models.Model):
         return self.status
 
 
-class CropProductionOnOperationalHolding(models.Model):
+class CroppingPatternAndCropSchedule(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     serial_no = models.IntegerField(db_column='serial no',primary_key=True)
     crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)
@@ -54,24 +54,24 @@ class CropProductionOnOperationalHolding(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'crop production on operational holding'
+        db_table = 'cropping pattern and crop schedule'
 
     def __str__(self):
         return str(self.serial_no)
 
 
-class CropProductionOnOperationalHoldingComments(models.Model):
+class CroppingPatternAndCropScheduleComments(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     comments_notes = models.CharField(db_column='comments/notes', max_length=500, blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'crop production on operational holding comments'
+        db_table = 'cropping pattern and crop schedule comments'
 
 
 class  ProductionAndSales(models.Model):
-    crop_serial_no = models.ForeignKey(CropProductionOnOperationalHolding,models.DO_NOTHING,db_column='crop serial no',null=True,blank=True)
+    crop_serial_no = models.ForeignKey(CroppingPatternAndCropSchedule, models.DO_NOTHING, db_column='crop serial no', null=True, blank=True)
     sales_of_main_product_transportation_mode = models.CharField(db_column='sales of main product transportation mode', max_length=50, blank=True, null=True)  
     sales_of_main_product_transportation_cost = models.CharField(db_column='sales of main product transportation cost', max_length=50, blank=True, null=True)  
     sales_of_main_product_other_marketing_costs = models.CharField(db_column='sales of main product other marketing costs', max_length=50, blank=True, null=True)  

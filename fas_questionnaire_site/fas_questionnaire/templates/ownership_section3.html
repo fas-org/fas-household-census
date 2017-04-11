@@ -26,25 +26,28 @@
                     <label>Land Type</label>
                 </div>
                 <div class='col-md-1 table-cell flex-column'>
-                    <label>Extent of land</label>
+                    <label>Ownership plot no</label>
+                </div>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>Extent of owned land (specify units)</label>
                 </div>
                 <div class='col-md-2 table-cell flex-column'>
-                    <label>acquisition</label>
+                    <label>Mode of acquisition</label>
                 </div>
-                <div class='col-md-6'>
-                    <div class='row'>
-                        <div class='col-md-12 table-cell'>
+                <div class='col-md-4'>
+                    <div class='row flex-row'>
+                        <div class='col-md-12 table-cell flex-column'>
                             <label>Irrigation</label>
                         </div>
                     </div>
-                    <div class= 'row'>
-                        <div class='col-md-4 table-cell'>
-                            <label>Source (code)</label>
+                    <div class= 'row flex-row'>
+                        <div class='col-md-4 table-cell flex-column'>
+                            <label>Source</label>
                         </div>
-                        <div class='col-md-4 table-cell'>
-                            <label>Flow/lift (code)</label>
+                        <div class='col-md-4 table-cell flex-column'>
+                            <label>Flow/lift</label>
                         </div>
-                        <div class='col-md-4 table-cell'>
+                        <div class='col-md-4 table-cell flex-column'>
                             <label>Ownership</label>
                         </div>
                     </div>
@@ -52,34 +55,42 @@
                 <div class='col-md-1 table-cell flex-column'>
                     <label>Value</label>
                 </div>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>Comments</label>
+                </div>
             </div>
 
-            {% csrf_token %}
-            {{ formset.management_form }}
-            {% for form in formset.forms %}
-            <div class='row formset_row flex-row'>
+            {{ current_ownership_formset.management_form }}
+            {% for current_ownership_form in current_ownership_formset.forms %}
+            <div class='row current_ownership_formset_row flex-row'>
                 <div class='col-md-2 table-cell'>
-                    {{ form.land_type }}
+                    {{ current_ownership_form.land_type }}
                 </div>
                 <div class='col-md-1 table-cell'>
-                    {{ form.extent_owned_land }}
+                    {{ current_ownership_form.ownership_plot_no }}
+                </div>
+                <div class='col-md-1 table-cell'>
+                    {{ current_ownership_form.extent_owned_land }}
                 </div>
                 <div class='col-md-2 table-cell'>
-                    {{ form.acquisition_mode }}
+                    {{ current_ownership_form.acquisition_mode }}
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class='col-md-4 table-cell'>
-                        {{ form.irrigation_source }}
+                        {{ current_ownership_form.irrigation_source }}
                     </div>
                     <div class='col-md-4 table-cell'>
-                        {{ form.irrigation_flow }}
+                        {{ current_ownership_form.irrigation_flow }}
                     </div>
                     <div class='col-md-4 table-cell'>
-                        {{ form.irrigation_ownership }}
+                        {{ current_ownership_form.irrigation_ownership }}
                     </div>
                 </div>
                 <div class='col-md-1 table-cell'>
-                    {{ form.value }}
+                    {{ current_ownership_form.value }}
+                </div>
+                <div class='col-md-1 table-cell'>
+                    {{ current_ownership_form.comments }}
                 </div>
             </div>
             {% endfor %}
@@ -100,15 +111,14 @@
                 </div>
             </div>
 
-            {% csrf_token %}
             {{ homesteadformset.management_form }}
-            {% for form in homesteadformset.forms %}
+            {% for homesteadform in homesteadformset.forms %}
             <div class='row homestead_formset_row flex-row'>
                 <div class='col-md-9 flex-column table-cell'>
-                    {{ form.components }}
+                    {{ homesteadform.components }}
                 </div>
                 <div class='col-md-3 flex-column table-cell'>
-                    {{ form.area }}
+                    {{ homesteadform.area }}
                 </div>
             </div>
             {% endfor %}
@@ -122,7 +132,13 @@
 </form>
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
-    $('.formset_row').formset();
-    $('.homestead_formset_row').formset();
+    $('.current_ownership_formset_row').formset({
+        prefix: '{{ current_ownership_formset.prefix }}',
+        formCssClass: 'current_ownership_formset_row'
+    });
+    $('.homestead_formset_row').formset({
+        prefix: '{{ homesteadformset.prefix }}',
+        formCssClass: 'homestead_formset_row'
+    });
 </script>
 {% endblock %}

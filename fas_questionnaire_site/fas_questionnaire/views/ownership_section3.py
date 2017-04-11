@@ -25,20 +25,20 @@ def new(request):
     current_ownership_formset = formset_factory(CurrentOwnershipHoldingForm, formset=BaseFormSet, extra=5)
     homestead_area_formset = formset_factory(HomesteadAreaForm, formset=BaseFormSet, extra=1)
     if request.method == "POST":
-        forms = current_ownership_formset(request.POST)
-        homestead_area_forms = homestead_area_formset(request.POST)
+        ownership_forms = current_ownership_formset(request.POST, prefix='owner')
+        homestead_area_forms = homestead_area_formset(request.POST, prefix='homestead')
         form_saved = False
-        if forms.is_valid() and homestead_area_forms.is_valid():
-            for form in forms:
-                if form.is_valid() and form.has_changed():
-                    ownership = form.save(commit=False)
+        if ownership_forms.is_valid() and homestead_area_forms.is_valid():
+            for ownership_form in ownership_forms:
+                if ownership_form.is_valid() and ownership_form.has_changed():
+                    ownership = ownership_form.save(commit=False)
                     ownership.household = household.get(request.session['household'])
                     ownership.save()
                     form_saved = True  # TODO: add proper check to verify if all forms are saved
 
-            for form in homestead_area_forms:
-                if form.is_valid() and form.has_changed():
-                    homestead = form.save(commit=False)
+            for homestead_form in homestead_area_forms:
+                if homestead_form.is_valid() and homestead_form.has_changed():
+                    homestead = homestead_form.save(commit=False)
                     homestead.household = household.get(request.session['household'])
                     homestead.save()
                     form_saved = True
@@ -47,7 +47,8 @@ def new(request):
             messages.success(request, 'Data saved successfully')
             return redirect('ownership_edit', pk=request.session['household'])
 
-    return render(request, 'ownership_section3.html', {'formset': current_ownership_formset, 'homesteadformset': homestead_area_formset})
+    return render(request, 'ownership_section3.html', {'current_ownership_formset': current_ownership_formset(prefix='owner'),
+                                                       'homesteadformset': homestead_area_formset(prefix='homestead')})
 
 
 @login_required(login_url='login')
@@ -58,24 +59,25 @@ def edit(request, pk):
             current_ownership_formset = formset_factory(CurrentOwnershipHoldingForm, formset=BaseFormSet, extra=5)
             homestead_area_formset = formset_factory(HomesteadAreaForm, formset=BaseFormSet, extra=1)
 
-            forms = current_ownership_formset(request.POST)
-            homestead_area_forms = homestead_area_formset(request.POST)
+            ownership_forms = current_ownership_formset(request.POST, prefix='owner')
+            homestead_area_forms = homestead_area_formset(request.POST, prefix='homestead')
 
             CurrentOwnershipHolding.objects.filter(household=pk).delete()
             HomesteadArea.objects.filter(household=pk).delete()
             # TODO: everytime creating new rows. we need to update them right?
             # TODO: do we need to add validation for duplicate rows as well? verify with user
             form_saved = False
-            if forms.is_valid() and homestead_area_forms.is_valid():
-                for form in forms:
-                    if form.is_valid() and form.has_changed():
-                        ownership = form.save(commit=False)
+            if ownership_forms.is_valid() and homestead_area_forms.is_valid():
+                for ownership_form in ownership_forms:
+                    if ownership_form.is_valid() and ownership_form.has_changed():
+                        ownership = ownership_form.save(commit=False)
+                        ownership.household = household.get(request.session['household'])
                         ownership.save()
                         form_saved = True  # TODO: add proper check to verify if all forms are saved
 
-                for form in homestead_area_forms:
-                    if form.is_valid() and form.has_changed():
-                        homestead = form.save(commit=False)
+                for homestead_form in homestead_area_forms:
+                    if homestead_form.is_valid() and homestead_form.has_changed():
+                        homestead = homestead_form.save(commit=False)
                         homestead.household = household.get(request.session['household'])
                         homestead.save()
                         form_saved = True
@@ -85,13 +87,14 @@ def edit(request, pk):
 
         current_ownership_model_formset = modelformset_factory(CurrentOwnershipHolding, form=CurrentOwnershipHoldingForm, extra=5)
         result_set = CurrentOwnershipHolding.objects.filter(household=pk)
-        formset = current_ownership_model_formset(queryset=result_set)
+        current_ownership_formset = current_ownership_model_formset(queryset=result_set, prefix='owner')
 
         homestead_area_model_formset = modelformset_factory(HomesteadArea, form=HomesteadAreaForm, extra=1)
         homestead_area_result_set = HomesteadArea.objects.filter(household=pk)
-        homestead_area_formset = homestead_area_model_formset(queryset=homestead_area_result_set)
+        homestead_area_formset = homestead_area_model_formset(queryset=homestead_area_result_set, prefix='homestead')
 
-        return render(request, 'ownership_section3.html', {'formset': formset, 'homesteadformset': homestead_area_formset})
+        return render(request, 'ownership_section3.html', {'current_ownership_formset': current_ownership_formset,
+                                                           'homesteadformset': homestead_area_formset})
 
     except Exception:
         return new(request)

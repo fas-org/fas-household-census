@@ -2,95 +2,297 @@
 {% load static %}
 
 {% block content %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success">
-                <strong>{{ message }}</strong>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<form method='POST' id="section_6_form">
+    {% csrf_token %}
+    {{ production_and_sales_on_operational_holding_form.household.as_hidden }}
+
+    <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
+    <b>A. Cropping pattern and crop schedule</b><br>
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.serial_no.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.crop.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.variety.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.tenurial_status.label_tag}}
+        </div>
+        <div class='col-sm-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.crop_homestead_land.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.extent.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.month_of_sowing.label_tag}}
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.month_of_harvesting.label_tag}}
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.source_of_irrigation.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.comments.label_tag}}
+        </div>
+
+    </div>
+
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.serial_no}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.crop}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.variety}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.tenurial_status}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.crop_homestead_land}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.extent}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.month_of_sowing}}
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_on_operational_holding_form.comments}}
+        </div>
+
+    </div>
+    <br>
+    <div class='row flex-row' >
+        <b>{{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}</b><br>
+        <div class='long-div'>
+            {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
+        </div>
+    </div>
+
+     <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <b>B. Production And Sales</b>
+    <br>
+    <br>
+
+    <div class='row flex-row'>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_form.crop_serial_no.label_tag}}
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            {{production_and_sales_form.sales_of_main_product_transportation_mode.label_tag}}
+        </div>
+        <div class='col-md-2'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Production</p>
             </div>
-        {% endfor %}
-    {% endif %}
-    <form method='POST' id="section_6_form">
-        {% csrf_token %}
-        {{ production_and_sales_on_operational_holding_form.household.as_hidden }}
-        <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
-        <b>A. Cropping pattern and crop schedule</b><br>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.label_tag}}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.label_tag}}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Household consumption including amount kept for use as seeds</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.consumption_main_product.label_tag}}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.consumption_by_product.label_tag}}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Sales of by-products</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell long-div'>
+                    {{production_and_sales_form.sales_of_by_product_amt.label_tag}}
+                </div>
+                <div class='col-md-6 table-cell long-div'>
+                    {{production_and_sales_form.sales_of_by_product_price.label_tag}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-2'>
+        <div class='col-md-12 table-cell'>
+            <p class='text-center'>Quantity used for payment of rent and wages</p>
+        </div>
+        <div class='row flex-row'>
+            <div class='col-md-6 table-cell long-div'>
+                {{production_and_sales_form.quantity_of_main_product_used_for_payment.label_tag}}
+            </div>
+            <div class='col-md-6 table-cell long-div'>
+                {{production_and_sales_form.quantity_of_by_product_used_for_payment.label_tag}}
+            </div>
+        </div>
+    </div>
+    <div class='col-md-9'>
+        <div class='col-md-12 table-cell'>
+            <p class='text-center'>Sales of grain/main product</p>
+        </div>
+        <div class='row flex-row'>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.month_of_disposal.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.quantity.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.price.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.where_marketed.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.marketing_agency.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-12 table-cell'>
+                    <p class='text-center'>Transport to the Market</p>
+                </div>
+                <div class='row flex-row'>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{production_and_sales_form.sales_of_main_product_transportation_mode.label_tag}}
+                    </div>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{production_and_sales_form.sales_of_main_product_transportation_cost.label_tag}}
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.sales_of_main_product_other_marketing_costs.label_tag}}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{production_and_sales_form.if_price_determined_in_advance.label_tag}}
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class='row'>
+        <div class='col-sm-1 table-cell long-div'>
+            {{production_and_sales_form.crop_serial_no}}
+        </div>
+        <div class='col-sm-1 table-cell long-div'>
+            {{production_and_sales_form.sales_of_main_product_transportation_mode}}
+        </div>
+        <div class='col-md-2'>
+            <div class='row'>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.production_main_product}}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.production_by_product}}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <div class='row'>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.consumption_main_product}}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_form.consumption_by_product}}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <div class='row'>
+                <div class='col-md-6 table-cell long-div'>
+                    {{production_and_sales_form.sales_of_by_product_amt}}
+                </div>
+                <div class='col-md-6 table-cell long-div'>
+                    {{production_and_sales_form.sales_of_by_product_price}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-2'>
         <div class='row'>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.serial_no.label_tag}}
+            <div class='col-md-6 table-cell long-div'>
+                {{production_and_sales_form.quantity_of_main_product_used_for_payment}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop.label_tag}}
+            <div class='col-md-6 table-cell long-div'>
+                {{production_and_sales_form.quantity_of_by_product_used_for_payment}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.variety.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.tenurial_status.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop_homestead_land.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.extent.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_sowing.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_harvesting.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.source_of_irrigation.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.comments.label_tag}}
-            </div>
-
         </div>
-
+    </div>
+    <div class='col-md-9'>
         <div class='row'>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.serial_no}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.month_of_disposal}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.quantity}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.variety}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.price}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.tenurial_status}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.where_marketed}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop_homestead_land}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.marketing_agency}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.extent}}
+            <div class='col-sm-1 table-cell long-div'>
+                <div class='row'>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{production_and_sales_form.sales_of_main_product_transportation_mode}}
+                    </div>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{production_and_sales_form.sales_of_main_product_transportation_cost}}
+                    </div>
+                </div>
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_sowing}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.sales_of_main_product_other_marketing_costs}}
             </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.comments}}
-            </div>
-
-        </div>
-
-        <div class='row' contenteditable="true">
-            <b>{{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}</b><br>
-            <div class='long-div'>
-                {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
+            <div class='col-sm-1 table-cell long-div'>
+                {{production_and_sales_form.if_price_determined_in_advance}}
             </div>
         </div>
+    </div>
+    </div>
+    </div>
 
-        <div class='row text-center'>
-            <button class='btn btn-primary btn-submit' type="submit">Save</button>
-        </div>
-    </form>
+
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
 {% endblock %}

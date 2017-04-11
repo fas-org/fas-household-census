@@ -23,9 +23,8 @@ class Tenurial(models.Model):
 
 
 class CropProductionOnOperationalHolding(models.Model):
-    id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    serial_no = models.IntegerField(db_column='serial no')
+    serial_no = models.IntegerField(db_column='serial no',primary_key=True)
     crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)
     crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
     crop = models.CharField(db_column='Crop', max_length=50, blank=True, null=True)
@@ -57,6 +56,9 @@ class CropProductionOnOperationalHolding(models.Model):
         managed = True
         db_table = 'crop production on operational holding'
 
+    def __str__(self):
+        return str(self.serial_no)
+
 
 class CropProductionOnOperationalHoldingComments(models.Model):
     id = models.AutoField(primary_key=True)
@@ -66,5 +68,43 @@ class CropProductionOnOperationalHoldingComments(models.Model):
     class Meta:
         managed = True
         db_table = 'crop production on operational holding comments'
+
+
+class  ProductionAndSales(models.Model):
+    crop_serial_no = models.ForeignKey(CropProductionOnOperationalHolding,models.DO_NOTHING,db_column='crop serial no',null=True,blank=True)
+    sales_of_main_product_transportation_mode = models.CharField(db_column='sales of main product transportation mode', max_length=50, blank=True, null=True)  
+    sales_of_main_product_transportation_cost = models.CharField(db_column='sales of main product transportation cost', max_length=50, blank=True, null=True)  
+    sales_of_main_product_other_marketing_costs = models.CharField(db_column='sales of main product other marketing costs', max_length=50, blank=True, null=True)  
+    sales_of_by_product_amt = models.CharField(db_column='sales of by product amt', max_length=50, blank=True, null=True)  
+    sales_of_by_product_price = models.CharField(db_column='sales of by product price', max_length=50, blank=True, null=True)  
+    quantity_of_main_product_used_for_payment = models.CharField(db_column='quantity of main product used for payment', max_length=50, blank=True, null=True)  
+    quantity_of_by_product_used_for_payment = models.CharField(db_column='quantity of by product used for payment', max_length=50, blank=True, null=True)  
+    household= models.ForeignKey(Household,models.DO_NOTHING,db_column='household')
+    crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)  
+    crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)  
+    sale_number = models.FloatField(db_column='Sale number', blank=True, null=True)  
+    commodity_sold = models.CharField(db_column='Commodity sold', max_length=50, blank=True, null=True)  
+    month_of_disposal = models.CharField(db_column='Month of disposal', max_length=50, blank=True, null=True)  
+    quantity = models.FloatField(db_column='Quantity', blank=True, null=True)  
+    unit_of_quantity = models.CharField(db_column='Unit of quantity', max_length=50, blank=True, null=True)  
+    price = models.FloatField(db_column='Price', blank=True, null=True)  
+    unit_of_price = models.CharField(db_column='Unit of price', max_length=50, blank=True, null=True)  
+    where_marketed = models.CharField(db_column='Where marketed', max_length=50, blank=True, null=True)  
+    marketing_agency = models.CharField(db_column='Marketing agency', max_length=50, blank=True, null=True)
+    if_price_determined_in_advance = models.CharField(db_column='If price determined in advance', max_length=50, blank=True, null=True)  
+    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
+    production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
+    consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
+    consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
+
+
+
+
+
+
+    class Meta:
+        managed = True
+        db_table = 'production and sales'
 
 

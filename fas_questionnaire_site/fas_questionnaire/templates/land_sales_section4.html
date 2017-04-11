@@ -205,10 +205,15 @@
     </form>
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
-        $('.landsale_formset_row').formset();
+
+        $('.landsale_formset_row').formset({
+            prefix:'{{ landsold_formset.prefix }}'
+        });
     </script>
 
     <script type="text/javascript">
-        $('.landpurchased_formset_row').formset();
+        $('.landpurchased_formset_row').formset({
+            prefix:'{{ landpurchased_formset.prefix }}'
+        });
     </script>
 {% endblock %}

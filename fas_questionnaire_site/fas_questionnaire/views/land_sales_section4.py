@@ -27,8 +27,8 @@ def new(request):
     landpurchased_formset = formset_factory(LandPurchasedForm, formset=BaseFormSet, extra=5)
     landpurchased_comments_form = LandPurchasedCommentsForm()
     if request.method == "POST":
-        landsoldforms = landsold_formset(request.POST)
-        landpurchasedforms = landpurchased_formset(request.POST)
+        landsoldforms = landsold_formset(request.POST, prefix='landsold')
+        landpurchasedforms = landpurchased_formset(request.POST, prefix='landpurchased')
         landpurchased_comments_form = LandPurchasedCommentsForm(request.POST)
 
         form_saved = False
@@ -57,8 +57,8 @@ def new(request):
             messages.success(request, 'Data saved successfully')
             return redirect('landsales_edit', pk=request.session['household'])
 
-    return render(request, 'land_sales_section4.html', {'landsold_formset': landsold_formset,
-                                                        'landpurchased_formset': landpurchased_formset,
+    return render(request, 'land_sales_section4.html', {'landsold_formset': landsold_formset(prefix='landsold'),
+                                                        'landpurchased_formset': landpurchased_formset(prefix='landpurchased'),
                                                         'landpurchased_comments_form': landpurchased_comments_form})
 
 
@@ -71,8 +71,8 @@ def edit(request, pk):
             landsold_formset = formset_factory(LandSoldForm, formset=BaseFormSet, extra=5)
             landpurchased_formset = formset_factory(LandPurchasedForm, formset=BaseFormSet, extra=5)
 
-            landsoldforms = landsold_formset(request.POST)
-            landpurchasedforms = landpurchased_formset(request.POST)
+            landsoldforms = landsold_formset(request.POST, prefix='landsold')
+            landpurchasedforms = landpurchased_formset(request.POST, prefix='landpurchased')
             landpurchased_comments_form = LandPurchasedCommentsForm(request.POST, instance=landpurchased_comments)
 
             LandSold.objects.filter(household=pk).delete()
@@ -105,12 +105,11 @@ def edit(request, pk):
 
         landsold_model_formset = modelformset_factory(LandSold, form=LandSoldForm, extra=5)
         landsold_result_set = LandSold.objects.filter(household=pk)
-        landsoldformset = landsold_model_formset(queryset=landsold_result_set)
+        landsoldformset = landsold_model_formset(queryset=landsold_result_set, prefix='landsold')
 
         landpurchased_model_formset = modelformset_factory(LandPurchased, form=LandPurchasedForm, extra=5)
         landpurchased_result_set = LandPurchased.objects.filter(household=pk)
-        landpurchasedformset = landpurchased_model_formset(queryset=landpurchased_result_set)
-
+        landpurchasedformset = landpurchased_model_formset(queryset=landpurchased_result_set, prefix='landpurchased')
 
         landpurchased_comments_form = LandPurchasedCommentsForm(instance=landpurchased_comments)
 

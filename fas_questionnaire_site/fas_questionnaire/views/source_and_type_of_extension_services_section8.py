@@ -29,8 +29,8 @@ def new(request):
     institutional_support_formset = formset_factory(InstitutionalSupportForm, formset=BaseFormSet, extra=5)
     institutional_support_comments_form = InstitutionalSupportCommentsForm()
     if request.method == "POST":
-        extensionforms = extension_formset(request.POST)
-        institutionalsupportforms = institutional_support_formset(request.POST)
+        extensionforms = extension_formset(request.POST, prefix='extensionforms')
+        institutionalsupportforms = institutional_support_formset(request.POST, prefix='institutionalsupportforms')
         institutional_support_comments_form = InstitutionalSupportCommentsForm(request.POST)
 
         form_saved = False
@@ -59,7 +59,8 @@ def new(request):
             return redirect('extension_edit', pk=request.session['household'])
 
     return render(request, 'source_and_type_of_extension_services_section8.html',
-                  {'extension_formset': extension_formset, 'institutional_support_formset': institutional_support_formset,
+                  {'extension_formset': extension_formset(prefix='extensionforms'),
+                   'institutional_support_formset': institutional_support_formset(prefix='institutionalsupportforms'),
                    'institutional_support_comments_form': institutional_support_comments_form})
 
 
@@ -72,8 +73,8 @@ def edit(request, pk):
             extension_formset = formset_factory(ExtensionForm, formset=BaseFormSet, extra=5)
             institutional_support_formset = formset_factory(InstitutionalSupportForm, formset=BaseFormSet, extra=5)
 
-            extension_forms = extension_formset(request.POST)
-            institutional_support_forms = institutional_support_formset(request.POST)
+            extension_forms = extension_formset(request.POST, prefix='extensionforms')
+            institutional_support_forms = institutional_support_formset(request.POST, prefix='institutionalsupportforms')
             institutional_support_comments_form = InstitutionalSupportCommentsForm(request.POST, instance=institutional_support_comments)
 
             Extension.objects.filter(household=pk).delete()
@@ -106,10 +107,10 @@ def edit(request, pk):
         institutional_support_formset = modelformset_factory(InstitutionalSupport, form=InstitutionalSupportForm, extra=5)
 
         extension_result_set = Extension.objects.filter(household=pk)
-        extensionformset = extension_formset(queryset=extension_result_set)
+        extensionformset = extension_formset(queryset=extension_result_set, prefix='extensionforms')
 
         institutional_support_result_set = InstitutionalSupport.objects.filter(household=pk)
-        institutionalsupportformset = institutional_support_formset(queryset=institutional_support_result_set)
+        institutionalsupportformset = institutional_support_formset(queryset=institutional_support_result_set, prefix='institutionalsupportforms')
 
         institutional_support_comments_form = InstitutionalSupportCommentsForm(instance=institutional_support_comments)
         return render(request, 'source_and_type_of_extension_services_section8.html',

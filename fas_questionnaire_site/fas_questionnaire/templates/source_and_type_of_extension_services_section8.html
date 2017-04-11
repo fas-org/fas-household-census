@@ -95,11 +95,15 @@
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
-        $('.extension_formset_row').formset();
+        $('.extension_formset_row').formset({
+            prefix:'{{ extension_formset.prefix }}'
+        });
     </script>
 
     <script type="text/javascript">
-        $('.institutional_support_formset_row').formset();
+        $('.institutional_support_formset_row').formset({
+            prefix:'{{ institutional_support_formset.prefix }}'
+        });
     </script>
 
 {% endblock %}

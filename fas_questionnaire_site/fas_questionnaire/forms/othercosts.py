@@ -18,10 +18,13 @@ class OtherCostsExtraForm(forms.ModelForm):
     class Meta:
         model = OtherCosts
         exclude = ['household', 'record_type']
-        widgets = {
-            'item': forms.Select(choices=[ (c.item,c.item) for c in OtherCostsItems.objects.all()])
-        }
+        widgets = {}
         localized_fields = None
         labels = {}
         help_texts = {}
         error_messages = {}
+
+    def __init__(self, *args, **kwargs):
+        """Initialize the choices for item widget"""
+        super(OtherCostsExtraForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = forms.Select(choices=[ (c.item, c.item) for c in OtherCostsItems.objects.all()])

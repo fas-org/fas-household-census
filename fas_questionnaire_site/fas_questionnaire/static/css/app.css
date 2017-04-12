@@ -43,9 +43,10 @@ input, select {
     background: url('../images/delete.png') no-repeat 5px center;
     width: 25px;
     height: 25px;
-    right: -25px;
-    float: right;
-    position: absolute;
+}
+
+.table-head > .delete-row {
+    visibility: hidden;
 }
 label { color: #666; }
 span.required { color: red; }

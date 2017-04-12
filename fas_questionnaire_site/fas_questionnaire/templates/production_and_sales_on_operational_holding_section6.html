@@ -2,51 +2,6 @@
 {% load static %}
 
 {% block content %}
-<<<<<<< HEAD
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success">
-                <strong>{{ message }}</strong>
-            </div>
-        {% endfor %}
-    {% endif %}
-    <form method='POST' id="section_6_form">
-        {% csrf_token %}
-        {{ production_and_sales_on_operational_holding_form.household.as_hidden }}
-        <h4 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h4>
-        <b>A. Cropping pattern and crop schedule</b><br>
-        <div class='row'>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.serial_no.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.variety.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.tenurial_status.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop_homestead_land.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.extent.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_sowing.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_harvesting.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.source_of_irrigation.label_tag}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.comments.label_tag}}
-            </div>
-=======
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-success">
@@ -56,9 +11,6 @@
 {% endif %}
 <form method='POST' id="section_6_form">
     {% csrf_token %}
-    {{ production_and_sales_on_operational_holding_form.household.as_hidden }}
->>>>>>> 2cab5bc1fda3d980bcd61ac1ca7404bbdfa25377
-
     <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
     <b>A. Cropping pattern and crop schedule</b><br>
     <div class='row flex-row'>
@@ -119,15 +71,16 @@
             <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.month_of_sowing}}
             </div>
-            <div class='col-md-2 table-cell long-div'>
+            <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
             </div>
-            <div class='col-md-2 table-cell long-div'>
+            <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
             </div>
             <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.comments}}
             </div>
+
         </div>
     {% endfor %}
 

@@ -4,10 +4,7 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'introduction_init' %}>1</a>
     </li>
-    <li {% if 'householdmembers' in request.get_full_path %} class="active"{% endif %}
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'householdmembers_init' %}>2</a>
-    </li>
+
     <li {% if 'ownership' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'ownership_init' %}>3</a>

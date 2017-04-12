@@ -85,6 +85,7 @@ class  ProductionAndSalesForm(forms.ModelForm):
                 'unit_of_price',
                 'where_marketed',
                 'marketing_agency',
+                'marketing_agency_value',
                 'if_price_determined_in_advance',
                 'consumption_main_product',
                 'consumption_by_product',

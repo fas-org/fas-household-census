@@ -15,6 +15,10 @@ def init(request):
     if request.session.get('household') is None:
         return new(request)
     else:
+        croppingPattern_result_set=CroppingPatternAndCropSchedule.objects.filter(household=request.session.get('household'))
+        productionAndSales_result_set=ProductionAndSales.objects.filter(household=request.session.get('household'))
+        if len(croppingPattern_result_set) == 0 and len(productionAndSales_result_set) == 0:
+           return new(request)
         return edit(request, request.session['household'])
 
 

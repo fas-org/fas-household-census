@@ -108,8 +108,7 @@
         <div class='col-md-1 table-cell long-div'>
              <label>Serial No.</label>
         </div>
-
-        <div class='col-md-2'>
+        <div class='col-md-1'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Production</p>
             </div>
@@ -135,49 +134,48 @@
                 </div>
             </div>
         </div>
-
-    <div class='col-md-12'>
-        <div class='col-md-12 table-cell'>
-            <p class='text-center'>Sales of grain/main product</p>
-        </div>
-        <div class='row flex-row'>
-            <div class='col-md-2 table-cell long-div'>
-                <label>Month of Disposal</label>
+        <div class='col-md-5'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Sales of grain/main product</p>
             </div>
-            <div class='col-md-2 table-cell long-div'>
-               <label>Quantity</label>
-            </div>
-            <div class='col-md-2 table-cell long-div'>
-                <label>Price</label>
-            </div>
-            <div class='col-md-2 table-cell long-div'>
-                <label>Where Marketed</label>
-            </div>
-            <div class='col-md-2 table-cell long-div'>
-                <label>Marketing Agency</label>
-            </div>
-            <div class='col-md-2 table-cell long-div'>
-                <div class='col-md-12 table-cell'>
-                    <p class='text-center'>Transport to the Market</p>
+            <div class='row flex-row'>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Month of Disposal</label>
                 </div>
-                <div class='row flex-row'>
-                    <div class='col-md-6 table-cell long-div'>
-                        <label>Mode</label>
+                <div class='col-md-1 table-cell long-div'>
+                   <label>Quantity</label>
+                </div>
+                <div class='col-md-1 table-cell long-div'>
+                    <label>Price</label>
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Where Marketed</label>
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Marketing Agency</label>
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    <div class='col-md-12 table-cell'>
+                        <p class='text-center'>Transport to the Market</p>
                     </div>
-                    <div class='col-md-6 table-cell long-div'>
-                        <label>Cost Incurred</label>
+                    <div class='row flex-row'>
+                        <div class='col-md-6 table-cell long-div'>
+                            <label>Mode</label>
+                        </div>
+                        <div class='col-md-6 table-cell long-div'>
+                            <label>Cost Incurred</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                <label>Other marketing costs</label>
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                <label>was the price fixed before harvest?</label>
+                <div class='col-md-1 table-cell long-div'>
+                    <label>Other marketing costs</label>
+                </div>
+                <div class='col-md-1 table-cell long-div'>
+                    <label>was the price fixed before harvest?</label>
+                </div>
             </div>
         </div>
-    </div>
-             <div class='col-md-2'>
+        <div class='col-md-1'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Sales of by-products</p>
             </div>
@@ -190,28 +188,27 @@
                 </div>
             </div>
         </div>
-    <div class='col-md-2'>
-        <div class='col-md-12 table-cell'>
-            <p class='text-center'>Quantity used for payment of rent and wages</p>
-        </div>
-        <div class='row flex-row'>
-            <div class='col-md-6 table-cell long-div'>
-               <label>Grain/Main Product</label>
+        <div class='col-md-2'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Quantity used for payment of rent and wages</p>
             </div>
-            <div class='col-md-6 table-cell long-div'>
-                <label>Straw and other by-products</label>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell long-div'>
+                   <label>Grain/Main Product</label>
+                </div>
+                <div class='col-md-6 table-cell long-div'>
+                    <label>Straw and other by-products</label>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     {{ production_and_sales_formset.management_form }}
     {% for production_and_sales_form in production_and_sales_formset.forms %}
-    <div class='row productionsales_formset_row'>
+    <div class='row productionsales_formset_row flex-row'>
         <div class='col-md-1 table-cell long-div'>
             {{production_and_sales_form.crop_serial_no}}
         </div>
-
         <div class='col-md-1'>
             <div class='row flex-row'>
                 <div class='col-md-6 table-cell'>
@@ -222,7 +219,7 @@
                 </div>
             </div>
         </div>
-        <div class='col-md-1'>
+        <div class='col-md-2'>
             <div class='row flex-row'>
                 <div class='col-md-6 table-cell'>
                     {{production_and_sales_form.consumption_main_product}}
@@ -232,53 +229,52 @@
                 </div>
             </div>
         </div>
-
-    <div class='col-md-12'>
-        <div class='row flex-row'>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.month_of_disposal}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.quantity}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.price}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.where_marketed}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.marketing_agency}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                <div class='row flex-row'>
-                    <div class='col-md-6 table-cell long-div'>
-                        {{production_and_sales_form.sales_of_main_product_transportation_mode}}
-                    </div>
-                    <div class='col-md-6 table-cell long-div'>
-                        {{production_and_sales_form.sales_of_main_product_transportation_cost}}
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.sales_of_main_product_other_marketing_costs}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_form.if_price_determined_in_advance}}
-            </div>
-        </div>
-    </div>
-          <div class='col-md-1'>
+        <div class='col-md-5'>
             <div class='row flex-row'>
-                <div class='col-md-6 table-cell long-div'>
-                    {{production_and_sales_form.sales_of_by_product_amt}}
+                <div class='col-md-2 table-cell long-div'>
+                    {{production_and_sales_form.month_of_disposal}}
                 </div>
-                <div class='col-md-6 table-cell long-div'>
-                    {{production_and_sales_form.sales_of_by_product_price}}
+                <div class='col-md-1 table-cell long-div'>
+                    {{production_and_sales_form.quantity}}
+                </div>
+                <div class='col-md-1 table-cell long-div'>
+                    {{production_and_sales_form.price}}
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    {{production_and_sales_form.where_marketed}}
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    {{production_and_sales_form.marketing_agency}}
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    <div class='row flex-row'>
+                        <div class='col-md-6 table-cell long-div'>
+                            {{production_and_sales_form.sales_of_main_product_transportation_mode}}
+                        </div>
+                        <div class='col-md-6 table-cell long-div'>
+                            {{production_and_sales_form.sales_of_main_product_transportation_cost}}
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-1 table-cell long-div'>
+                    {{production_and_sales_form.sales_of_main_product_other_marketing_costs}}
+                </div>
+                <div class='col-md-1 table-cell long-div'>
+                    {{production_and_sales_form.if_price_determined_in_advance}}
                 </div>
             </div>
         </div>
-    <div class='col-md-1'>
+        <div class='col-md-1'>
+        <div class='row flex-row'>
+            <div class='col-md-6 table-cell long-div'>
+                {{production_and_sales_form.sales_of_by_product_amt}}
+            </div>
+            <div class='col-md-6 table-cell long-div'>
+                {{production_and_sales_form.sales_of_by_product_price}}
+            </div>
+        </div>
+      </div>
+        <div class='col-md-2'>
         <div class='row flex-row'>
             <div class='col-md-6 table-cell long-div'>
                 {{production_and_sales_form.quantity_of_main_product_used_for_payment}}

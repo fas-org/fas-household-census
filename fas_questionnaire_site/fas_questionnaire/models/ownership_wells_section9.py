@@ -47,13 +47,13 @@ class PowerSource(models.Model):
         return self.source
 
 
-class ExchangeNature(models.Model):
+class NatureExchange(models.Model):
     id = models.AutoField(primary_key=True)
     exchange = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'Exchange Nature'
+        db_table = 'Nature of Exchange'
 
     def __str__(self):
         return self.exchange
@@ -74,7 +74,7 @@ class OwnershipWellsTubewells(models.Model):
     irrigation_crop = models.CharField(max_length=50, db_column='Irrigation Crop', blank=True, null=True)
     irrigation_sale_area = models.IntegerField(db_column='Irrigation Sale Area', blank=True, null=True)
     irrigation_revenue = models.IntegerField(db_column='Irrigation Revenue', blank=True, null=True)
-    exchange_nature = models.ForeignKey(ExchangeNature, models.DO_NOTHING, db_column='Nature of Exchange', blank=True, null=True)
+    exchange_nature = models.ForeignKey(NatureExchange, models.DO_NOTHING, db_column='Nature Exchange', blank=True, null=True)
     irrigation_land_extent = models.IntegerField(db_column='Irrigation Land Extent', blank=True, null=True)
     comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
 

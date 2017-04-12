@@ -11,7 +11,137 @@
     {% endifequal %}
 {% endfor %}
 {% endif %}
-    <table>
-        {{ ownership_form.as_table }}
+<form method='POST' id="section_9_form">
+    {% csrf_token %}
+    <h5 class='text-center'>9A. OWNERSHIP OF WELLS/TUBEWELLS</h5>
+    <table style="width:200%;">
+        <tr class="formset_row table-head">
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Type of Ownership</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Year when installed</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Present depth</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Original depth</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Type</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Source of Power</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Cost of installation</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Source of finance</label>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Maintenance expenses last year</label>
+            </td>
+            <td style="width:10%;text-align:center;" class="table-cell">
+                <div class='row ' style="text-align:center;">
+                    <div class='col-md-12'>
+                        <label>Irrigation on land owned and operated by other households</label>
+                    </div>
+                </div>
+                <div class= 'row style="text-align:center;"'>
+                    <div class='col-md-1 table-cell'>
+                        <label>Crop</label>
+                    </div>
+                    <div class='col-md-5 table-cell'>
+                        <label>Sale of water</label>
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        <label>Any other land irrigated</label>
+                    </div>
+                </div>
+                <div class= 'row style="text-align:center;"'>
+                    <div class='col-md-1 table-cell'>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label>Area irrigated</label>
+                    </div>
+                    <div class='col-md-2 table-cell'>
+                        <label>Total revenue</label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label>Nature of Exchange</label>
+                    </div>
+                    <div class='col-md-3 table-cell'>
+                        <label>Extent</label>
+                    </div>
+                </div>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Comments (specify if open well)</label>
+            </td>
+        </tr>
+    {{ formset.management_form }}
+    {% for form in formset.forms %}
+        <tr class='formset_row'>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.ownership_type }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.year_when_installed }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.present_depth }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.original_depth }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.type }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.power_source }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.installation_cost }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.finance_source }}
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.expenses_last_year }}
+            </td>
+            <td style="width:10%;text-align:center;" class="table-cell">
+                <div class='col-md-1 table-cell'>
+                    {{ form.irrigation_crop }}
+                </div>
+                <div class='col-md-3 table-cell'>
+                    {{ form.irrigation_sale_area }}
+                </div>
+                <div class='col-md-2 table-cell'>
+                    {{ form.irrigation_revenue }}
+                </div>
+                <div class='col-md-3 table-cell'>
+                    {{ form.exchange_nature }}
+                </div>
+                <div class='col-md-3 table-cell'>
+                    {{ form.irrigation_land_extent }}
+                </div>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.comments }}
+            </td>
+        </tr>
+        {% endfor %}
     </table>
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row').formset({
+        prefix: '{{ formset.prefix }}'
+    });
+</script>
 {% endblock %}

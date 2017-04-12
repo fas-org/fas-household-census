@@ -46,6 +46,10 @@ def new(request):
         if form_saved:
             messages.success(request, 'Data saved successfully')
             return redirect('ownership_edit', pk=request.session['household'])
+        else:
+            return render(request, 'ownership_section3.html',
+                          {'current_ownership_formset': ownership_forms,
+                           'homesteadformset': homestead_area_forms})
 
     return render(request, 'ownership_section3.html', {'current_ownership_formset': current_ownership_formset(prefix='owner'),
                                                        'homesteadformset': homestead_area_formset(prefix='homestead')})

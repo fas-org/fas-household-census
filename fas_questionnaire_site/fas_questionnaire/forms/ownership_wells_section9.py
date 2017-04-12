@@ -44,7 +44,7 @@ class PowerSourceForm(forms.ModelForm):
 class ExchangeNatureForm(forms.ModelForm):
 
     class Meta:
-        model = ExchangeNature
+        model = NatureExchange
         fields = ['exchange']
         exclude = []
         widgets = None

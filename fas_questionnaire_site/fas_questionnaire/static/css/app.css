@@ -6,7 +6,12 @@
 }
 input, select {
     width: 100%;
-    color: #0000FF;
+    color: #337ab7;
+}
+.login-button {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: white;
 }
 .table-cell {
     border: 1px solid #CCC;
@@ -43,9 +48,21 @@ input, select {
     background: url('../images/delete.png') no-repeat 5px center;
     width: 25px;
     height: 25px;
-    right: -25px;
-    float: right;
-    position: absolute;
+}
+
+.table-head > .delete-row {
+    visibility: hidden;
+}
+.sub-menu a {
+  padding:10px;
+  color:#6d6e71;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #337ab7;
+}
+.text-center {
+  color:#337ab7;
+  padding: 10px;
 }
 label { color: #666; }
 span.required { color: red; }

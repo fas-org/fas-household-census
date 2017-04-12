@@ -15,7 +15,7 @@
 <form method='POST' id="form_introduction">
     {% csrf_token %}
     {{ introduction_form.household.as_hidden }}
-    <h5 class='text-center'>1.INTRODUCTION</h5>
+    <h4 class='text-center'>1.INTRODUCTION</h4>
     <div class='row'>
         <div class='col-md-4 flex-row'>
             <div class='col-md-5 table-cell flex-column'>
@@ -43,7 +43,7 @@
         </div>
         <div class='col-md-2 flex-row'>
             <div class='col-md-6 table-cell flex-column'>
-                <label>Caste/Tribe{% if introduction_form.caste_tribe.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Caste/Tribe</label>
             </div>
             <div class='col-md-6 table-cell'>
                 {{ introduction_form.caste_tribe }}
@@ -51,7 +51,7 @@
         </div>
         <div class='col-md-3 flex-row'>
             <div class='col-md-6 table-cell flex-column'>
-                <label>Specify if SC/ST/Others{% if introduction_form.sc_st.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Specify if SC/ST/Others</label>
             </div>
             <div class='col-md-6 table-cell'>
                 {{ introduction_form.sc_st }}
@@ -61,7 +61,7 @@
     <div class='row'>
         <div class='col-md-2 flex-row'>
             <div class='col-md-4 table-cell flex-column'>
-                <label>Religion{% if introduction_form.religion.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Religion</label>
             </div>
             <div class='col-md-8 table-cell'>
                 {{ introduction_form.religion }}
@@ -77,7 +77,7 @@
         </div>
         <div class='col-md-4 flex-row'>
             <div class='col-md-6 table-cell flex-column'>
-                <label>Father's name{% if introduction_form.father_name.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Father's name</label>
             </div>
             <div class='col-md-6 table-cell'>
                 {{ introduction_form.father_name }}
@@ -95,7 +95,7 @@
     <div class='row'>
         <div class='col-md-4 flex-row'>
             <div class='col-md-5 table-cell flex-column'>
-                <label>Village of birth{% if introduction_form.birth_village.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Village of birth</label>
             </div>
             <div class='col-md-7 table-cell'>
                 {{ introduction_form.birth_village }}
@@ -103,7 +103,7 @@
         </div>
         <div class='col-md-4 flex-row'>
             <div class='col-md-5 table-cell flex-column'>
-                <label>Tehsil of birth{% if introduction_form.birth_tehsil.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Tehsil of birth</label>
             </div>
             <div class='col-md-7 table-cell'>
                 {{ introduction_form.birth_tehsil }}
@@ -111,7 +111,7 @@
         </div>
         <div class='col-md-4 flex-row'>
             <div class='col-md-5 table-cell flex-column'>
-                <label>District of birth{% if introduction_form.birth_district.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>District of birth</label>
             </div>
             <div class='col-md-7 table-cell'>
                 {{ introduction_form.birth_district }}
@@ -121,7 +121,7 @@
     <div class='row'>
         <div class='col-md-4 flex-row'>
             <div class='col-md-2 table-cell flex-column'>
-                <label>Address{% if introduction_form.address.field.required %}<span class="required">*</span>{% endif %}</label>
+                <label>Address</label>
             </div>
             <div class='col-md-10 table-cell'>
                 {{ introduction_form.address }}

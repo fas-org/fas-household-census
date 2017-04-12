@@ -68,16 +68,12 @@ def edit(request, pk):
         request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
         landpurchased_comments = get_object_or_404(LandPurchasedComments, household=pk)
         if request.method == "POST":
-            landsold_formset = formset_factory(LandSoldForm, formset=BaseFormSet, extra=5)
-            landpurchased_formset = formset_factory(LandPurchasedForm, formset=BaseFormSet, extra=5)
+            landsold_formset = modelformset_factory(LandSold, form=LandSoldForm, extra=5)
+            landpurchased_formset = modelformset_factory(LandPurchased, form=LandPurchasedForm, extra=5)
 
             landsoldforms = landsold_formset(request.POST, prefix='landsold')
             landpurchasedforms = landpurchased_formset(request.POST, prefix='landpurchased')
             landpurchased_comments_form = LandPurchasedCommentsForm(request.POST, instance=landpurchased_comments)
-
-            LandSold.objects.filter(household=pk).delete()
-            LandPurchased.objects.filter(household=pk).delete()
-            # LandPurchasedComments.objects.filter(household=pk).delete()
 
             form_saved = False
             if landsoldforms.is_valid() and landpurchasedforms.is_valid() and landpurchased_comments_form.is_valid():

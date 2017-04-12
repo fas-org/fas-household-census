@@ -65,7 +65,7 @@
         {{ landsold_formset.management_form }}
         {% for landsold_form in landsold_formset.forms %}
             <div class='row flex-row landsale_formset_row'>
-
+                    {{ landsold_form.id }}
                 <div class='col-md-1 table-cell'>
                     {{ landsold_form.year_of_sale }}
                 </div>
@@ -156,6 +156,7 @@
         {{ landpurchased_formset.management_form }}
         {% for landpurchased_form in landpurchased_formset.forms %}
             <div class='row flex-row landpurchased_formset_row'>
+                {{ landpurchased_form.id }}
                 <div class='col-md-1 table-cell'>
                     {{ landpurchased_form.year_of_purchase }}
                 </div>

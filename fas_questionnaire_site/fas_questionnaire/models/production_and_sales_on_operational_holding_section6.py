@@ -61,6 +61,11 @@ class CroppingPatternAndCropSchedule(models.Model):
     output_price_if_fixed_in_advance = models.FloatField(db_column='Output price, if fixed in advance', blank=True,
                                                          null=True)
     other_conditions = models.CharField(db_column='Other conditions', max_length=50, blank=True, null=True)
+    production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
+    production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
+    consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
+    consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
+
     comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
 
     class Meta:
@@ -105,10 +110,6 @@ class  ProductionAndSales(models.Model):
     marketing_agency_value = models.CharField(db_column='marketing agency value', max_length=50, blank=True, null=True)
     if_price_determined_in_advance = models.CharField(db_column='If price determined in advance', max_length=50, blank=True, null=True)  
     comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
-    production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
-    consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
 
     class Meta:
         managed = True

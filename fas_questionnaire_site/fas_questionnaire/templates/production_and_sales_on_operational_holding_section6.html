@@ -14,34 +14,60 @@
     <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
     <b>A. Cropping pattern and crop schedule</b><br>
     <div class='row flex-row'>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label>Serial No.</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label>Corp</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label>Variety</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label>Tenurial Status</label>
         </div>
-        <div class='col-sm-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div  flex-column'>
             <label>Crop/Homestead Land</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label>Extent</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
                  <label>Month of sowing </label>
         </div>
-        <div class='col-md-2 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label>Month of harvesting</label>
         </div>
-        <div class='col-md-2 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
              <label>Source of irrigation</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-2'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Production</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell'>
+                     <label>Grain/Main Products</label>
+                </div>
+                <div class='col-md-6 table-cell'>
+                     <label>Straw and other by-products</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Household consumption including amount kept for use as seeds</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell'>
+                    Grain/Main products
+                </div>
+                <div class='col-md-6 table-cell'>
+                 <label>Straw and other by-products</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell long-div flex-column'>
              <label>Comments</label>
         </div>
 
@@ -77,6 +103,26 @@
             <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
             </div>
+            <div class='col-md-2'>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_on_operational_holding_form.production_main_product}}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_on_operational_holding_form.production_by_product}}
+                </div>
+            </div>
+        </div>
+            <div class='col-md-2'>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_on_operational_holding_form.consumption_main_product}}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{production_and_sales_on_operational_holding_form.consumption_by_product}}
+                </div>
+            </div>
+        </div>
             <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.comments}}
             </div>
@@ -107,38 +153,12 @@
         <div class='col-md-1 table-cell long-div'>
              <label>Serial No.</label>
         </div>
-        <div class='col-md-1'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Production</p>
-            </div>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                     <label>Grain/Main Products</label>
-                </div>
-                <div class='col-md-6 table-cell'>
-                     <label>Straw and other by-products</label>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-2'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Household consumption including amount kept for use as seeds</p>
-            </div>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                    Grain/Main products
-                </div>
-                <div class='col-md-6 table-cell'>
-                 <label>Straw and other by-products</label>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-5'>
+        <div class='col-md-8'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Sales of grain/main product</p>
             </div>
             <div class='row flex-row'>
-                <div class='col-md-2 table-cell long-div'>
+                <div class='col-md-1 table-cell long-div'>
                     <label>Month of Disposal</label>
                 </div>
                 <div class='col-md-1 table-cell long-div'>
@@ -172,7 +192,7 @@
                 <div class='col-md-1 table-cell long-div'>
                     <label>Other marketing costs</label>
                 </div>
-                <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-2 table-cell long-div'>
                     <label>was the price fixed before harvest?</label>
                 </div>
             </div>
@@ -211,29 +231,9 @@
         <div class='col-md-1 table-cell long-div'>
             {{production_and_sales_form.crop_serial_no}}
         </div>
-        <div class='col-md-1'>
+        <div class='col-md-8'>
             <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_form.production_main_product}}
-                </div>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_form.production_by_product}}
-                </div>
-            </div>
-        </div>
-        <div class='col-md-2'>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_form.consumption_main_product}}
-                </div>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_form.consumption_by_product}}
-                </div>
-            </div>
-        </div>
-        <div class='col-md-5'>
-            <div class='row flex-row'>
-                <div class='col-md-2 table-cell long-div'>
+                <div class='col-md-1 table-cell long-div'>
                     {{production_and_sales_form.month_of_disposal}}
                 </div>
                 <div class='col-md-1 table-cell long-div'>
@@ -248,7 +248,7 @@
                 <div class='col-md-1 table-cell long-div'>
                     {{production_and_sales_form.marketing_agency}}
                 </div>
-                 <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-1 table-cell long-div'>
                     {{production_and_sales_form.marketing_agency_value}}
                 </div>
                 <div class='col-md-2 table-cell long-div'>
@@ -264,7 +264,7 @@
                 <div class='col-md-1 table-cell long-div'>
                     {{production_and_sales_form.sales_of_main_product_other_marketing_costs}}
                 </div>
-                <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-2 table-cell long-div'>
                     {{production_and_sales_form.if_price_determined_in_advance}}
                 </div>
             </div>

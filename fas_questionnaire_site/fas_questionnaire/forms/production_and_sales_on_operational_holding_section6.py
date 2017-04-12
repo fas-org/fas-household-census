@@ -33,10 +33,6 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
                   'other_conditions',
                   'comments']
         exclude = [
-                   'CONSUMPTION_MAIN_PRODUCT',
-                   'consumption_by_product',
-                   'production_main_product',
-                   'production_by_product',
                    'unit_production',
                    'unit_consumption',
                    'loans_advances_taken_from_buyer',
@@ -47,6 +43,12 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
                    'household', 'crop_number_first_digit',
                    'crop_number_second_digit', 'crop_clean']
         widgets = None
+        labels={
+            'production_main_product': 'Grain/main product',
+            'production_by_product': 'Straw and other by products',
+            'consumption_main_product': 'Grain/main product',
+            'consumption_by_product': 'Straw and other by products'
+        }
         localized_fields = None
         help_texts = {}
         error_messages = {}
@@ -87,10 +89,6 @@ class  ProductionAndSalesForm(forms.ModelForm):
                 'marketing_agency',
                 'marketing_agency_value',
                 'if_price_determined_in_advance',
-                'consumption_main_product',
-                'consumption_by_product',
-                'production_main_product',
-                'production_by_product'
                 ]
         exclude=['unit_of_quantity',
                  'unit_of_price',
@@ -108,11 +106,7 @@ class  ProductionAndSalesForm(forms.ModelForm):
             'sales_of_by_product_amt':'Amt',
             'sales_of_by_product_price':'Price',
             'quantity_of_main_product_used_for_payment':'Grain/Main product',
-            'quantity_of_by_product_used_for_payment':'Straw and other by-products',
-            'production_main_product':'Grain/main product',
-            'production_by_product': 'Straw and other by products',
-            'consumption_main_product': 'Grain/main product',
-            'consumption_by_product': 'Straw and other by products'
+            'quantity_of_by_product_used_for_payment':'Straw and other by-products'
         }
         help_texts = {}
         error_messages = {}

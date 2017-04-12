@@ -50,7 +50,7 @@ def new(request):
 
         elif productionAndSalesForms.is_valid():
             for productionAndSalesForm in productionAndSalesForms:
-                if productionAndSalesForm.is_valid():
+                if productionAndSalesForm.is_valid() and productionAndSalesForm.has_changed():
                     productionAndSales = productionAndSalesForm.save(commit=False)
                     productionAndSales.household = household.get(request.session['household'])
                     productionAndSales.save()

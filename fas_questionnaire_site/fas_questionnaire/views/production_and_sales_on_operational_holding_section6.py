@@ -50,7 +50,7 @@ def new(request):
 
         elif productionAndSalesForms.is_valid():
             for productionAndSalesForm in productionAndSalesForms:
-                if productionAndSalesForm.is_valid() and productionAndSalesForm.has_changed():
+                if productionAndSalesForm.is_valid():
                     productionAndSales = productionAndSalesForm.save(commit=False)
                     productionAndSales.household = household.get(request.session['household'])
                     productionAndSales.save()
@@ -59,10 +59,6 @@ def new(request):
             if pattern_save or sales_save:
                 messages.success(request, 'Data saved successfully')
             return redirect('production_and_sales_on_operational_holding_edit', pk=request.session['household'])
-    # else:
-    #     croppingPatternForms = CroppingPatternAndCropScheduleForm()
-    #     croppingPatternCommentsForm = CroppingPatternAndCropScheduleCommentsForm()
-    #     productionAndSalesForms = ProductionAndSalesForm()
 
     return render(request, 'production_and_sales_on_operational_holding_section6.html',
                   {'production_and_sales_on_operational_holding_formset': croppingPattern_formset,
@@ -80,17 +76,15 @@ def edit(request, pk):
             croppingPattern_formset = formset_factory(CroppingPatternAndCropScheduleForm, formset=BaseFormSet, extra=5)
             productionAndSales_formset = formset_factory(ProductionAndSalesForm, formset=BaseFormSet, extra=5)
 
-            croppingPatternForms = croppingPattern_formset(request.POST, instance=croppingPattern)
+            croppingPatternForms = croppingPattern_formset(request.POST)
             croppingPatternCommentForm = CroppingPatternAndCropScheduleCommentsForm(request.POST,
                                                                                     instance=croppingPatternComments)
-            productionAndSalesForms = productionAndSales_formset(request.POST, isinstance=productionAndSales)
-
-            CroppingPatternAndCropSchedule.objects.filter(household=pk).delete()
-            ProductionAndSales.objects.filter(household=pk).delete()
+            productionAndSalesForms = productionAndSales_formset(request.POST)
 
             pattern_save = False
             sales_save = False
             if croppingPatternForms.is_valid() and croppingPatternCommentForm.is_valid():
+                CroppingPatternAndCropSchedule.objects.filter(household=pk).delete()
                 for croppingPatternForm in croppingPatternForms:
                     if croppingPatternForm.is_valid() and croppingPatternForm.has_changed():
                         croppingPattern = croppingPatternForm.save(commit=False)
@@ -104,6 +98,7 @@ def edit(request, pk):
                 pattern_save = True
 
             elif productionAndSalesForms.is_valid():
+                ProductionAndSales.objects.filter(household=pk).delete()
                 for productionAndSalesForm in productionAndSalesForms:
                     if productionAndSalesForm.is_valid() and productionAndSalesForm.has_changed():
                         productionAndSales = productionAndSalesForm.save(commit=False)
@@ -113,17 +108,16 @@ def edit(request, pk):
 
             if pattern_save or sales_save:
                 messages.success(request, 'Data saved successfully')
-                return redirect('production_and_sales_on_operational_holding_edit', pk=pk)
 
-        croppingPattern_model_formset=modelformset_factory(CroppingPatternAndCropSchedule,form=CroppingPatternAndCropScheduleForm,extra=5)
+        croppingPattern_model_formset=modelformset_factory(CroppingPatternAndCropSchedule, form=CroppingPatternAndCropScheduleForm, extra=5)
         croppingPattern_result_set=CroppingPatternAndCropSchedule.objects.filter(household=pk)
         croppingPatternset=croppingPattern_model_formset(queryset=croppingPattern_result_set)
 
-        productionAndSales_model_form=modelformset_factory(ProductionAndSales,form=ProductionAndSalesForm,extr=5)
+        productionAndSales_model_form=modelformset_factory(ProductionAndSales, form=ProductionAndSalesForm, extra=5)
         productionAndSales_result_set=ProductionAndSales.objects.filter(household=pk)
         productionAndSalesset=productionAndSales_model_form(queryset=productionAndSales_result_set)
 
-        croppingPatternCommentForms=CroppingPatternAndCropScheduleComments(instace=croppingPatternComments)
+        croppingPatternCommentForms=CroppingPatternAndCropScheduleCommentsForm(instance=croppingPatternComments)
 
         return render(request, 'production_and_sales_on_operational_holding_section6.html',
                       {'production_and_sales_on_operational_holding_formset': croppingPatternset,
@@ -139,7 +133,7 @@ def get(household):
         croppingPatternComments = CroppingPatternAndCropScheduleComments.objects.get(household=household)
         productionAndSales = ProductionAndSales.objects.get(household=household)
 
-    except CroppingPatternAndCropSchedule.DoesNotExist:
+    except CroppingPatternAndCropSchedule.DoesNotExist and CroppingPatternAndCropScheduleComments.DoesNotExist and ProductionAndSales.DoesNotExist:
         croppingPattern = None
         croppingPatternComments = None
         productionAndSales = None

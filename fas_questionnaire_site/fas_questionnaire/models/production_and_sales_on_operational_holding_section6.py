@@ -35,7 +35,7 @@ class MarketingAgencies(models.Model):
 
 class CroppingPatternAndCropSchedule(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    serial_no = models.IntegerField(db_column='serial no',primary_key=True)
+    serial_no = models.IntegerField(db_column='serial no',primary_key=True,null=False)
     crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)
     crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
     crop = models.CharField(db_column='Crop', max_length=50, blank=True, null=True)

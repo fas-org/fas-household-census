@@ -1,5 +1,5 @@
 from django import forms
-from ..models.ownership_wells_section9 import *
+from ..models.page9 import *
 
 
 class OwnershipTypeForm(forms.ModelForm):

@@ -39,9 +39,9 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page8_init' %}>8</a>
     </li>
-    <li {% if 'wells' in request.get_full_path %} class="active"{% endif %}
+    <li {% if 'page9' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'ownershipwells_init' %}>9</a>
+            <a href={% url 'page9_init' %}>9</a>
     </li>
     <li {% if 'othercosts' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>

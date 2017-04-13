@@ -57,7 +57,9 @@ class CroppingPatternAndCropScheduleCommentsForm(forms.ModelForm):
         model = CroppingPatternAndCropScheduleComments
         fields = ['household', 'comments_notes']
         exclude = ['household']
-        widgets = None
+        widgets = {
+            'comments_notes':forms.Textarea(attrs={'rows':10,'cols':198})
+        }
         localized_fields = None
         help_texts = {}
         error_messages = {}

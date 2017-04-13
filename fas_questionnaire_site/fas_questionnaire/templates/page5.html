@@ -70,7 +70,7 @@
         <div class='col-md-1 table-cell long-div flex-column'>
              <label>Comments</label>
         </div>
-
+        <div class="cross-width"></div>
     </div>
 
     {{ production_and_sales_on_operational_holding_formset.management_form }}
@@ -132,9 +132,22 @@
 
 
     <br>
-    <div class='row flex-row'>
-        <b>{{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}</b><br>
-        <div class='long-div'>
+    <!--<div class=' flex-row'>-->
+        <!--<div class='long-div'>-->
+             <!--<b>{{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}</b>-->
+        <!--</div>-->
+
+        <!--<div class='long-div flex-row' >-->
+            <!--{{production_and_sales_on_operational_holding_comment_form.comments_notes}}-->
+        <!--</div>-->
+    <!--</div>-->
+        <div class="row">
+        <div class="col-md-12">
+            {{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}
+        </div>
+    </div>
+        <div class="row flex-row">
+        <div class="col-md-12">
             {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
         </div>
     </div>

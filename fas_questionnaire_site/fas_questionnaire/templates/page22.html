@@ -12,13 +12,13 @@
 <h4 class='text-center'>27. COMMENTS AND INFORMATION ON INVESTIGATORS</h4>
 <form method="POST" id="Investegator-information">
         {% csrf_token %}
-    <div class="row flex-row">
-        <div class="col-md-12 table-cell">
-            <label>Comments/Observations</label>
+    <div class="row">
+        <div class="col-md-12 ">
+            <label>Comments/Observations:</label>
         </div>
     </div>
         <div class="row flex-row">
-        <div class="col-md-12 table-cell">
+        <div class="col-md-12">
             {{page22_form.comments_observations}}
         </div>
     </div>

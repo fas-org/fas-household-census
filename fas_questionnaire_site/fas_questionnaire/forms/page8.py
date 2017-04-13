@@ -1,5 +1,5 @@
 from django import forms
-from ..models.source_and_type_of_extension_services_models_section8 import InstitutionalSupportComments, Extension, InstitutionalSupport
+from ..models.page8 import *
 
 
 class ExtensionForm(forms.ModelForm):

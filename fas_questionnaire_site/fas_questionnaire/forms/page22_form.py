@@ -24,7 +24,9 @@ class CommentsAndInformationOnInvestigatorsForm(forms.ModelForm):
             'date_of_entry': 'Date of data entry',
             'further_investigation': 'Is further investigation needed?'
         }
-        widgets = None
+        widgets = {
+            'comments_observations':forms.Textarea(attrs={'rows':10,'cols':198})
+        }
         localized_fields = None
         help_texts = {}
         error_messages = {}

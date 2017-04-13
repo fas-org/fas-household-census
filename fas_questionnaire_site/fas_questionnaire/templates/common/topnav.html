@@ -1,29 +1,35 @@
 <ul class="nav nav-tabs">
     <li {% if 'household/' in request.get_full_path %} class="active"{% endif %}><a href={% url 'household_init' %}>Home</a></li>
+{#    for page 1 - start#}
     <li {% if 'introduction' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'introduction_init' %}>1</a>
+            <a href={% url 'introduction_init' %}>1.1</a>
     </li>
     <li {% if 'householdmembers' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'householdmembers_init' %}>2</a>
+            <a href={% url 'householdmembers_init' %}>1.2</a>
     </li>
-    <li {% if 'ownership' in request.get_full_path %} class="active"{% endif %}
+{#for page 1 - end#}
+    <li {% if 'page2' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'ownership_init' %}>3</a>
-    </li>
-    <li {% if 'landsales' in request.get_full_path %} class="active"{% endif %}
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'landsales_init' %}>4</a>
+            <a href={% url 'page2_init' %}>2</a>
     </li>
     <li {% if 'landleasemortgage' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'landleasemortgage_init' %}>5</a>
+            <a href={% url 'landleasemortgage_init' %}>3</a>
+    </li>
+    <li {% if 'landleasemortgage' in request.get_full_path %} class="active"{% endif %}
+            {% if request.session.household == None %} class="disabled" {% endif %}>
+            <a href={% url 'landleasemortgage_init' %}>4</a>
     </li>
 
     <li {% if 'cropProduction' in request.get_full_path %} class="active" {% endif %}
-    {% if request.session.household == None %} class="disabled" {% endif %}>
-    <a href={% url 'production_and_sales_on_operational_holding_init' %}>6</a>
+            {% if request.session.household == None %} class="disabled" {% endif %}>
+            <a href={% url 'production_and_sales_on_operational_holding_init' %}>5</a>
+    </li>
+    <li {% if 'cropProduction' in request.get_full_path %} class="active" {% endif %}
+            {% if request.session.household == None %} class="disabled" {% endif %}>
+            <a href={% url 'production_and_sales_on_operational_holding_init' %}>6</a>
     </li>
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>
@@ -89,28 +95,6 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href="#">22</a>
     </li>
-    <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">23</a>
-    </li>
-    <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">24</a>
-    </li>
-    <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">25</a>
-    </li>
-    <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">26</a>
-    </li>
-    <li
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">27</a>
-    </li>
-
-
 </ul>
 
 <script>

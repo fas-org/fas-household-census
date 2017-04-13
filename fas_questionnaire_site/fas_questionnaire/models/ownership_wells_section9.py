@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .ownership_section3 import IrrigationFlow
+from .page2 import IrrigationFlow
 
 
 class OwnershipType(models.Model):

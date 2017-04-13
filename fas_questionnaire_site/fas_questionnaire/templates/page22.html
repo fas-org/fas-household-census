@@ -1,0 +1,69 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<h4 class='text-center'>27. COMMENTS AND INFORMATION ON INVESTIGATORS</h4>
+<form method="POST" id="Investegator-information">
+        {% csrf_token %}
+    <div class="row flex-row">
+        <div class="col-md-12 table-cell">
+            <label>Comments/Observations</label>
+        </div>
+    </div>
+        <div class="row flex-row">
+        <div class="col-md-12 table-cell">
+            {{page22_form.comments_observations}}
+        </div>
+    </div>
+    <div class="row flex-row">
+        <div class="col-md-2 table-cell">
+            <label>Name of the investigator/s</label>
+        </div>
+        <div class="col-md-2 table-cell">
+            {{page22_form.name_of_investigator}}
+        </div>
+        <div class="col-md-2 table-cell">
+            <label>Date of interview</label>
+        </div>
+        <div class="col-md-2 table-cell">
+            {{page22_form.date_of_interview}}
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Time taken for interview</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            {{page22_form.time_taken}}
+        </div>
+    </div>
+    <div class="row flex-row">
+        <div class="col-md-2 table-cell">
+            <label>Data entry by</label>
+        </div>
+        <div class="col-md-2 table-cell">
+            {{page22_form.data_entry_by}}
+        </div>
+        <div class="col-md-2 table-cell">
+            <label>Date of data entry</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            {{page22_form.date_of_entry}}
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Is further investigation needed?</label>
+        </div>
+        <div class="col-md-2 table-cell">
+            {{page22_form.further_investigation}}
+        </div>
+    </div>
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+{% endblock %}

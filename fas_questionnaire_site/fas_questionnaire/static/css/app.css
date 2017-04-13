@@ -44,13 +44,13 @@ input, select {
     justify-content: space-around;
 }
 
-.delete-row {
+.delete-row, .cross-width {
     background: url('../images/delete.png') no-repeat 5px center;
     width: 25px;
     height: 25px;
 }
 
-.table-head > .delete-row {
+.cross-width {
     visibility: hidden;
 }
 .sub-menu a {

@@ -4,7 +4,7 @@
 {% block content %}
 <h4 class='text-center'>2.HOUSEHOLD MEMBERS : GENERAL INFORMATION</h4>
 <form id="hhm-rows" method="POST">
-    <div class="row flex-row table-head formset_row">
+    <div class="row flex-row">
         <div class="col-md-2 table-cell flex-column" >
           <label>Name</label>
         </div>
@@ -47,6 +47,7 @@
     {{ formset.management_form }}
     {% for form in formset.forms %}
     <div class="row flex-row formset_row">
+            {{ form.id }}
         <div class="col-md-2 table-cell flex-column" >
             {{ form.name }}
         </div>
@@ -92,6 +93,7 @@
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.formset_row').formset();
+    $('input[name="form-INITIAL_FORMS"]').val(0);
 </script>
 {#<button onclick="addHouseholdMembersRow()">Add Row</button>#}
 {% endblock %}

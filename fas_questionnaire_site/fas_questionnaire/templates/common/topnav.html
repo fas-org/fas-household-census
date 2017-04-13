@@ -23,13 +23,13 @@
             <a href={% url 'landleasemortgage_init' %}>4</a>
     </li>
 
-    <li {% if 'cropProduction' in request.get_full_path %} class="active" {% endif %}
+    <li {% if 'page5' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'production_and_sales_on_operational_holding_init' %}>5</a>
+            <a href={% url 'page5_init' %}>5</a>
     </li>
-    <li {% if 'cropProduction' in request.get_full_path %} class="active" {% endif %}
+    <li {% if 'page6' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'production_and_sales_on_operational_holding_init' %}>6</a>
+            <a href={% url 'page6_init' %}>6</a>
     </li>
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>

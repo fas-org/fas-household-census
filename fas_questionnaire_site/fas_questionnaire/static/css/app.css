@@ -55,14 +55,36 @@ input, select {
 }
 .sub-menu a {
   padding:10px;
-  color:#6d6e71;
-  font-weight: 600;
+  color:#337ab7;
+  font-weight: 800;
   text-decoration: underline;
   text-decoration-color: #337ab7;
 }
 .text-center {
   color:#337ab7;
   padding: 10px;
+}
+#search-button {
+  background-color: #337ab7;
+  color: white;
+}
+#logout-button {
+  background-color: #f8f8f8;
+  border-color: #f8f8f8;
+}
+#logout-button a{
+  color: #58595b;
+  font-weight: 600;
+  padding: 4px;
+}
+.logout-icon {
+  width: 20px;
+  height: 22px;
+}
+.search-icon {
+  float: right;
+  padding: 3px;
+  padding-left: 5px;
 }
 label { color: #666; }
 span.required { color: red; }

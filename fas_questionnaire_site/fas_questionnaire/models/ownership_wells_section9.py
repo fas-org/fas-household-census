@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
+from .ownership_section3 import IrrigationFlow
 
 
 class OwnershipType(models.Model):
@@ -81,3 +82,35 @@ class OwnershipWellsTubewells(models.Model):
     class Meta:
         managed = True
         db_table = 'Ownership Wells'
+
+
+class ProductionMeans(models.Model):
+    id = models.AutoField(primary_key=True)
+    type = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Means of Production'
+
+    def __str__(self):
+        return self.type
+
+
+class SpecifiedProductionMeans(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    irrigation_item_code = models.ForeignKey(IrrigationFlow, models.DO_NOTHING, db_column='Irrigation item code', blank=True, null=True)
+    production_item_code = models.ForeignKey(ProductionMeans, models.DO_NOTHING, db_column='Production item code', blank=True, null=True)
+    ownership_number = models.IntegerField(db_column='Ownership Number', blank=True, null=True)
+    year_of_purchase = models.IntegerField(db_column='Year of Purchase', blank=True, null=True)
+    price_paid = models.IntegerField(db_column='Year when installed', blank=True, null=True)
+    subsidy_received = models.IntegerField(db_column='Subsidy received', blank=True, null=True)
+    present_value = models.IntegerField(db_column='Present Value', blank=True, null=True)
+    maintenance_charges = models.IntegerField(db_column='Maintenance charges', blank=True, null=True)
+    rental_earnings = models.IntegerField(db_column='Rental earnings', blank=True, null=True)
+    rental_earnings_units = models.CharField(max_length=50, db_column='Rental earning units', blank=True, null=True)
+    comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Specified Means of Production'

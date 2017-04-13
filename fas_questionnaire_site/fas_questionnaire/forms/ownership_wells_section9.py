@@ -65,3 +65,29 @@ class OwnershipWellsTubewellsForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+
+class SpecifiedProductionMeansForm(forms.ModelForm):
+
+    class Meta:
+        model = SpecifiedProductionMeans
+        fields = ['household', 'production_item_code', 'ownership_number', 'year_of_purchase', 'price_paid', 'subsidy_received', 'present_value', 'maintenance_charges', 'rental_earnings', 'rental_earnings_units', 'comments']
+        exclude = ['household']
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}
+
+
+class SpecifiedIrrigationMeansForm(forms.ModelForm):
+
+    class Meta:
+        model = SpecifiedProductionMeans
+        fields = ['household', 'irrigation_item_code', 'ownership_number', 'year_of_purchase', 'price_paid', 'subsidy_received', 'present_value', 'maintenance_charges', 'rental_earnings', 'rental_earnings_units', 'comments']
+        exclude = ['household']
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}

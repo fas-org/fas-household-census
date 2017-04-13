@@ -92,8 +92,9 @@
             <a href="#">21</a>
     </li>
     <li
+            {% if 'page22' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">22</a>
+            <a href={% url 'page22_init' %}>22</a>
     </li>
 </ul>
 

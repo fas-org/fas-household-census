@@ -206,10 +206,10 @@
                     </div>
                 </div>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
+            <td style="width:4%;text-align:center;" class="table-cell">
                 <label>Registered or unregistered</label>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
+            <td style="width:4%;text-align:center;" class="table-cell">
                 <label>Seasonal or yearly or other</label>
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
@@ -437,10 +437,10 @@
                         {{ form.occupation_of_lessor }}
                     </div>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
+            <td style="width:4%;text-align:center;" class="table-cell">
                 {{ form.registered_unregistered }}
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
+            <td style="width:4%;text-align:center;" class="table-cell">
                 {{ form.seasonal_yearly_other }}
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
@@ -449,20 +449,24 @@
             <td style="width:8%;text-align:center;" class="table-cell">
                 <div class= 'row'>
                     <div class='col-md-6 table-cell'>
+                        <div class= 'row'>
                             <div class='col-md-6 table-cell'>
                                 {{ form.percentage_share_of_crop }}
                             </div>
                             <div class='col-md-6 table-cell'>
                                 {{ form.quantity_share_of_crop }}
                             </div>
+                        </div>
                     </div>
                     <div class='col-md-6 table-cell'>
+                        <div class= 'row'>
                             <div class='col-md-6 table-cell'>
                                 {{ form.percentage_share_of_by_product }}
                             </div>
                             <div class='col-md-6 table-cell'>
                                 {{ form.quantity_share_in_by_product }}
                             </div>
+                        </div>
                     </div>
                 </div>
             </td>
@@ -518,7 +522,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class='col-md-1 table-cell'>
+                    <div class='col-md-2 table-cell'>
                         <div class= 'row'>
                             <div class='col-md-6 table-cell'>
                                 {{ form.share_in_pumpset_field }}
@@ -548,7 +552,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class='col-md-2 table-cell'>
+                    <div class='col-md-1 table-cell'>
                         <div class= 'row'>
                             <div class='col-md-6 table-cell'>
                                 {{ form.share_in_machinery_field }}
@@ -584,5 +588,6 @@
 <script type="text/javascript">
     $('.formset_row_lnd_mrtg_in').formset();
     $('.formset_row_lnd_mrtg_out').formset();
+    $('.formset_row_lnd_lsd_in_shr_rent').formset();
 </script>
 {% endblock %}

@@ -157,11 +157,11 @@ def edit(request, pk):
 
         lnd_lsd_in_shr_rent_formset = modelformset_factory(LandLeasedInOnShareRent, form=LandLeasedInOnShareRentForm, extra=5)
         result_set_lnd_lsd_in_shr_rent = LandLeasedInOnShareRent.objects.filter(household_number=pk)
-        formset_lnd_lsd_in_shr_rent = lnd_lsd_in_shr_rent_formset(prefix='lm_out', queryset=result_set_lnd_lsd_in_shr_rent)
+        formset_lnd_lsd_in_shr_rent = lnd_lsd_in_shr_rent_formset(prefix='lnd_lsd_in_shr_rent', queryset=result_set_lnd_lsd_in_shr_rent)
 
         return render(request, 'page4.html', {'formset_lm_in': formset_lm_in,
                                               'formset_lm_out': formset_lm_out,
-                                              'formset_lnd_lsd_in_shr_rent': formset_lnd_lsd_in_shr_rent(prefix='lnd_lsd_in_shr_rent')})
+                                              'formset_lnd_lsd_in_shr_rent': formset_lnd_lsd_in_shr_rent})
 
 
     except Exception:

@@ -50,7 +50,7 @@ class LandMortgagedOut(models.Model):
 class LandLeasedInOnShareRent(models.Model):
     id = models.AutoField(primary_key=True)
     household_number = models.ForeignKey(Household, models.DO_NOTHING,db_column='Household number')
-    operational_plot_no = models.CharField(db_column='Operational plot no', blank=True, null=True)
+    operational_plot_no = models.CharField(db_column='Operational plot no', max_length=50, blank=True, null=True)
     land_type = models.CharField(db_column='Land type', max_length=50, blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
     name_of_lessor = models.CharField(db_column='Name of lessor', max_length=50, blank=True, null=True)
@@ -94,9 +94,9 @@ class LandLeasedInOnShareRent(models.Model):
 class LandLeasedOutOnShareRent(models.Model):
     id = models.AutoField(primary_key=True)
     household_number = models.ForeignKey(Household, models.DO_NOTHING,db_column='Household number')
-    ownership_plot_no = models.TextField(db_column='Ownership plot no', blank=True, null=True)
+    ownership_plot_no = models.CharField(db_column='Ownership plot no', max_length=50,blank=True, null=True)
     land_type = models.CharField(db_column='Land type', max_length=50, blank=True, null=True)
-    extent = models.TextField(db_column='Extent', blank=True, null=True)
+    extent = models.IntegerField(db_column='Extent', blank=True, null=True)
     name_of_sharecropper = models.CharField(db_column='Name of sharecropper', max_length=50, blank=True, null=True)
     caste_of_sharecropper = models.CharField(db_column='Caste of sharecropper', max_length=50, blank=True, null=True)
     occupation_of_sharecropper = models.CharField(db_column='Occupation of sharecropper', max_length=50, blank=True, null=True)

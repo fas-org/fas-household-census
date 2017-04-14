@@ -1,0 +1,437 @@
+BEGIN;
+--
+-- Create model AcquisitionMode
+--
+CREATE TABLE "acquisition_mode" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "acquisition" varchar(100) NULL);
+--
+-- Create model CalendarGranularity
+--
+CREATE TABLE "calendar_granularity" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "unit" varchar(10) NOT NULL);
+--
+-- Create model CommentsAndInformationOnInvestigators
+--
+CREATE TABLE "Comments and Information on Investigators" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments/observations" text NULL, "Name of investigator" varchar(50) NULL, "Date of interview" varchar(50) NULL, "Time taken" varchar(50) NULL, "Data entry by" varchar(100) NULL, "Date of entry" varchar(50) NULL);
+--
+-- Create model CroppingPatternAndCropSchedule
+--
+CREATE TABLE "cropping pattern and crop schedule" ("serial no" integer NOT NULL PRIMARY KEY, "Crop number first digit" real NULL, "Crop number second digit" real NULL, "Crop" varchar(50) NULL, "Crop clean" varchar(50) NULL, "Variety" varchar(50) NULL, "Crop/ Homestead land" varchar(50) NULL, "Extent" real NULL, "Month of sowing" varchar(50) NULL, "Month of harvesting" varchar(50) NULL, "Source of irrigation" varchar(50) NULL, "Unit, production" varchar(50) NULL, "Unit, consumption" varchar(50) NULL, "Loans/advances taken from buyer" varchar(50) NULL, "Principal" real NULL, "Interest on loans/advances" varchar(50) NULL, "Output price, if fixed in advance" real NULL, "Other conditions" varchar(50) NULL, "Production, main product" real NULL, "Production, by product" varchar(50) NULL, "Consumption, main product" real NULL, "Consumption, by product" varchar(50) NULL, "Comments" varchar(50) NULL);
+--
+-- Create model CroppingPatternAndCropScheduleComments
+--
+CREATE TABLE "cropping pattern and crop schedule comments" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments/notes" text NULL);
+--
+-- Create model CultivationAdviser
+--
+CREATE TABLE "Cultivation adviser" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "adviser" varchar(50) NULL);
+--
+-- Create model CurrentOwnershipHolding
+--
+CREATE TABLE "Current ownership holding" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" real NULL, "Extent of owned land" real NULL, "Value" real NULL, "Comments" varchar(50) NULL, "acquisition_mode" integer NULL REFERENCES "acquisition_mode" ("id"));
+--
+-- Create model Extension
+--
+CREATE TABLE "Extension" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Type of advice received-description" varchar(250) NULL, "From whom advice received" integer NULL REFERENCES "Cultivation adviser" ("id"));
+--
+-- Create model HomesteadArea
+--
+CREATE TABLE "Homestead Area" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Area" real NULL);
+--
+-- Create model HomesteadComponents
+--
+CREATE TABLE "Homestead Components" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "components" varchar(250) NULL);
+--
+-- Create model Household
+--
+CREATE TABLE "household" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "household number" varchar(45) NOT NULL);
+--
+-- Create model HouseholdIntroduction
+--
+CREATE TABLE "Introduction" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Sample number" varchar(50) NULL, "Reason if OS not canvassed or if RS canvassed" varchar(50) NULL, "Name of head of household" varchar(50) NOT NULL, "Age" integer NULL, "Address" varchar(50) NULL, "Village of birth" varchar(50) NULL, "Tehsil of birth" varchar(50) NULL, "District of birth" varchar(50) NULL, "Year of migration" integer NULL, "Caste/tribe" varchar(50) NULL, "If SC/ST?" varchar(50) NULL, "Religion" varchar(50) NULL, "Father's name" varchar(50) NULL, "Father's occupation" varchar(50) NULL, "Telephone number" integer NULL, "Comments" varchar(100) NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model HouseholdMembers
+--
+CREATE TABLE "household_members" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(45) NOT NULL, "age" integer NOT NULL, "relationship" varchar(45) NOT NULL, "marital_status" varchar(100) NOT NULL, "occupation" varchar(255) NULL, "place_of_work" varchar(45) NULL, "education_level" varchar(45) NULL, "name_location_of_institution" varchar(255) NULL, "age_unit" integer NOT NULL REFERENCES "calendar_granularity" ("id"), "household_id" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model InstitutionalSupport
+--
+CREATE TABLE "Institutional support" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Name of Institution" varchar(100) NULL, "Year of support" varchar(50) NULL, "Nature of support/purpose" varchar(100) NULL, "Comments" varchar(250) NULL);
+--
+-- Create model InstitutionalSupportCategory
+--
+CREATE TABLE "Institutional support category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Category name" varchar(100) NULL);
+--
+-- Create model InstitutionalSupportComments
+--
+CREATE TABLE "Institutional support comments" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments" varchar(250) NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model InvestigationNeeded
+--
+CREATE TABLE "investigation needed" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Instivigation Needed" varchar(10) NULL);
+--
+-- Create model IrrigationFlow
+--
+CREATE TABLE "irrigation_flow" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "type" varchar(100) NULL);
+--
+-- Create model IrrigationOwnership
+--
+CREATE TABLE "irrigation_ownership" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "owner" varchar(200) NULL);
+--
+-- Create model IrrigationSource
+--
+CREATE TABLE "irrigation_source" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "source" varchar(100) NULL);
+--
+-- Create model LandLeasedInOnFixedRent
+--
+CREATE TABLE "Land leased in on fixed rent" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Plot no" integer NULL, "Land type" varchar(50) NULL, "Extent" integer NULL, "Name of lessor" varchar(50) NULL, "Caste of lessor" varchar(50) NULL, "Occupation of lessor" varchar(50) NULL, "Registered/unregistered" varchar(50) NULL, "Type of contract" varchar(50) NULL, "Since when leased in" varchar(50) NULL, "Annual rent in cash" varchar(50) NULL, "Annual rent in kind" varchar(50) NULL, "Interest free borrowing" varchar(50) NULL, "Loan with interest" varchar(50) NULL, "Further interest payment on rent" varchar(50) NULL, "Qty of hay taken by owner" varchar(50) NULL, "Value of manure provided by owner" varchar(50) NULL, "Value of fertiliser provided by owner" varchar(50) NULL, "Value of seed provided by owner" varchar(50) NULL, "Value of pesticide provided by owner" varchar(50) NULL, "Value of electricity provided by owner" varchar(50) NULL, "If pumpset provided by owner" varchar(50) NULL, "If irrigation provided by owner" varchar(50) NULL, "If machinery provided by owner" varchar(50) NULL, "Comments" varchar(50) NULL, "Household number" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandLeasedInOnShareRent
+--
+CREATE TABLE "Land leased in on share rent" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Operational plot no" varchar(50) NULL, "Land type" varchar(50) NULL, "Extent" integer NULL, "Name of lessor" varchar(50) NULL, "Caste of lessor" varchar(50) NULL, "Occupation of lessor" varchar(50) NULL, "Registered/unregistered" varchar(50) NULL, "Seasonal/yearly/other" varchar(50) NULL, "Year of lease" varchar(50) NULL, "Percentage share of crop" varchar(50) NULL, "Quantity share of crop" varchar(50) NULL, "Percentage share of by-product" varchar(50) NULL, "Quantity share in by-product" varchar(50) NULL, "Share in FYM percentage" varchar(50) NULL, "Share in FYM (quantity)" varchar(50) NULL, "Share in fertiliser percentage" varchar(50) NULL, "Share in fertiliser (quantity)" varchar(50) NULL, "Share in seed percentage" varchar(50) NULL, "Share in seed (quantity)" varchar(50) NULL, "Share in pesticide percentage" varchar(50) NULL, "Share in pesticide (quantity)" varchar(50) NULL, "Share in electricity percentage" varchar(50) NULL, "Share in electricity (quantity)" varchar(50) NULL, "Share in pumpset percentage" varchar(50) NULL, "Share in pumpset (Rs)" varchar(50) NULL, "Share in labour percentage" varchar(50) NULL, "Share in labour (quantity)" varchar(50) NULL, "Share in irrigation percentage" varchar(50) NULL, "Share in irrigation (Rs)" varchar(50) NULL, "Share in machinery percentage" varchar(50) NULL, "Share in machinery (quantity)" varchar(50) NULL, "Interest free loan by owner" varchar(50) NULL, "Amount of other loan" varchar(50) NULL, "Interest of other loan" varchar(50) NULL, "Comment" varchar(50) NULL, "Household number" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandLeasedOutOnFixedRent
+--
+CREATE TABLE "Land leased out on fixed rent" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" integer NULL, "Land type" varchar(50) NULL, "Extent" integer NULL, "Name of lessee" varchar(50) NULL, "Caste of lessee" varchar(50) NULL, "Occupation of lessee" varchar(50) NULL, "Registered/unregistered" varchar(50) NULL, "Type of contract" varchar(50) NULL, "Since when leased out" varchar(50) NULL, "Annual rent in cash" varchar(50) NULL, "Annual rent in kind" varchar(50) NULL, "Interest free loan given" varchar(50) NULL, "Loan with interest given" varchar(50) NULL, "Further interest on rent" varchar(50) NULL, "Qty of hay taken" varchar(50) NULL, "Value of manure provided by you" varchar(50) NULL, "Value of fertiliser provided by you" varchar(50) NULL, "Value of seed provided by you" varchar(50) NULL, "Value of pesticide provided by you" varchar(50) NULL, "Value of electricity paid for by you" varchar(50) NULL, "If you provided the pumpset" varchar(50) NULL, "If irrigation provided by owner" varchar(50) NULL, "If machinery provided by owner" varchar(50) NULL, "Comments" varchar(50) NULL, "Household number" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandLeasedOutOnShareRent
+--
+CREATE TABLE "Land leased out on share rent" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" varchar(50) NULL, "Land type" varchar(50) NULL, "Extent" integer NULL, "Name of sharecropper" varchar(50) NULL, "Caste of sharecropper" varchar(50) NULL, "Occupation of sharecropper" varchar(50) NULL, "Registered/unregistered" varchar(50) NULL, "Seasonal, annual, other" varchar(50) NULL, "Year of lease" varchar(50) NULL, "Percentage share of crop" varchar(50) NULL, "Quantity share of crop" varchar(255) NULL, "Percentage share of by-product" varchar(50) NULL, "Quantity share of by-product" varchar(50) NULL, "Share in FYM percentage" varchar(50) NULL, "Share in FYM (Rs)" varchar(50) NULL, "Share in fertiliser percentage" varchar(50) NULL, "Share in fertiliser (Rs)" varchar(50) NULL, "Share in seed percentage" varchar(50) NULL, "Share in seed (Rs)" varchar(50) NULL, "Share in pesticide percentage" varchar(50) NULL, "Share in pesticide (Rs)" varchar(50) NULL, "Share in electricity percentage" varchar(50) NULL, "Share in electricity (Rs)" varchar(50) NULL, "Share in pumpset percentage" varchar(50) NULL, "Share in pumpset (Rs)" varchar(50) NULL, "Share in labour percentage" varchar(50) NULL, "Share in labour (quantity)" varchar(50) NULL, "Interest free loan by owner" varchar(50) NULL, "Amount of other loan" varchar(50) NULL, "Interest of other loan" varchar(50) NULL, "Share in irrigation percentage" varchar(50) NULL, "Share in irrigation (Rs)" varchar(50) NULL, "Share in machinery percentage" varchar(50) NULL, "Share in machinery (quantity)" varchar(50) NULL, "Comment" varchar(255) NULL, "Household number" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandMortgagedIn
+--
+CREATE TABLE "Land mortgaged in" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Land type" varchar(50) NULL, "Extent" integer NULL, "Name of mortgagor" varchar(50) NULL, "Caste of mortgagor" varchar(50) NULL, "Occupation of mortgagor" varchar(50) NULL, "Year of mortgage" varchar(50) NULL, "Mortgage period" varchar(50) NULL, "Mortgage money" varchar(50) NULL, "Interest/usufruct" varchar(50) NULL, "Comments" varchar(50) NULL, "Household number" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandMortgagedOut
+--
+CREATE TABLE "Land mortgaged out" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Land type" varchar(50) NULL, "Extent" integer NULL, "Name of mortgagee" varchar(50) NULL, "Caste of mortgagee" varchar(50) NULL, "Occupation of mortgagee" varchar(50) NULL, "Year of mortgage" varchar(50) NULL, "Mortgage period" varchar(50) NULL, "Mortgage money" varchar(50) NULL, "Interest/usufruct" varchar(50) NULL, "Comments" varchar(50) NULL, "Household number" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandPurchased
+--
+CREATE TABLE "Land bought" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year of purchase" integer NULL, "Extent of land bought" real NULL, "Name of seller" varchar(50) NULL, "Caste of seller" varchar(50) NULL, "Occupation of seller" varchar(50) NULL, "Place of residence of seller" varchar(50) NULL, "Price of land" integer NULL, "Purchase transaction number" real NULL, "comments" varchar(50) NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandPurchasedComments
+--
+CREATE TABLE "Land Purchased Comments" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments" varchar(250) NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandSold
+--
+CREATE TABLE "Land sold" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year of sale" integer NULL, "Extent of land sold" real NULL, "Name of buyer" varchar(50) NULL, "Caste of buyer" varchar(50) NULL, "Occupation of buyer" varchar(50) NULL, "Place of residence of buyer" varchar(50) NULL, "Price of land" integer NULL, "Sale transaction number" real NULL, "Reasons for sale" varchar(250) NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model LandType
+--
+CREATE TABLE "land type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "type" varchar(50) NULL);
+--
+-- Create model LiteracyStatus
+--
+CREATE TABLE "literacy_status" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "status" varchar(100) NOT NULL);
+--
+-- Create model MarketingAgencies
+--
+CREATE TABLE "Marketing Agencies" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Marketing Agency" varchar(50) NULL);
+--
+-- Create model NatureExchange
+--
+CREATE TABLE "Nature of Exchange" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "exchange" varchar(200) NULL);
+--
+-- Create model OtherCosts
+--
+CREATE TABLE "other_costs_of_agriculture" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "item" varchar(50) NOT NULL, "amount_spent" integer NULL, "month_of_payment" varchar(50) NULL, "comments" varchar(200) NULL, "record_type" smallint unsigned NOT NULL, "household_id" integer NOT NULL REFERENCES "household" ("id"));
+--
+-- Create model OtherCostsItems
+--
+CREATE TABLE "other_costs_items" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "item" varchar(50) NOT NULL);
+--
+-- Create model OwnershipType
+--
+CREATE TABLE "Ownership Type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "type" varchar(100) NULL);
+--
+-- Create model OwnershipWellsTubewells
+--
+CREATE TABLE "Ownership Wells" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year when installed" integer NULL, "Present Depth" integer NULL, "Original Depth" integer NULL, "Cost of installation" integer NULL, "Source of finance" integer NULL, "Maintenance expenses last year" integer NULL, "Irrigation Crop" varchar(50) NULL, "Irrigation Sale Area" integer NULL, "Irrigation Revenue" integer NULL, "Irrigation Land Extent" integer NULL, "Comments" varchar(250) NULL, "Nature Exchange" integer NULL REFERENCES "Nature of Exchange" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Type of Ownership" integer NULL REFERENCES "Ownership Type" ("id"));
+--
+-- Create model PowerSource
+--
+CREATE TABLE "Power Source" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "source" varchar(100) NULL);
+--
+-- Create model ProductionAndSales
+--
+CREATE TABLE "production and sales" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "sales of main product transportation mode" varchar(50) NULL, "sales of main product transportation cost" varchar(50) NULL, "sales of main product other marketing costs" varchar(50) NULL, "sales of by product amt" varchar(50) NULL, "sales of by product price" varchar(50) NULL, "quantity of main product used for payment" varchar(50) NULL, "quantity of by product used for payment" varchar(50) NULL, "Crop number first digit" real NULL, "Crop number second digit" real NULL, "Sale number" real NULL, "Commodity sold" varchar(50) NULL, "Month of disposal" varchar(50) NULL, "Quantity" real NULL, "Unit of quantity" varchar(50) NULL, "Price" real NULL, "Unit of price" varchar(50) NULL, "Where marketed" varchar(50) NULL, "marketing agency value" varchar(50) NULL, "If price determined in advance" varchar(50) NULL, "Comments" varchar(50) NULL, "crop serial no" integer NULL REFERENCES "cropping pattern and crop schedule" ("serial no"), "household" integer NOT NULL REFERENCES "household" ("id"), "Marketing agency" integer NULL REFERENCES "Marketing Agencies" ("id"));
+--
+-- Create model ProductionMeans
+--
+CREATE TABLE "Means of Production" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "type" varchar(100) NULL);
+--
+-- Create model Sex
+--
+CREATE TABLE "sex" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "sex" varchar(10) NOT NULL UNIQUE);
+--
+-- Create model SpecifiedProductionMeans
+--
+CREATE TABLE "Specified Means of Production" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership Number" integer NULL, "Year of Purchase" integer NULL, "Year when installed" integer NULL, "Subsidy received" integer NULL, "Present Value" integer NULL, "Maintenance charges" integer NULL, "Rental earnings" integer NULL, "Rental earning units" varchar(50) NULL, "Comments" varchar(250) NULL, "household" integer NOT NULL REFERENCES "household" ("id"), "Irrigation item code" integer NULL REFERENCES "irrigation_flow" ("id"), "Production item code" integer NULL REFERENCES "Means of Production" ("id"));
+--
+-- Create model Tenurial
+--
+CREATE TABLE "tenurial" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "tenurial status" varchar(50) NULL);
+--
+-- Create model Village
+--
+CREATE TABLE "village" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "village" varchar(100) NOT NULL UNIQUE);
+--
+-- Create model WellType
+--
+CREATE TABLE "Well Type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "type" varchar(100) NULL);
+--
+-- Add field power_source to ownershipwellstubewells
+--
+ALTER TABLE "Ownership Wells" RENAME TO "Ownership Wells__old";
+CREATE TABLE "Ownership Wells" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year when installed" integer NULL, "Present Depth" integer NULL, "Original Depth" integer NULL, "Cost of installation" integer NULL, "Source of finance" integer NULL, "Maintenance expenses last year" integer NULL, "Irrigation Crop" varchar(50) NULL, "Irrigation Sale Area" integer NULL, "Irrigation Revenue" integer NULL, "Irrigation Land Extent" integer NULL, "Comments" varchar(250) NULL, "Nature Exchange" integer NULL REFERENCES "Nature of Exchange" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Type of Ownership" integer NULL REFERENCES "Ownership Type" ("id"), "Source of Power" integer NULL REFERENCES "Power Source" ("id"));
+INSERT INTO "Ownership Wells" ("id", "Year when installed", "Present Depth", "Original Depth", "Cost of installation", "Source of finance", "Maintenance expenses last year", "Irrigation Crop", "Irrigation Sale Area", "Irrigation Revenue", "Irrigation Land Extent", "Comments", "Nature Exchange", "household", "Type of Ownership", "Source of Power") SELECT "id", "Year when installed", "Present Depth", "Original Depth", "Cost of installation", "Source of finance", "Maintenance expenses last year", "Irrigation Crop", "Irrigation Sale Area", "Irrigation Revenue", "Irrigation Land Extent", "Comments", "Nature Exchange", "household", "Type of Ownership", NULL FROM "Ownership Wells__old";
+DROP TABLE "Ownership Wells__old";
+CREATE INDEX "Current ownership holding_acquisition_mode_67438144" ON "Current ownership holding" ("acquisition_mode");
+CREATE INDEX "Extension_From whom advice received_e3ec622d" ON "Extension" ("From whom advice received");
+CREATE INDEX "Introduction_household_c4b2642c" ON "Introduction" ("household");
+CREATE INDEX "household_members_age_unit_6d52e11c" ON "household_members" ("age_unit");
+CREATE INDEX "household_members_household_id_f5796854" ON "household_members" ("household_id");
+CREATE INDEX "Institutional support comments_household_53e4b0bc" ON "Institutional support comments" ("household");
+CREATE INDEX "Land leased in on fixed rent_Household number_21c2a32b" ON "Land leased in on fixed rent" ("Household number");
+CREATE INDEX "Land leased in on share rent_Household number_feaf6659" ON "Land leased in on share rent" ("Household number");
+CREATE INDEX "Land leased out on fixed rent_Household number_924bf896" ON "Land leased out on fixed rent" ("Household number");
+CREATE INDEX "Land leased out on share rent_Household number_744e7adc" ON "Land leased out on share rent" ("Household number");
+CREATE INDEX "Land mortgaged in_Household number_df3df42d" ON "Land mortgaged in" ("Household number");
+CREATE INDEX "Land mortgaged out_Household number_c0a081bd" ON "Land mortgaged out" ("Household number");
+CREATE INDEX "Land bought_household_cf9ef161" ON "Land bought" ("household");
+CREATE INDEX "Land Purchased Comments_household_3e9ce537" ON "Land Purchased Comments" ("household");
+CREATE INDEX "Land sold_household_d8d507c7" ON "Land sold" ("household");
+CREATE INDEX "other_costs_of_agriculture_household_id_a72926bb" ON "other_costs_of_agriculture" ("household_id");
+CREATE INDEX "production and sales_crop serial no_2837426d" ON "production and sales" ("crop serial no");
+CREATE INDEX "production and sales_household_0f4c12b6" ON "production and sales" ("household");
+CREATE INDEX "production and sales_Marketing agency_8890b427" ON "production and sales" ("Marketing agency");
+CREATE INDEX "Specified Means of Production_household_ee173f1b" ON "Specified Means of Production" ("household");
+CREATE INDEX "Specified Means of Production_Irrigation item code_1dc7ea6b" ON "Specified Means of Production" ("Irrigation item code");
+CREATE INDEX "Specified Means of Production_Production item code_53a45929" ON "Specified Means of Production" ("Production item code");
+CREATE INDEX "Ownership Wells_Nature Exchange_7f9640f3" ON "Ownership Wells" ("Nature Exchange");
+CREATE INDEX "Ownership Wells_household_e76b3866" ON "Ownership Wells" ("household");
+CREATE INDEX "Ownership Wells_Type of Ownership_f7353453" ON "Ownership Wells" ("Type of Ownership");
+CREATE INDEX "Ownership Wells_Source of Power_f2944fd7" ON "Ownership Wells" ("Source of Power");
+--
+-- Add field type to ownershipwellstubewells
+--
+ALTER TABLE "Ownership Wells" RENAME TO "Ownership Wells__old";
+CREATE TABLE "Ownership Wells" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year when installed" integer NULL, "Present Depth" integer NULL, "Original Depth" integer NULL, "Cost of installation" integer NULL, "Source of finance" integer NULL, "Maintenance expenses last year" integer NULL, "Irrigation Crop" varchar(50) NULL, "Irrigation Sale Area" integer NULL, "Irrigation Revenue" integer NULL, "Irrigation Land Extent" integer NULL, "Comments" varchar(250) NULL, "Nature Exchange" integer NULL REFERENCES "Nature of Exchange" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Type of Ownership" integer NULL REFERENCES "Ownership Type" ("id"), "Source of Power" integer NULL REFERENCES "Power Source" ("id"), "Type" integer NULL REFERENCES "Well Type" ("id"));
+INSERT INTO "Ownership Wells" ("id", "Year when installed", "Present Depth", "Original Depth", "Cost of installation", "Source of finance", "Maintenance expenses last year", "Irrigation Crop", "Irrigation Sale Area", "Irrigation Revenue", "Irrigation Land Extent", "Comments", "Nature Exchange", "household", "Type of Ownership", "Source of Power", "Type") SELECT "id", "Year when installed", "Present Depth", "Original Depth", "Cost of installation", "Source of finance", "Maintenance expenses last year", "Irrigation Crop", "Irrigation Sale Area", "Irrigation Revenue", "Irrigation Land Extent", "Comments", "Nature Exchange", "household", "Type of Ownership", "Source of Power", NULL FROM "Ownership Wells__old";
+DROP TABLE "Ownership Wells__old";
+CREATE INDEX "Ownership Wells_Nature Exchange_7f9640f3" ON "Ownership Wells" ("Nature Exchange");
+CREATE INDEX "Ownership Wells_household_e76b3866" ON "Ownership Wells" ("household");
+CREATE INDEX "Ownership Wells_Type of Ownership_f7353453" ON "Ownership Wells" ("Type of Ownership");
+CREATE INDEX "Ownership Wells_Source of Power_f2944fd7" ON "Ownership Wells" ("Source of Power");
+CREATE INDEX "Ownership Wells_Type_3fda8847" ON "Ownership Wells" ("Type");
+--
+-- Add field type_of_land_sold to landsold
+--
+ALTER TABLE "Land sold" RENAME TO "Land sold__old";
+CREATE TABLE "Land sold" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year of sale" integer NULL, "Extent of land sold" real NULL, "Name of buyer" varchar(50) NULL, "Caste of buyer" varchar(50) NULL, "Occupation of buyer" varchar(50) NULL, "Place of residence of buyer" varchar(50) NULL, "Price of land" integer NULL, "Sale transaction number" real NULL, "Reasons for sale" varchar(250) NULL, "household" integer NOT NULL REFERENCES "household" ("id"), "Type of land" integer NULL REFERENCES "land type" ("id"));
+INSERT INTO "Land sold" ("id", "Year of sale", "Extent of land sold", "Name of buyer", "Caste of buyer", "Occupation of buyer", "Place of residence of buyer", "Price of land", "Sale transaction number", "Reasons for sale", "household", "Type of land") SELECT "id", "Year of sale", "Extent of land sold", "Name of buyer", "Caste of buyer", "Occupation of buyer", "Place of residence of buyer", "Price of land", "Sale transaction number", "Reasons for sale", "household", NULL FROM "Land sold__old";
+DROP TABLE "Land sold__old";
+CREATE INDEX "Land sold_household_d8d507c7" ON "Land sold" ("household");
+CREATE INDEX "Land sold_Type of land_9d6b28fd" ON "Land sold" ("Type of land");
+--
+-- Add field landpurchased_comments to landpurchased
+--
+ALTER TABLE "Land bought" RENAME TO "Land bought__old";
+CREATE TABLE "Land bought" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year of purchase" integer NULL, "Extent of land bought" real NULL, "Name of seller" varchar(50) NULL, "Caste of seller" varchar(50) NULL, "Occupation of seller" varchar(50) NULL, "Place of residence of seller" varchar(50) NULL, "Price of land" integer NULL, "Purchase transaction number" real NULL, "comments" varchar(50) NULL, "household" integer NOT NULL REFERENCES "household" ("id"), "land purchased comments" integer NULL REFERENCES "Land Purchased Comments" ("id"));
+INSERT INTO "Land bought" ("id", "Year of purchase", "Extent of land bought", "Name of seller", "Caste of seller", "Occupation of seller", "Place of residence of seller", "Price of land", "Purchase transaction number", "comments", "household", "land purchased comments") SELECT "id", "Year of purchase", "Extent of land bought", "Name of seller", "Caste of seller", "Occupation of seller", "Place of residence of seller", "Price of land", "Purchase transaction number", "comments", "household", NULL FROM "Land bought__old";
+DROP TABLE "Land bought__old";
+CREATE INDEX "Land bought_household_cf9ef161" ON "Land bought" ("household");
+CREATE INDEX "Land bought_land purchased comments_73c8ae87" ON "Land bought" ("land purchased comments");
+--
+-- Add field type_of_land_purchased to landpurchased
+--
+ALTER TABLE "Land bought" RENAME TO "Land bought__old";
+CREATE TABLE "Land bought" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Year of purchase" integer NULL, "Extent of land bought" real NULL, "Name of seller" varchar(50) NULL, "Caste of seller" varchar(50) NULL, "Occupation of seller" varchar(50) NULL, "Place of residence of seller" varchar(50) NULL, "Price of land" integer NULL, "Purchase transaction number" real NULL, "comments" varchar(50) NULL, "household" integer NOT NULL REFERENCES "household" ("id"), "land purchased comments" integer NULL REFERENCES "Land Purchased Comments" ("id"), "Type of land" integer NULL REFERENCES "land type" ("id"));
+INSERT INTO "Land bought" ("id", "Year of purchase", "Extent of land bought", "Name of seller", "Caste of seller", "Occupation of seller", "Place of residence of seller", "Price of land", "Purchase transaction number", "comments", "household", "land purchased comments", "Type of land") SELECT "id", "Year of purchase", "Extent of land bought", "Name of seller", "Caste of seller", "Occupation of seller", "Place of residence of seller", "Price of land", "Purchase transaction number", "comments", "household", "land purchased comments", NULL FROM "Land bought__old";
+DROP TABLE "Land bought__old";
+CREATE INDEX "Land bought_household_cf9ef161" ON "Land bought" ("household");
+CREATE INDEX "Land bought_land purchased comments_73c8ae87" ON "Land bought" ("land purchased comments");
+CREATE INDEX "Land bought_Type of land_c01b6b4e" ON "Land bought" ("Type of land");
+--
+-- Add field category to institutionalsupport
+--
+ALTER TABLE "Institutional support" RENAME TO "Institutional support__old";
+CREATE TABLE "Institutional support" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Name of Institution" varchar(100) NULL, "Year of support" varchar(50) NULL, "Nature of support/purpose" varchar(100) NULL, "Comments" varchar(250) NULL, "Category" integer NOT NULL REFERENCES "Institutional support category" ("id"));
+INSERT INTO "Institutional support" ("id", "Name of Institution", "Year of support", "Nature of support/purpose", "Comments", "Category") SELECT "id", "Name of Institution", "Year of support", "Nature of support/purpose", "Comments", NULL FROM "Institutional support__old";
+DROP TABLE "Institutional support__old";
+CREATE INDEX "Institutional support_Category_6d3918a7" ON "Institutional support" ("Category");
+--
+-- Add field household to institutionalsupport
+--
+ALTER TABLE "Institutional support" RENAME TO "Institutional support__old";
+CREATE TABLE "Institutional support" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Name of Institution" varchar(100) NULL, "Year of support" varchar(50) NULL, "Nature of support/purpose" varchar(100) NULL, "Comments" varchar(250) NULL, "Category" integer NOT NULL REFERENCES "Institutional support category" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "Institutional support" ("id", "Name of Institution", "Year of support", "Nature of support/purpose", "Comments", "Category", "household") SELECT "id", "Name of Institution", "Year of support", "Nature of support/purpose", "Comments", "Category", NULL FROM "Institutional support__old";
+DROP TABLE "Institutional support__old";
+CREATE INDEX "Institutional support_Category_6d3918a7" ON "Institutional support" ("Category");
+CREATE INDEX "Institutional support_household_1bcd6dcf" ON "Institutional support" ("household");
+--
+-- Add field literacy_status to householdmembers
+--
+ALTER TABLE "household_members" RENAME TO "household_members__old";
+CREATE TABLE "household_members" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(45) NOT NULL, "age" integer NOT NULL, "relationship" varchar(45) NOT NULL, "marital_status" varchar(100) NOT NULL, "occupation" varchar(255) NULL, "place_of_work" varchar(45) NULL, "education_level" varchar(45) NULL, "name_location_of_institution" varchar(255) NULL, "age_unit" integer NOT NULL REFERENCES "calendar_granularity" ("id"), "household_id" integer NOT NULL REFERENCES "household" ("id"), "literacy_status" integer NOT NULL REFERENCES "literacy_status" ("id"));
+INSERT INTO "household_members" ("id", "name", "age", "relationship", "marital_status", "occupation", "place_of_work", "education_level", "name_location_of_institution", "age_unit", "household_id", "literacy_status") SELECT "id", "name", "age", "relationship", "marital_status", "occupation", "place_of_work", "education_level", "name_location_of_institution", "age_unit", "household_id", NULL FROM "household_members__old";
+DROP TABLE "household_members__old";
+CREATE INDEX "household_members_age_unit_6d52e11c" ON "household_members" ("age_unit");
+CREATE INDEX "household_members_household_id_f5796854" ON "household_members" ("household_id");
+CREATE INDEX "household_members_literacy_status_fe1f0594" ON "household_members" ("literacy_status");
+--
+-- Add field sex to householdmembers
+--
+ALTER TABLE "household_members" RENAME TO "household_members__old";
+CREATE TABLE "household_members" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(45) NOT NULL, "age" integer NOT NULL, "relationship" varchar(45) NOT NULL, "marital_status" varchar(100) NOT NULL, "occupation" varchar(255) NULL, "place_of_work" varchar(45) NULL, "education_level" varchar(45) NULL, "name_location_of_institution" varchar(255) NULL, "age_unit" integer NOT NULL REFERENCES "calendar_granularity" ("id"), "household_id" integer NOT NULL REFERENCES "household" ("id"), "literacy_status" integer NOT NULL REFERENCES "literacy_status" ("id"), "sex" integer NOT NULL REFERENCES "sex" ("id"));
+INSERT INTO "household_members" ("id", "name", "age", "relationship", "marital_status", "occupation", "place_of_work", "education_level", "name_location_of_institution", "age_unit", "household_id", "literacy_status", "sex") SELECT "id", "name", "age", "relationship", "marital_status", "occupation", "place_of_work", "education_level", "name_location_of_institution", "age_unit", "household_id", "literacy_status", NULL FROM "household_members__old";
+DROP TABLE "household_members__old";
+CREATE INDEX "household_members_age_unit_6d52e11c" ON "household_members" ("age_unit");
+CREATE INDEX "household_members_household_id_f5796854" ON "household_members" ("household_id");
+CREATE INDEX "household_members_literacy_status_fe1f0594" ON "household_members" ("literacy_status");
+CREATE INDEX "household_members_sex_823e3390" ON "household_members" ("sex");
+--
+-- Add field sex to householdintroduction
+--
+ALTER TABLE "Introduction" RENAME TO "Introduction__old";
+CREATE TABLE "Introduction" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Sample number" varchar(50) NULL, "Reason if OS not canvassed or if RS canvassed" varchar(50) NULL, "Name of head of household" varchar(50) NOT NULL, "Age" integer NULL, "Address" varchar(50) NULL, "Village of birth" varchar(50) NULL, "Tehsil of birth" varchar(50) NULL, "District of birth" varchar(50) NULL, "Year of migration" integer NULL, "Caste/tribe" varchar(50) NULL, "If SC/ST?" varchar(50) NULL, "Religion" varchar(50) NULL, "Father's name" varchar(50) NULL, "Father's occupation" varchar(50) NULL, "Telephone number" integer NULL, "Comments" varchar(100) NULL, "household" integer NOT NULL REFERENCES "household" ("id"), "Sex" integer NOT NULL REFERENCES "sex" ("id"));
+INSERT INTO "Introduction" ("id", "Sample number", "Reason if OS not canvassed or if RS canvassed", "Name of head of household", "Age", "Address", "Village of birth", "Tehsil of birth", "District of birth", "Year of migration", "Caste/tribe", "If SC/ST?", "Religion", "Father's name", "Father's occupation", "Telephone number", "Comments", "household", "Sex") SELECT "id", "Sample number", "Reason if OS not canvassed or if RS canvassed", "Name of head of household", "Age", "Address", "Village of birth", "Tehsil of birth", "District of birth", "Year of migration", "Caste/tribe", "If SC/ST?", "Religion", "Father's name", "Father's occupation", "Telephone number", "Comments", "household", NULL FROM "Introduction__old";
+DROP TABLE "Introduction__old";
+CREATE INDEX "Introduction_household_c4b2642c" ON "Introduction" ("household");
+CREATE INDEX "Introduction_Sex_c8e24bf6" ON "Introduction" ("Sex");
+--
+-- Add field village to household
+--
+ALTER TABLE "household" RENAME TO "household__old";
+CREATE TABLE "household" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "household number" varchar(45) NOT NULL, "village" integer NOT NULL REFERENCES "village" ("id"));
+INSERT INTO "household" ("id", "household number", "village") SELECT "id", "household number", NULL FROM "household__old";
+DROP TABLE "household__old";
+CREATE INDEX "household_village_709a0d8c" ON "household" ("village");
+--
+-- Add field components to homesteadarea
+--
+ALTER TABLE "Homestead Area" RENAME TO "Homestead Area__old";
+CREATE TABLE "Homestead Area" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Area" real NULL, "Components" integer NULL REFERENCES "Homestead Components" ("id"));
+INSERT INTO "Homestead Area" ("id", "Area", "Components") SELECT "id", "Area", NULL FROM "Homestead Area__old";
+DROP TABLE "Homestead Area__old";
+CREATE INDEX "Homestead Area_Components_7b0d249d" ON "Homestead Area" ("Components");
+--
+-- Add field household to homesteadarea
+--
+ALTER TABLE "Homestead Area" RENAME TO "Homestead Area__old";
+CREATE TABLE "Homestead Area" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Area" real NULL, "Components" integer NULL REFERENCES "Homestead Components" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "Homestead Area" ("id", "Area", "Components", "household") SELECT "id", "Area", "Components", NULL FROM "Homestead Area__old";
+DROP TABLE "Homestead Area__old";
+CREATE INDEX "Homestead Area_Components_7b0d249d" ON "Homestead Area" ("Components");
+CREATE INDEX "Homestead Area_household_61d39639" ON "Homestead Area" ("household");
+--
+-- Add field household to extension
+--
+ALTER TABLE "Extension" RENAME TO "Extension__old";
+CREATE TABLE "Extension" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Type of advice received-description" varchar(250) NULL, "From whom advice received" integer NULL REFERENCES "Cultivation adviser" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "Extension" ("id", "Type of advice received-description", "From whom advice received", "household") SELECT "id", "Type of advice received-description", "From whom advice received", NULL FROM "Extension__old";
+DROP TABLE "Extension__old";
+CREATE INDEX "Extension_From whom advice received_e3ec622d" ON "Extension" ("From whom advice received");
+CREATE INDEX "Extension_household_b7e35118" ON "Extension" ("household");
+--
+-- Add field household to currentownershipholding
+--
+ALTER TABLE "Current ownership holding" RENAME TO "Current ownership holding__old";
+CREATE TABLE "Current ownership holding" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" real NULL, "Extent of owned land" real NULL, "Value" real NULL, "Comments" varchar(50) NULL, "acquisition_mode" integer NULL REFERENCES "acquisition_mode" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "Current ownership holding" ("id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household") SELECT "id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", NULL FROM "Current ownership holding__old";
+DROP TABLE "Current ownership holding__old";
+CREATE INDEX "Current ownership holding_acquisition_mode_67438144" ON "Current ownership holding" ("acquisition_mode");
+CREATE INDEX "Current ownership holding_household_84388dcc" ON "Current ownership holding" ("household");
+--
+-- Add field irrigation_flow to currentownershipholding
+--
+ALTER TABLE "Current ownership holding" RENAME TO "Current ownership holding__old";
+CREATE TABLE "Current ownership holding" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" real NULL, "Extent of owned land" real NULL, "Value" real NULL, "Comments" varchar(50) NULL, "acquisition_mode" integer NULL REFERENCES "acquisition_mode" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Irrigation lift" integer NULL REFERENCES "irrigation_flow" ("id"));
+INSERT INTO "Current ownership holding" ("id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift") SELECT "id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", NULL FROM "Current ownership holding__old";
+DROP TABLE "Current ownership holding__old";
+CREATE INDEX "Current ownership holding_acquisition_mode_67438144" ON "Current ownership holding" ("acquisition_mode");
+CREATE INDEX "Current ownership holding_household_84388dcc" ON "Current ownership holding" ("household");
+CREATE INDEX "Current ownership holding_Irrigation lift_45fa5e80" ON "Current ownership holding" ("Irrigation lift");
+--
+-- Add field irrigation_ownership to currentownershipholding
+--
+ALTER TABLE "Current ownership holding" RENAME TO "Current ownership holding__old";
+CREATE TABLE "Current ownership holding" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" real NULL, "Extent of owned land" real NULL, "Value" real NULL, "Comments" varchar(50) NULL, "acquisition_mode" integer NULL REFERENCES "acquisition_mode" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Irrigation lift" integer NULL REFERENCES "irrigation_flow" ("id"), "Irrigation ownership" integer NULL REFERENCES "irrigation_ownership" ("id"));
+INSERT INTO "Current ownership holding" ("id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift", "Irrigation ownership") SELECT "id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift", NULL FROM "Current ownership holding__old";
+DROP TABLE "Current ownership holding__old";
+CREATE INDEX "Current ownership holding_acquisition_mode_67438144" ON "Current ownership holding" ("acquisition_mode");
+CREATE INDEX "Current ownership holding_household_84388dcc" ON "Current ownership holding" ("household");
+CREATE INDEX "Current ownership holding_Irrigation lift_45fa5e80" ON "Current ownership holding" ("Irrigation lift");
+CREATE INDEX "Current ownership holding_Irrigation ownership_1a4851af" ON "Current ownership holding" ("Irrigation ownership");
+--
+-- Add field irrigation_source to currentownershipholding
+--
+ALTER TABLE "Current ownership holding" RENAME TO "Current ownership holding__old";
+CREATE TABLE "Current ownership holding" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" real NULL, "Extent of owned land" real NULL, "Value" real NULL, "Comments" varchar(50) NULL, "acquisition_mode" integer NULL REFERENCES "acquisition_mode" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Irrigation lift" integer NULL REFERENCES "irrigation_flow" ("id"), "Irrigation ownership" integer NULL REFERENCES "irrigation_ownership" ("id"), "Irrigation source" integer NULL REFERENCES "irrigation_source" ("id"));
+INSERT INTO "Current ownership holding" ("id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift", "Irrigation ownership", "Irrigation source") SELECT "id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift", "Irrigation ownership", NULL FROM "Current ownership holding__old";
+DROP TABLE "Current ownership holding__old";
+CREATE INDEX "Current ownership holding_acquisition_mode_67438144" ON "Current ownership holding" ("acquisition_mode");
+CREATE INDEX "Current ownership holding_household_84388dcc" ON "Current ownership holding" ("household");
+CREATE INDEX "Current ownership holding_Irrigation lift_45fa5e80" ON "Current ownership holding" ("Irrigation lift");
+CREATE INDEX "Current ownership holding_Irrigation ownership_1a4851af" ON "Current ownership holding" ("Irrigation ownership");
+CREATE INDEX "Current ownership holding_Irrigation source_f24f881b" ON "Current ownership holding" ("Irrigation source");
+--
+-- Add field land_type to currentownershipholding
+--
+ALTER TABLE "Current ownership holding" RENAME TO "Current ownership holding__old";
+CREATE TABLE "Current ownership holding" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "Ownership plot no" real NULL, "Extent of owned land" real NULL, "Value" real NULL, "Comments" varchar(50) NULL, "acquisition_mode" integer NULL REFERENCES "acquisition_mode" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"), "Irrigation lift" integer NULL REFERENCES "irrigation_flow" ("id"), "Irrigation ownership" integer NULL REFERENCES "irrigation_ownership" ("id"), "Irrigation source" integer NULL REFERENCES "irrigation_source" ("id"), "Land type" integer NULL REFERENCES "land type" ("id"));
+INSERT INTO "Current ownership holding" ("id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift", "Irrigation ownership", "Irrigation source", "Land type") SELECT "id", "Ownership plot no", "Extent of owned land", "Value", "Comments", "acquisition_mode", "household", "Irrigation lift", "Irrigation ownership", "Irrigation source", NULL FROM "Current ownership holding__old";
+DROP TABLE "Current ownership holding__old";
+CREATE INDEX "Current ownership holding_acquisition_mode_67438144" ON "Current ownership holding" ("acquisition_mode");
+CREATE INDEX "Current ownership holding_household_84388dcc" ON "Current ownership holding" ("household");
+CREATE INDEX "Current ownership holding_Irrigation lift_45fa5e80" ON "Current ownership holding" ("Irrigation lift");
+CREATE INDEX "Current ownership holding_Irrigation ownership_1a4851af" ON "Current ownership holding" ("Irrigation ownership");
+CREATE INDEX "Current ownership holding_Irrigation source_f24f881b" ON "Current ownership holding" ("Irrigation source");
+CREATE INDEX "Current ownership holding_Land type_2ec1eaf7" ON "Current ownership holding" ("Land type");
+--
+-- Add field household to croppingpatternandcropschedulecomments
+--
+ALTER TABLE "cropping pattern and crop schedule comments" RENAME TO "cropping pattern and crop schedule comments__old";
+CREATE TABLE "cropping pattern and crop schedule comments" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments/notes" text NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "cropping pattern and crop schedule comments" ("id", "comments/notes", "household") SELECT "id", "comments/notes", NULL FROM "cropping pattern and crop schedule comments__old";
+DROP TABLE "cropping pattern and crop schedule comments__old";
+CREATE INDEX "cropping pattern and crop schedule comments_household_15acd46c" ON "cropping pattern and crop schedule comments" ("household");
+--
+-- Add field household to croppingpatternandcropschedule
+--
+ALTER TABLE "cropping pattern and crop schedule" RENAME TO "cropping pattern and crop schedule__old";
+CREATE TABLE "cropping pattern and crop schedule" ("serial no" integer NOT NULL PRIMARY KEY, "Crop number first digit" real NULL, "Crop number second digit" real NULL, "Crop" varchar(50) NULL, "Crop clean" varchar(50) NULL, "Variety" varchar(50) NULL, "Crop/ Homestead land" varchar(50) NULL, "Extent" real NULL, "Month of sowing" varchar(50) NULL, "Month of harvesting" varchar(50) NULL, "Source of irrigation" varchar(50) NULL, "Unit, production" varchar(50) NULL, "Unit, consumption" varchar(50) NULL, "Loans/advances taken from buyer" varchar(50) NULL, "Principal" real NULL, "Interest on loans/advances" varchar(50) NULL, "Output price, if fixed in advance" real NULL, "Other conditions" varchar(50) NULL, "Production, main product" real NULL, "Production, by product" varchar(50) NULL, "Consumption, main product" real NULL, "Consumption, by product" varchar(50) NULL, "Comments" varchar(50) NULL, "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "cropping pattern and crop schedule" ("serial no", "Crop number first digit", "Crop number second digit", "Crop", "Crop clean", "Variety", "Crop/ Homestead land", "Extent", "Month of sowing", "Month of harvesting", "Source of irrigation", "Unit, production", "Unit, consumption", "Loans/advances taken from buyer", "Principal", "Interest on loans/advances", "Output price, if fixed in advance", "Other conditions", "Production, main product", "Production, by product", "Consumption, main product", "Consumption, by product", "Comments", "household") SELECT "serial no", "Crop number first digit", "Crop number second digit", "Crop", "Crop clean", "Variety", "Crop/ Homestead land", "Extent", "Month of sowing", "Month of harvesting", "Source of irrigation", "Unit, production", "Unit, consumption", "Loans/advances taken from buyer", "Principal", "Interest on loans/advances", "Output price, if fixed in advance", "Other conditions", "Production, main product", "Production, by product", "Consumption, main product", "Consumption, by product", "Comments", NULL FROM "cropping pattern and crop schedule__old";
+DROP TABLE "cropping pattern and crop schedule__old";
+CREATE INDEX "cropping pattern and crop schedule_household_c556ebda" ON "cropping pattern and crop schedule" ("household");
+--
+-- Add field tenurial_status to croppingpatternandcropschedule
+--
+ALTER TABLE "cropping pattern and crop schedule" RENAME TO "cropping pattern and crop schedule__old";
+CREATE TABLE "cropping pattern and crop schedule" ("serial no" integer NOT NULL PRIMARY KEY, "Crop number first digit" real NULL, "Crop number second digit" real NULL, "Crop" varchar(50) NULL, "Crop clean" varchar(50) NULL, "Variety" varchar(50) NULL, "Crop/ Homestead land" varchar(50) NULL, "Extent" real NULL, "Month of sowing" varchar(50) NULL, "Month of harvesting" varchar(50) NULL, "Source of irrigation" varchar(50) NULL, "Unit, production" varchar(50) NULL, "Unit, consumption" varchar(50) NULL, "Loans/advances taken from buyer" varchar(50) NULL, "Principal" real NULL, "Interest on loans/advances" varchar(50) NULL, "Output price, if fixed in advance" real NULL, "Other conditions" varchar(50) NULL, "Production, main product" real NULL, "Production, by product" varchar(50) NULL, "Consumption, main product" real NULL, "Consumption, by product" varchar(50) NULL, "Comments" varchar(50) NULL, "household" integer NOT NULL REFERENCES "household" ("id"), "tenurial status" integer NOT NULL REFERENCES "tenurial" ("id"));
+INSERT INTO "cropping pattern and crop schedule" ("serial no", "Crop number first digit", "Crop number second digit", "Crop", "Crop clean", "Variety", "Crop/ Homestead land", "Extent", "Month of sowing", "Month of harvesting", "Source of irrigation", "Unit, production", "Unit, consumption", "Loans/advances taken from buyer", "Principal", "Interest on loans/advances", "Output price, if fixed in advance", "Other conditions", "Production, main product", "Production, by product", "Consumption, main product", "Consumption, by product", "Comments", "household", "tenurial status") SELECT "serial no", "Crop number first digit", "Crop number second digit", "Crop", "Crop clean", "Variety", "Crop/ Homestead land", "Extent", "Month of sowing", "Month of harvesting", "Source of irrigation", "Unit, production", "Unit, consumption", "Loans/advances taken from buyer", "Principal", "Interest on loans/advances", "Output price, if fixed in advance", "Other conditions", "Production, main product", "Production, by product", "Consumption, main product", "Consumption, by product", "Comments", "household", NULL FROM "cropping pattern and crop schedule__old";
+DROP TABLE "cropping pattern and crop schedule__old";
+CREATE INDEX "cropping pattern and crop schedule_household_c556ebda" ON "cropping pattern and crop schedule" ("household");
+CREATE INDEX "cropping pattern and crop schedule_tenurial status_b50778a2" ON "cropping pattern and crop schedule" ("tenurial status");
+--
+-- Add field further_investigation to commentsandinformationoninvestigators
+--
+ALTER TABLE "Comments and Information on Investigators" RENAME TO "Comments and Information on Investigators__old";
+CREATE TABLE "Comments and Information on Investigators" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments/observations" text NULL, "Name of investigator" varchar(50) NULL, "Date of interview" varchar(50) NULL, "Time taken" varchar(50) NULL, "Data entry by" varchar(100) NULL, "Date of entry" varchar(50) NULL, "Further investigation" integer NULL REFERENCES "investigation needed" ("id"));
+INSERT INTO "Comments and Information on Investigators" ("id", "comments/observations", "Name of investigator", "Date of interview", "Time taken", "Data entry by", "Date of entry", "Further investigation") SELECT "id", "comments/observations", "Name of investigator", "Date of interview", "Time taken", "Data entry by", "Date of entry", NULL FROM "Comments and Information on Investigators__old";
+DROP TABLE "Comments and Information on Investigators__old";
+CREATE INDEX "Comments and Information on Investigators_Further investigation_5d670b3a" ON "Comments and Information on Investigators" ("Further investigation");
+--
+-- Add field household to commentsandinformationoninvestigators
+--
+ALTER TABLE "Comments and Information on Investigators" RENAME TO "Comments and Information on Investigators__old";
+CREATE TABLE "Comments and Information on Investigators" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "comments/observations" text NULL, "Name of investigator" varchar(50) NULL, "Date of interview" varchar(50) NULL, "Time taken" varchar(50) NULL, "Data entry by" varchar(100) NULL, "Date of entry" varchar(50) NULL, "Further investigation" integer NULL REFERENCES "investigation needed" ("id"), "household" integer NOT NULL REFERENCES "household" ("id"));
+INSERT INTO "Comments and Information on Investigators" ("id", "comments/observations", "Name of investigator", "Date of interview", "Time taken", "Data entry by", "Date of entry", "Further investigation", "household") SELECT "id", "comments/observations", "Name of investigator", "Date of interview", "Time taken", "Data entry by", "Date of entry", "Further investigation", NULL FROM "Comments and Information on Investigators__old";
+DROP TABLE "Comments and Information on Investigators__old";
+CREATE INDEX "Comments and Information on Investigators_Further investigation_5d670b3a" ON "Comments and Information on Investigators" ("Further investigation");
+CREATE INDEX "Comments and Information on Investigators_household_f7fe01ad" ON "Comments and Information on Investigators" ("household");
+--
+-- Alter unique_together for household (1 constraint(s))
+--
+CREATE UNIQUE INDEX "household_village_household number_15b85e51_uniq" ON "household" ("village", "household number");
+COMMIT;

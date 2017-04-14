@@ -14,13 +14,13 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page2_init' %}>2</a>
     </li>
-    <li {% if 'landleasemortgage' in request.get_full_path %} class="active"{% endif %}
+    <li {% if 'page3' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'landleasemortgage_init' %}>3</a>
+            <a href={% url 'page3_init' %}>3</a>
     </li>
-    <li {% if 'landleasemortgage' in request.get_full_path %} class="active"{% endif %}
+    <li {% if 'page4' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'landleasemortgage_init' %}>4</a>
+            <a href={% url 'page4_init' %}>4</a>
     </li>
 
     <li {% if 'page5' in request.get_full_path %} class="active" {% endif %}

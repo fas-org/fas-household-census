@@ -11,7 +11,8 @@ urlpatterns = [
     url(r'^page6/', include('fas_questionnaire.urls.page6')),
     url(r'^page8/', include('fas_questionnaire.urls.page8')),
     url(r'^page9/', include('fas_questionnaire.urls.page9')),
-    url(r'^landleasemortgage/', include('fas_questionnaire.urls.land_lease_mortgae_section5')),
+    url(r'^page3/', include('fas_questionnaire.urls.page3')),
+    url(r'^page4/', include('fas_questionnaire.urls.page4')),
     url(r'^.*/search/$', search.search, name='search'),
     url(r'^othercosts/',include('fas_questionnaire.urls.othercosts')),
     url(r'^page22/',include('fas_questionnaire.urls.page22_urls'))

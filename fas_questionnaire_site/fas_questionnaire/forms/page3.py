@@ -1,8 +1,7 @@
 from django import forms
-from ..models.land_lease_in_out_mortgage_section5 import LandLeasedInOnFixedRent
-from ..models.land_lease_in_out_mortgage_section5 import LandLeasedOutOnFixedRent
-from ..models.land_lease_in_out_mortgage_section5 import LandMortgagedIn
-from ..models.land_lease_in_out_mortgage_section5 import LandMortgagedOut
+from ..models.page3 import LandLeasedInOnFixedRent
+from ..models.page3 import LandLeasedOutOnFixedRent
+
 
 class LandLeasedInOnFixedRentForm(forms.ModelForm):
     class Meta:
@@ -77,44 +76,3 @@ class LandLeasedOutOnFixedRentForm(forms.ModelForm):
 
 
 
-class LandMortgagedInForm(forms.ModelForm):
-    class Meta:
-        model = LandMortgagedIn
-        fields = ['household_number',
-                  'land_type',
-                  'extent',
-                  'name_of_mortgagor',
-                  'caste_of_mortgagor',
-                  'occupation_of_mortgagor',
-                  'year_of_mortgage',
-                  'mortgage_period',
-                  'mortgage_money',
-                  'interest_usufruct',
-                  'comments']
-        exclude = ['household_number']
-        widgets = None
-        localized_fields = None
-        labels = {}
-        help_texts = {}
-        error_messages = {}
-
-class LandMortgagedOutForm(forms.ModelForm):
-    class Meta:
-        model = LandMortgagedOut
-        fields = ['household_number',
-                  'land_type',
-                  'extent',
-                  'name_of_mortgagee',
-                  'caste_of_mortgagee',
-                  'occupation_of_mortgagee',
-                  'year_of_mortgage',
-                  'mortgage_period',
-                  'mortgage_money',
-                  'interest_usufruct',
-                  'comments']
-        exclude = ['household_number']
-        widgets = None
-        localized_fields = None
-        labels = {}
-        help_texts = {}
-        error_messages = {}

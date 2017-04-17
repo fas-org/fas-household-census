@@ -104,7 +104,7 @@ def edit(request, pk):
             land_mortgage_out_forms = land_mortgage_out_formset(request.POST,prefix='lm_out')
             LandMortgagedOut.objects.filter(household_number=pk).delete()
 
-            lnd_lsd_in_shr_rent_formset = formset_factory(LandLeasedInOnShareRent, formset=BaseFormSet, extra=5)
+            lnd_lsd_in_shr_rent_formset = formset_factory(LandLeasedInOnShareRentForm, formset=BaseFormSet, extra=5)
             lnd_lsd_in_shr_rent_forms = lnd_lsd_in_shr_rent_formset(request.POST, prefix='lnd_lsd_in_shr_rent')
             LandLeasedInOnShareRent.objects.filter(household_number=pk).delete()
 

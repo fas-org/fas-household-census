@@ -40,7 +40,7 @@ def new(request):
             homestead_form_saved = save_forms(request, homestead_area_forms)
             landsold_form_saved = save_forms(request, landsoldforms)
             landpurchased_form_saved = save_forms(request, landpurchasedforms)
-            comments_form_saved = save_form(request, landpurchased_comments_form)
+            comments_form_saved = save_form_with_no_has_change(request, landpurchased_comments_form)
 
         if ownership_form_saved or homestead_form_saved or landsold_form_saved or landpurchased_form_saved or comments_form_saved:
             messages.success(request, 'Data saved successfully')
@@ -68,8 +68,9 @@ def edit(request, pk):
         request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
         landpurchased_comments = get_object_or_404(LandPurchasedComments, household=pk)
         if request.method == "POST":
-            current_ownership_formset = formset_factory(CurrentOwnershipHoldingForm, formset=BaseFormSet, extra=5)
-            homestead_area_formset = formset_factory(HomesteadAreaForm, formset=BaseFormSet, extra=1)
+
+            current_ownership_formset = modelformset_factory(CurrentOwnershipHolding, form=CurrentOwnershipHoldingForm, extra=5)
+            homestead_area_formset = modelformset_factory(HomesteadArea, form=HomesteadAreaForm, extra=1)
             landsold_formset = modelformset_factory(LandSold, form=LandSoldForm, extra=5)
             landpurchased_formset = modelformset_factory(LandPurchased, form=LandPurchasedForm, extra=5)
 
@@ -80,13 +81,11 @@ def edit(request, pk):
             landpurchased_comments_form = LandPurchasedCommentsForm(request.POST, instance=landpurchased_comments)
 
             if ownership_forms.is_valid() and homestead_area_forms.is_valid() and landsoldforms.is_valid() and landpurchasedforms.is_valid() and landpurchased_comments_form.is_valid():
-                CurrentOwnershipHolding.objects.filter(household=pk).delete()
-                HomesteadArea.objects.filter(household=pk).delete()
                 ownership_form_saved = save_forms(request, ownership_forms)
                 homestead_form_saved = save_forms(request, homestead_area_forms)
                 landsold_form_saved = save_forms(request, landsoldforms)
                 landpurchased_form_saved = save_forms(request, landpurchasedforms)
-                comments_form_saved = save_form(request, landpurchased_comments_form)
+                comments_form_saved = save_form_with_no_has_change(request, landpurchased_comments_form)
 
             if ownership_form_saved or homestead_form_saved or landsold_form_saved or landpurchased_form_saved or comments_form_saved:
                 messages.success(request, 'Data saved successfully')

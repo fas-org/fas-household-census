@@ -6,7 +6,6 @@ class AcquisitionModeForm(forms.ModelForm):
 
     class Meta:
         model = AcquisitionMode
-        fields = ['acquisition']
         exclude = []
         widgets = None
         localized_fields = None
@@ -19,7 +18,6 @@ class IrrigationFlowForm(forms.ModelForm):
 
     class Meta:
         model = IrrigationFlow
-        fields = ['type']
         exclude = []
         widgets = None
         localized_fields = None
@@ -32,7 +30,6 @@ class IrrigationOwnershipForm(forms.ModelForm):
 
     class Meta:
         model = IrrigationOwnership
-        fields = ['owner']
         exclude = []
         widgets = None
         localized_fields = None
@@ -45,7 +42,6 @@ class IrrigationSourceForm(forms.ModelForm):
 
     class Meta:
         model = IrrigationSource
-        fields = ['source']
         exclude = []
         widgets = None
         localized_fields = None
@@ -58,7 +54,6 @@ class CurrentOwnershipHoldingForm(forms.ModelForm):
 
     class Meta:
         model = CurrentOwnershipHolding
-        fields = ['household', 'ownership_plot_no', 'land_type', 'extent_owned_land', 'acquisition_mode', 'irrigation_source', 'irrigation_flow', 'irrigation_ownership', 'value', 'comments']
         exclude = ['household']
         widgets = None
         localized_fields = None
@@ -76,7 +71,6 @@ class HomesteadAreaForm(forms.ModelForm):
 
     class Meta:
         model = HomesteadArea
-        fields = ['household', 'components', 'area']
         exclude = ['household']
         widgets = None
         localized_fields = None

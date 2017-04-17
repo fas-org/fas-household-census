@@ -80,6 +80,7 @@
             {{ current_ownership_formset.management_form }}
             {% for current_ownership_form in current_ownership_formset.forms %}
             <div class='row current_ownership_formset_row flex-row'>
+                    {{ current_ownership_form.id }}
                 <div class='col-md-2 table-cell'>
                     {{ current_ownership_form.land_type }}
                 </div>
@@ -130,6 +131,7 @@
 
             {{ homesteadformset.management_form }}
             {% for homesteadform in homesteadformset.forms %}
+                {{ homesteadform.id }}
             <div class='row homestead_formset_row flex-row'>
                 <div class='col-md-9 flex-column table-cell'>
                     {{ homesteadform.components }}

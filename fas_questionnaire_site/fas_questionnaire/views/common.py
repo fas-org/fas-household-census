@@ -13,6 +13,17 @@ def save_form(request, form):
         form_saved = True
     return form_saved
 
+@login_required(login_url='login')
+def save_form_with_no_has_change(request, form):
+    form_saved = None
+    if form.is_valid():
+        form_saved = False
+        fas_object = form.save(commit=False)
+        fas_object.household = household.get(request.session['household'])
+        fas_object.save()
+        form_saved = True
+    return form_saved
+
 
 def save_forms(request, forms):
     form_saved = None

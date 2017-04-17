@@ -148,7 +148,7 @@
     <h4 class='text-center'>4. SALE AND PURCHASE OF AGRICULTURAL LAND</h4><br/>
 
         <b>4.1 Land sold</b><br>
-        <div class='row flex-row table-head landsale_formset_row'>
+        <div class='row flex-row'>
             <div class='col-md-1 table-cell  '>
                 <label> Year Of sale</label>
             </div>
@@ -191,6 +191,7 @@
             <div class='col-md-3 table-cell long-div'>
             <label>  Reason for sale </label>
             </div>
+            <div class="cross-width"></div>
         </div>
 
         {{ landsold_formset.management_form }}
@@ -282,6 +283,7 @@
             <div class='col-md-1 table-cell long-div'>
                 <label> Purchased transaction number </label>
             </div>
+            <div class="cross-width"> </div>
         </div>
 
         {{ landpurchased_formset.management_form }}

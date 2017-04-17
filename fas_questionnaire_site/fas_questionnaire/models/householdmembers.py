@@ -20,6 +20,8 @@ class HouseholdMembers(models.Model):
         managed = True
         db_table = 'household_members'
 
+    def __str__(self):
+        return self.name
 
 class LiteracyStatus(models.Model):
     status = models.CharField(max_length=100)

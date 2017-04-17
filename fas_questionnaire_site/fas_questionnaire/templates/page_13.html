@@ -1,0 +1,109 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+<h4 class='text-center'>13.PATTERN OF AGRICULTURAL LABOURING OUT BY HOUSEHOLD MEMBERS IN THE PREVIOUS YEAR</h4>
+<form method="POST">
+    <div class="row flex-row">
+        <div class="col-md-2 flex-row" >
+            <div class="col-md-9 table-cell flex-column">
+                <label>Name of the Worker</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Sex</label>
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Crop</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+            <label>Operation</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+            <label>Type of wage</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Place of work</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Labour Days</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+            <label>Work hours</label>
+        </div>
+        <div class="col-md-3" >
+            <div class="col-md-12 table-cell">
+                <label>Wages</label>
+            </div>
+            <div class="col-md-4 table-cell">
+                <label>Cash</label>
+            </div>
+            <div class="col-md-4 table-cell">
+                <label>Kind</label>
+            </div>
+            <div class="col-md-4 table-cell">
+                <label>Unit</label>
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Comments</label>
+        </div>
+        <div class="cross-width"></div>
+    </div>
+    {% csrf_token %}
+    {{ formset.management_form}}
+    {% for form in formset.forms %}
+    <div class="row flex-row formset_row">
+        {{ form.id }}
+        <div class="col-md-2 flex-row" >
+            <div class="col-md-9 table-cell flex-column">
+               {{form.name_of_worker}}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{form.sex}}
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{form.crop}}
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+            {{form.operation}}
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+            {{form.type_of_wage}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{form.place_of_work}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{form.labour_days}}
+        </div>
+        <div class="col-md-1 table-cell flex-column" >
+            {{form.hours_of_work}}
+        </div>
+        <div class="col-md-3" >
+            <div class="col-md-4 table-cell">
+                {{form.wages_cash}}
+            </div>
+            <div class="col-md-4 table-cell">
+                {{form.wages_kind}}
+            </div>
+            <div class="col-md-4 table-cell">
+                {{form.unit}}
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{form.comments}}
+        </div>
+    </div>
+    {% endfor %}
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row').formset({ 'addText': 'add another worker' });
+    $('input[name="form-INITIAL_FORMS"]').val(0);
+</script>
+</form>
+{% endblock %}

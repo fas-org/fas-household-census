@@ -1,12 +1,11 @@
+from django.contrib import messages
+from django.forms import modelformset_factory
+from django.forms.formsets import formset_factory, BaseFormSet
+from django.shortcuts import get_object_or_404, render, redirect
+
+from .common import *
 from ..forms.page8 import *
 from ..models.page8 import *
-from django.shortcuts import get_object_or_404, render, redirect
-from . import household as household
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.forms.formsets import formset_factory, BaseFormSet
-from django.forms import modelformset_factory
-from .common import *
 
 
 @login_required(login_url='login')

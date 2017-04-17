@@ -35,6 +35,13 @@ def new(request):
         landsoldforms = landsold_formset(request.POST, prefix='landsold')
         landpurchasedforms = landpurchased_formset(request.POST, prefix='landpurchased')
         landpurchased_comments_form = LandPurchasedCommentsForm(request.POST)
+
+        ownership_form_saved = False
+        homestead_form_saved = False
+        landsold_form_saved = False
+        landpurchased_form_saved = False
+        comments_form_saved = False
+
         if ownership_forms.is_valid() and homestead_area_forms.is_valid() and landsoldforms.is_valid() and landpurchasedforms.is_valid() and landpurchased_comments_form.is_valid():
             ownership_form_saved = save_forms(request, ownership_forms)
             homestead_form_saved = save_forms(request, homestead_area_forms)
@@ -79,6 +86,11 @@ def edit(request, pk):
             landsoldforms = landsold_formset(request.POST, prefix='landsold')
             landpurchasedforms = landpurchased_formset(request.POST, prefix='landpurchased')
             landpurchased_comments_form = LandPurchasedCommentsForm(request.POST, instance=landpurchased_comments)
+            ownership_form_saved = False
+            homestead_form_saved = False
+            landsold_form_saved = False
+            landpurchased_form_saved = False
+            comments_form_saved = False
 
             if ownership_forms.is_valid() and homestead_area_forms.is_valid() and landsoldforms.is_valid() and landpurchasedforms.is_valid() and landpurchased_comments_form.is_valid():
                 ownership_form_saved = save_forms(request, ownership_forms)

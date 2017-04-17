@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^page6/', include('fas_questionnaire.urls.page6')),
     url(r'^page8/', include('fas_questionnaire.urls.page8')),
     url(r'^page9/', include('fas_questionnaire.urls.page9')),
+    url(r'^page11/', include('fas_questionnaire.urls.page11')),
     url(r'^page15/', include('fas_questionnaire.urls.page15')),
     url(r'^.*/search/$', search.search, name='search'),
     url(r'^othercosts/',include('fas_questionnaire.urls.othercosts')),

@@ -47,10 +47,11 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'othercosts_init' %}>10</a>
     </li>
-    <li
+    <li {% if 'page11' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">11</a>
+            <a href={% url 'page11_init' %}>11</a>
     </li>
+
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href="#">12</a>

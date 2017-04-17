@@ -38,7 +38,7 @@
                     <h4 class='text-center'>3. CURRENT OWNERSHIP HOLDING</h4>
                 </div>
             </div>
-            <div class='row flex-row table-head current_ownership_formset_row'>
+            <div class='row flex-row'>
                 <div class='col-md-2 table-cell flex-column'>
                     <label>Land Type</label>
                 </div>
@@ -75,6 +75,7 @@
                 <div class='col-md-1 table-cell flex-column'>
                     <label>Comments</label>
                 </div>
+                <div class="cross-width"></div>
             </div>
 
             {{ current_ownership_formset.management_form }}
@@ -120,13 +121,14 @@
                     <h5 class='text-center'>Table 3.1. Homestead area</h5>
                 </div>
             </div>
-            <div class='row flex-row table-head homestead_formset_row'>
+            <div class='row flex-row'>
                 <div class='col-md-9 flex-column table-cell'>
                     <label>Components</label>
                 </div>
                 <div class='col-md-3 flex-column table-cell'>
                     <label>Area</label>
                 </div>
+                <div class="cross-width"></div>
             </div>
 
             {{ homesteadformset.management_form }}

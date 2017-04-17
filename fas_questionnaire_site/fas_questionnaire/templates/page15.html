@@ -1,0 +1,182 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    {% ifequal message.message 'Data saved successfully' %}
+        <div class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
+{% for dict in agri_formset.errors %}
+    {% for error in dict.values %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<form method='POST' id="page_15_form">
+    {% csrf_token %}
+    <h4 class='text-center'>14. FOR LONG-TERM AGRICULTURAL WORKERS</h4>
+
+    <div class = 'row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Name of worker</label>
+        </div>
+        <div class='col-md-3 table-cell'>
+            <div class = 'row flex-row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Employer</label>
+                </div>
+            </div>
+            <div class = 'row flex-row'>
+                <div class='col-md-2 table-cell'>
+                    <label>Name</label>
+                </div>
+                <div class='col-md-3 table-cell'>
+                    <label>Village of residence</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Caste</label>
+                </div>
+                <div class='col-md-3 table-cell'>
+                    <label>Occupation</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Land owned</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 table-cell'>
+            <div class = 'row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Tasks performed (tick relevent options)</label>
+                </div>
+            </div>
+            <div class = 'row'>
+                <div class='col-md-2 table-cell'>
+                    <label>Agri-cultural labour</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Operating machines</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Tending animals</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Non- agricultural businesses</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Domestic work</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>Other (specify)</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Number of months for which employed last year</label>
+        </div>
+        <div class='col-md-2 table-cell'>
+            <div class = 'row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Earnings</label>
+                </div>
+            </div>
+            <div class = 'row'>
+                <div class='col-md-6 table-cell'>
+                    <label>Cash</label>
+                </div>
+                <div class='col-md-6 table-cell'>
+                    <label>Kind</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Comments</label>
+        </div>
+        <div class="cross-width"></div>
+    </div>
+
+    {{ agri_formset.management_form }}
+    {% for form in agri_formset.forms %}
+    <div class = 'row flex-row agri_formset_row'>
+        <div class='col-md-1 table-cell flex-column'>
+            {{ form.worker_name }}
+        </div>
+        <div class='col-md-3 table-cell flex-column'>
+            <div class = 'row flex-row'>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.employer_name }}
+                </div>
+                <div class='col-md-3 table-cell flex-column'>
+                    {{ form.residence_village }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.caste }}
+                </div>
+                <div class='col-md-3 table-cell flex-column'>
+                    {{ form.occupation }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.land_owned }}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 table-cell flex-column'>
+            <div class = 'row flex-row'>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.agricultural_labor }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.operating_machines }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.tending_animals }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.non_agri_business }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.domestic_work }}
+                </div>
+                <div class='col-md-2 table-cell flex-column'>
+                    {{ form.other_activities }}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            {{ form.months_employed }}
+        </div>
+        <div class='col-md-2 table-cell flex-column'>
+            <div class = 'row flex-row'>
+                <div class='col-md-6 table-cell flex-column'>
+                    {{ form.earning_cash }}
+                </div>
+                <div class='col-md-6 table-cell flex-column'>
+                    {{ form.earning_kind }}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            {{ form.comments }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.agri_formset_row').formset({
+        prefix: '{{ agri_formset.prefix }}'
+    });
+</script>
+{% endblock %}

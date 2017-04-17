@@ -20,6 +20,14 @@
     {% endfor %}
 {% endfor %}
 
+{% for dict in non_agri_formset.errors %}
+    {% for error in dict.values %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+
 <form method='POST' id="page_15_form">
     {% csrf_token %}
     <h4 class='text-center'>14. FOR LONG-TERM AGRICULTURAL WORKERS</h4>
@@ -52,13 +60,13 @@
                 </div>
             </div>
         </div>
-        <div class='col-md-4 table-cell'>
+        <div class='col-md-4 table-cell flex-column'>
             <div class = 'row'>
                 <div class='col-md-12 table-cell'>
                     <label>Tasks performed (tick relevent options)</label>
                 </div>
             </div>
-            <div class = 'row'>
+            <div class = 'row flex-row'>
                 <div class='col-md-2 table-cell'>
                     <label>Agri-cultural labour</label>
                 </div>
@@ -105,6 +113,7 @@
 
     {{ agri_formset.management_form }}
     {% for form in agri_formset.forms %}
+    {{ form.id }}
     <div class = 'row flex-row agri_formset_row'>
         <div class='col-md-1 table-cell flex-column'>
             {{ form.worker_name }}
@@ -169,6 +178,73 @@
     </div>
     {% endfor %}
 
+    <h4 class='text-center'>15. NON AGRICULTURAL LABOURING OUT BY HOUSEHOLD MEMBERS IN THE PREVIOUS YEAR</h4>
+    <div class = 'row flex-row'>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Name of worker</label>
+        </div>
+        <div class='col-md-3 table-cell flex-column'>
+            <label>Description of work (specify if under a government programme)</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Place of work</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Number of labour days</label>
+        </div>
+        <div class='col-md-3 table-cell flex-column'>
+            <label>Type of wage contract (daily, weekly, monthly, piece-rate)</label>
+        </div>
+        <div class='col-md-3 table-cell'>
+            <div class = 'row'>
+                <div class='col-md-12 table-cell'>
+                    <label>Total earnings last year</label>
+                </div>
+            </div>
+            <div class = 'row'>
+                <div class='col-md-6 table-cell'>
+                    <label>Cash</label>
+                </div>
+                <div class='col-md-6 table-cell'>
+                    <label>Kind</label>
+                </div>
+            </div>
+        </div>
+        <div class="cross-width"></div>
+    </div>
+
+    {{ non_agri_formset.management_form }}
+    {% for form in non_agri_formset.forms %}
+    {{ form.id }}
+    <div class = 'row flex-row non_agri_formset_row'>
+        <div class='col-md-1 table-cell flex-column'>
+            {{ form.worker_name }}
+        </div>
+        <div class='col-md-3 table-cell flex-column'>
+            {{ form.work_description }}
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            {{ form.work_place }}
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            {{ form.labor_days }}
+        </div>
+        <div class='col-md-3 table-cell flex-column'>
+            {{ form.wage_form }}
+        </div>
+        <div class='col-md-3 table-cell'>
+            <div class = 'row'>
+                <div class='col-md-6 table-cell'>
+                    {{ form.earning_cash }}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{ form.earning_kind }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
     <div class='row text-center'>
         <button class='btn btn-primary btn-submit' type="submit">Save</button>
     </div>
@@ -177,6 +253,9 @@
 <script type="text/javascript">
     $('.agri_formset_row').formset({
         prefix: '{{ agri_formset.prefix }}'
+    });
+    $('.non_agri_formset_row').formset({
+        prefix: '{{ non_agri_formset.prefix }}'
     });
 </script>
 {% endblock %}

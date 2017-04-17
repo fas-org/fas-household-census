@@ -37,3 +37,22 @@ class LongTermWorkers(models.Model):
     class Meta:
         managed = True
         db_table = 'For long-term workers'
+
+
+class NonAgricultureWorkers(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    worker_name = models.ForeignKey(HouseholdMembers, models.DO_NOTHING, db_column='Name of worker')
+    sex = models.ForeignKey('Sex', models.DO_NOTHING, db_column='Sex', blank=True, null=True)
+    work_description = models.CharField(max_length=100, db_column='Description', blank=True, null=True)
+    work_place = models.CharField(max_length=255, db_column='Place of work', blank=True, null=True)
+    wage_form = models.CharField(max_length=50, db_column='Wage form', blank=True, null=True)
+    labor_days = models.CharField(max_length=50, db_column='Labour days', blank=True, null=True)
+    earning_cash = models.CharField(max_length=50, db_column='Earnings in cash', blank=True, null=True)
+    earning_kind = models.CharField(max_length=50, db_column='Earnings in kind', blank=True, null=True)
+    earning_total = models.CharField(max_length=50, db_column='Total Earnings', blank=True, null=True)
+    comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Non Agricultural labouring out'

@@ -142,3 +142,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'household_new'
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000

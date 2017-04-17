@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.forms.formsets import formset_factory, BaseFormSet
 from django.forms import modelformset_factory
 
-from fas_questionnaire.models.householdmembers import HouseholdMembers
+from fas_questionnaire.models.page1 import HouseholdMembers
 from ..forms.page_13 import PatternOfAgriculturalLabouringOutForm
 from ..models.page_13 import PatternOfAgriculturalLabouringOut
 from ..models.household_models import Household

@@ -33,7 +33,14 @@ input, select {
     margin: 10px;
 }
 .flex-row {
-    display:flex;
+    display: flex;
+    align-items: stretch;
+    text-align: center;
+}
+
+.flex-row-wrap {
+    display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
     text-align: center;
 }

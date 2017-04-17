@@ -1,13 +1,9 @@
 <ul class="nav nav-tabs">
     <li {% if 'household/' in request.get_full_path %} class="active"{% endif %}><a href={% url 'household_init' %}>Home</a></li>
 {#    for page 1 - start#}
-    <li {% if 'introduction' in request.get_full_path %} class="active" {% endif %}
+    <li {% if 'page1' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'introduction_init' %}>1.1</a>
-    </li>
-    <li {% if 'householdmembers' in request.get_full_path %} class="active"{% endif %}
-            {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'householdmembers_init' %}>1.2</a>
+            <a href={% url 'page1_init' %}>1</a>
     </li>
 {#for page 1 - end#}
     <li {% if 'page2/' in request.get_full_path %} class="active"{% endif %}

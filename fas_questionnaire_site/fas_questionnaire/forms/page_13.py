@@ -1,7 +1,7 @@
 from django import forms
 from ..models.page_13 import PatternOfAgriculturalLabouringOut
 from ..models.common import Crop
-from ..models.householdmembers import HouseholdMembers
+from ..models.page1 import HouseholdMembers
 
 
 class PatternOfAgriculturalLabouringOutForm(forms.ModelForm):

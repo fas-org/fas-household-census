@@ -9,21 +9,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .common import LandType
-from .page3 import Caste
+from .common import Caste, Occupation, LandType
 from .page3 import Registration
-
-
-class Occupation(models.Model):
-    id = models.AutoField(primary_key=True)
-    occupation = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'occupation'
-
-    def __str__(self):
-        return self.occupation
 
 
 class InterestUsufruct(models.Model):

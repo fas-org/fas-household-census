@@ -30,7 +30,7 @@ class CroppingPatternAndCropSchedule(models.Model):
     crop = models.CharField(db_column='Crop', max_length=50, blank=True, null=True)
     crop_clean = models.CharField(db_column='Crop clean', max_length=50, blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)
-    tenurial_status = models.ForeignKey(Tenurial, models.DO_NOTHING, db_column='tenurial status')
+    tenurial_status = models.ForeignKey(Tenurial, models.DO_NOTHING, db_column='tenurial status', blank=True, null=True)
     crop_homestead_land = models.CharField(db_column='Crop/ Homestead land', max_length=50, blank=True, null=True)
     extent = models.FloatField(db_column='Extent', blank=True, null=True)
     month_of_sowing = models.CharField(db_column='Month of sowing', max_length=50, blank=True, null=True)

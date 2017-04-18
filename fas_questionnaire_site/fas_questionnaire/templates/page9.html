@@ -294,13 +294,16 @@
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.current_ownership_formset_row').formset({
-        prefix: '{{ current_ownership_formset.prefix }}'
+        prefix: '{{ current_ownership_formset.prefix }}',
+        formCssClass: 'current_ownership_formset'
     });
     $('.production_means_formset_row').formset({
-        prefix: '{{ production_means_formset.prefix }}'
+        prefix: '{{ production_means_formset.prefix }}',
+        formCssClass: 'production_means_formset'
     });
     $('.irrigation_means_formset_row').formset({
-        prefix: '{{ irrigation_means_formset.prefix }}'
+        prefix: '{{ irrigation_means_formset.prefix }}',
+        formCssClass: 'irrigation_means_formset'
     });
 </script>
 {% endblock %}

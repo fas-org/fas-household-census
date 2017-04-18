@@ -17,7 +17,8 @@ def init(request):
         homestead_area_result_set = HomesteadArea.objects.filter(household=request.session.get('household'))
         landsold_result_set = LandSold.objects.filter(household=request.session.get('household'))
         landpurchased_result_set = LandPurchased.objects.filter(household=request.session.get('household'))
-        if len(holding_result_set) == 0 and len(homestead_area_result_set) == 0 and len(landsold_result_set) == 0 and len(landpurchased_result_set) == 0:
+        landpurchased_comments_result_set = LandPurchasedComments.objects.filter(household=request.session.get('household'))
+        if len(holding_result_set) == 0 and len(homestead_area_result_set) == 0 and len(landsold_result_set) == 0 and len(landpurchased_result_set) == 0 and landpurchased_comments_result_set == 0:
             return new(request)
         return edit(request, request.session['household'])
 

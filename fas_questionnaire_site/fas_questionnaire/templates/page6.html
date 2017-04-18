@@ -9,6 +9,14 @@
 </div>
 {% endfor %}
 {% endif %}
+
+{% for dict in production_and_sales_formset.errors %}
+{% for error in dict.values %}
+<div class="alert alert-danger">
+    <strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endfor %}
 <form method='POST' id="page_6_form">
     {% csrf_token %}
     <br>

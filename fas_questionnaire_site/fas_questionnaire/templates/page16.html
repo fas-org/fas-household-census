@@ -126,7 +126,6 @@
                 <h5>E. Is your household obliged to perform any traditional caste duties? Give details.</h5>
                 {{ freedom_of_employment_questions_form.is_your_household_obliged_to_perform_any_traditional_caste_duties }}
             </div>
-{#        </div>#}
         <h4 class='text-center'>17. INCOME FROM STATE AND COMMON PROPERTY RESOURCES</h4>
         <table style="width:210%;">
             <tr>
@@ -243,11 +242,13 @@
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $('.income_from_state_formset_row').formset({
-            prefix: '{{ income_from_state_formset.prefix }}'
+            prefix: '{{ income_from_state_formset.prefix }}',
+            formCssClass: 'income_from_state_formset'
         });
 
         $('.aggri_or_non_aggri_labour_service_row').formset({
-            prefix: '{{ aggri_or_non_aggri_labour_service_formset.prefix }}'
+            prefix: '{{ aggri_or_non_aggri_labour_service_formset.prefix }}',
+            formCssClass: 'aggri_or_non_aggri_labour_service_formset'
         });
     </script>
 {% endblock %}

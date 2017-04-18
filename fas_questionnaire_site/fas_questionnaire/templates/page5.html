@@ -9,6 +9,14 @@
 </div>
 {% endfor %}
 {% endif %}
+
+{% for dict in production_and_sales_on_operational_holding_formset.errors %}
+{% for error in dict.values %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+{% endfor %}
+{% endfor %}
 <form method='POST' id="page_5_form">
     {% csrf_token %}
     <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>

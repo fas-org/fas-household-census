@@ -11,8 +11,7 @@
 {% endif %}
 <form method='POST' id="land_mortgaged_in_section5">
     {% csrf_token %}
-    <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4><br><br><br>
-    <br><br>
+    <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4>
     <b>5.1.1 Land leased in on fixed rent</b><br>
     <table style="width:310%;">
         <tr >
@@ -32,36 +31,36 @@
                     </div>
                 </div>
                 <div class= 'row style="text-align:center;"'>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-3 table-cell'>
                         <label>Name</label>
                     </div>
-                    <div class='col-md-4 table-cell'>
-                        <label>Cast</label>
+                    <div class='col-md-3 table-cell'>
+                        <label>Caste</label>
                     </div>
-                    <div class='col-md-4 table-cell'>
-                        <label>Occupation</label>
+                    <div class='col-md-6 table-cell'>
+                        <label>Occupation/economic class</label>
                     </div>
                 </div>
             </td>
-            <td style="width:11%;text-align:center;" class="table-cell">
+            <td style="width:5%;text-align:center;" class="table-cell">
                 <div class='row' style="text-align:center;">
                     <div class='col-md-12 '>
                         <label>Tenurial status</label>
                     </div>
                 </div>
                 <div class= 'row'>
-                    <div class='col-md-4 table-cell'>
-                        <label>Registered or Unregistered</label>
+                    <div class='col-md-3 table-cell'>
+                        <label>R/U</label>
                     </div>
                     <div class='col-md-4 table-cell'>
                         <label>Type of contract</label>
                     </div>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-5 table-cell'>
                         <label>Since when leased in</label>
                     </div>
                 </div>
             </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
+            <td style="width:2%;text-align:center;" class="table-cell">
                 <div class='row' style="text-align:center;">
                     <div class='col-md-12'>
                         <label>Annual fixed Rent</label>
@@ -76,56 +75,66 @@
                     </div>
                 </div>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Interest free borrowing</label>
+            <td style="width:3%;text-align:center;" class="table-cell">
+                <div class='row' style="text-align:center;">
+                    <div class='col-md-12'>
+                        <label>Any loans taken from lessor</label>
+                    </div>
+                </div>
+                <div class= 'row'>
+                    <div class='col-md-6 table-cell'>
+                        <label>Interest free</label>
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        <label>With interest</label>
+                    </div>
+                </div>
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Loan with interest</label>
+                <label>Further interest payments on rent</label>
             </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
-                <label>Further interest payment on rent</label>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Qty. of hay taken by owner</label>
             </td>
-            <td style="width:40%;text-align:center;" class="table-cell">
+            <td style="width:15%;text-align:center;" class="table-cell">
                 <div class='row' style="text-align:center;">
                     <div class='col-md-12 '>
-                        <label>Inputs provided by owner</label>
+                        <label>Value of Inputs provided by owner</label>
                     </div>
                 </div>
                 <div class= 'row'>
                     <div class='col-md-1 table-cell'>
-                        <label>Qty of hay taken</label>
+                        <label>Manure</label>
                     </div>
                     <div class='col-md-1 table-cell'>
-                        <label>Value of manure provided</label>
+                        <label>Fertiliser</label>
                     </div>
                     <div class='col-md-1 table-cell'>
-                        <label>Value of fertiliser provided</label>
+                        <label>Seed</label>
                     </div>
                     <div class='col-md-1 table-cell'>
-                        <label>Value of seed provided</label>
+                        <label>Pesticide</label>
                     </div>
                     <div class='col-md-2 table-cell'>
-                        <label>Value of pesticide provided</label>
+                        <label>Electricity</label>
                     </div>
                     <div class='col-md-2 table-cell'>
-                        <label>Value of electricity provided</label>
+                        <label>Pumpset</label>
                     </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>If pumpset provided</label>
+                    <div class='col-md-2 table-cell'>
+                        <label>Irrigation</label>
                     </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>if irrigation provided</label>
-                    </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>If machinery provided</label>
-                    </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>comments</label>
+                    <div class='col-md-2 table-cell'>
+                        <label>Machinery</label>
                     </div>
                 </div>
             </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>comments</label>
+            </td>
         </tr>
     </table>
+
 
     {% csrf_token %}
     {{ formset_lnd_lsd_in_fxd_rnt.management_form }}
@@ -143,29 +152,29 @@
             </td>
             <td style="width:6%;text-align:center;" class="table-cell">
 
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-3 table-cell'>
                         {{ form.name_of_lessor }}
                     </div>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-3 table-cell'>
                         {{ form.caste_of_lessor }}
                     </div>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-6 table-cell'>
                         {{ form.occupation_of_lessor }}
                     </div>
 
             </td>
-            <td style="width:11%;text-align:center;" class="table-cell">
-                    <div class='col-md-4 table-cell'>
+            <td style="width:5%;text-align:center;" class="table-cell">
+                    <div class='col-md-3 table-cell'>
                         {{ form.registered_unregistered }}
                     </div>
                     <div class='col-md-4 table-cell'>
                         {{ form.type_of_contract }}
                     </div>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-5 table-cell'>
                         {{ form.since_when_leased_in }}
                     </div>
             </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
+            <td style="width:2%;text-align:center;" class="table-cell">
                     <div class='col-md-6 table-cell'>
                         {{ form.annual_rent_in_cash }}
                     </div>
@@ -173,19 +182,23 @@
                         {{ form.annual_rent_in_kind }}
                     </div>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.interest_free_borrowing }}
+            <td style="width:3%;text-align:center;" class="table-cell">
+                <div class= 'row'>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.interest_free_borrowing }}
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.loan_with_interest }}
+                    </div>
+                </div>
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.loan_with_interest }}
-            </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
                 {{ form.further_interest_payment_on_rent }}
             </td>
-            <td style="width:40%;text-align:center;" class="table-cell">
-                    <div class='col-md-1 table-cell'>
-                        {{ form.qty_of_hay_taken_by_owner }}
-                    </div>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.qty_of_hay_taken_by_owner }}
+            </td>
+            <td style="width:15%;text-align:center;" class="table-cell">
                     <div class='col-md-1 table-cell'>
                         {{ form.value_of_manure_provided_by_owner }}
                     </div>
@@ -195,24 +208,24 @@
                     <div class='col-md-1 table-cell'>
                         {{ form.value_of_seed_provided_by_owner }}
                     </div>
-                    <div class='col-md-2 table-cell'>
+                    <div class='col-md-1 table-cell'>
                         {{ form.value_of_pesticide_provided_by_owner }}
                     </div>
                     <div class='col-md-2 table-cell'>
                         {{ form.value_of_electricity_provided_by_owner }}
                     </div>
-                    <div class='col-md-1 table-cell'>
+                    <div class='col-md-2 table-cell'>
                         {{ form.if_pumpset_provided_by_owner }}
                     </div>
-                    <div class='col-md-1 table-cell'>
+                    <div class='col-md-2 table-cell'>
                         {{ form.if_irrigation_provided_by_owner }}
                     </div>
-                    <div class='col-md-1 table-cell'>
+                    <div class='col-md-2 table-cell'>
                         {{ form.if_machinery_provided_by_owner }}
                     </div>
-                    <div class='col-md-1 table-cell'>
-                        {{ form.comments }}
-                    </div>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.comments }}
             </td>
         </tr>
     </table>
@@ -234,40 +247,40 @@
             <td style="width:6%;text-align:center;" class="table-cell">
                 <div class='row ' style="text-align:center;">
                     <div class='col-md-12'>
-                        <label>Lessee</label>
+                        <label>Tenant</label>
                     </div>
                 </div>
                 <div class= 'row style="text-align:center;"'>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-3 table-cell'>
                         <label>Name</label>
                     </div>
-                    <div class='col-md-4 table-cell'>
-                        <label>Cast</label>
+                    <div class='col-md-3 table-cell'>
+                        <label>Caste</label>
                     </div>
-                    <div class='col-md-4 table-cell'>
-                        <label>Occupation</label>
+                    <div class='col-md-6 table-cell'>
+                        <label>Occupation/economic class</label>
                     </div>
                 </div>
             </td>
-            <td style="width:11%;text-align:center;" class="table-cell">
+            <td style="width:5%;text-align:center;" class="table-cell">
                 <div class='row' style="text-align:center;">
                     <div class='col-md-12 '>
                         <label>Tenurial status</label>
                     </div>
                 </div>
                 <div class= 'row'>
-                    <div class='col-md-4 table-cell'>
-                        <label>Registered or Unregistered</label>
+                    <div class='col-md-3 table-cell'>
+                        <label>R/U</label>
                     </div>
                     <div class='col-md-4 table-cell'>
                         <label>Type of contract</label>
                     </div>
-                    <div class='col-md-4 table-cell'>
+                    <div class='col-md-5 table-cell'>
                         <label>Since when leased out</label>
                     </div>
                 </div>
             </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
+            <td style="width:2%;text-align:center;" class="table-cell">
                 <div class='row' style="text-align:center;">
                     <div class='col-md-12'>
                         <label>Annual fixed Rent</label>
@@ -282,53 +295,62 @@
                     </div>
                 </div>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Interest free loan given</label>
+            <td style="width:3%;text-align:center;" class="table-cell">
+                <div class='row' style="text-align:center;">
+                    <div class='col-md-12'>
+                        <label>Any loans given to tenant</label>
+                    </div>
+                </div>
+                <div class= 'row'>
+                    <div class='col-md-6 table-cell'>
+                        <label>Interest free</label>
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        <label>With interest</label>
+                    </div>
+                </div>
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Loan with interest given</label>
+                <label>Further interest paymemts on rent</label>
             </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
-                <label>Further interest on rent</label>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Qty. of hay taken by owner</label>
             </td>
-            <td style="width:40%;text-align:center;" class="table-cell">
+            <td style="width:15%;text-align:center;" class="table-cell">
                 <div class='row' style="text-align:center;">
                     <div class='col-md-12 '>
-                        <label>Inputs provided by you</label>
+                        <label>Value of inputs provided by you</label>
                     </div>
                 </div>
                 <div class= 'row'>
                     <div class='col-md-1 table-cell'>
-                        <label>Qty of hay taken</label>
+                        <label>Manure</label>
                     </div>
                     <div class='col-md-1 table-cell'>
-                        <label>Value of manure provided</label>
+                        <label>Fertiliser</label>
                     </div>
                     <div class='col-md-1 table-cell'>
-                        <label>Value of fertiliser provided</label>
+                        <label>Seed</label>
                     </div>
                     <div class='col-md-1 table-cell'>
-                        <label>Value of seed provided</label>
+                        <label>Pesticide</label>
                     </div>
                     <div class='col-md-2 table-cell'>
-                        <label>Value of pesticide provided</label>
+                        <label>Electricity</label>
                     </div>
                     <div class='col-md-2 table-cell'>
-                        <label>Value of electricity paid</label>
+                        <label>Pumpset</label>
                     </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>If pumpset provided</label>
+                    <div class='col-md-2 table-cell'>
+                        <label>Irrigation</label>
                     </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>if irrigation provided</label>
-                    </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>If machinery provided</label>
-                    </div>
-                    <div class='col-md-1 table-cell'>
-                        <label>comments</label>
+                    <div class='col-md-2 table-cell'>
+                        <label>Machinery</label>
                     </div>
                 </div>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                <label>Comments</label>
             </td>
         </tr>
     </table>
@@ -349,29 +371,29 @@
             </td>
             <td style="width:6%;text-align:center;" class="table-cell">
 
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-3 table-cell'>
                     {{ form.name_of_lessee }}
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-3 table-cell'>
                     {{ form.caste_of_lessee }}
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-6 table-cell'>
                     {{ form.occupation_of_lessee }}
                 </div>
 
             </td>
-            <td style="width:11%;text-align:center;" class="table-cell">
-                <div class='col-md-4 table-cell'>
+            <td style="width:5%;text-align:center;" class="table-cell">
+                <div class='col-md-3 table-cell'>
                     {{ form.registered_unregistered }}
                 </div>
                 <div class='col-md-4 table-cell'>
                     {{ form.type_of_contract }}
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-5 table-cell'>
                     {{ form.since_when_leased_out }}
                 </div>
             </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
+            <td style="width:2%;text-align:center;" class="table-cell">
                 <div class='col-md-6 table-cell'>
                     {{ form.annual_rent_in_cash }}
                 </div>
@@ -379,19 +401,23 @@
                     {{ form.annual_rent_in_kind }}
                 </div>
             </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.interest_free_loan_given }}
+            <td style="width:3%;text-align:center;" class="table-cell">
+                <div class= 'row'>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.interest_free_loan_given }}
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.loan_with_interest_given }}
+                    </div>
+                </div>
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.loan_with_interest_given }}
-            </td>
-            <td style="width:4%;text-align:center;" class="table-cell">
                 {{ form.further_interest_on_rent }}
             </td>
-            <td style="width:40%;text-align:center;" class="table-cell">
-                <div class='col-md-1 table-cell'>
-                    {{ form.qty_of_hay_taken }}
-                </div>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.qty_of_hay_taken }}
+            </td>
+            <td style="width:15%;text-align:center;" class="table-cell">
                 <div class='col-md-1 table-cell'>
                     {{ form.value_of_manure_provided_by_you }}
                 </div>
@@ -401,24 +427,24 @@
                 <div class='col-md-1 table-cell'>
                     {{ form.value_of_seed_provided_by_you }}
                 </div>
-                <div class='col-md-2 table-cell'>
+                <div class='col-md-1 table-cell'>
                     {{ form.value_of_pesticide_provided_by_you }}
                 </div>
                 <div class='col-md-2 table-cell'>
                     {{ form.value_of_electricity_paid_for_by_you }}
                 </div>
-                <div class='col-md-1 table-cell'>
+                <div class='col-md-2 table-cell'>
                     {{ form.if_you_provided_the_pumpset }}
                 </div>
-                <div class='col-md-1 table-cell'>
+                <div class='col-md-2 table-cell'>
                     {{ form.if_irrigation_provided_by_owner }}
                 </div>
-                <div class='col-md-1 table-cell'>
+                <div class='col-md-2 table-cell'>
                     {{ form.if_machinery_provided_by_owner }}
                 </div>
-                <div class='col-md-1 table-cell'>
-                    {{ form.comments }}
-                </div>
+            </td>
+            <td style="width:2%;text-align:center;" class="table-cell">
+                {{ form.comments }}
             </td>
         </tr>
     </table>

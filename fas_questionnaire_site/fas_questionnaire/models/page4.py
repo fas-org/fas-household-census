@@ -9,9 +9,10 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .page2 import LandType
+from .common import LandType
 from .page3 import Caste
 from .page3 import Registration
+
 
 class Occupation(models.Model):
     id = models.AutoField(primary_key=True)

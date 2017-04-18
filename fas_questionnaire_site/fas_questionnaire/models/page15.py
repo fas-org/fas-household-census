@@ -9,8 +9,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-#from .householdmembers import HouseholdMembers
 from .page1 import HouseholdMembers
+
 
 class LongTermWorkers(models.Model):
     id = models.AutoField(primary_key=True)

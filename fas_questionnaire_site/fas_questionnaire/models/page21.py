@@ -31,7 +31,6 @@ class AssetType(models.Model):
 class AssetOwnership(models.Model):
     household = models.ForeignKey(Household, db_column='household')
     id = models.AutoField(primary_key=True)
-    # asset_category = models.ForeignKey(AssetCategory,db_column='Asset category',blank=True, null=True)
     type_of_asset = models.ForeignKey(AssetType, db_column='Type of asset', blank=True, null=True)
     number_of_assets_owned = models.IntegerField(db_column='Number of assets owned', default=0)
     value_of_assets = models.IntegerField(db_column='Value of assets', default=0)

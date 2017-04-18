@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from ..views import search
 
 
+
 urlpatterns = [
     url(r'^household/', include('fas_questionnaire.urls.household_urls')),
     url(r'^page1/', include('fas_questionnaire.urls.page1')),
@@ -15,7 +16,9 @@ urlpatterns = [
     url(r'^page11/', include('fas_questionnaire.urls.page11')),
     url(r'^page13/',include('fas_questionnaire.urls.page_13')),
     url(r'^page15/', include('fas_questionnaire.urls.page15')),
+    url(r'^page21/', include('fas_questionnaire.urls.page21')),
     url(r'^page22/',include('fas_questionnaire.urls.page22_urls')),
     url(r'^.*/search/$', search.search, name='search'),
     url(r'^othercosts/',include('fas_questionnaire.urls.othercosts')),
 ]
+

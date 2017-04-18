@@ -1,0 +1,51 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<h4 class='text-center'>26.ASSET OWNERSHIP</h4>
+<form method="POST" id="Asset-ownership">
+    {% csrf_token %}
+    <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Immovables</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Area of land/No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+
+    {{ immovables_form_set.management_form }}
+    {% for immovables_form in immovables_form_set.forms %}
+    <div class="row  assets_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{immovables_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{immovables_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{immovables_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+
+
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.assets_formset_row').formset();
+</script>
+{% endblock %}

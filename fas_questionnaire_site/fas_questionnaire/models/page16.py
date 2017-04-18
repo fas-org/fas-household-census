@@ -63,7 +63,7 @@ class AgriculturalOrNonAgriculturalLabourServices(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     name_of_worker = models.CharField(db_column='Name of worker', max_length=50, blank=True, null=True)
     name_of_employer = models.CharField(db_column='Name of employer', max_length=50, blank=True, null=True)
-    caste_of_employer = models.CharField(db_column='caste of employer', max_length=50, blank=True, null=True)
+    caste_of_employer = models.ForeignKey('Caste', models.DO_NOTHING, db_column='caste of employer')
     land_owned_by_employer = models.FloatField(db_column='Land owned by employer', blank=True, null=True)
     type_of_obligation = models.CharField(db_column='Type of obligation', max_length=50, blank=True, null=True)
     description_of_task = models.CharField(db_column='Description of task', max_length=50, blank=True, null=True)

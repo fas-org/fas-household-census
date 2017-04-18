@@ -33,7 +33,10 @@ def edit(request, pk):
         if forms.is_valid():
             active_ids = []
             for form in forms:
-                id = form.data[form.prefix+'-id']
+                try:
+                    id = form.data[form.prefix+'-id']
+                except KeyError:
+                    id = None
                 if form.is_valid() and form.has_changed():
                     member = form.save(commit=False)
                     if id:

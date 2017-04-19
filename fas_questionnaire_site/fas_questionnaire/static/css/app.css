@@ -13,6 +13,13 @@ input, select {
   border-color: #337ab7;
   color: white;
 }
+table{
+    border-collapse: inherit;
+}
+td a{
+    display: block;
+}
+
 .table-cell {
     border: 1px solid #CCC;
     padding: 0px;
@@ -51,10 +58,18 @@ input, select {
     justify-content: space-around;
 }
 
+.flex-column-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1 0 auto;
+}
+
 .delete-row, .cross-width {
     background: url('../images/delete.png') no-repeat 5px center;
     width: 25px;
     height: 25px;
+    flex: 1 0 auto;
 }
 
 .cross-width {

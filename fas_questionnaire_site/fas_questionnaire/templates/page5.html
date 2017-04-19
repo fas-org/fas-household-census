@@ -9,6 +9,14 @@
 </div>
 {% endfor %}
 {% endif %}
+
+{% for dict in production_and_sales_on_operational_holding_formset.errors %}
+{% for error in dict.values %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+{% endfor %}
+{% endfor %}
 <form method='POST' id="page_5_form">
     {% csrf_token %}
     <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
@@ -130,23 +138,13 @@
         </div>
     {% endfor %}
 
-
     <br>
-    <!--<div class=' flex-row'>-->
-        <!--<div class='long-div'>-->
-             <!--<b>{{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}</b>-->
-        <!--</div>-->
-
-        <!--<div class='long-div flex-row' >-->
-            <!--{{production_and_sales_on_operational_holding_comment_form.comments_notes}}-->
-        <!--</div>-->
-    <!--</div>-->
-        <div class="row">
+    <div class="row">
         <div class="col-md-12">
             {{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}
         </div>
     </div>
-        <div class="row flex-row">
+    <div class="row flex-row">
         <div class="col-md-12">
             {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
         </div>

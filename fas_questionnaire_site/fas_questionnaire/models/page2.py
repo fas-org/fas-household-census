@@ -9,18 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-
-
-class LandType(models.Model):
-    id = models.AutoField(primary_key=True)
-    type = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'land type'
-
-    def __str__(self):
-        return self.type
+from .common import LandType
 
 
 class AcquisitionMode(models.Model):

@@ -1,11 +1,9 @@
 <ul class="nav nav-tabs">
     <li {% if 'household/' in request.get_full_path %} class="active"{% endif %}><a href={% url 'household_init' %}>Home</a></li>
-{#    for page 1 - start#}
-    <li {% if 'page1' in request.get_full_path %} class="active" {% endif %}
+    <li {% if 'page1/' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page1_init' %}>1</a>
     </li>
-{#for page 1 - end#}
     <li {% if 'page2/' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page2_init' %}>2</a>
@@ -18,7 +16,6 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page4_init' %}>4</a>
     </li>
-
     <li {% if 'page5' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page5_init' %}>5</a>
@@ -47,7 +44,6 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page11_init' %}>11</a>
     </li>
-
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href="#">12</a>
@@ -60,17 +56,17 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href="#">14</a>
     </li>
-    <li {% if 'page15/' in request.get_full_path %} class="active"{% endif %}
+    <li {% if 'page15' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page15_init' %}>15</a>
     </li>
-    <li
+     <li {% if 'page16' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">16</a>
+            <a href={% url 'page16_init' %}>16</a>
     </li>
-    <li
+     <li {% if 'page17' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">17</a>
+            <a href={% url 'page17_init' %}>17</a>
     </li>
     <li
             {% if request.session.household == None %} class="disabled" {% endif %}>
@@ -85,8 +81,9 @@
             <a href="#">20</a>
     </li>
     <li
+            {% if 'page21' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">21</a>
+            <a href={% url 'page21_init' %}>21</a>
     </li>
     <li
             {% if 'page22' in request.get_full_path %} class="active"{% endif %}

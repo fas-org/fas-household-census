@@ -307,8 +307,9 @@
                 <th style="width:1%;text-align:center;" class='table-cell'>
                     <label> Comments </label>
                 </th>
+                <th style="width:1%;text-align:center;">
+                </th>
             </tr>
-            {#            </div>#}
 
             {{ labour_days_employed_in_agricultural_operations_formset.management_form }}
             {% for labour_days_employed_in_agricultural_operations_form in labour_days_employed_in_agricultural_operations_formset.forms %}
@@ -528,6 +529,8 @@
                     </td>
                     <td style="width:1%;text-align:center;" class='table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.comments }}
+                    </td>
+                    <td style="width:1%;text-align:center;">
                     </td>
                 </tr>
 

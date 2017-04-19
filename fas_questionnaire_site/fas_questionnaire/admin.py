@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models.household_models import Household, Village
-from .models.page1 import Sex, LiteracyStatus, MaritalStatus, CalendarGranularity
 from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
-from .models.common import Crop, PlaceOfWork, Caste
+from .models.page1 import LiteracyStatus, MaritalStatus, CalendarGranularity
+from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType
 
 
 admin.site.register(OtherCostsItems)
@@ -17,3 +17,4 @@ admin.site.register(PlaceOfWork)
 admin.site.register(WageUnit)
 admin.site.register(TypeOfWage)
 admin.site.register(Caste)
+admin.site.register(LandType)

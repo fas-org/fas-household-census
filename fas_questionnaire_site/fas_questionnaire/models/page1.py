@@ -31,18 +31,6 @@ class HouseholdIntroduction(models.Model):
         db_table = 'Introduction'
 
 
-class Sex(models.Model):
-    id = models.AutoField(primary_key=True)
-    sex = models.CharField(unique=True, max_length=10)
-
-    class Meta:
-        managed = True
-        db_table = 'sex'
-
-    def __str__(self):
-        return self.sex
-
-
 class HouseholdMembers(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45, blank=True, null=True)

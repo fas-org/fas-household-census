@@ -15,7 +15,7 @@
     {% csrf_token %}
     <h5 class='text-center'>9A. OWNERSHIP OF WELLS/TUBEWELLS</h5>
     <table style="width:200%;">
-        <tr class="table-head current_ownership_formset_row">
+        <tr class="table-head">
             <td style="width:2%;text-align:center;" class="table-cell">
                 <label>Type of Ownership</label>
             </td>
@@ -80,6 +80,7 @@
             <td style="width:2%;text-align:center;" class="table-cell">
                 <label>Comments (specify if open well)</label>
             </td>
+
         </tr>
     {{ current_ownership_formset.management_form }}
     {% for form in current_ownership_formset.forms %}
@@ -130,6 +131,8 @@
             </td>
             <td style="width:2%;text-align:center;" class="table-cell">
                 {{ form.comments }}
+            </td>
+            <td style="width:2%;text-align:center;">
             </td>
         </tr>
         {% endfor %}
@@ -294,13 +297,16 @@
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.current_ownership_formset_row').formset({
-        prefix: '{{ current_ownership_formset.prefix }}'
+        prefix: '{{ current_ownership_formset.prefix }}',
+        formCssClass: 'current_ownership_formset'
     });
     $('.production_means_formset_row').formset({
-        prefix: '{{ production_means_formset.prefix }}'
+        prefix: '{{ production_means_formset.prefix }}',
+        formCssClass: 'production_means_formset'
     });
     $('.irrigation_means_formset_row').formset({
-        prefix: '{{ irrigation_means_formset.prefix }}'
+        prefix: '{{ irrigation_means_formset.prefix }}',
+        formCssClass: 'irrigation_means_formset'
     });
 </script>
 {% endblock %}

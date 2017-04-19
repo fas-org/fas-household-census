@@ -9,8 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .page2 import LandType
-from .common import Caste
+from .common import LandType, Caste
 
 
 class Registration(models.Model):

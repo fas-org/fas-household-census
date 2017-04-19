@@ -9,20 +9,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .page2 import LandType
-from .page3 import Caste
+from .common import Caste, Occupation, LandType
 from .page3 import Registration
-
-class Occupation(models.Model):
-    id = models.AutoField(primary_key=True)
-    occupation = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'occupation'
-
-    def __str__(self):
-        return self.occupation
 
 
 class InterestUsufruct(models.Model):
@@ -36,7 +24,16 @@ class InterestUsufruct(models.Model):
     def __str__(self):
         return self.interestusufruct
 
+class SeasonalYearlyOther(models.Model):
+    id = models.AutoField(primary_key=True)
+    seasonalyearlyother = models.CharField(max_length=50, blank=True, null=True)
 
+    class Meta:
+        managed = True
+        db_table = 'seasonal_yearly_other'
+
+    def __str__(self):
+        return self.seasonalyearlyother
 
 class LandMortgagedIn(models.Model):
     id = models.AutoField(primary_key=True)
@@ -84,9 +81,9 @@ class LandLeasedInOnShareRent(models.Model):
     name_of_lessor = models.CharField(db_column='Name of lessor', max_length=50, blank=True, null=True)
     caste_of_lessor = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of lessor', blank=True, null=True)
     occupation_of_lessor = models.CharField(db_column='Occupation of lessor', max_length=50, blank=True, null=True)
-    #registered_unregistered = models.CharField(db_column='Registered/unregistered', max_length=50, blank=True, null=True)
     registered_unregistered = models.ForeignKey(Registration, models.DO_NOTHING, db_column='Registered/unregistered', blank=True, null=True)
-    seasonal_yearly_other = models.CharField(db_column='Seasonal/yearly/other', max_length=50, blank=True, null=True)
+    #seasonal_yearly_other = models.CharField(db_column='Seasonal/yearly/other', max_length=50, blank=True, null=True)
+    seasonal_yearly_other = models.ForeignKey(SeasonalYearlyOther, models.DO_NOTHING, db_column='Seasonal/yearly/other', blank=True, null=True)
     year_of_lease = models.CharField(db_column='Year of lease', max_length=50, blank=True, null=True)
     percentage_share_of_crop = models.CharField(db_column='Percentage share of crop', max_length=50, blank=True, null=True)
     quantity_share_of_crop = models.CharField(db_column='Quantity share of crop', max_length=50, blank=True, null=True)
@@ -130,7 +127,7 @@ class LandLeasedOutOnShareRent(models.Model):
     caste_of_sharecropper = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of sharecropper', blank=True, null=True)
     occupation_of_sharecropper = models.CharField(db_column='Occupation of sharecropper', max_length=50, blank=True, null=True)
     registered_unregistered = models.ForeignKey(Registration, models.DO_NOTHING, db_column='Registered/unregistered', blank=True, null=True)
-    seasonal_annual_other = models.CharField(db_column='Seasonal, annual, other', max_length=50, blank=True, null=True)
+    seasonal_annual_other = models.ForeignKey(SeasonalYearlyOther, models.DO_NOTHING, db_column='Seasonal, annual, other', blank=True, null=True)
     year_of_lease = models.CharField(db_column='Year of lease', max_length=50, blank=True, null=True)
     percentage_share_of_crop = models.CharField(db_column='Percentage share of crop', max_length=50, blank=True, null=True)
     quantity_share_of_crop = models.CharField(db_column='Quantity share of crop', max_length=255, blank=True, null=True)

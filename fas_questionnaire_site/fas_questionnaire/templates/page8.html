@@ -2,107 +2,125 @@
 {% load static %}
 
 {% block content %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-success">
-    <strong>{{ message }}</strong>
-</div>
-{% endfor %}
-{% endif %}
-<form method='POST'>
-    {% csrf_token %}
-    <br>
-    <b><h4 class="text-center">8A.SOURCES AND TYPE OF EXTENSION SERVICES USED BY THE HOUSEHOLD</h4></b>
-    <br><br>
-    <div class='row'>
-        <div class='col-md-5 table-cell'>
-            <label>  Did you receive any advice regarding cultivation of crops during the last year </label>
-        </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
 
-        <div class='col-md-6 table-cell text-center'>
-            <label> What kind of advice did you receive? </label>
-        </div>
-    </div>
-    {{ extension_formset.management_form }}
-    {% for extension_form in extension_formset.forms %}
-
-    <div class='row flex-row extension_formset_row'>
-        <div class='col-md-5 table-cell'>
-            {{ extension_form.from_whom_advice_received }}
-        </div>
-        <div class='col-md-6 table-cell'>
-            {{ extension_form.type_of_advice_received_description }}
-        </div>
-    </div>
+    {% for dict in institutional_support_formset.errors %}
+        {% for error in dict.values %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
     {% endfor %}
-<br>
-<br>
-<b><h4 class="text-center">Table 8B. Institutional support</h4></b>
-    <div class='row flex-row'>
-
-        <div class='col-md-3 table-cell'>
-            <label> Category(Did you receive support from Government any of these) </label>
-        </div>
-
-        <div class='col-md-2 table-cell text-center long-div'>
-        <label> Name of Institution </label>
-        </div>
-
-        <div class='col-md-2 table-cell text-center long-div'>
-        <label> Year of support </label>
-        </div>
-
-        <div class='col-md-2 table-cell text-center long-div'>
-            <label>  Nature of support/purpose </label>
-        </div>
-        <div class='col-md-2 table-cell text-center long-div'>
-        <label> Comments </label>
-        </div>
-    </div>
-    {{ institutional_support_formset.management_form }}
-    {% for institutional_support_form in institutional_support_formset.forms %}
-        <div class='row institutional_support_formset_row'>
-        <div class='col-md-3 table-cell'>
-            {{ institutional_support_form.category }}
-        </div>
-
-        <div class='col-md-2 table-cell text-center'>
-            {{ institutional_support_form.name_of_institution }}
-        </div>
-
-        <div class='col-md-2 table-cell text-center'>
-            {{ institutional_support_form.year_of_support }}
-        </div>
-
-        <div class='col-md-2 table-cell text-center'>
-            {{ institutional_support_form.nature_of_support_or_purpose }}
-        </div>
-        <div class='col-md-2 table-cell text-center'>
-            {{ institutional_support_form.comments }}
-        </div>
-    </div>
+    {% for dict in extension_formset.errors %}
+        {% for error in dict.values %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
     {% endfor %}
-    <br>
-            <div class="row table-cell">
-            <label> Comments/ Notes </label>
-                {{ institutional_support_comments_form.institutional_support_comments }}
+
+    <form method='POST'>
+        {% csrf_token %}
+        <br>
+        <b><h4 class="text-center">8A.SOURCES AND TYPE OF EXTENSION SERVICES USED BY THE HOUSEHOLD</h4></b>
+        <br><br>
+        <div class='row'>
+            <div class='col-md-5 table-cell'>
+                <label> Did you receive any advice regarding cultivation of crops during the last year </label>
             </div>
 
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
+            <div class='col-md-6 table-cell text-center'>
+                <label> What kind of advice did you receive? </label>
+            </div>
+        </div>
+        {{ extension_formset.management_form }}
+        {% for extension_form in extension_formset.forms %}
+
+            <div class='row flex-row extension_formset_row'>
+                <div class='col-md-5 table-cell'>
+                    {{ extension_form.from_whom_advice_received }}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{ extension_form.type_of_advice_received_description }}
+                </div>
+            </div>
+        {% endfor %}
+        <br>
+        <br>
+        <b><h4 class="text-center">Table 8B. Institutional support</h4></b>
+        <div class='row flex-row'>
+
+            <div class='col-md-3 table-cell'>
+                <label> Category(Did you receive support from Government any of these) </label>
+            </div>
+
+            <div class='col-md-2 table-cell text-center long-div'>
+                <label> Name of Institution </label>
+            </div>
+
+            <div class='col-md-2 table-cell text-center long-div'>
+                <label> Year of support </label>
+            </div>
+
+            <div class='col-md-2 table-cell text-center long-div'>
+                <label> Nature of support/purpose </label>
+            </div>
+            <div class='col-md-2 table-cell text-center long-div'>
+                <label> Comments </label>
+            </div>
+        </div>
+        {{ institutional_support_formset.management_form }}
+        {% for institutional_support_form in institutional_support_formset.forms %}
+            <div class='row flex-row institutional_support_formset_row'>
+                <div class='col-md-3 table-cell'>
+                    {{ institutional_support_form.category }}
+                </div>
+
+                <div class='col-md-2 table-cell text-center'>
+                    {{ institutional_support_form.name_of_institution }}
+                </div>
+
+                <div class='col-md-2 table-cell text-center'>
+                    {{ institutional_support_form.year_of_support }}
+                </div>
+
+                <div class='col-md-2 table-cell text-center'>
+                    {{ institutional_support_form.nature_of_support_or_purpose }}
+                </div>
+                <div class='col-md-2 table-cell text-center'>
+                    {{ institutional_support_form.comments }}
+                </div>
+            </div>
+        {% endfor %}
+        <br>
+        <div class="row">
+            <label> Comments/ Notes </label>
+            {{ institutional_support_comments_form.institutional_support_comments }}
+        </div>
+
+        <div class='row text-center'>
+            <button class='btn btn-primary btn-submit' type="submit">Save</button>
+        </div>
+    </form>
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $('.extension_formset_row').formset({
-            prefix:'{{ extension_formset.prefix }}'
+            prefix: '{{ extension_formset.prefix }}',
+            formCssClass: 'extension_formset'
         });
     </script>
 
     <script type="text/javascript">
         $('.institutional_support_formset_row').formset({
-            prefix:'{{ institutional_support_formset.prefix }}'
+            prefix: '{{ institutional_support_formset.prefix }}',
+            formCssClass: 'institutional_support_formset'
         });
     </script>
 

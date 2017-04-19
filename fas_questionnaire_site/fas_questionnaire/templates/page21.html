@@ -1,0 +1,226 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<h4 class='text-center'>26.ASSET OWNERSHIP</h4>
+<form method="POST" id="Asset-ownership">
+    {% csrf_token %}
+    <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Immovables</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Area of land/No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+    {% csrf_token %}
+    {{ immovables_form_set.management_form }}
+    {% for immovables_form in immovables_form_set.forms %}
+    <div class="row  immovables_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{immovables_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{immovables_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{immovables_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+    
+ <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Means Of Transport</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+    {% csrf_token %}
+    {{ meansoftransport_form_set.management_form }}
+    {% for meansoftransport_form in meansoftransport_form_set.forms %}
+    <div class="row  transport_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{meansoftransport_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{meansoftransport_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{meansoftransport_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+ <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Funrniture</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+
+    {{ furniture_form_set.management_form }}
+    {% for furniture_form in furniture_form_set.forms %}
+    <div class="row  furniture_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{furniture_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{furniture_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{furniture_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+ <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Electric Equipments</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+
+    {{ electricEquipments_form_set.management_form }}
+    {% for electricEquipments_form in electricEquipments_form_set.forms %}
+    <div class="row  electrical_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{electricEquipments_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{electricEquipments_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{electricEquipments_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+ <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Other Domestic Durable Goods</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+
+    {{ otherDomesticDurableGoods_form_set.management_form }}
+    {% for otherDomesticDurableGoods_form in otherDomesticDurableGoods_form_set.forms %}
+    <div class="row  othergoods_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{otherDomesticDurableGoods_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{otherDomesticDurableGoods_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{otherDomesticDurableGoods_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+ <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Inventories</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Amt</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+
+    {{ inventories_form_set.management_form }}
+    {% for inventories_form in inventories_form_set.forms %}
+    <div class="row  inventories_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{inventories_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{inventories_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{inventories_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+ <div class="row table-cell">
+        <div class="col-md-4 ">
+            <label>Miscellaneous</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>No</label>
+        </div>
+        <div class="col-md-4 table-cell">
+            <label>Value</label>
+        </div>
+    </div>
+
+    {{ miscellaneous_form_set.management_form }}
+    {% for miscellaneous_form in miscellaneous_form_set.forms %}
+    <div class="row  miscellaneous_formset_row table-cell">
+        <div class="col-md-4 ">
+            {{miscellaneous_form.type_of_asset}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{miscellaneous_form.number_of_assets_owned}}
+        </div>
+        <div class="col-md-4 table-cell">
+            {{miscellaneous_form.value_of_assets}}
+        </div>
+    </div>
+    {% endfor %}
+
+<div class="row">
+        <div class="col-md-12 ">
+            <label>Is any land title registered singly or jointly in the name of a woman? If yes,
+give details</label>
+        </div>
+    </div>
+        <div class="row flex-row">
+        <div class="col-md-12">
+            {{land_details.land_registered_details}}
+        </div>
+    </div>
+
+
+    <div class='row text-center'>
+        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    </div>
+</form>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.immovables_formset_row').formset();
+    $('.transport_formset_row').formset();
+    $('.furniture_formset_row').formset();
+    $('.electrical_formset_row').formset();
+    $('.othergoods_formset_row').formset();
+    $('.inventories_formset_row').formset();
+    $('.miscellaneous_formset_row').formset();
+</script>
+{% endblock %}

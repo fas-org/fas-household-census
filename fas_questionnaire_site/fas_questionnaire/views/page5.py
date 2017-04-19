@@ -14,8 +14,9 @@ def init(request):
         return new(request)
     else:
         croppingPattern_result_set=CroppingPatternAndCropSchedule.objects.filter(household=request.session.get('household'))
-        if len(croppingPattern_result_set) == 0:
-           return new(request)
+        comments_result_set=CroppingPatternAndCropScheduleComments.objects.filter(household=request.session.get('household'))
+        if len(croppingPattern_result_set) == 0 and comments_result_set == 0:
+            return new(request)
         return edit(request, request.session['household'])
 
 

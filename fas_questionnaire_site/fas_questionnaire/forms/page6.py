@@ -5,7 +5,7 @@ from ..models.page6 import *
 class ProductionAndSalesForm(forms.ModelForm):
     class Meta:
         model= ProductionAndSales
-        fields=['crop_serial_no',
+        fields=['crop_serial_no', 'crop',
                 'sales_of_main_product_transportation_mode',
                 'sales_of_main_product_transportation_cost',
                 'sales_of_main_product_other_marketing_costs',
@@ -35,16 +35,12 @@ class ProductionAndSalesForm(forms.ModelForm):
                  ]
         widgets=None
         localized_fields = None
-        labels = {
-            'crop_serial_no':'Serial no',
-            'sales_of_main_product_transportation_mode':'Mode',
-            'sales_of_main_product_transportation_cost':'Cost Incurred',
-            'sales_of_main_product_other_marketing_costs':'Other marketing Costs',
-            'if_price_determined_in_advance':'Was the price fixed before harvesting',
-            'sales_of_by_product_amt':'Amt',
-            'sales_of_by_product_price':'Price',
-            'quantity_of_main_product_used_for_payment':'Grain/Main product',
-            'quantity_of_by_product_used_for_payment':'Straw and other by-products'
-        }
+        labels = {}
         help_texts = {}
         error_messages = {}
+
+    def clean(self):
+        if self.cleaned_data.get('crop_serial_no') is None :
+            raise forms.ValidationError('Please select serial number')
+        return self.cleaned_data
+

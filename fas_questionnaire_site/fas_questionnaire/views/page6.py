@@ -35,9 +35,12 @@ def new(request):
                     productionAndSales.save()
                     sales_save = True
 
-            if sales_save:
-                messages.success(request, 'Data saved successfully')
+        if sales_save:
+            messages.success(request, 'Data saved successfully')
             return redirect('page6_edit', pk=request.session['household'])
+        else:
+            return render(request, 'page6.html',
+                              {'production_and_sales_formset': productionAndSalesForms})
 
     return render(request, 'page6.html',
                   {'production_and_sales_formset': productionAndSales_formset})

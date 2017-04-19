@@ -45,6 +45,11 @@ td a{
     text-align: center;
 }
 
+.header-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .flex-row-wrap {
     display: flex;
     flex-wrap: wrap;

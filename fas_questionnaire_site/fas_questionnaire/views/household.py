@@ -2,6 +2,7 @@ from ..forms.household_forms import HouseholdForm
 from ..models.household_models import Household
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.contrib import messages
 
 
@@ -47,6 +48,17 @@ def edit(request, pk):
         return render(request, 'household.html', {'household_form': form})
     except Exception:
         return new(request)
+
+
+@login_required(login_url='login')
+def submit_household(request):
+    group = Group.objects.get(name='DataEntry')
+    if group in request.user.groups.all():
+        household = Household.objects.get(pk=request.session.get('household'))
+        household.is_submitted = True
+        household.save()
+    del request.session['household']
+    return redirect('household_init')
 
 
 def get(pk):

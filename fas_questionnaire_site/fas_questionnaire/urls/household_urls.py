@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^init$', household.init, name='household_init'),
     url(r'^(?P<pk>\d+|None)$', household.edit, name='household_edit'),
     url(r'^get$', household.get, name='household_get'),
+    url(r'^submit$', household.submit_household, name='household_submit'),
 ]

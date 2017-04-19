@@ -1,5 +1,6 @@
 {% extends "container.html" %}
 {% load static %}
+{% load app_filters %}
 
 {% block content %}
 {% if messages %}
@@ -276,9 +277,12 @@
         $('input[name="members-INITIAL_FORMS"]').val(0);
     </script>
 
-
     <div class='row text-center'>
+        {% if request.user|has_group:'DataEntry' and request.session.household|is_submitted %}
+        <button class='btn btn-primary btn-submit disabled' onclick="doNothing(event)">Save</button>
+        {% else %}
         <button class='btn btn-primary btn-submit' type="submit">Save</button>
+        {% endif %}
     </div>
 </form>
 {% endblock %}

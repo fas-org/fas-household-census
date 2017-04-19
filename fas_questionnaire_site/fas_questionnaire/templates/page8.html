@@ -9,6 +9,22 @@
             </div>
         {% endfor %}
     {% endif %}
+
+    {% for dict in institutional_support_formset.errors %}
+        {% for error in dict.values %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for dict in extension_formset.errors %}
+        {% for error in dict.values %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <form method='POST'>
         {% csrf_token %}
         <br>
@@ -83,7 +99,7 @@
             </div>
         {% endfor %}
         <br>
-        <div class="row table-cell">
+        <div class="row">
             <label> Comments/ Notes </label>
             {{ institutional_support_comments_form.institutional_support_comments }}
         </div>

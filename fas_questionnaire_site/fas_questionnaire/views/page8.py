@@ -43,6 +43,12 @@ def new(request):
         if extension_form_saved or institutional_support_form_saved or comments_form_saved:
             messages.success(request, 'Data saved successfully')
             return redirect('page8_edit', pk=request.session['household'])
+        else:
+            return render(request, 'page8.html',
+                          {'extension_formset': extension_forms,
+                           'institutional_support_formset': institutional_support_forms,
+                           'institutional_support_comments_form': institutional_support_comments_form
+                           })
 
     return render(request, 'page8.html',
                   {'extension_formset': extension_formset(prefix='extensionforms'),
@@ -63,21 +69,27 @@ def edit(request, pk):
             institutional_support_forms = institutional_support_formset(request.POST, prefix='institutionalsupportforms')
             institutional_support_comments_form = InstitutionalSupportCommentsForm(request.POST, instance=institutional_support_comments)
 
-            Extension.objects.filter(household=pk).delete()
-            InstitutionalSupport.objects.filter(household=pk).delete()
-            InstitutionalSupportComments.objects.filter(household=pk).delete()
-
             extension_form_saved = False
             institutional_support_form_saved = False
             comments_form_saved = False
             if extension_forms.is_valid() and institutional_support_forms.is_valid() and institutional_support_comments_form.is_valid():
+                Extension.objects.filter(household=pk).delete()
+                InstitutionalSupport.objects.filter(household=pk).delete()
+                InstitutionalSupportComments.objects.filter(household=pk).delete()
+
                 extension_form_saved = save_forms(request, extension_forms)
                 institutional_support_form_saved = save_forms(request, institutional_support_forms)
-                comments_form_saved = save_form(request, institutional_support_comments_form)
+                comments_form_saved = save_form_with_no_has_change(request, institutional_support_comments_form)
 
             if extension_form_saved or institutional_support_form_saved or comments_form_saved:
                 messages.success(request, 'Data saved successfully')
                 return redirect('page8_edit', pk=pk)
+            else:
+                return render(request, 'page8.html',
+                              {'extension_formset': extension_forms,
+                               'institutional_support_formset': institutional_support_forms,
+                               'institutional_support_comments_form': institutional_support_comments_form
+                               })
 
         extension_formset = modelformset_factory(Extension, form=ExtensionForm, extra=5)
         institutional_support_formset = modelformset_factory(InstitutionalSupport, form=InstitutionalSupportForm, extra=5)

@@ -30,6 +30,11 @@ class InstitutionalSupportForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def clean(self):
+        if self.cleaned_data.get('category') is None:
+            raise forms.ValidationError('Category is mandatory for entering other details')
+        return self.cleaned_data
+
 
 class InstitutionalSupportCommentsForm(forms.ModelForm):
 
@@ -37,7 +42,9 @@ class InstitutionalSupportCommentsForm(forms.ModelForm):
         model = InstitutionalSupportComments
         fields = ['household', 'institutional_support_comments']
         exclude = ['household']
-        widgets = None
+        widgets = {
+            'institutional_support_comments': forms.Textarea(attrs={'rows': 10, 'cols': 198})
+        }
         localized_fields = None
         labels = {
             'institutional_support_comments': 'Comments/ Notes'

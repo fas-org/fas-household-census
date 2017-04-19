@@ -252,10 +252,13 @@
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.agri_formset_row').formset({
-        prefix: '{{ agri_formset.prefix }}'
+        prefix: '{{ agri_formset.prefix }}',
+        formCssClass: 'agri_formset'
     });
     $('.non_agri_formset_row').formset({
-        prefix: '{{ non_agri_formset.prefix }}'
+        prefix: '{{ non_agri_formset.prefix }}',
+        formCssClass: 'non_agri_formset'
+
     });
 </script>
 {% endblock %}

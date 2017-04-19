@@ -15,7 +15,7 @@ def init(request):
     else:
         agri_result_set = LongTermWorkers.objects.filter(household=request.session.get('household'))
         non_agri_result_set = NonAgricultureWorkers.objects.filter(household=request.session.get('household'))
-        if len(agri_result_set) == 0 and non_agri_result_set == 0:
+        if len(agri_result_set) == 0 and len(non_agri_result_set) == 0:
             return new(request)
         return edit(request, request.session['household'])
 

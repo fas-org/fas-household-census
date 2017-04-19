@@ -1,5 +1,5 @@
 from django import forms
-from ..models.page21 import AssetOwnership,AssetType,AssetCategory
+from ..models.page21 import AssetOwnership, AssetType, AssetCategory, AssetLandRegistration
 
 
 class ImmovableForm(forms.ModelForm):
@@ -127,3 +127,15 @@ class MiscellaneousForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MiscellaneousForm, self).__init__(*args, **kwargs)
         self.fields['type_of_asset'].queryset = AssetType.objects.filter(asset_category_id=AssetCategory.objects.get(asset_category="Miscellaneous").id)
+
+class AssetLandRegistrationForm(forms.ModelForm):
+        class Meta:
+            model = AssetLandRegistration
+            fields = ['id','household','land_registered_details']
+            exclude=['household']
+            widgets = {
+                'land_registered_details': forms.Textarea(attrs={'rows': 10, 'cols': 198})
+            }
+            localized_fields = None
+            help_texts = {}
+            error_messages = {}

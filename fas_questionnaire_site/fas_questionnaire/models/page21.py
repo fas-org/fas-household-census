@@ -38,3 +38,12 @@ class AssetOwnership(models.Model):
     class Meta:
         managed = True
         db_table = 'Asset Ownership'
+
+class AssetLandRegistration(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey(Household, db_column='household')
+    land_registered_details = models.TextField(db_column='land registered details', blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Asset Land Registration'

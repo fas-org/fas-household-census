@@ -39,9 +39,9 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page9_init' %}>9</a>
     </li>
-    <li {% if 'othercosts' in request.get_full_path %} class="active"{% endif %}
+    <li {% if 'page10' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'othercosts_init' %}>10</a>
+            <a href={% url 'page10_init' %}>10</a>
     </li>
     <li {% if 'page11' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>

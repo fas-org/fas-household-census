@@ -20,6 +20,14 @@
         {% endfor %}
     {% endfor %}
 
+    {% for dict in aggri_or_non_aggri_labour_service_formset.errors %}
+        {% for error in dict.values %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <form method='POST' id="page_16_form">
         {% csrf_token %}
             <h4 class='text-center'>16. FREEDOM OF EMPLOYMENT</h4><br>

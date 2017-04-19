@@ -13,6 +13,13 @@ input, select {
   border-color: #337ab7;
   color: white;
 }
+table{
+    border-collapse: inherit;
+}
+td a{
+    display: block;
+}
+
 .table-cell {
     border: 1px solid #CCC;
     padding: 0px;

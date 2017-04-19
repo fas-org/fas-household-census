@@ -135,7 +135,7 @@
                 {{ freedom_of_employment_questions_form.is_your_household_obliged_to_perform_any_traditional_caste_duties }}
             </div>
         <h4 class='text-center'>17. INCOME FROM STATE AND COMMON PROPERTY RESOURCES</h4>
-        <table style="width:210%;">
+        <table style="width:100%;">
             <tr>
                 <th style="width:1%;text-align:center;" class='table-cell'>
                     <label> Crop number first digit </label>
@@ -185,7 +185,7 @@
                 <th style="width:1%;text-align:center;" class='table-cell'>
                     <label> Comments </label>
                 </th>
-                <div class="cross-width"></div>
+                <th style="width:1%;text-align:center;"></th>
             </tr>
             {{ income_from_state_formset.management_form }}
             {% for income_from_state_form in income_from_state_formset.forms %}
@@ -239,6 +239,7 @@
                     <td class='table-cell'>
                         {{ income_from_state_form.comments }}
                     </td>
+                    <td></td>
                 </tr>
             {% endfor %}
 

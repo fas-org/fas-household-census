@@ -9,7 +9,6 @@
 </div>
 {% endfor %}
 {% endif %}
-<form method='POST' id="land_mortgaged_in_section5">
     {% csrf_token %}
     <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4>
     <b>5.1.1 Land leased in on fixed rent</b><br>
@@ -435,10 +434,7 @@
     </div>
     {% endfor %}
     
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
+
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.formset_row_lnd_lsd_in_fxd_rnt').formset();

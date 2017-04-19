@@ -3,7 +3,6 @@
 
 {% block content %}
 <h4 class='text-center' xmlns="http://www.w3.org/1999/html">10. OTHER COSTS INCURRED LAST YEAR</h4>
-<form method="POST" id="other-costs">
     <div class="row flex-row">
         <div class="col-md-3 table-cell" >
             <label>Item(code)</label>
@@ -210,14 +209,11 @@
         </div>
     </div>
         {% endfor %}
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
+
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
-    $('.formset_row_1').formset({ prefix:'crop-form', 'addText': 'add another crop' });
-    $('.formset_row_2').formset({ prefix:'extra-form' });
-    $('.formset_row_3').formset({prefix:'payment-form'})
-</script>
-</form>
+        $('.formset_row_1').formset({ prefix:'crop-form', 'addText': 'add another crop' });
+        $('.formset_row_2').formset({ prefix:'extra-form' });
+        $('.formset_row_3').formset({prefix:'payment-form'})
+    </script>
 {% endblock %}

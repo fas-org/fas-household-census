@@ -10,7 +10,6 @@
 {% endfor %}
 {% endif %}
 <h4 class='text-center'>26.ASSET OWNERSHIP</h4>
-<form method="POST" id="Asset-ownership">
     {% csrf_token %}
     <div class="row table-cell">
         <div class="col-md-4 ">
@@ -208,11 +207,6 @@ give details</label>
         </div>
     </div>
 
-
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.immovables_formset_row').formset();

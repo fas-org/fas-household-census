@@ -28,7 +28,6 @@
         {% endfor %}
     {% endfor %}
 
-    <form method='POST' id="page_16_form">
         {% csrf_token %}
             <h4 class='text-center'>16. FREEDOM OF EMPLOYMENT</h4><br>
             {{ freedom_of_employment_questions_form.management_form }}
@@ -244,10 +243,7 @@
             {% endfor %}
 
         </table>
-        <div class='row text-center'>
-            <button class='btn btn-primary btn-submit' type="submit">Save</button>
-        </div>
-    </form>
+
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $('.income_from_state_formset_row').formset({

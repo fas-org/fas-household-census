@@ -28,7 +28,6 @@
     {% endfor %}
 {% endfor %}
 
-<form method='POST' id="page_2_form">
     {% csrf_token %}
 
     <div class = 'row'>
@@ -335,10 +334,7 @@
                 {{  landpurchased_comments_form.landpurchased_comments }}
         </div>
 
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
+
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.current_ownership_formset_row').formset({

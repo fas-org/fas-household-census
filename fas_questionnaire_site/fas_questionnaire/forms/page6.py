@@ -5,7 +5,7 @@ from ..models.page6 import *
 class ProductionAndSalesForm(forms.ModelForm):
     class Meta:
         model= ProductionAndSales
-        fields=['crop_serial_no',
+        fields=['crop_serial_no', 'crop',
                 'sales_of_main_product_transportation_mode',
                 'sales_of_main_product_transportation_cost',
                 'sales_of_main_product_other_marketing_costs',

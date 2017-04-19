@@ -28,7 +28,10 @@
         <div class='col-md-1 table-cell long-div'>
              <label>Serial No.</label>
         </div>
-        <div class='col-md-8'>
+        <div class='col-md-1 table-cell long-div'>
+             <label> Crop </label>
+        </div>
+        <div class='col-md-7'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Sales of grain/main product</p>
             </div>
@@ -104,12 +107,15 @@
     {{ production_and_sales_formset.management_form }}
     {% for production_and_sales_form in production_and_sales_formset.forms %}
     <div class='row productionsales_formset_row flex-row'>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell'>
             {{production_and_sales_form.crop_serial_no}}
         </div>
-        <div class='col-md-8'>
+        <div class='col-md-1 table-cell'>
+            {{ production_and_sales_form.crop }}
+        </div>
+        <div class='col-md-7'>
             <div class='row flex-row'>
-                <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-1 table-cell'>
                     {{production_and_sales_form.month_of_disposal}}
                 </div>
                 <div class='col-md-1 table-cell long-div'>

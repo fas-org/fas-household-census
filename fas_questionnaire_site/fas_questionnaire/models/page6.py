@@ -26,6 +26,7 @@ class MarketingAgencies(models.Model):
 
 class ProductionAndSales(models.Model):
     crop_serial_no = models.ForeignKey(CroppingPatternAndCropSchedule, models.DO_NOTHING, db_column='crop serial no', null=True, blank=True)
+    crop = models.ForeignKey('Crop', on_delete=models.CASCADE, blank=True, null=True)
     sales_of_main_product_transportation_mode = models.CharField(db_column='sales of main product transportation mode', max_length=50, blank=True, null=True)
     sales_of_main_product_transportation_cost = models.CharField(db_column='sales of main product transportation cost', max_length=50, blank=True, null=True)
     sales_of_main_product_other_marketing_costs = models.CharField(db_column='sales of main product other marketing costs', max_length=50, blank=True, null=True)
@@ -33,7 +34,7 @@ class ProductionAndSales(models.Model):
     sales_of_by_product_price = models.CharField(db_column='sales of by product price', max_length=50, blank=True, null=True)
     quantity_of_main_product_used_for_payment = models.CharField(db_column='quantity of main product used for payment', max_length=50, blank=True, null=True)
     quantity_of_by_product_used_for_payment = models.CharField(db_column='quantity of by product used for payment', max_length=50, blank=True, null=True)
-    household= models.ForeignKey(Household,models.DO_NOTHING,db_column='household')
+    household = models.ForeignKey(Household,models.DO_NOTHING,db_column='household')
     crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)
     crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
     sale_number = models.FloatField(db_column='Sale number', blank=True, null=True)

@@ -67,6 +67,9 @@ def edit(request, pk):
 
             if sales_save:
                 messages.success(request, 'Data saved successfully')
+            else:
+                return render(request, 'page6.html',
+                              {'production_and_sales_formset': productionAndSalesForms})
 
         productionAndSales_model_form=modelformset_factory(ProductionAndSales, form=ProductionAndSalesForm, extra=5)
         productionAndSales_result_set=ProductionAndSales.objects.filter(household=pk)

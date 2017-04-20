@@ -16,4 +16,4 @@ class IncomeFromSalaries(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Salaries, artisan earnings, other businesses'
+        db_table = 'Salaries artisan earnings other businesses'

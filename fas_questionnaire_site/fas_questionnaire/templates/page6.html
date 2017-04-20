@@ -30,7 +30,7 @@
         <div class='col-md-1 table-cell long-div'>
              <label> Crop </label>
         </div>
-        <div class='col-md-7'>
+        <div class='col-md-11'>
             <div class='col-md-12 table-cell'>
                 <p class='text-center'>Sales of grain/main product</p>
             </div>
@@ -38,13 +38,13 @@
                 <div class='col-md-1 table-cell long-div'>
                     <label>Month of Disposal</label>
                 </div>
-                <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-2 table-cell long-div'>
                    <label>Quantity</label>
                 </div>
-                <div class='col-md-1 table-cell long-div'>
+                <div class='col-md-2 table-cell long-div'>
                     <label>Price</label>
                 </div>
-                <div class='col-md-2 table-cell long-div'>
+                <div class='col-md-1 table-cell long-div'>
                     <label>Where Marketed</label>
                 </div>
                 <div class='col-md-1 table-cell long-div'>
@@ -93,12 +93,21 @@
             </div>
             <div class='row flex-row'>
                 <div class='col-md-6 table-cell long-div'>
-                   <label>Grain/Main Product</label>
+                   <label>Grain Main Product</label>
                 </div>
                 <div class='col-md-6 table-cell long-div'>
                     <label>Straw and other by-products</label>
                 </div>
             </div>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label> Sale Number </label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label> Commodity sold </label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label> Comments</label>
         </div>
         <div class="cross-width"></div>
     </div>
@@ -112,18 +121,28 @@
         <div class='col-md-1 table-cell'>
             {{ production_and_sales_form.crop }}
         </div>
-        <div class='col-md-7'>
+        <div class='col-md-11'>
             <div class='row flex-row'>
                 <div class='col-md-1 table-cell'>
                     {{production_and_sales_form.month_of_disposal}}
                 </div>
-                <div class='col-md-1 table-cell long-div'>
-                    {{production_and_sales_form.quantity}}
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    {{production_and_sales_form.price}}
+                <div class='col-md-2 table-cell long-div'>
+                       <div class="col-md-6 table-cell flex-column">
+                        {{ production_and_sales_form.quantity }}
+                    </div>
+                    <div class="col-md-6 table-cell flex-column">
+                        {{ production_and_sales_form.unit_of_quantity }}
+                    </div>
                 </div>
                 <div class='col-md-2 table-cell long-div'>
+                    <div class="col-md-5 table-cell flex-column">
+                        {{ production_and_sales_form.price }}
+                    </div>
+                    <div class="col-md-7 table-cell flex-column">
+                        {{ production_and_sales_form.unit_of_price }}
+                    </div>
+                </div>
+                <div class='col-md-1 table-cell long-div'>
                     {{production_and_sales_form.where_marketed}}
                 </div>
                 <div class='col-md-1 table-cell long-div'>
@@ -170,6 +189,16 @@
             </div>
         </div>
     </div>
+    <div class='col-md-1 table-cell long-div'>
+        {{ production_and_sales_form.sale_number }}
+    </div>
+    <div class='col-md-1 table-cell long-div'>
+        {{ production_and_sales_form.commodity_sold }}
+    </div>
+    <div class="col-md-1 table-cell long-div">
+        {{ production_and_sales_form.comments }}
+    </div>
+
     </div>
  {% endfor %}
 

@@ -14,6 +14,7 @@
 <form method='POST' id="section_9_form">
     {% csrf_token %}
     <h5 class='text-center'>9A. OWNERSHIP OF WELLS/TUBEWELLS</h5>
+    <div class="table table-responsive">
     <table style="width:200%;">
         <tr class="table-head current_ownership_formset_row">
             <td style="width:2%;text-align:center;" class="table-cell">
@@ -134,7 +135,7 @@
         </tr>
         {% endfor %}
     </table>
-
+  </div>
     <br/><br/><br/>
     <h5 class='text-center'>9B. SPECIFIED MEANS OF PRODUCTION: OWNERSHIP AND EARNINGS</h5>
     <div class="row flex-row">

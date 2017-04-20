@@ -205,4 +205,3 @@ def edit(request, pk):
 
     except Exception:
         return new(request)
-

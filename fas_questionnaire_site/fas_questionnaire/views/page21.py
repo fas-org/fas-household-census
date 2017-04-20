@@ -56,7 +56,7 @@ def new(request):
             assetOwnership_save = save_forms(request, otherDomesticDurableGoodsForms) or assetOwnership_save
             assetOwnership_save = save_forms(request, inventoriesForms) or assetOwnership_save
             assetOwnership_save = save_forms(request, miscellaneousForms) or assetOwnership_save
-            assetOwnership_save = save_form(request, assetLandRegistrationForm) or assetOwnership_save
+            assetOwnership_save = save_form_old(request, assetLandRegistrationForm) or assetOwnership_save
 
             if assetOwnership_save:
                 messages.success(request, 'Data saved successfully')

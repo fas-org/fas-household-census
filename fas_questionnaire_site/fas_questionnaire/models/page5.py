@@ -40,10 +40,10 @@ class CroppingPatternAndCropSchedule(models.Model):
     month_of_harvesting = models.CharField(db_column='Month of harvesting', max_length=50, blank=True, null=True)
     source_of_irrigation = models.CharField(db_column='Source of irrigation', max_length=50, blank=True, null=True)
     production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    unit_production = models.ForeignKey(Units, db_column='Unit, production', null=True)
+    unit_production = models.ForeignKey(Units, db_column='Unit, production',blank=True, null=True)
     production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
     consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    unit_consumption = models.ForeignKey(Units, db_column='Unit, consumption', null=True)
+    unit_consumption = models.ForeignKey(Units, db_column='Unit, consumption', blank=True,null=True)
     consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
     loans_advances_taken_from_buyer = models.CharField(db_column='Loans/advances taken from buyer', max_length=50,
                                                        blank=True, null=True)

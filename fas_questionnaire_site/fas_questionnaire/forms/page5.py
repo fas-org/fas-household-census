@@ -29,17 +29,19 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
                   'interest_on_loans_advances',
                   'output_price_if_fixed_in_advance',
                   'other_conditions',
-                  'comments']
+                  'comments',
+                  'unit_production',
+                  'unit_consumption',
+                  'loans_advances_taken_from_buyer',
+                  'principal',
+                  'interest_on_loans_advances',
+                  'output_price_if_fixed_in_advance',
+                  'other_conditions','crop_number_first_digit',
+                   'crop_number_second_digit', 'crop_clean'
+                  ]
         exclude = [
-                   'unit_production',
-                   'unit_consumption',
-                   'loans_advances_taken_from_buyer',
-                   'principal',
-                   'interest_on_loans_advances',
-                   'output_price_if_fixed_in_advance',
-                   'other_conditions',
-                   'household', 'crop_number_first_digit',
-                   'crop_number_second_digit', 'crop_clean']
+
+                   'household']
         widgets = None
         labels={
             'production_main_product': 'Grain/main product',

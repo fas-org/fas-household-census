@@ -8,6 +8,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+
+from fas_questionnaire.models.common import Units
 from .household_models import Household
 
 
@@ -18,13 +20,14 @@ class Tenurial(models.Model):
     class Meta:
         managed = True
         db_table = 'tenurial'
+
     def __str__(self):
         return self.status
 
 
 class CroppingPatternAndCropSchedule(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    serial_no = models.IntegerField(db_column='serial no',primary_key=True,null=False)
+    serial_no = models.IntegerField(db_column='serial no', primary_key=True, null=False)
     crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)
     crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
     crop = models.CharField(db_column='Crop', max_length=50, blank=True, null=True)
@@ -37,10 +40,10 @@ class CroppingPatternAndCropSchedule(models.Model):
     month_of_harvesting = models.CharField(db_column='Month of harvesting', max_length=50, blank=True, null=True)
     source_of_irrigation = models.CharField(db_column='Source of irrigation', max_length=50, blank=True, null=True)
     production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    unit_production = models.CharField(db_column='Unit, production', max_length=50, blank=True, null=True)
+    unit_production = models.ForeignKey(Units, db_column='Unit, production', null=True)
     production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
     consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    unit_consumption = models.CharField(db_column='Unit, consumption', max_length=50, blank=True, null=True)
+    unit_consumption = models.ForeignKey(Units, db_column='Unit, consumption', null=True)
     consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
     loans_advances_taken_from_buyer = models.CharField(db_column='Loans/advances taken from buyer', max_length=50,
                                                        blank=True, null=True)
@@ -73,6 +76,3 @@ class CroppingPatternAndCropScheduleComments(models.Model):
     class Meta:
         managed = True
         db_table = 'cropping pattern and crop schedule comments'
-
-
-

@@ -22,7 +22,7 @@ def edit(request, pk):
         form = HouseholdIntroductionForm(request.POST, prefix='introduction')
         household_members_formset = formset_factory(HouseholdMembersForm, formset=BaseFormSet, extra=5)
         forms = household_members_formset(request.POST, prefix='members')
-        if save_form(form, pk) or save_formset(forms, HouseholdMembers, pk):
+        if save_form(form, pk) and save_formset(forms, HouseholdMembers, pk):
             messages.success(request, 'Data saved successfully')
         return redirect('page1_edit', pk)
 

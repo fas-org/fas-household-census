@@ -65,15 +65,15 @@ def save_formset(forms, model, household_id, **kwargs): #Pass key-word args for 
 def save_form(form, household_id):
     """add or update model using modelForm"""
     if form.is_valid():
-        introduction = form.save(commit=False)
+        record = form.save(commit=False)
         try:
             form_id = form.data[form.prefix+'-id']
         except KeyError:
             form_id = None
         if form_id:
-            introduction.id = int(form_id)
-        introduction.household = get_object_or_none(Household, household_id)
-        introduction.save()
+            record.id = int(form_id)
+        record.household = get_object_or_none(Household, household_id)
+        record.save()
         return True
     return False
 
@@ -81,7 +81,10 @@ def save_form(form, household_id):
 def get_object_or_none(model, household_id, **kwargs):
     """get model object or return None"""
     try:
-        model_object = model.objects.get(household=household_id, **kwargs)
+        if model == Household:
+            model_object = model.objects.get(pk=household_id, **kwargs)
+        else:
+            model_object = model.objects.get(household=household_id, **kwargs)
     except model.DoesNotExist:
         model_object = None
     return model_object

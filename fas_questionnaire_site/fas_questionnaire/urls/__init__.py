@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^page4/', include('fas_questionnaire.urls.page4')),
     url(r'^page5/', include('fas_questionnaire.urls.page5')),
     url(r'^page6/', include('fas_questionnaire.urls.page6')),
+    url(r'^page7/',include('fas_questionnaire.urls.page7')),
     url(r'^page8/', include('fas_questionnaire.urls.page8')),
     url(r'^page9/', include('fas_questionnaire.urls.page9')),
     url(r'^page11/', include('fas_questionnaire.urls.page11')),

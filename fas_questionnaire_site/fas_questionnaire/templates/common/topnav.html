@@ -24,9 +24,9 @@
             {% if request.session.household == None %} class="disabled" {% endif %}>
             <a href={% url 'page6_init' %}>6</a>
     </li>
-    <li
+    <li {%  if 'page7' in request.get_full_path  %} class="active" {%  endif  %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href="#">7</a>
+            <a href={% url 'page7_init' %}>7</a>
     </li>
     <li {% if 'page8' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>

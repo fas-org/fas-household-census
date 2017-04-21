@@ -1,0 +1,10 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+<h4 class='text-center'>7. INPUT USE FOR EACH CROP ON OPERATIONAL HOLDING</h4>
+    {{ formset.management_form }}
+    {% for form in formset.forms %}
+    {{ form }}
+    {% endfor %}
+{%  endblock %}

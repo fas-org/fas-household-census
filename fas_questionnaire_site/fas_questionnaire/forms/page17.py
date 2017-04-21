@@ -23,3 +23,15 @@ class IncomeFromOtherBusinessActivitiesForm(forms.ModelForm):
         }
         help_texts={}
         error_messages={}
+class AnimalResoursesInventoryForm(forms.ModelForm):
+    class Meta:
+        model=AnimalResoursesInventory
+        exclude=['household']
+        widgets=None
+        localized_fields=None
+        labels={
+        'cattle_type':'Adult/ Calf',
+        'Age':'Age (for cattle only)'
+        }
+        help_texts = {}
+        error_messages = {}

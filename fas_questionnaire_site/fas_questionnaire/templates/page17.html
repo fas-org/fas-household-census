@@ -9,6 +9,94 @@
         {% endfor %}
     {% endif %}
 
+    {% csrf_token %}
+    <h4 class='text-center'> 18. ANIMAL RESOURCES </h4>
+
+    <h6 class='text-center'> A. Inventory </h6>
+    <div class='row'>
+        <div class='col-md-6 table-cell'>
+            <div class='col-md-12 table-cell '>
+                <p class='text-center'>Description</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Type (see list below)</label>
+                </div>
+                <div class="col-md-8 table-cell long-div">
+                    <div class='col-md-12 table-cell '>
+                        <p class='text-center'>For cattle only</p>
+                    </div>
+                    <div class='row flex-row'>
+                        <div class='col-md-6 table-cell long-div'>
+                            <label>Sex</label>
+                        </div>
+                        <div class='col-md-6 table-cell long-div'>
+                            <label>Adult / Calf</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Breed</label>
+                </div>
+            </div>
+
+
+        </div>
+        <div class='col-md-2 table-cell flex-row'>
+            <label>No</label>
+        </div>
+        <div class='col-md-2 table-cell flex-row'>
+            <label>Age (for cattle only)</label>
+        </div>
+
+        <div class='col-md-2 table-cell flex-row'>
+            <label>Total present value</label>
+        </div>
+        <div class="cross-width">
+        </div>
+    </div>
+
+    {{ animal_inventory_formset.management_form }}
+    {% for inventory_form in animal_inventory_formset.forms %}
+        <div class='row animal_inventory_formset_row flex-row'>
+            <div class='col-md-6 table-cell'>
+                <div class='row flex-row'>
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ inventory_form.type }}
+                    </div>
+                    <div class="col-md-8 table-cell long-div ">
+                        <div class='row flex-row'>
+                            <div class='col-md-6 table-cell long-div'>
+                                {{ inventory_form.sex }}
+                            </div>
+                            <div class='col-md-6 table-cell long-div'>
+                                {{ inventory_form.cattle_type }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ inventory_form.breed }}
+                    </div>
+                </div>
+
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                {{ inventory_form.no }}
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                {{ inventory_form.age }}
+            </div>
+
+            <div class='col-md-2 table-cell flex-column'>
+                {{ inventory_form.total_present_value }}
+            </div>
+            {{ inventory_form.id.as_hidden }}
+        </div>
+    {% endfor %}
+
+    <br><br>
 
     {% csrf_token %}
     <h4 class='text-center'>19A. INCOME FROM BUSINESS ACTIVITIES OTHER THAN CROP PRODUCTION</h4>
@@ -142,9 +230,12 @@
         </div>
     {% endfor %}
 
+
+
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $('.income_business_formset_row').formset();
         $('.income_salary_formset_row').formset();
+        $('.animal_inventory_formset_row').formset();
     </script>
 {% endblock %}

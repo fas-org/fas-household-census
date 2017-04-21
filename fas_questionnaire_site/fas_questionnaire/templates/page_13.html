@@ -3,7 +3,6 @@
 
 {% block content %}
 <h4 class='text-center'>13.PATTERN OF AGRICULTURAL LABOURING OUT BY HOUSEHOLD MEMBERS IN THE PREVIOUS YEAR</h4>
-<form method="POST">
     <div class="row flex-row">
         <div class="col-md-2 flex-row" >
             <div class="col-md-9 table-cell flex-column">
@@ -97,13 +96,10 @@
         </div>
     </div>
     {% endfor %}
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
+
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.formset_row').formset({ 'addText': 'add another worker' });
     $('input[name="form-INITIAL_FORMS"]').val(0);
 </script>
-</form>
 {% endblock %}

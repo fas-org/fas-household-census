@@ -8,6 +8,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+
+from fas_questionnaire.models.common import Units
 from .household_models import Household
 from .page5 import CroppingPatternAndCropSchedule
 
@@ -41,9 +43,9 @@ class ProductionAndSales(models.Model):
     commodity_sold = models.CharField(db_column='Commodity sold', max_length=50, blank=True, null=True)
     month_of_disposal = models.CharField(db_column='Month of disposal', max_length=50, blank=True, null=True)
     quantity = models.FloatField(db_column='Quantity', blank=True, null=True)
-    unit_of_quantity = models.CharField(db_column='Unit of quantity', max_length=50, blank=True, null=True)
+    unit_of_quantity = models.ForeignKey(Units,db_column='Unit of quantity', blank=True, null=True)
     price = models.FloatField(db_column='Price', blank=True, null=True)
-    unit_of_price = models.CharField(db_column='Unit of price', max_length=50, blank=True, null=True)
+    unit_of_price = models.ForeignKey(Units,db_column='Unit of price', blank=True, null=True)
     where_marketed = models.CharField(db_column='Where marketed', max_length=50, blank=True, null=True)
     marketing_agency = models.ForeignKey(MarketingAgencies, models.DO_NOTHING, db_column='Marketing agency', max_length=50, blank=True, null=True)
     marketing_agency_value = models.CharField(db_column='marketing agency value', max_length=50, blank=True, null=True)

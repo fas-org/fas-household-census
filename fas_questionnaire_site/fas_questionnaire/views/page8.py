@@ -38,7 +38,7 @@ def new(request):
         if extension_forms.is_valid() and institutional_support_forms.is_valid() and institutional_support_comments_form.is_valid():
             extension_form_saved = save_forms(request, extension_forms)
             institutional_support_form_saved = save_forms(request, institutional_support_forms)
-            comments_form_saved = save_form(request, institutional_support_comments_form)
+            comments_form_saved = save_form_with_no_has_change(request, institutional_support_comments_form)
 
         if extension_form_saved or institutional_support_form_saved or comments_form_saved:
             messages.success(request, 'Data saved successfully')

@@ -7,6 +7,10 @@
 input, select {
     width: 100%;
     color: #337ab7;
+    padding: 5px;
+}
+.row1 {
+  padding-top: 50px;
 }
 .login-button {
   background-color: #337ab7;
@@ -26,7 +30,6 @@ td a{
 }
 .table-cell label {
     font-weight: normal;
-    padding-left: 5px;
 }
 .table-cell.text-center label {
     font-weight: normal;
@@ -34,7 +37,7 @@ td a{
 }
 .table-cell input {
     border: 2px solid transparent;
-    padding: .5px;
+    padding: 3.5px;
 }
 .btn-submit {
     margin: 10px;
@@ -43,6 +46,11 @@ td a{
     display: flex;
     align-items: stretch;
     text-align: center;
+}
+
+.header-links {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .flex-row-wrap {

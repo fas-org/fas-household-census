@@ -12,149 +12,194 @@
 
 {% for dict in production_and_sales_on_operational_holding_formset.errors %}
 {% for error in dict.values %}
-    <div class="alert alert-danger">
-        <strong>{{ error|escape }}</strong>
-    </div>
+<div class="alert alert-danger">
+    <strong>{{ error|escape }}</strong>
+</div>
 {% endfor %}
 {% endfor %}
-<form method='POST' id="page_5_form">
-    {% csrf_token %}
-    <h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
-    <b>A. Cropping pattern and crop schedule</b><br>
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell long-div flex-column'>
-            <label>Serial No.</label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-            <label>Corp</label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-            <label>Variety</label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-            <label>Tenurial Status</label>
-        </div>
-        <div class='col-md-1 table-cell long-div  flex-column'>
-            <label>Crop/Homestead Land</label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-            <label>Extent</label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-                 <label>Month of sowing </label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-            <label>Month of harvesting</label>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-             <label>Source of irrigation</label>
-        </div>
-        <div class='col-md-2'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Production</p>
-            </div>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                     <label>Grain/Main Products</label>
-                </div>
-                <div class='col-md-6 table-cell'>
-                     <label>Straw and other by-products</label>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-2'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Household consumption including amount kept for use as seeds</p>
-            </div>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                    Grain/Main products
-                </div>
-                <div class='col-md-6 table-cell'>
-                 <label>Straw and other by-products</label>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-1 table-cell long-div flex-column'>
-             <label>Comments</label>
-        </div>
-        <div class="cross-width"></div>
+{% csrf_token %}
+<h5 class='text-center'>6.PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h5>
+<b>A. Cropping pattern and crop schedule</b><br>
+<div class='row flex-row'>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Serial No.</label>
     </div>
-
-    {{ production_and_sales_on_operational_holding_formset.management_form }}
-    {% for production_and_sales_on_operational_holding_form in production_and_sales_on_operational_holding_formset.forms %}
-        <div class='row flex-row croppingpattern_formset_row'>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.serial_no}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.variety}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.tenurial_status}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.crop_homestead_land}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.extent}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_sowing}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
-            </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
-            </div>
-            <div class='col-md-2'>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_on_operational_holding_form.production_main_product}}
-                </div>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_on_operational_holding_form.production_by_product}}
-                </div>
-            </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Corp</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Variety</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Tenurial Status</label>
+    </div>
+    <div class='col-md-1 table-cell long-div  flex-column'>
+        <label>Crop / Homestead Land</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Extent</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Month of sowing </label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Month of harvesting</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Source of irrigation</label>
+    </div>
+    <div class='col-md-3'>
+        <div class='col-md-12 table-cell'>
+            <p class='text-center'>Production</p>
         </div>
-            <div class='col-md-2'>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_on_operational_holding_form.consumption_main_product}}
-                </div>
-                <div class='col-md-6 table-cell'>
-                    {{production_and_sales_on_operational_holding_form.consumption_by_product}}
-                </div>
+        <div class='row flex-row'>
+            <div class='col-md-4 table-cell'>
+                <label>Grain/Main Products</label>
             </div>
-        </div>
-            <div class='col-md-1 table-cell long-div'>
-                {{production_and_sales_on_operational_holding_form.comments}}
+            <div class='col-md-4 table-cell'>
+                <label>Straw and other by-products</label>
             </div>
-
-        </div>
-    {% endfor %}
-
-    <br>
-    <div class="row">
-        <div class="col-md-12">
-            {{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}
+             <div class='col-md-4 table-cell long-div flex-column'>
+        <label>Unit Production</label>
+    </div>
         </div>
     </div>
-    <div class="row flex-row">
-        <div class="col-md-12">
-            {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
+    <div class='col-md-3'>
+        <div class='col-md-12 table-cell'>
+            <p class='text-center'>Household consumption including amount kept for use as seeds</p>
+        </div>
+        <div class='row flex-row'>
+            <div class='col-md-4 table-cell'>
+                Grain/Main products
+            </div>
+            <div class='col-md-4 table-cell'>
+                <label>Straw and other by-products</label>
+            </div>
+            <div class='col-md-4 table-cell long-div flex-column'>
+        <label>Unit Consumption</label>
+    </div>
         </div>
     </div>
-
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Comments</label>
     </div>
 
-</form>
+
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Loans Advances Taken From Buyer</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Principal</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Interest On Loans Advances</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Output Price If Fixed In Advance</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Other Conditions</label>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        <label>Crop Clean</label>
+    </div>
+    <div class="cross-width"></div>
+</div>
+
+{{ production_and_sales_on_operational_holding_formset.management_form }}
+{% for production_and_sales_on_operational_holding_form in production_and_sales_on_operational_holding_formset.forms %}
+<div class='row flex-row croppingpattern_formset_row flex-row' >
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.serial_no}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.crop}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.variety}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.tenurial_status}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.crop_homestead_land}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.extent}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.month_of_sowing}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
+    </div>
+    <div class='col-md-3'>
+        <div class='row flex-row'>
+            <div class='col-md-4 table-cell flex-column'>
+                {{production_and_sales_on_operational_holding_form.production_main_product}}
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                {{production_and_sales_on_operational_holding_form.production_by_product}}
+            </div>
+            <div class='col-md-4 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.unit_production}}
+    </div>
+        </div>
+    </div>
+    <div class='col-md-3'>
+        <div class='row flex-row'>
+            <div class='col-md-4 table-cell flex-column'>
+                {{production_and_sales_on_operational_holding_form.consumption_main_product}}
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                {{production_and_sales_on_operational_holding_form.consumption_by_product}}
+            </div>
+              <div class='col-md-4 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.unit_consumption}}
+    </div>
+        </div>
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.comments}}
+    </div>
+
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.loans_advances_taken_from_buyer}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.principal}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.interest_on_loans_advances}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.output_price_if_fixed_in_advance}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.other_conditions}}
+    </div>
+    <div class='col-md-1 table-cell long-div flex-column'>
+        {{production_and_sales_on_operational_holding_form.crop_clean}}
+    </div>
+</div>
+{% endfor %}
+
+<br>
+<div class="row flex-row">
+    <div class="col-md-12">
+        {{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}
+    </div>
+</div>
+<div class="row flex-row">
+    <div class="col-md-12">
+        {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
+    </div>
+</div>
+
+
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.croppingpattern_formset_row').formset();

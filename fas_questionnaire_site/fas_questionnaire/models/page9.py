@@ -48,6 +48,18 @@ class PowerSource(models.Model):
         return self.source
 
 
+class SourceOfFinance(models.Model):
+    id = models.AutoField(primary_key=True)
+    source = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Finance Source'
+
+    def __str__(self):
+        return self.source
+
+
 class NatureExchange(models.Model):
     id = models.AutoField(primary_key=True)
     exchange = models.CharField(max_length=200, blank=True, null=True)
@@ -70,7 +82,7 @@ class OwnershipWellsTubewells(models.Model):
     type = models.ForeignKey(WellType, models.DO_NOTHING, db_column='Type', blank=True, null=True)
     power_source = models.ForeignKey(PowerSource, models.DO_NOTHING, db_column='Source of Power', blank=True, null=True)
     installation_cost = models.IntegerField(db_column='Cost of installation', blank=True, null=True)
-    finance_source = models.IntegerField(db_column='Source of finance', blank=True, null=True)
+    finance_source = models.ForeignKey(SourceOfFinance, models.DO_NOTHING, db_column='Source of finance', blank=True, null=True)
     expenses_last_year = models.IntegerField(db_column='Maintenance expenses last year', blank=True, null=True)
     irrigation_crop = models.CharField(max_length=50, db_column='Irrigation Crop', blank=True, null=True)
     irrigation_sale_area = models.IntegerField(db_column='Irrigation Sale Area', blank=True, null=True)
@@ -108,7 +120,7 @@ class SpecifiedProductionMeans(models.Model):
     present_value = models.IntegerField(db_column='Present Value', blank=True, null=True)
     maintenance_charges = models.IntegerField(db_column='Maintenance charges', blank=True, null=True)
     rental_earnings = models.IntegerField(db_column='Rental earnings', blank=True, null=True)
-    rental_earnings_units = models.CharField(max_length=50, db_column='Rental earning units', blank=True, null=True)
+    rental_earnings_units = models.ForeignKey('Units', models.DO_NOTHING, db_column='Rental earning units', blank=True, null=True)
     comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
 
     class Meta:

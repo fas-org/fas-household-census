@@ -51,9 +51,9 @@ class InstitutionalSupport(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     category = models.ForeignKey('InstitutionalSupportCategory', models.DO_NOTHING, db_column='Category', blank=True, null=True)
-    name_of_institution = models.CharField(db_column='Name of Institution', max_length=100, blank=True, null=True)
+    name_of_institution = models.ForeignKey('Institution', models.DO_NOTHING, db_column='Name of Institution', blank=True, null=True)
     year_of_support = models.CharField(db_column='Year of support', max_length=50, blank=True, null=True)
-    nature_of_support_or_purpose = models.CharField(db_column='Nature of support/purpose', max_length=100, blank=True, null=True)
+    nature_of_support_or_purpose = models.ForeignKey('SupportNature', models.DO_NOTHING, db_column='Nature of support/purpose', blank=True, null=True)
     comments = models.CharField(db_column='Comments', max_length=250, blank=True, null=True)
 
     class Meta:

@@ -14,6 +14,7 @@ class Household(models.Model):
     id = models.AutoField(primary_key=True)
     village = models.ForeignKey('Village', models.DO_NOTHING, db_column='village')
     household_number = models.CharField(max_length=45, db_column='household number')
+    is_submitted = models.BooleanField(default=False)
 
     class Meta:
         managed = True

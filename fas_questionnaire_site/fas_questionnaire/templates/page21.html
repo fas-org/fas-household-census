@@ -10,24 +10,24 @@
 {% endfor %}
 {% endif %}
 <h4 class='text-center'>26.ASSET OWNERSHIP</h4>
-<form method="POST" id="Asset-ownership">
     {% csrf_token %}
-    <div class="row table-cell">
-        <div class="col-md-4 ">
+    <div class="row table-cell flex-row">
+        <div class="col-md-4 table-cell flex-column">
             <label>Immovables</label>
         </div>
-        <div class="col-md-4 table-cell">
-            <label>Area of land/No</label>
+        <div class="col-md-4 table-cell  flex-column">
+            <label>Area of land/No.</label>
         </div>
-        <div class="col-md-4 table-cell">
+        <div class="col-md-4 table-cell  flex-column">
             <label>Value</label>
         </div>
+            <div class="cross-width"></div>
     </div>
     {% csrf_token %}
     {{ immovables_form_set.management_form }}
     {% for immovables_form in immovables_form_set.forms %}
-    <div class="row  immovables_formset_row table-cell">
-        <div class="col-md-4 ">
+    <div class="row  immovables_formset_row table-cell flex-row">
+        <div class="col-md-4 table-cell">
             {{immovables_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">
@@ -39,21 +39,22 @@
     </div>
     {% endfor %}
     
- <div class="row table-cell">
+ <div class="row table-cell flex-row">
         <div class="col-md-4 ">
-            <label>Means Of Transport</label>
+            <label>Means of transport</label>
         </div>
         <div class="col-md-4 table-cell">
-            <label>No</label>
+            <label>No.</label>
         </div>
         <div class="col-md-4 table-cell">
             <label>Value</label>
         </div>
+        <div class="cross-width"></div>
     </div>
     {% csrf_token %}
     {{ meansoftransport_form_set.management_form }}
     {% for meansoftransport_form in meansoftransport_form_set.forms %}
-    <div class="row  transport_formset_row table-cell">
+    <div class="row  transport_formset_row table-cell flex-row">
         <div class="col-md-4 ">
             {{meansoftransport_form.type_of_asset}}
         </div>
@@ -65,21 +66,22 @@
         </div>
     </div>
     {% endfor %}
- <div class="row table-cell">
+ <div class="row table-cell flex-row">
         <div class="col-md-4 ">
-            <label>Funrniture</label>
+            <label>Furniture</label>
         </div>
         <div class="col-md-4 table-cell">
-            <label>No</label>
+            <label>No.</label>
         </div>
         <div class="col-md-4 table-cell">
             <label>Value</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
     {{ furniture_form_set.management_form }}
     {% for furniture_form in furniture_form_set.forms %}
-    <div class="row  furniture_formset_row table-cell">
+    <div class="row  furniture_formset_row table-cell flex-row">
         <div class="col-md-4 ">
             {{furniture_form.type_of_asset}}
         </div>
@@ -91,21 +93,22 @@
         </div>
     </div>
     {% endfor %}
- <div class="row table-cell">
+ <div class="row table-cell flex-row">
         <div class="col-md-4 ">
-            <label>Electric Equipments</label>
+            <label>Electric equipment</label>
         </div>
         <div class="col-md-4 table-cell">
-            <label>No</label>
+            <label>No.</label>
         </div>
         <div class="col-md-4 table-cell">
             <label>Value</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
     {{ electricEquipments_form_set.management_form }}
     {% for electricEquipments_form in electricEquipments_form_set.forms %}
-    <div class="row  electrical_formset_row table-cell">
+    <div class="row  electrical_formset_row table-cell flex-row">
         <div class="col-md-4 ">
             {{electricEquipments_form.type_of_asset}}
         </div>
@@ -117,21 +120,22 @@
         </div>
     </div>
     {% endfor %}
- <div class="row table-cell">
+ <div class="row table-cell flex-row">
         <div class="col-md-4 ">
-            <label>Other Domestic Durable Goods</label>
+            <label>Other domestic durable goods</label>
         </div>
         <div class="col-md-4 table-cell">
-            <label>No</label>
+            <label>No.</label>
         </div>
         <div class="col-md-4 table-cell">
             <label>Value</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
     {{ otherDomesticDurableGoods_form_set.management_form }}
     {% for otherDomesticDurableGoods_form in otherDomesticDurableGoods_form_set.forms %}
-    <div class="row  othergoods_formset_row table-cell">
+    <div class="row  othergoods_formset_row table-cell flex-row">
         <div class="col-md-4 ">
             {{otherDomesticDurableGoods_form.type_of_asset}}
         </div>
@@ -143,7 +147,7 @@
         </div>
     </div>
     {% endfor %}
- <div class="row table-cell">
+ <div class="row table-cell flex-row">
         <div class="col-md-4 ">
             <label>Inventories</label>
         </div>
@@ -153,11 +157,12 @@
         <div class="col-md-4 table-cell">
             <label>Value</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
     {{ inventories_form_set.management_form }}
     {% for inventories_form in inventories_form_set.forms %}
-    <div class="row  inventories_formset_row table-cell">
+    <div class="row  inventories_formset_row table-cell flex-row">
         <div class="col-md-4 ">
             {{inventories_form.type_of_asset}}
         </div>
@@ -169,21 +174,22 @@
         </div>
     </div>
     {% endfor %}
- <div class="row table-cell">
+ <div class="row table-cell flex-row">
         <div class="col-md-4 ">
             <label>Miscellaneous</label>
         </div>
         <div class="col-md-4 table-cell">
-            <label>No</label>
+            <label>No.</label>
         </div>
         <div class="col-md-4 table-cell">
             <label>Value</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
     {{ miscellaneous_form_set.management_form }}
     {% for miscellaneous_form in miscellaneous_form_set.forms %}
-    <div class="row  miscellaneous_formset_row table-cell">
+    <div class="row  miscellaneous_formset_row table-cell flex-row">
         <div class="col-md-4 ">
             {{miscellaneous_form.type_of_asset}}
         </div>
@@ -197,7 +203,7 @@
     {% endfor %}
 
 <div class="row">
-        <div class="col-md-12 ">
+        <div class="col-md-12">
             <label>Is any land title registered singly or jointly in the name of a woman? If yes,
 give details</label>
         </div>
@@ -208,11 +214,6 @@ give details</label>
         </div>
     </div>
 
-
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.immovables_formset_row').formset();

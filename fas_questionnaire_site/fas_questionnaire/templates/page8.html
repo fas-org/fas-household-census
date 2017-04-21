@@ -25,7 +25,6 @@
         {% endfor %}
     {% endfor %}
 
-    <form method='POST'>
         {% csrf_token %}
         <br>
         <b><h4 class="text-center">8A.SOURCES AND TYPE OF EXTENSION SERVICES USED BY THE HOUSEHOLD</h4></b>
@@ -103,11 +102,6 @@
             <label> Comments/ Notes </label>
             {{ institutional_support_comments_form.institutional_support_comments }}
         </div>
-
-        <div class='row text-center'>
-            <button class='btn btn-primary btn-submit' type="submit">Save</button>
-        </div>
-    </form>
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">

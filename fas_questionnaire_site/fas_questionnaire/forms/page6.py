@@ -14,8 +14,6 @@ class ProductionAndSalesForm(forms.ModelForm):
                 'quantity_of_main_product_used_for_payment',
                 'quantity_of_by_product_used_for_payment',
                 'household',
-                'crop_number_first_digit',
-                'crop_number_second_digit',
                 'sale_number',
                 'commodity_sold',
                 'month_of_disposal',
@@ -27,11 +25,9 @@ class ProductionAndSalesForm(forms.ModelForm):
                 'marketing_agency',
                 'marketing_agency_value',
                 'if_price_determined_in_advance',
+                'comments'
                 ]
-        exclude=['unit_of_quantity',
-                 'unit_of_price',
-                 'commodity_sold','household',
-                 'comments'
+        exclude=['household'
                  ]
         widgets=None
         localized_fields = None

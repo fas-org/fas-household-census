@@ -11,9 +11,9 @@
     {% endifequal %}
 {% endfor %}
 {% endif %}
-<form method='POST' id="section_9_form">
     {% csrf_token %}
     <h5 class='text-center'>9A. OWNERSHIP OF WELLS/TUBEWELLS</h5>
+    <div class="table table-responsive">
     <table style="width:200%;">
         <tr class="table-head">
             <td style="width:2%;text-align:center;" class="table-cell">
@@ -137,7 +137,7 @@
         </tr>
         {% endfor %}
     </table>
-
+  </div>
     <br/><br/><br/>
     <h5 class='text-center'>9B. SPECIFIED MEANS OF PRODUCTION: OWNERSHIP AND EARNINGS</h5>
     <div class="row flex-row">
@@ -228,10 +228,10 @@
         <div class='col-md-2 table-cell flex-column'>
             <div class="row flex-row">
                 <div class='col-md-6 table-cell flex-column'>
-                    {{ form.rental_earnings }}
+                    {{ form.rental_earnings_units }}
                 </div>
                 <div class='col-md-6 table-cell flex-column'>
-                    {{ form.rental_earnings_units }}
+                    {{ form.rental_earnings }}
                 </div>
             </div>
         </div>
@@ -277,10 +277,10 @@
         <div class='col-md-2 table-cell flex-column'>
             <div class="row flex-row">
                 <div class='col-md-6 table-cell flex-column'>
-                    {{ form.rental_earnings }}
+                    {{ form.rental_earnings_units }}
                 </div>
                 <div class='col-md-6 table-cell flex-column'>
-                    {{ form.rental_earnings_units }}
+                    {{ form.rental_earnings }}
                 </div>
             </div>
         </div>
@@ -290,10 +290,6 @@
     </div>
     {% endfor %}
 
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.current_ownership_formset_row').formset({

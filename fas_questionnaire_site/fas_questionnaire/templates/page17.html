@@ -1,10 +1,192 @@
 {% extends "container.html" %}
 {% load static %}
-
 {% block content %}
-<form method='POST' id="page_17_form">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     {% csrf_token %}
-    <h4 class='text-center'>19B. INCOME FROM SALARIES, RENTS, REMITTANCES, PENSIONS, SCHOLARSHIPS AND ANY OTHER ACTIVITIES</h4>
+    <h4 class='text-center'> 18. ANIMAL RESOURCES </h4>
+
+    <h6 class='text-center'> A. Inventory </h6>
+    <div class='row'>
+        <div class='col-md-6 table-cell'>
+            <div class='col-md-12 table-cell '>
+                <p class='text-center'>Description</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Type (see list below)</label>
+                </div>
+                <div class="col-md-8 table-cell long-div">
+                    <div class='col-md-12 table-cell '>
+                        <p class='text-center'>For cattle only</p>
+                    </div>
+                    <div class='row flex-row'>
+                        <div class='col-md-6 table-cell long-div'>
+                            <label>Sex</label>
+                        </div>
+                        <div class='col-md-6 table-cell long-div'>
+                            <label>Adult / Calf</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Breed</label>
+                </div>
+            </div>
+
+
+        </div>
+        <div class='col-md-2 table-cell flex-row'>
+            <label>No</label>
+        </div>
+        <div class='col-md-2 table-cell flex-row'>
+            <label>Age (for cattle only)</label>
+        </div>
+
+        <div class='col-md-2 table-cell flex-row'>
+            <label>Total present value</label>
+        </div>
+        <div class="cross-width">
+        </div>
+    </div>
+
+    {{ animal_inventory_formset.management_form }}
+    {% for inventory_form in animal_inventory_formset.forms %}
+        <div class='row animal_inventory_formset_row flex-row'>
+            <div class='col-md-6 table-cell'>
+                <div class='row flex-row'>
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ inventory_form.type }}
+                    </div>
+                    <div class="col-md-8 table-cell long-div ">
+                        <div class='row flex-row'>
+                            <div class='col-md-6 table-cell long-div'>
+                                {{ inventory_form.sex }}
+                            </div>
+                            <div class='col-md-6 table-cell long-div'>
+                                {{ inventory_form.cattle_type }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ inventory_form.breed }}
+                    </div>
+                </div>
+
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                {{ inventory_form.no }}
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                {{ inventory_form.age }}
+            </div>
+
+            <div class='col-md-2 table-cell flex-column'>
+                {{ inventory_form.total_present_value }}
+            </div>
+            {{ inventory_form.id.as_hidden }}
+        </div>
+    {% endfor %}
+
+    <br><br>
+
+    {% csrf_token %}
+    <h4 class='text-center'>19A. INCOME FROM BUSINESS ACTIVITIES OTHER THAN CROP PRODUCTION</h4>
+    <div class='row'>
+        <div class='col-md-2 table-cell '>
+            <label>Name of Worker</label>
+        </div>
+        <div class='col-md-2 table-cell '>
+            <label>Description of work</label>
+        </div>
+        <div class='col-md-2 table-cell '>
+            <label>Place of work</label>
+        </div>
+        <div class='col-md-5 table-cell'>
+            <div class='col-md-12 table-cell '>
+                <p class='text-center'>Earnings and costs related to business activity (specify whether for the whole
+                    year or per month</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Production and Sale</label>
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Cost of material inputs</label>
+                </div>
+                <div class='col-md-2 table-cell long-div'>
+                    <label>Wages and salaries paid</label>
+                </div>
+                <div class='col-md-3 table-cell long-div'>
+                    <label>Rents paid (for land, building or machinery)</label>
+                </div>
+                <div class='col-md-3 table-cell long-div'>
+                    <label>Any other costs (specify)</label>
+                </div>
+            </div>
+
+        </div>
+        <div class='col-md-1 table-cell flex-row'>
+            <label>Comments</label>
+        </div>
+        <div class="cross-width">
+
+        </div>
+    </div>
+
+    {{ income_business_formset.management_form }}
+    {% for business_form in income_business_formset.forms %}
+        <div class='row  income_business_formset_row flex-row'>
+            <div class='col-md-2 table-cell'>
+                {{ business_form.name_of_worker }}
+            </div>
+            <div class='col-md-2 table-cell'>
+                {{ business_form.description_of_work }}
+            </div>
+            <div class='col-md-2 table-cell'>
+                {{ business_form.place_of_work }}
+            </div>
+            <div class='col-md-5 table-cell'>
+                <div class='row flex-row'>
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ business_form.production_and_sale }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ business_form.cost_of_material_inputs }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div'>
+                        {{ business_form.wages_and_salaries_paid }}
+                    </div>
+                    <div class='col-md-3 table-cell long-div'>
+                        {{ business_form.rents_paid }}
+                    </div>
+                    <div class='col-md-3 table-cell long-div'>
+                        {{ business_form.any_other_costs }}
+                    </div>
+                </div>
+
+            </div>
+            <div class='col-md-1 table-cell flex-row'>
+                {{ business_form.comments }}
+            </div>
+            {{ business_form.id.as_hidden }}
+        </div>
+    {% endfor %}
+
+
+    <br>
+    <br>
+    {% csrf_token %}
+    <h4 class='text-center'>19B. INCOME FROM SALARIES, RENTS, REMITTANCES, PENSIONS, SCHOLARSHIPS AND ANY OTHER
+        ACTIVITIES</h4>
     <div class='row'>
         <div class='col-md-2 table-cell flex-row'>
             <label>Name of Worker</label>
@@ -21,31 +203,39 @@
         <div class='col-md-3 table-cell flex-row'>
             <label>Comments</label>
         </div>
+        <div class="cross-width">
+
+        </div>
     </div>
 
-    {{ income_formset.management_form }}
-    {% for form in income_formset.forms %}
-    <div class='row'>
-        <div class='col-md-2 table-cell flex-row'>
-            {{form.worker_name}}
+    {{ income_salary_formset.management_form }}
+    {% for salary_form in income_salary_formset.forms %}
+        <div class='row income_salary_formset_row flex-row'>
+            <div class='col-md-2 table-cell'>
+                {{ salary_form.worker_name }}
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ salary_form.description_of_work }}
+            </div>
+            <div class='col-md-2 table-cell'>
+                {{ salary_form.place_of_work }}
+            </div>
+            <div class='col-md-2 table-cell'>
+                {{ salary_form.annual_income }}
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ salary_form.comments }}
+            </div>
+            {{ salary_form.id.as_hidden }}
         </div>
-        <div class='col-md-3 table-cell flex-row'>
-            {{form.description_of_work}}
-        </div>
-        <div class='col-md-2 table-cell flex-row'>
-            {{form.place_of_work}}
-        </div>
-        <div class='col-md-2 table-cell flex-row'>
-            {{form.annual_income}}
-        </div>
-        <div class='col-md-3 table-cell flex-row'>
-            {{form.comments}}
-        </div>
-    </div>
-    {%endfor%}
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
+    {% endfor %}
 
-</form>
+
+
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.income_business_formset_row').formset();
+        $('.income_salary_formset_row').formset();
+        $('.animal_inventory_formset_row').formset();
+    </script>
 {% endblock %}

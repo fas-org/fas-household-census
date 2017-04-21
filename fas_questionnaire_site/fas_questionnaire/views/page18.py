@@ -21,7 +21,12 @@ def edit(request, pk):
     if request.method == "POST":
         asset_aquisition_formset = formset_factory(AcquisitionAndLossOfMajorAssetsForm, formset=BaseFormSet, extra=5)
         forms = asset_aquisition_formset(request.POST, prefix='assets')
-        if save_formset(forms, AcquisitionAndLossOfMajorAssets, pk):
+
+        children_formset = formset_factory(ForChildrenOfAge616YearsForm, formset=BaseFormSet, extra=5)
+        children_forms = children_formset(request.POST, prefix='children')
+
+        if save_formset(forms, AcquisitionAndLossOfMajorAssets, pk) and save_formset(children_forms,
+                                                                                     ForChildrenOfAge616Years, pk):
             messages.success(request, 'Data saved successfully')
         return redirect('page18_edit', pk)
 
@@ -29,4 +34,10 @@ def edit(request, pk):
                                                           form=AcquisitionAndLossOfMajorAssetsForm, extra=5)
     result_set = AcquisitionAndLossOfMajorAssets.objects.filter(household=pk)
     formset = asset_aquisition_model_formset(queryset=result_set, prefix='assets')
-    return render(request, 'page18.html', {'asset_acquisition_formset': formset })
+
+    children_model_formset = modelformset_factory(ForChildrenOfAge616Years,form=ForChildrenOfAge616YearsForm,extra=5)
+    children_result_set=ForChildrenOfAge616Years.objects.filter(household=pk)
+    children_formset=children_model_formset(queryset=children_result_set,prefix='children')
+
+    return render(request, 'page18.html', {'asset_acquisition_formset': formset,
+                                           'children_formset':children_formset})

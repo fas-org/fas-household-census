@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.forms.formsets import formset_factory, BaseFormSet
 from django.contrib import messages
 from django.forms import modelformset_factory
+from .common import *
 
 
 @login_required(login_url='login')
@@ -29,22 +30,14 @@ def new(request):
         croppingPatternForms = croppingPattern_formset(request.POST)
         croppingPatternCommentsForm = CroppingPatternAndCropScheduleCommentsForm(request.POST)
 
-        pattern_save = False
+        crop_patterns_saved = False
+        crop_patterns_comments_saved = False
         if croppingPatternForms.is_valid() and croppingPatternCommentsForm.is_valid():
-            for croppingPatternForm in croppingPatternForms:
-                if croppingPatternForm.is_valid() and croppingPatternForm.has_changed():
-                    croppingPattern = croppingPatternForm.save(commit=False)
-                    croppingPattern.household = household.get(request.session['household'])
-                    croppingPattern.save()
-                    pattern_save = True
+            crop_patterns_saved = save_forms(request, croppingPatternForms)
+            crop_patterns_comments_saved = save_form_with_no_has_change(request, croppingPatternCommentsForm)
 
-            croppingPatternComments = croppingPatternCommentsForm.save(commit=False)
-            croppingPatternComments.household = household.get(request.session['household'])
-            croppingPatternComments.save()
-            pattern_save = True
-
-            if pattern_save:
-                messages.success(request, 'Data saved successfully')
+        if crop_patterns_saved or crop_patterns_comments_saved:
+            messages.success(request, 'Data saved successfully')
             return redirect('page5_edit', pk=request.session['household'])
 
     return render(request, 'page5.html',
@@ -65,22 +58,15 @@ def edit(request, pk):
             croppingPatternForms = croppingPattern_formset(request.POST)
             croppingPatternCommentForm = CroppingPatternAndCropScheduleCommentsForm(request.POST,
                                                                                     instance=croppingPatternComments)
-            pattern_save = False
+            crop_patterns_saved = False
+            crop_patterns_comments_saved = False
             if croppingPatternForms.is_valid() and croppingPatternCommentForm.is_valid():
                 CroppingPatternAndCropSchedule.objects.filter(household=pk).delete()
-                for croppingPatternForm in croppingPatternForms:
-                    if croppingPatternForm.is_valid() and croppingPatternForm.has_changed():
-                        croppingPattern = croppingPatternForm.save(commit=False)
-                        croppingPattern.household = household.get(request.session['household'])
-                        croppingPattern.save()
-                        pattern_save = True
+                CroppingPatternAndCropScheduleComments.objects.filter(household=pk).delete()
+                crop_patterns_saved = save_forms(request, croppingPatternForms)
+                crop_patterns_comments_saved = save_form_with_no_has_change(request, croppingPatternCommentForm)
 
-                croppingPatternComments = croppingPatternCommentForm.save(commit=False)
-                croppingPatternComments.household = household.get(request.session['household'])
-                croppingPatternComments.save()
-                pattern_save = True
-
-            if pattern_save:
+            if crop_patterns_saved or crop_patterns_comments_saved:
                 messages.success(request, 'Data saved successfully')
 
         croppingPattern_model_formset=modelformset_factory(CroppingPatternAndCropSchedule, form=CroppingPatternAndCropScheduleForm, extra=5)

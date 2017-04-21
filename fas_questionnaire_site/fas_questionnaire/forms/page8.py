@@ -17,6 +17,11 @@ class ExtensionForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def clean(self):
+        if self.cleaned_data.get('from_whom_advice_received') is None:
+            raise forms.ValidationError('Source of advice is mandatory for entering other details')
+        return self.cleaned_data
+
 
 class InstitutionalSupportForm(forms.ModelForm):
 

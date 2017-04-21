@@ -83,6 +83,7 @@
 
     {{ production_and_sales_on_operational_holding_formset.management_form }}
     {% for production_and_sales_on_operational_holding_form in production_and_sales_on_operational_holding_formset.forms %}
+        {{ production_and_sales_on_operational_holding_form.id }}
         <div class='row flex-row croppingpattern_formset_row'>
             <div class='col-md-1 table-cell long-div'>
                 {{production_and_sales_on_operational_holding_form.serial_no}}
@@ -139,6 +140,7 @@
     {% endfor %}
 
     <br>
+    {{ production_and_sales_on_operational_holding_comment_form.id }}
     <div class="row">
         <div class="col-md-12">
             {{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}

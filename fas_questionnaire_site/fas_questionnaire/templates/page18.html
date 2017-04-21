@@ -1,0 +1,85 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <h4 class='text-center'>20.ACQUISITION AND LOSS OF MAJOR ASSETS OVER THE LAST YEAR</h4>
+    {% csrf_token %}
+
+
+    <div class="row table-cell flex-row">
+
+        <div class="col-md-4 table-cell flex-column">
+            <label>Description of assets</label>
+        </div>
+        <div class='col-md-4'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Sale /loss of assets</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell long-div'>
+                    <label>Month</label>
+                </div>
+                <div class='col-md-6 table-cell long-div'>
+                    <label>Price received</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4'>
+            <div class='col-md-12 table-cell'>
+                <p class='text-center'>Purchase / acquisition of assets</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell long-div'>
+                    <label>Month</label>
+                </div>
+                <div class='col-md-6 table-cell long-div'>
+                    <label>Price paid</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 table-cell flex-column">
+            <label>Serial No.</label>
+        </div>
+    </div>
+
+    {{ asset_acquisition_formset.management_form }}
+    {% for asset_acquisition_form in asset_acquisition_formset.forms %}
+        <div class="row table-cell flex-row">
+
+            <div class="col-md-4 table-cell flex-column">
+                {{ asset_acquisition_form.description_of_asset }}
+            </div>
+            <div class='col-md-4'>
+                <div class='row flex-row'>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{ asset_acquisition_form.month_of_sale }}
+                    </div>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{ asset_acquisition_form.price_received }}
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class='row flex-row'>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{ asset_acquisition_form.month_of_purchase }}
+                    </div>
+                    <div class='col-md-6 table-cell long-div'>
+                        {{ asset_acquisition_form.price_paid }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 table-cell long-div">
+                {{ asset_acquisition_form.serial_no }}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

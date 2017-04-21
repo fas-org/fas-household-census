@@ -49,6 +49,8 @@ class AnimalCattleType(models.Model):
         managed = True
         db_table = 'Animal cattle type'
 
+    def __str__(self):
+        return self.type
 
 class AnimalTypes(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
@@ -57,6 +59,8 @@ class AnimalTypes(models.Model):
     class Meta:
         managed = True
         db_table = 'Animal Types'
+    def __str__(self):
+        return self.name
 
 
 class AnimalResoursesInventory(models.Model):

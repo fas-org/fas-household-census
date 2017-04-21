@@ -97,6 +97,48 @@
     {% endfor %}
 
     <br><br>
+        {% csrf_token %}
+    <h4 class='text-center'> B.Feed</h4>
+    <div class='row'>
+        <div class='col-md-3 table-cell flex-row'>
+            <label>Type of feed</label>
+        </div>
+        <div class='col-md-3 table-cell flex-row'>
+            <label>Homegrown / Purchased</label>
+        </div>
+        <div class='col-md-3 table-cell flex-row'>
+            <label>QTY</label>
+        </div>
+        <div class='col-md-2 table-cell flex-row'>
+            <label>Value</label>
+        </div>
+        <div class="cross-width">
+
+        </div>
+    </div>
+
+    {{ animal_feed_formset.management_form }}
+    {% for feed_form in animal_feed_formset.forms %}
+        <div class='row animal_feed_formset_row flex-row'>
+            <div class='col-md-3 table-cell'>
+                {{ feed_form.type_of_feed}}
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ feed_form.source }}
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ feed_form.qty }}
+            </div>
+            <div class='col-md-2 table-cell'>
+                {{ feed_form.value }}
+            </div>
+            {{ feed_form.id.as_hidden }}
+        </div>
+    {% endfor %}
+
+<br>
+<br>
+
 
     {% csrf_token %}
     <h4 class='text-center'>19A. INCOME FROM BUSINESS ACTIVITIES OTHER THAN CROP PRODUCTION</h4>
@@ -237,5 +279,6 @@
         $('.income_business_formset_row').formset();
         $('.income_salary_formset_row').formset();
         $('.animal_inventory_formset_row').formset();
+        $('.animal_feed_formset_row').formset();
     </script>
 {% endblock %}

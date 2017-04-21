@@ -23,10 +23,18 @@ def edit(request, pk):
         income_salary_formset = formset_factory(IncomeFromSalariesForm, formset=BaseFormSet, extra=5)
         income_business_formset = formset_factory(IncomeFromOtherBusinessActivitiesForm, formset=BaseFormSet, extra=5)
         animal_inventory_formset = formset_factory(AnimalResoursesInventoryForm, formset=BaseFormSet, extra=5)
+        animal_feed_formset = formset_factory(AnimalResourcesFeedForm, formset=BaseFormSet, extra=5)
+
         income_salary_forms = income_salary_formset(request.POST, prefix='salary')
         income_business_forms = income_business_formset(request.POST, prefix='business')
         animal_inventory_forms = animal_inventory_formset(request.POST, prefix='inventory')
-        if save_formset(income_salary_forms, IncomeFromSalaries, pk) and save_formset(income_business_forms,IncomeFromOtherBusinessActivities,pk) and save_formset(animal_inventory_forms, AnimalResoursesInventory, pk):
+        animal_feed_forms = animal_feed_formset(request.POST, prefix='feed')
+
+        if save_formset(income_salary_forms, IncomeFromSalaries, pk) and save_formset(income_business_forms,
+                                                                                      IncomeFromOtherBusinessActivities,
+                                                                                      pk) \
+                and save_formset(animal_inventory_forms, AnimalResoursesInventory, pk) and save_formset(
+            animal_feed_forms, AnimalResourcesFeed, pk):
             messages.success(request, 'Data saved succesfully')
         return redirect('page17_edit', pk)
 
@@ -38,12 +46,17 @@ def edit(request, pk):
                                                          form=IncomeFromOtherBusinessActivitiesForm, extra=5)
     income_business_result_set = IncomeFromOtherBusinessActivities.objects.filter(household=pk)
     income_business_formset = income_business_model_formset(queryset=income_business_result_set, prefix='business')
-    animal_inventory_model_formset = modelformset_factory(AnimalResoursesInventory,
-                                                          form=AnimalResoursesInventoryForm, extra=5)
+
+    animal_inventory_model_formset = modelformset_factory(AnimalResoursesInventory, form=AnimalResoursesInventoryForm,
+                                                          extra=5)
     animal_inventory_result_set = AnimalResoursesInventory.objects.filter(household=pk)
-    animal_inventory_formset = animal_inventory_model_formset(queryset=animal_inventory_result_set,
-                                                              prefix='inventory')
+    animal_inventory_formset = animal_inventory_model_formset(queryset=animal_inventory_result_set, prefix='inventory')
+
+    animal_feed_model_formset = modelformset_factory(AnimalResourcesFeed, form=AnimalResourcesFeedForm, extra=5)
+    animal_feed_result_set = AnimalResourcesFeed.objects.filter(household=pk)
+    animal_feed_formset = animal_feed_model_formset(queryset=animal_feed_result_set, prefix='feed')
 
     return render(request, 'page17.html', {'income_salary_formset': income_salary_formset,
                                            'income_business_formset': income_business_formset,
-                                           'animal_inventory_formset': animal_inventory_formset})
+                                           'animal_inventory_formset': animal_inventory_formset,
+                                           'animal_feed_formset': animal_feed_formset})

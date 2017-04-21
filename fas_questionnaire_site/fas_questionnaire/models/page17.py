@@ -52,6 +52,7 @@ class AnimalCattleType(models.Model):
     def __str__(self):
         return self.type
 
+
 class AnimalTypes(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     id = models.AutoField(primary_key=True)
@@ -59,6 +60,7 @@ class AnimalTypes(models.Model):
     class Meta:
         managed = True
         db_table = 'Animal Types'
+
     def __str__(self):
         return self.name
 
@@ -66,9 +68,9 @@ class AnimalTypes(models.Model):
 class AnimalResoursesInventory(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    type = models.ForeignKey(AnimalTypes,db_column='Type',blank=True, null=True)
+    type = models.ForeignKey(AnimalTypes,models.DO_NOTHING,db_column='Type', blank=True, null=True)
     sex = models.ForeignKey(Sex, models.DO_NOTHING, db_column='sex', blank=True, null=True)
-    cattle_type = models.ForeignKey(AnimalCattleType,db_column='Cattle type', blank=True, null=True)
+    cattle_type = models.ForeignKey(AnimalCattleType,models.DO_NOTHING, db_column='Cattle type', blank=True, null=True)
     breed = models.CharField(db_column='Breed', max_length=50, blank=True, null=True)
     no = models.IntegerField(db_column='No', blank=True, null=True)
     age = models.IntegerField(db_column='Age', blank=True, null=True)
@@ -77,3 +79,40 @@ class AnimalResoursesInventory(models.Model):
     class Meta:
         managed = True
         db_table = 'Animal Resourses Inventory'
+
+
+class FeedType(models.Model):
+    id = models.AutoField(primary_key=True)
+    feed_name = models.CharField(db_column='feed name', max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Feed Type'
+
+    def __str__(self):
+        return self.feed_name
+
+
+class FeedSource(models.Model):
+    id = models.AutoField(primary_key=True)
+    source = models.CharField(db_column='source',max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Feed Source'
+
+    def __str__(self):
+        return self.source
+
+
+class AnimalResourcesFeed(models.Model):
+    id = models.AutoField(primary_key=True)
+    type_of_feed = models.ForeignKey(FeedType,db_column='Type of Feed', blank=True, null=True)
+    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    source = models.ForeignKey(FeedSource, models.DO_NOTHING, db_column='Feed Source', blank=True, null=True)
+    qty = models.IntegerField(db_column='QTY', blank=True, null=True)
+    value = models.IntegerField(db_column='Value', blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Animal Resources Feed'

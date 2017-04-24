@@ -139,10 +139,10 @@
     {% csrf_token %}
     <h4 class='text-center'> C.Other Expenditure</h4>
     <div class='flex-row'>
-        <div class='col-md-6 table-cell flex-row'>
+        <div class='col-md-6 table-cell' class="text-center">
             <label>Item</label>
         </div>
-        <div class='col-md-6 table-cell flex-row'>
+        <div class='col-md-6 table-cell' class="text-center">
             <label>Expenditure</label>
         </div>
         <div class="cross-width">
@@ -164,6 +164,79 @@
 
     <br>
     <br>
+
+    {% csrf_token %}
+    <h4 class='text-center'> D.Output and income</h4>
+    <div class='flex-row'>
+        <div class='col-md-4 table-cell flex-column'>
+            <label>Product</label>
+        </div>
+        <div class='col-md-8 flex-column'>
+            <div class="flex-column">
+                <div class="row-md-4 table-cell" class="text-center">
+                    <label>Income</label>
+                </div>
+                <div class="row-md-8 flex-row">
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Production</label>
+                    </div>
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Units</label>
+                    </div>
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Sale</label>
+                    </div>
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Units</label>
+                    </div>
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Price</label>
+                    </div>
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Units</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="cross-width">
+        </div>
+    </div>
+
+    {{ output_and_income_formset.management_form }}
+    {% for feed_form in output_and_income_formset.forms %}
+        <div class='row output_and_income_formset flex-row'>
+            <div class='col-md-4 table-cell flex-column'>
+                {{ feed_form.product }}
+            </div>
+            <div class='col-md-8 flex-column'>
+                <div class="flex-column">
+                    <div class="row-md-8 flex-row">
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ feed_form.production }}
+                        </div>
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ feed_form.production_unit }}
+                        </div>
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ feed_form.sale }}
+                        </div>
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ feed_form.sale_unit }}
+                        </div>
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ feed_form.price }}
+                        </div>
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ feed_form.price_unit }}
+                        </div>
+                        {{ feed_form.id.as_hidden }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
 
 
     {% csrf_token %}
@@ -307,6 +380,7 @@
         $('.animal_inventory_formset_row').formset();
         $('.animal_feed_formset_row').formset();
         $('.other_expenditure_formset_row').formset();
+        $('.output_and_income_formset').formset();
     </script>
 {% endblock %}
 

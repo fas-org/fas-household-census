@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 from fas_questionnaire.models.common import Sex
+from fas_questionnaire.models.common import Units
 from .household_models import Household
 from .page1 import HouseholdMembers
 
@@ -140,3 +141,30 @@ class OtherExpenditure(models.Model):
         managed = True
         db_table = 'other Expenditure'
 
+
+class ProductType(models.Model):
+    id = models.AutoField(primary_key=True)
+    product_name = models.CharField(db_column='product name', max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Product Type'
+
+    def __str__(self):
+        return self.product_name
+
+
+class OutputAndIncome(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    product = models.ForeignKey(ProductType, db_column='product', blank=True, null=True)
+    production = models.IntegerField(db_column='production', blank=True, null=True)
+    production_unit = models.ForeignKey(Units, db_column='production_unit', null=True, blank=True)
+    sale = models.IntegerField(db_column='sale', blank=True, null=True)
+    sale_unit = models.ForeignKey(Units, db_column='sale_unit', null=True, blank=True)
+    price = models.IntegerField(db_column='price', blank=True, null=True)
+    price_unit = models.ForeignKey(Units, db_column='price_unit', null=True, blank=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Output and Income'

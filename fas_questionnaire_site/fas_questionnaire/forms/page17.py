@@ -44,3 +44,14 @@ class AnimalResourcesFeedForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+
+class OtherExpendituresForm(forms.ModelForm):
+    class Meta:
+        model = OtherExpenditure
+        exclude = ['household']
+        widgets = None
+        localized_fields = None
+        labels = {}
+        help_texts = {}
+        error_messages = {}

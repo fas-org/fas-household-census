@@ -26,10 +26,9 @@ class Tenurial(models.Model):
 
 
 class CroppingPatternAndCropSchedule(models.Model):
+    id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    serial_no = models.IntegerField(db_column='serial no', primary_key=True, null=False)
-    crop_number_first_digit = models.FloatField(db_column='Crop number first digit', blank=True, null=True)
-    crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
+    serial_no = models.IntegerField(db_column='serial no', primary_key=False, null=False)
     crop = models.CharField(db_column='Crop', max_length=50, blank=True, null=True)
     crop_clean = models.CharField(db_column='Crop clean', max_length=50, blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)

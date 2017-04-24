@@ -7,8 +7,7 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
         model = CroppingPatternAndCropSchedule
         fields = ['household',
                   'serial_no',
-                  'crop_number_first_digit',
-                  'crop_number_second_digit',
+                  'id',
                   'crop',
                   'crop_clean',
                   'variety',
@@ -36,12 +35,9 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
                   'principal',
                   'interest_on_loans_advances',
                   'output_price_if_fixed_in_advance',
-                  'other_conditions','crop_number_first_digit',
-                   'crop_number_second_digit', 'crop_clean'
+                  'other_conditions', 'crop_clean'
                   ]
-        exclude = [
-
-                   'household']
+        exclude = ['household']
         widgets = None
         labels={
             'production_main_product': 'Grain/main product',
@@ -55,9 +51,10 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
 
 
 class CroppingPatternAndCropScheduleCommentsForm(forms.ModelForm):
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = CroppingPatternAndCropScheduleComments
-        fields = ['household', 'comments_notes']
+        fields = ['household', 'comments_notes','id']
         exclude = ['household']
         widgets = {
             'comments_notes':forms.Textarea(attrs={'rows':10,'cols':198})

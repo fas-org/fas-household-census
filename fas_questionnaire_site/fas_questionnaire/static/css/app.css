@@ -85,10 +85,11 @@ td a{
 }
 .sub-menu a {
   padding:10px;
-  color:#337ab7;
+  color:white;
+  background-color: #337ab7;
   font-weight: 800;
+  border-radius: 3px;
   text-decoration: underline;
-  text-decoration-color: #337ab7;
 }
 .text-center {
   color:#337ab7;
@@ -105,7 +106,8 @@ td a{
 #logout-button a{
   color: #58595b;
   font-weight: 600;
-  padding: 4px;
+  padding: 2px;
+  background-color:#f8f8f8;
 }
 .logout-icon {
   width: 20px;
@@ -115,6 +117,16 @@ td a{
   float: right;
   padding: 3px;
   padding-left: 5px;
+}
+a {
+  background-color: #337ab7;
+  color: white;
+  padding: 3px;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+.navbar-header .navbar-brand {
+  background-color: #f8f8f8;
 }
 label { color: #666; }
 span.required { color: red; }

@@ -18,7 +18,7 @@ class IncomeFromStateAndCommonPropertyResources(models.Model):
     crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
     sale_number = models.FloatField(db_column='Sale number', blank=True, null=True)
     item_collected = models.CharField(db_column='Item collected', max_length=50, blank=True, null=True)
-    name_of_worker = models.CharField(db_column='Name of worker', max_length=50, blank=True, null=True)
+    name_of_worker = models.ForeignKey('HouseholdMembers',db_column='Name of worker', max_length=50, blank=True, null=True)
     number_of_days_over_the_last_year = models.FloatField(db_column='Number of days over the last year', blank=True, null=True)
     commodity_sold = models.CharField(db_column='Commodity sold', max_length=50, blank=True, null=True)
     month_of_disposal = models.CharField(db_column='Month of disposal', max_length=50, blank=True, null=True)
@@ -61,7 +61,7 @@ class FreedomOfEmploymentQuestions(models.Model):
 class AgriculturalOrNonAgriculturalLabourServices(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    name_of_worker = models.CharField(db_column='Name of worker', max_length=50, blank=True, null=True)
+    name_of_worker = models.ForeignKey('HouseholdMembers',db_column='Name of worker', max_length=50, blank=True, null=True)
     name_of_employer = models.CharField(db_column='Name of employer', max_length=50, blank=True, null=True)
     caste_of_employer = models.ForeignKey('Caste', models.DO_NOTHING, db_column='caste of employer')
     land_owned_by_employer = models.FloatField(db_column='Land owned by employer', blank=True, null=True)

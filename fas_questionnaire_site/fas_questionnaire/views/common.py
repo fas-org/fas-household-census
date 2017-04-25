@@ -96,7 +96,7 @@ def get_object_or_none(model, household_id, **kwargs):
 
 
 def is_empty(field):
-    if field == None or field == '':
+    if field is None or field == '':
         return True
     else:
         return False

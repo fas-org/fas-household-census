@@ -9,15 +9,14 @@
             </div>
         {% endfor %}
     {% endif %}
-    <h4 class='text-center'>20. Indebtedness</h4><br><br><br>
-    <br><br>
-    <b>A. Outstanding loans</b><br>
+    <h4 class='text-center text-uppercase'>20. Indebtedness</h4>
+    <h4 class="text-center">A. Outstanding loans</h4>
     <div class='row flex-row'>
         <div class='col-md-1 table-cell flex-column'>
             <label>Loan No</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Month and year of borrowing</label>
+        <div class='col-md-2 table-cell flex-column'>
+            <label>Month and Year of Borrowing</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
             <label>Principal</label>
@@ -55,6 +54,7 @@
         <div class='col-md-1 table-cell flex-column'>
             <label>Purpose of Borrowing</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
 
@@ -65,7 +65,7 @@
             <div class='col-md-1 table-cell'>
                 {{ outstanding_loans_form.loan_no }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ outstanding_loans_form.month_and_year_of_borrowing }}
             </div>
             <div class='col-md-1 table-cell'>
@@ -99,14 +99,14 @@
         </div>
     {% endfor %}
 
-    <br><br>
-    <b>B. Loans borrowed last year and repaid</b><br>
+    <br>
+    <h4 class="text-center">B. Loans borrowed last year and repaid</h4>
     <div class='row flex-row'>
         <div class='col-md-1 table-cell flex-column'>
             <label>Loan no</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
-            <label>Month of borrowing</label>
+            <label>Month of Borrowing</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
             <label>Principal</label>
@@ -115,20 +115,21 @@
             <label>Collateral</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
-            <label>Rate of interest</label>
+            <label>Rate of Interest</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
-            <label>Month when fully paid</label>
+            <label>Month when Fully Paid</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Total amount repaid</label>
+        <div class='col-md-2 table-cell flex-column'>
+            <label>Total Amount Repaid</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Source of borrowing</label>
+        <div class='col-md-2 table-cell flex-column'>
+            <label>Source of Borrowing</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Purpose of borrowing</label>
+        <div class='col-md-2 table-cell flex-column'>
+            <label>Purpose of Borrowing</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
     {% csrf_token %}
@@ -136,7 +137,7 @@
     {% for loans_brwd_lst_yr_and_paid_form in formset_loans_brwd_lst_yr_and_paid.forms %}
         <div class='row flex-row formset_loans_brwd_lst_yr_and_paid'>
             <div class='col-md-1 table-cell'>
-                {{ loans_brwd_lst_yr_and_paid_form.land_no }}
+                {{ loans_brwd_lst_yr_and_paid_form.loan_no }}
             </div>
             <div class='col-md-1 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.month_of_borrowing }}
@@ -151,123 +152,136 @@
                 {{ loans_brwd_lst_yr_and_paid_form.rate_of_interest }}
             </div>
             <div class='col-md-1 table-cell'>
-                {{ foloans_brwd_lst_yr_and_paid_formrm.month_when_fully_repaid }}
+                {{ loans_brwd_lst_yr_and_paid_form.month_when_fully_repaid }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.total_amount_repaid }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.source_of_borrowing }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.purpose_of_borrowing }}
             </div>
             {{ loans_brwd_lst_yr_and_paid_form.id.as_hidden }}
         </div>
     {% endfor %}
 
-    <br><br>
-    <b>C. Membership in self-help groups(Record details of the most recent loan taken through SHG in 25A)</b><br>
+    <br>
+    <h4 class="text-center">C. Membership in self-help groups(Record details of the most recent loan taken through SHG in 25A)</h4>
     <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
+        <div class='col-md-2 table-cell flex-column'>
             <label>Name of member</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
+        <div class='col-md-2 table-cell flex-column'>
             <label>Name of Group/ Group leader</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
+        <div class='col-md-2 table-cell flex-column'>
             <label>Bank/ NGO to which the group is linked</label>
+        </div>
+        <div class='col-md-2 table-cell flex-column'>
+            <label>Period of member-ship</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
             <label>Number of members in the group</label>
         </div>
-        <div class='col-md-3'>
-            <div class='row'>
-                <div class='col-md-12 table-cell'>
+        <div class='col-md-3 flex-column'>
+            <div class='row flex-row'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Savings</label>
                 </div>
             </div>
-            <div class='row'>
-                <div class='col-md-4 table-cell'>
+            <div class='row flex-row'>
+                <div class='col-md-6 table-cell flex-column'>
                     <label>Rs. per week/ Month etc(specify)</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-6 table-cell flex-column'>
                     <label>Total</label>
                 </div>
             </div>
         </div>
+        <div class="cross-width"></div>
     </div>
     {% csrf_token %}
     {{ formset_mem_shp_in_slf_hlp_grps.management_form }}
     {% for mem_shp_in_slf_hlp_grps_form in formset_mem_shp_in_slf_hlp_grps.forms %}
         <div class='row flex-row formset_mem_shp_in_slf_hlp_grps'>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.name_of_member }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.name_of_group_group_leader }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.bank_ngo_to_which_the_group_is_linked }}
             </div>
-            <div class='col-md-1 table-cell'>
+            <div class='col-md-2 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.period_of_membership }}
             </div>
             <div class='col-md-1 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.number_of_members_in_the_group }}
             </div>
-            <div class='col-md-1 table-cell'>
-                {{ mem_shp_in_slf_hlp_grps_form.rs_per_week_month_savings }}
-            </div>
-            <div class='col-md-1 table-cell'>
-                {{ mem_shp_in_slf_hlp_grps_form.total_savings }}
+            <div class='col-md-3'>
+                <div class='row'>
+                    <div class='col-md-6 table-cell'>
+                        {{ mem_shp_in_slf_hlp_grps_form.rs_per_week_month_savings }}
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        {{ mem_shp_in_slf_hlp_grps_form.total_savings }}
+                    </div>
+                </div>
             </div>
             {{ mem_shp_in_slf_hlp_grps_form.id.as_hidden }}
         </div>
     {% endfor %}
 
-    <br><br>
-    <b>D. Details of bank/ post office of the household</b><br>
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Name/s of account holders</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Name of bank/post office</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Type of account</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Date of last transaction</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Current balance</label>
+    <br>
+    <h4 class="text-center">D. Details of bank/ post office of the household</h4>
+    <div class="col-md-offset-2 col-md-10 flex-column">
+        <div class='row flex-row'>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Name/s of account holders</label>
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Name of bank/post office</label>
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Type of account</label>
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Date of last transaction</label>
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Current balance</label>
+            </div>
+            <div class="cross-width"></div>
         </div>
     </div>
 
-    {% csrf_token %}
-    {{ formset_dtls_of_bank_pst_offc_of_the_household.management_form }}
-    {% for dtls_of_bank_pst_offc_of_the_household_form in formset_dtls_of_bank_pst_offc_of_the_household.forms %}
-        <div class='row flex-row formset_dtls_of_bank_pst_offc_of_the_household'>
-            <div class='col-md-1 table-cell'>
-                {{ dtls_of_bank_pst_offc_of_the_household_form.name_of_account_holder }}
+    <div class="col-md-offset-2 col-md-10 flex-column">
+        {% csrf_token %}
+        {{ formset_dtls_of_bank_pst_offc_of_the_household.management_form }}
+        {% for dtls_of_bank_pst_offc_of_the_household_form in formset_dtls_of_bank_pst_offc_of_the_household.forms %}
+            <div class='row flex-row formset_dtls_of_bank_pst_offc_of_the_household'>
+                <div class='col-md-2 table-cell'>
+                    {{ dtls_of_bank_pst_offc_of_the_household_form.name_of_account_holder }}
+                </div>
+                <div class='col-md-2 table-cell'>
+                    {{ dtls_of_bank_pst_offc_of_the_household_form.name_of_bank_post_office }}
+                </div>
+                <div class='col-md-2 table-cell'>
+                    {{ dtls_of_bank_pst_offc_of_the_household_form.type_of_account }}
+                </div>
+                <div class='col-md-2 table-cell'>
+                    {{ dtls_of_bank_pst_offc_of_the_household_form.date_of_last_transaction }}
+                </div>
+                <div class='col-md-2 table-cell'>
+                    {{ dtls_of_bank_pst_offc_of_the_household_form.current_balanace }}
+                </div>
+                {{ dtls_of_bank_pst_offc_of_the_household_form.id.as_hidden }}
             </div>
-            <div class='col-md-1 table-cell'>
-                {{ dtls_of_bank_pst_offc_of_the_household_form.name_of_bank_post_office }}
-            </div>
-            <div class='col-md-1 table-cell'>
-                {{ fordtls_of_bank_pst_offc_of_the_household_formm.type_of_account }}
-            </div>
-            <div class='col-md-1 table-cell'>
-                {{ dtls_of_bank_pst_offc_of_the_household_form.date_of_last_transaction }}
-            </div>
-            <div class='col-md-1 table-cell'>
-                {{ dtls_of_bank_pst_offc_of_the_household_form.current_balanace }}
-            </div>
-            {{ dtls_of_bank_pst_offc_of_the_household_form.id.as_hidden }}
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">

@@ -42,9 +42,9 @@ def edit(request, pk):
                                                                                                       prefix='dtls_of_bank_pst_offc_of_the_household')
 
         if save_formset(outstanding_loans_forms, OutstandingLoans, pk) \
-                or save_formset(loans_brwd_lst_yr_and_paid_forms, LoansBorrowedLastYearAndRepaid, pk) \
-                or save_formset(mem_shp_in_slf_hlp_grps_forms, MembershipInSelfHelpGroups, pk) \
-                or save_formset(dtls_of_bank_pst_offc_of_the_household_forms,
+                and save_formset(loans_brwd_lst_yr_and_paid_forms, LoansBorrowedLastYearAndRepaid, pk) \
+                and save_formset(mem_shp_in_slf_hlp_grps_forms, MembershipInSelfHelpGroups, pk) \
+                and save_formset(dtls_of_bank_pst_offc_of_the_household_forms,
                                  DetailsOfBankPostofficeAccountOfTheHousehold, pk):
             messages.success(request, 'Data saved succesfully')
             return redirect('page20_edit', pk)

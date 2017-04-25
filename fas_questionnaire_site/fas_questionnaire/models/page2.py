@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .common import LandType
+from .common import LandType, Caste, Occupation
 
 
 class AcquisitionMode(models.Model):
@@ -66,10 +66,14 @@ class CurrentOwnershipHolding(models.Model):
     ownership_plot_no = models.FloatField(db_column='Ownership plot no', blank=True, null=True)
     land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
     extent_owned_land = models.FloatField(db_column='Extent of owned land', blank=True, null=True)
-    acquisition_mode = models.ForeignKey('AcquisitionMode', models.DO_NOTHING, db_column='acquisition_mode', blank=True, null=True)
-    irrigation_source = models.ForeignKey('IrrigationSource', models.DO_NOTHING, db_column='Irrigation source', blank=True, null=True)
-    irrigation_flow = models.ForeignKey('IrrigationFlow', models.DO_NOTHING, db_column='Irrigation lift', blank=True, null=True)
-    irrigation_ownership = models.ForeignKey('IrrigationOwnership', models.DO_NOTHING, db_column='Irrigation ownership', blank=True, null=True)
+    acquisition_mode = models.ForeignKey('AcquisitionMode', models.DO_NOTHING, db_column='acquisition_mode', blank=True,
+                                         null=True)
+    irrigation_source = models.ForeignKey('IrrigationSource', models.DO_NOTHING, db_column='Irrigation source',
+                                          blank=True, null=True)
+    irrigation_flow = models.ForeignKey('IrrigationFlow', models.DO_NOTHING, db_column='Irrigation lift', blank=True,
+                                        null=True)
+    irrigation_ownership = models.ForeignKey('IrrigationOwnership', models.DO_NOTHING, db_column='Irrigation ownership',
+                                             blank=True, null=True)
     value = models.FloatField(db_column='Value', blank=True, null=True)
     comments = models.CharField(max_length=50, db_column='Comments', blank=True, null=True)
 
@@ -93,7 +97,8 @@ class HomesteadComponents(models.Model):
 class HomesteadArea(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    components = models.ForeignKey(HomesteadComponents, models.DO_NOTHING, db_column='Components', blank=True, null=True)
+    components = models.ForeignKey(HomesteadComponents, models.DO_NOTHING, db_column='Components', blank=True,
+                                   null=True)
     area = models.FloatField(db_column='Area', blank=True, null=True)
 
     class Meta:
@@ -124,11 +129,11 @@ class LandPurchased(models.Model):
                                                blank=True, null=True)
     name_of_seller = models.CharField(db_column='Name of seller',
                                       max_length=50, blank=True, null=True)
-    caste_of_seller = models.CharField(db_column='Caste of seller',
-                                       max_length=50, blank=True, null=True)
-    occupation_of_seller = models.CharField(db_column='Occupation of seller',
-                                            max_length=50, blank=True,
-                                            null=True)
+    caste_of_seller = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of seller',
+                                        blank=True, null=True)
+    occupation_of_seller = models.ForeignKey(Occupation, models.DO_NOTHING, db_column='Occupation of seller',
+                                             blank=True,
+                                             null=True)
     place_of_residence_of_seller = models.CharField(
         db_column='Place of residence of seller', max_length=50, blank=True,
         null=True)
@@ -159,11 +164,10 @@ class LandSold(models.Model):
                                           null=True)
     name_of_buyer = models.CharField(db_column='Name of buyer', max_length=50,
                                      blank=True, null=True)
-    caste_of_buyer = models.CharField(db_column='Caste of buyer',
-                                      max_length=50, blank=True, null=True)
-    occupation_of_buyer = models.CharField(db_column='Occupation of buyer',
-                                           max_length=50, blank=True,
-                                           null=True)
+    caste_of_buyer = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of buyer',
+                                       blank=True, null=True)
+    occupation_of_buyer = models.ForeignKey(Occupation, models.DO_NOTHING, db_column='Occupation of buyer', blank=True,
+                                            null=True)
     place_of_residence_of_buyer = models.CharField(
         db_column='Place of residence of buyer', max_length=50, blank=True,
         null=True)

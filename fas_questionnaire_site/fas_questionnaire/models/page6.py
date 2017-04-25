@@ -27,6 +27,7 @@ class MarketingAgencies(models.Model):
 
 
 class ProductionAndSales(models.Model):
+    id=models.AutoField(primary_key=True)
     crop_serial_no = models.ForeignKey(CroppingPatternAndCropSchedule, models.DO_NOTHING, db_column='crop serial no', null=True, blank=True)
     crop = models.ForeignKey('Crop', on_delete=models.CASCADE, blank=True, null=True)
     sales_of_main_product_transportation_mode = models.CharField(db_column='sales of main product transportation mode', max_length=50, blank=True, null=True)

@@ -36,7 +36,7 @@ class AcquisitionAndLossOfMajorAssets(models.Model):
 
 class ForChildrenOfAge616Years(models.Model):
     household = models.ForeignKey(Household, db_column='household')
-    name = models.CharField(db_column='Name', max_length=100, blank=True, null=True)  
+    name = models.ForeignKey('HouseholdMembers', db_column='Name', max_length=100, blank=True, null=True)
     whether_enrolled_in_eductional_institution_currently = models.NullBooleanField(db_column='Whether enrolled in eductional institution currently')  
     no_of_days_missed_school = models.IntegerField(db_column='No of days missed school', blank=True, null=True)  
     period_missed_school = models.CharField(db_column='period missed school', max_length=50, blank=True, null=True)  

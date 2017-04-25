@@ -84,7 +84,7 @@ class OwnershipWellsTubewells(models.Model):
     installation_cost = models.IntegerField(db_column='Cost of installation', blank=True, null=True)
     finance_source = models.ForeignKey(SourceOfFinance, models.DO_NOTHING, db_column='Source of finance', blank=True, null=True)
     expenses_last_year = models.IntegerField(db_column='Maintenance expenses last year', blank=True, null=True)
-    irrigation_crop = models.CharField(max_length=50, db_column='Irrigation Crop', blank=True, null=True)
+    irrigation_crop = models.ForeignKey('Crop', max_length=50, db_column='Irrigation Crop', blank=True, null=True)
     irrigation_sale_area = models.IntegerField(db_column='Irrigation Sale Area', blank=True, null=True)
     irrigation_revenue = models.IntegerField(db_column='Irrigation Revenue', blank=True, null=True)
     exchange_nature = models.ForeignKey(NatureExchange, models.DO_NOTHING, db_column='Nature Exchange', blank=True, null=True)

@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from fas_questionnaire.models.common import Units
+from fas_questionnaire.models.common import Units, Month
 from .household_models import Household
 from .page5 import CroppingPatternAndCropSchedule
 
@@ -24,7 +24,15 @@ class MarketingAgencies(models.Model):
 
     def __str__(self):
         return self.marketing_agency
+class WhereMarketed(models.Model):
+    id = models.AutoField(primary_key=True)
+    place_of_market = models.CharField(db_column='place of market', max_length=100, blank=True, null=True)  # Field renamed to remove unsuitable characters.
 
+    class Meta:
+        managed = True
+        db_table = 'Where Marketed'
+    def __str__(self):
+        return self.place_of_market
 
 class ProductionAndSales(models.Model):
     id=models.AutoField(primary_key=True)
@@ -42,12 +50,12 @@ class ProductionAndSales(models.Model):
     crop_number_second_digit = models.FloatField(db_column='Crop number second digit', blank=True, null=True)
     sale_number = models.FloatField(db_column='Sale number', blank=True, null=True)
     commodity_sold = models.CharField(db_column='Commodity sold', max_length=50, blank=True, null=True)
-    month_of_disposal = models.CharField(db_column='Month of disposal', max_length=50, blank=True, null=True)
+    month_of_disposal = models.ForeignKey(Month,models.DO_NOTHING,db_column='Month of disposal', blank=True, null=True)
     quantity = models.FloatField(db_column='Quantity', blank=True, null=True)
     unit_of_quantity = models.ForeignKey(Units,db_column='Unit of quantity', blank=True, null=True)
     price = models.FloatField(db_column='Price', blank=True, null=True)
     unit_of_price = models.ForeignKey(Units,db_column='Unit of price', blank=True, null=True)
-    where_marketed = models.CharField(db_column='Where marketed', max_length=50, blank=True, null=True)
+    where_marketed = models.ForeignKey(WhereMarketed,models.DO_NOTHING,db_column='Where marketed',blank=True, null=True)
     marketing_agency = models.ForeignKey(MarketingAgencies, models.DO_NOTHING, db_column='Marketing agency', max_length=50, blank=True, null=True)
     marketing_agency_value = models.CharField(db_column='marketing agency value', max_length=50, blank=True, null=True)
     if_price_determined_in_advance = models.CharField(db_column='If price determined in advance', max_length=50, blank=True, null=True)

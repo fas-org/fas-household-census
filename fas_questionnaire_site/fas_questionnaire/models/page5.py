@@ -9,7 +9,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from fas_questionnaire.models.common import Units
+from fas_questionnaire.models.common import Units, Crop, Month
+from fas_questionnaire.models.page2 import IrrigationSource
 from .household_models import Household
 
 
@@ -25,24 +26,34 @@ class Tenurial(models.Model):
         return self.status
 
 
+class HomesteadLand(models.Model):
+    id = models.AutoField(primary_key=True)
+    land_name = models.CharField(db_column='Land Name', max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Homestead Land'
+
+
 class CroppingPatternAndCropSchedule(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     serial_no = models.IntegerField(db_column='serial no', primary_key=False, null=False)
-    crop = models.CharField(db_column='Crop', max_length=50, blank=True, null=True)
+    crop = models.ForeignKey(Crop, models.DO_NOTHING, db_column='Crop', blank=True, null=True)
     crop_clean = models.CharField(db_column='Crop clean', max_length=50, blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)
     tenurial_status = models.ForeignKey(Tenurial, models.DO_NOTHING, db_column='tenurial status', blank=True, null=True)
-    crop_homestead_land = models.CharField(db_column='Crop/ Homestead land', max_length=50, blank=True, null=True)
+    crop_homestead_land = models.ForeignKey(HomesteadLand, models.DO_NOTHING, db_column='Crop/ Homestead land',
+                                            blank=True, null=True)
     extent = models.FloatField(db_column='Extent', blank=True, null=True)
-    month_of_sowing = models.CharField(db_column='Month of sowing', max_length=50, blank=True, null=True)
-    month_of_harvesting = models.CharField(db_column='Month of harvesting', max_length=50, blank=True, null=True)
-    source_of_irrigation = models.CharField(db_column='Source of irrigation', max_length=50, blank=True, null=True)
+    month_of_sowing = models.ForeignKey(Month,models.DO_NOTHING,db_column='Month of sowing',blank=True, null=True)
+    month_of_harvesting = models.ForeignKey(Month,models.DO_NOTHING,db_column='Month of harvesting',blank=True, null=True)
+    source_of_irrigation = models.ForeignKey(IrrigationSource,models.DO_NOTHING,db_column='Source of irrigation',blank=True, null=True)
     production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    unit_production = models.ForeignKey(Units, db_column='Unit, production',blank=True, null=True)
+    unit_production = models.ForeignKey(Units, db_column='Unit, production', blank=True, null=True)
     production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
     consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    unit_consumption = models.ForeignKey(Units, db_column='Unit, consumption', blank=True,null=True)
+    unit_consumption = models.ForeignKey(Units, db_column='Unit, consumption', blank=True, null=True)
     consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
     loans_advances_taken_from_buyer = models.CharField(db_column='Loans/advances taken from buyer', max_length=50,
                                                        blank=True, null=True)

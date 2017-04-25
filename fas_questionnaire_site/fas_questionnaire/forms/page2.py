@@ -3,7 +3,7 @@ from ..models.page2 import *
 
 
 class AcquisitionModeForm(forms.ModelForm):
-
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = AcquisitionMode
         exclude = []
@@ -15,7 +15,7 @@ class AcquisitionModeForm(forms.ModelForm):
 
 
 class IrrigationFlowForm(forms.ModelForm):
-
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = IrrigationFlow
         exclude = []
@@ -27,7 +27,7 @@ class IrrigationFlowForm(forms.ModelForm):
 
 
 class IrrigationOwnershipForm(forms.ModelForm):
-
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = IrrigationOwnership
         exclude = []
@@ -39,7 +39,7 @@ class IrrigationOwnershipForm(forms.ModelForm):
 
 
 class IrrigationSourceForm(forms.ModelForm):
-
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = IrrigationSource
         exclude = []
@@ -51,7 +51,7 @@ class IrrigationSourceForm(forms.ModelForm):
 
 
 class CurrentOwnershipHoldingForm(forms.ModelForm):
-
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = CurrentOwnershipHolding
         exclude = ['household']
@@ -68,7 +68,7 @@ class CurrentOwnershipHoldingForm(forms.ModelForm):
 
 
 class HomesteadAreaForm(forms.ModelForm):
-
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = HomesteadArea
         exclude = ['household']
@@ -85,6 +85,7 @@ class HomesteadAreaForm(forms.ModelForm):
 
 
 class LandPurchasedForm(forms.ModelForm):
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = LandPurchased
         exclude = ['household']
@@ -96,6 +97,7 @@ class LandPurchasedForm(forms.ModelForm):
 
 
 class LandSoldForm(forms.ModelForm):
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = LandSold
         exclude = ['household']

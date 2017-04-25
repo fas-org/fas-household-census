@@ -31,7 +31,16 @@ def edit(request, pk):
         landpurchased_comments_form = LandPurchasedCommentsForm(request.POST, prefix='comments')
         if (save_formset(ownership_forms, CurrentOwnershipHolding, pk) and save_formset(homestead_area_forms, HomesteadArea, pk) and save_formset(landsoldforms, LandSold, pk) and save_formset(landpurchasedforms, LandPurchased, pk) and save_form(landpurchased_comments_form, pk)):
             messages.success(request, "Data saved successfully")
-        return redirect('page2_edit',pk)
+            return redirect('page2_edit', pk)
+        else:
+            return render(request, 'page2.html', {'current_ownership_formset': ownership_forms,
+                                                  'homesteadformset': homestead_area_forms,
+                                                  'landsold_formset': landsoldforms,
+                                                  'landpurchased_formset': landpurchasedforms,
+                                                  'landpurchased_comments_form': landpurchased_comments_form
+                                                  })
+
+
     current_ownership_model_formset = modelformset_factory(CurrentOwnershipHolding,
                                                            form=CurrentOwnershipHoldingForm, extra=5)
     result_set = CurrentOwnershipHolding.objects.filter(household=pk)

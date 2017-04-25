@@ -105,3 +105,12 @@ class SupportNature(models.Model):
 
     def __str__(self):
         return self.support
+
+
+class Relationship(models.Model):
+    id = models.AutoField(primary_key=True)
+    relationship = models.CharField(db_column='Relationship', max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Relationship'

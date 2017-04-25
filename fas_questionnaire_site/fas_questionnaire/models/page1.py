@@ -2,7 +2,34 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .common import PlaceOfWork
+from .common import Caste, Occupation, Relationship
+
+
+class Religion(models.Model):
+    id = models.AutoField(primary_key=True)
+    religion = models.CharField(db_column='Religion', max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Religion'
+
+
+class Education(models.Model):
+    id = models.AutoField(primary_key=True)
+    level = models.CharField(db_column='Level', max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Education'
+
+
+class TehsilOfBirth(models.Model):
+    id = models.AutoField(primary_key=True)
+    tehsil = models.CharField(db_column='Tehsil', max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'Tehsil of Birth'
 
 
 class HouseholdIntroduction(models.Model):
@@ -16,14 +43,15 @@ class HouseholdIntroduction(models.Model):
     age = models.IntegerField(db_column='Age', blank=True, null=True)
     address = models.CharField(max_length=50, db_column='Address', blank=True, null=True)
     birth_village = models.CharField(max_length=50, db_column='Village of birth', blank=True, null=True)
-    birth_tehsil = models.CharField(max_length=50, db_column='Tehsil of birth', blank=True, null=True)
+    birth_tehsil = models.ForeignKey(TehsilOfBirth, models.DO_NOTHING, db_column='Tehsil of birth', blank=True,
+                                     null=True)
     birth_district = models.CharField(max_length=50, db_column='District of birth', blank=True, null=True)
     year_of_migration = models.IntegerField(db_column='Year of migration', blank=True, null=True)
-    caste_tribe = models.CharField(db_column='Caste/tribe', max_length=50, blank=True, null=True)
+    caste_tribe = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste/tribe', blank=True, null=True)
     sc_st = models.CharField(db_column='If SC/ST?', max_length=50, blank=True, null=True)
-    religion = models.CharField(db_column='Religion', max_length=50, blank=True, null=True)
+    religion = models.ForeignKey(Religion, models.DO_NOTHING, db_column='Religion', blank=True, null=True)
     father_name = models.CharField(db_column="Father's name", max_length=50, blank=True, null=True)
-    father_occupation = models.CharField(db_column="Father's occupation", max_length=50, blank=True, null=True)
+    father_occupation = models.ForeignKey(Occupation, models.DO_NOTHING,db_column="Father's occupation", blank=True, null=True)
     telephone_no = models.IntegerField(db_column='Telephone number', blank=True, null=True)
     comments = models.CharField(db_column='Comments', max_length=100, blank=True, null=True)
 
@@ -38,15 +66,18 @@ class HouseholdMembers(models.Model):
     sex = models.ForeignKey('Sex', models.DO_NOTHING, db_column='sex', blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
     age_unit = models.ForeignKey('CalendarGranularity', on_delete=models.CASCADE, blank=True, null=True)
-    relationship = models.CharField(max_length=45, blank=True, null=True)
+    relationship = models.ForeignKey(Relationship, models.DO_NOTHING,blank=True, null=True)
     marital_status = models.ForeignKey('MaritalStatus', on_delete=models.CASCADE, blank=True, null=True)
-    primary_occupation = models.CharField(max_length=100, blank=True, null=True)
-    secondary_occupation = models.CharField(max_length=100, blank=True, null=True)
-    tertiary_occupation = models.CharField(max_length=100, blank=True, null=True)
+    primary_occupation = models.ForeignKey(Occupation, models.DO_NOTHING, related_name='primary_occupation', blank=True,
+                                           null=True)
+    secondary_occupation = models.ForeignKey(Occupation, models.DO_NOTHING, related_name='secondary_occupation',
+                                             blank=True, null=True)
+    tertiary_occupation = models.ForeignKey(Occupation, models.DO_NOTHING, related_name='tertiary_occupation',
+                                            blank=True, null=True)
     place_of_work = models.ForeignKey('PlaceOfWork', on_delete=models.CASCADE, blank=True, null=True)
     literacy_status = models.ForeignKey('LiteracyStatus', on_delete=models.CASCADE, db_column='literacy_status',
                                         blank=True, null=True)
-    education_level = models.CharField(max_length=45, blank=True, null=True)
+    education_level = models.ForeignKey(Education,models.DO_NOTHING, blank=True, null=True)
     years_of_schooling = models.IntegerField(blank=True, null=True)
     name_location_of_institution = models.CharField(max_length=255, blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)

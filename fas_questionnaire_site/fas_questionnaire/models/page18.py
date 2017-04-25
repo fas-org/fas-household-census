@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from fas_questionnaire.models.common import Month
 from .household_models import Household
 
 
@@ -15,16 +16,7 @@ class DescriptionOfAssets(models.Model):
         return self.asset_name
 
 
-class Month(models.Model):
-    id = models.AutoField(primary_key=True)
-    month = models.CharField(db_column='Month',max_length=100)
 
-    class Meta:
-        managed = True
-        db_table = 'Month'
-
-    def __str__(self):
-        return self.month
 
 
 class AcquisitionAndLossOfMajorAssets(models.Model):

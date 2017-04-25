@@ -107,6 +107,18 @@ class SupportNature(models.Model):
         return self.support
 
 
+class Month(models.Model):
+    id = models.AutoField(primary_key=True)
+    month = models.CharField(db_column='Month',max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'Month'
+
+    def __str__(self):
+        return self.month
+
+
 class Relationship(models.Model):
     id = models.AutoField(primary_key=True)
     relationship = models.CharField(db_column='Relationship', max_length=100, blank=True, null=True)

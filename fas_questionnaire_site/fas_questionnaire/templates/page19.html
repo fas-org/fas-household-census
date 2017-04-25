@@ -1,0 +1,304 @@
+{% extends "container.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    {% ifequal message.message 'Data saved successfully' %}
+        <div class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
+    {% csrf_token %}
+    {{ pds_form.id }}
+    <h4 class='text-center'>22.PUBLIC DISTRIBUTION SYSTEM</h4>
+    <div class="flex-row">
+        <div>
+            <label>Does the household have a ration card?</label>
+        </div>
+        <div>
+            {{ pds_form.does_family_hold_ration_card }}
+        </div>
+    </div>
+    <div class='row flex-row-wrap'>
+        <div class='col-md-12 flex-row'>
+            <div class='col-md-3 table-cell'>
+                <label>Type of card</label>
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ pds_form.type_of_card }}
+            </div>
+            <div class='col-md-3 table-cell'>
+                <label>Color of the card</label>
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ pds_form.color_of_card }}
+            </div>
+        </div>
+        <div class='col-md-12 flex-row'>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Number of persons registered</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column'>
+                <label>Adults</label>
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ pds_form.no_of_adults_on_card }}
+            </div>
+            <div class='col-md-3 table-cell flex-column'>
+                <label>Children</label>
+            </div>
+            <div class='col-md-3 table-cell'>
+                {{ pds_form.no_of_children_on_card }}
+            </div>
+        </div>
+        <div class='col-md-12 flex-row'>
+            <div class='col-md-3 table-cell flex-column'>
+                <label>Reasons for not having a card</label>
+            </div>
+            <div class='col-md-9 table-cell'>
+                {{ pds_form.reasons_for_not_having_card }}
+            </div>
+        </div>
+    </div>
+
+    <h4 class='text-center'>23.SOURCE OF WATER FOR DOMESTIC USE</h4>
+    <div class="row flex-row">
+        <div class="col-md-1 table-cell flex-column">
+            <label>Source of Water</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Ownership</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Distance from house</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Time (in minutes) taken to reach the source</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Months when water is available</label>
+        </div>
+        <div class="col-md-4 flex-row-wrap">
+            <div class="col-md-12 table-cell flex-column">
+                <label>Purposes for which used (Primary / Secondary / Not used)</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Drinking</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Cooking</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Bathing / Cleaning</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>For Animals</label>
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Cost / payment</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Restrictions</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Comments</label>
+        </div>
+        <div class="cross-width"></div>
+    </div>
+
+    {{ water_formset.management_form }}
+    {% for form in water_formset.forms %}
+    <div class="row flex-row water_formset_row">
+            {{ form.id }}
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.source_of_water }}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.ownership }}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.distance }}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.time_to_source }}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.months_water_available }}
+        </div>
+        <div class="col-md-4 flex-row-wrap">
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.drinking }}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.cooking }}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.bathing_or_cleaning }}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.for_animals }}
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.cost_payment }}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.restrictions }}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.comments }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <h4 class='text-center'>24.HOUSING</h4>
+
+    <div class="row flex-row">
+        <div class="col-md-1 table-cell flex-column">
+            <label>Whether owned or rented</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Year of original construction</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Year of most recent repair</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>If there is a verandah</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>If there is a separate kitchen</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>No. of additional rooms</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Type of roof</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Type of Wall</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Type of Floor</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Latrine</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Electricity</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Source of energy for cooking</label>
+        </div>
+        <div class="col-md-4 flex-row-wrap">
+            <div class="col-md-12 table-cell flex-column">
+                <label>If any assistance provided under a govt. scheme for construction, repair of renovation of house</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Yes/No</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Year</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>Nature of Disbursement</label>
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                <label>If cash, specify amount</label>
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Comments</label>
+        </div>
+        <div class="cross-width"></div>
+    </div>
+
+
+
+    {{ housing_formset.management_form }}
+    {% for form in housing_formset.forms %}
+    <div class="row flex-row housing_formset_row">
+            {{ form.id }}
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.owned_or_rented}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.year_of_original_construction}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.year_of_recent_repair}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.verandah_present}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.separate_kitchen}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.additional_rooms}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.type_of_roof}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.type_of_wall}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.type_of_floor}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.latrine}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.electricity}}
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.energy_for_cooking}}
+        </div>
+        <div class="col-md-4 flex-row-wrap">
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.if_provided_by_govt}}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.year_when_provided}}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.nature_of_disbursement}}
+            </div>
+            <div class="col-md-3 table-cell flex-column">
+                {{ form.amount_provided_in_cash}}
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            {{ form.comments}}
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <br />
+    <br />
+
+    {{ comments_form.id }}
+    <div class="flex-row">
+        <label>Is the toilet used regularly, throughout the year and by all members of the household? </label>
+    </div>
+    <div class="comments">
+        {{ comments_form.comments }}
+    </div>
+
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.water_formset_row').formset();
+        $('.housing_formset_row').formset();
+        $('input[name="water-INITIAL_FORMS"]').val(0);
+        $('input[name="housing-INITIAL_FORMS"]').val(0);
+    </script>
+
+
+{% endblock %}

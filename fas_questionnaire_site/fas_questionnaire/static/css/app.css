@@ -118,3 +118,7 @@ td a{
 }
 label { color: #666; }
 span.required { color: red; }
+
+div.comments textarea {
+    width: 100%;
+}

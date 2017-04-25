@@ -17,7 +17,10 @@ cd fas_questionnaire_site
 python3 manage.py makemigrations fas_questionnaire
 python3 managa.py migrate 
 ```
-
+To load initial categories for page 21:
+```
+python3 manage.py loaddata AssetCategory.json
+```
 To run the app: 
 ```
 python3 manage.py runserver 8080

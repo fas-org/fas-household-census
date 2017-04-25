@@ -26,7 +26,7 @@ def edit(request, pk):
         if save_form(pds_form, pk) and save_formset(water_use_forms, WaterForDomesticUse, pk) and \
                 save_formset(housing_forms, Housing, pk) and save_form(comments_form, pk):
             messages.success(request, 'Data saved successfully')
-        return redirect('page1_edit', pk)
+        return redirect('page19_edit', pk)
 
     pds_instance = get_object_or_none(PublicDistributionSystem, pk)
     pds_form = PublicDistributionSystemForm(instance=pds_instance, prefix='pds')

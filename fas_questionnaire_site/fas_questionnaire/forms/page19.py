@@ -3,6 +3,7 @@ from ..models.page19 import PublicDistributionSystem, WaterForDomesticUse, Housi
 
 
 class PublicDistributionSystemForm(forms.ModelForm):
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = PublicDistributionSystem
         exclude = ['household']
@@ -21,6 +22,7 @@ class HousingForm(forms.ModelForm):
 
 
 class HousingCommentsForm(forms.ModelForm):
+    id=forms.CharField(widget=forms.HiddenInput(),required=False)
     class Meta:
         model = HousingComments
         exclude = ['household']

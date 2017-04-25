@@ -4,9 +4,9 @@ from django.db import models
 class InputUseManure(models.Model):
     id = models.AutoField(primary_key=True,unique=True, blank=True, null=True)  # This field type is a guess.
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
-    crop_code = models.TextField(blank=True, null=True)  # This field type is a guess.
+    crop_code = models.FloatField(blank=True, null=True)  # This field type is a guess.
     manure_type = models.CharField(max_length=50, blank=True, null=True)
-    manure_home_qunatity = models.TextField(blank=True, null=True)  # This field type is a guess.
+    manure_home_quantity = models.TextField(blank=True, null=True)  # This field type is a guess.
     manure_home_unit = models.CharField(max_length=50, blank=True, null=True)
     manure_home_value = models.TextField(blank=True, null=True)  # This field type is a guess.
     manure_purchased_quantity = models.TextField(blank=True, null=True)  # This field type is a guess.

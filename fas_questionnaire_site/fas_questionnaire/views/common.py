@@ -64,10 +64,13 @@ def save_formset(forms, model, household_id, **kwargs): #Pass key-word args for 
 
 def save_form(form, household_id):
     """add or update model using modelForm"""
-    if form.is_valid():
+    if form.is_valid() and form.has_changed():
         record = form.save(commit=False)
         try:
-            form_id = form.data[form.prefix+'-id']
+            if not form.prefix == None:
+                form_id = form.data[form.prefix+'-id']
+            else:
+                form_id = None
         except KeyError:
             form_id = None
         if form_id:
@@ -88,3 +91,10 @@ def get_object_or_none(model, household_id, **kwargs):
     except model.DoesNotExist:
         model_object = None
     return model_object
+
+
+def is_empty(field):
+    if field == None or field == '':
+        return True
+    else:
+        return False

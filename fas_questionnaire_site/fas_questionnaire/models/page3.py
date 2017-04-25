@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .common import LandType, Caste
+from .common import LandType, Caste, Units
 
 
 class Registration(models.Model):
@@ -40,6 +40,7 @@ class LandLeasedInOnFixedRent(models.Model):
     plot_no = models.IntegerField(db_column='Plot no', blank=True, null=True)
     land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
+    unit_of_extent = models.ForeignKey(Units, models.DO_NOTHING, db_column='unit of extent', blank=True, null=True)
     name_of_lessor = models.CharField(db_column='Name of lessor', max_length=50, blank=True, null=True)
     caste_of_lessor = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of lessor', blank=True, null=True)
     occupation_of_lessor = models.CharField(db_column='Occupation of lessor', max_length=50, blank=True, null=True)
@@ -76,6 +77,7 @@ class LandLeasedOutOnFixedRent(models.Model):
     ownership_plot_no = models.IntegerField(db_column='Ownership plot no', blank=True, null=True)
     land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
+    unit_of_extent = models.ForeignKey(Units, models.DO_NOTHING, db_column='unit of extent', blank=True, null=True)
     name_of_lessee = models.CharField(db_column='Name of lessee', max_length=50, blank=True, null=True)
     caste_of_lessee = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of lessee', blank=True, null=True)
     occupation_of_lessee = models.CharField(db_column='Occupation of lessee', max_length=50, blank=True, null=True)

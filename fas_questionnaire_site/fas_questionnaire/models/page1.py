@@ -12,6 +12,8 @@ class Religion(models.Model):
     class Meta:
         managed = True
         db_table = 'Religion'
+    def __str__(self):
+        return self.religion
 
 
 class Education(models.Model):
@@ -21,6 +23,8 @@ class Education(models.Model):
     class Meta:
         managed = True
         db_table = 'Education'
+    def __str__(self):
+        return self.level
 
 
 class TehsilOfBirth(models.Model):
@@ -30,6 +34,8 @@ class TehsilOfBirth(models.Model):
     class Meta:
         managed = True
         db_table = 'Tehsil of Birth'
+    def __str__(self):
+        return self.tehsil
 
 
 class HouseholdIntroduction(models.Model):

@@ -126,3 +126,5 @@ class Relationship(models.Model):
     class Meta:
         managed = True
         db_table = 'Relationship'
+    def __str__(self):
+        return self.relationship

@@ -1,0 +1,51 @@
+[
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 1,
+    "fields": {
+      "asset_category": "Electric Equipments"
+    }
+  },
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 2,
+    "fields": {
+      "asset_category": "Furniture"
+    }
+  },
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 3,
+    "fields": {
+      "asset_category": "Means Of Transport"
+    }
+  },
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 4,
+    "fields": {
+      "asset_category": "Immovables"
+    }
+  },
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 5,
+    "fields": {
+      "asset_category": "Miscellaneous"
+    }
+  },
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 6,
+    "fields": {
+      "asset_category": "Inventories"
+    }
+  },
+  {
+    "model": "fas_questionnaire.assetcategory",
+    "pk": 7,
+    "fields": {
+      "asset_category": "Other Domestic Durable Goods"
+    }
+  }
+]

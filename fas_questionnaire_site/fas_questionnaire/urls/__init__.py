@@ -21,9 +21,9 @@ urlpatterns = [
     url(r'^page19/', include('fas_questionnaire.urls.page19')),
     url(r'^page21/', include('fas_questionnaire.urls.page21')),
     url(r'^page16/', include('fas_questionnaire.urls.page16')),
+    url(r'^page20/', include('fas_questionnaire.urls.page20')),
     url(r'^page22/',include('fas_questionnaire.urls.page22_urls')),
     url(r'^.*/search/$', search.search, name='search'),
     url(r'^page10/', include('fas_questionnaire.urls.page10')),
     url(r'^page18/', include('fas_questionnaire.urls.page18')),
 ]
-

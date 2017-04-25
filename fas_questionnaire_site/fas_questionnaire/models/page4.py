@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from .household_models import Household
-from .common import Caste, Occupation, LandType
+from .common import Caste, Occupation, LandType, Units
 from .page3 import Registration
 
 
@@ -78,6 +78,7 @@ class LandLeasedInOnShareRent(models.Model):
     operational_plot_no = models.CharField(db_column='Operational plot no', max_length=50, blank=True, null=True)
     land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
+    unit_of_extent = models.ForeignKey(Units, models.DO_NOTHING, db_column='unit of extent', blank=True, null=True)
     name_of_lessor = models.CharField(db_column='Name of lessor', max_length=50, blank=True, null=True)
     caste_of_lessor = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of lessor', blank=True, null=True)
     occupation_of_lessor = models.CharField(db_column='Occupation of lessor', max_length=50, blank=True, null=True)
@@ -123,6 +124,7 @@ class LandLeasedOutOnShareRent(models.Model):
     ownership_plot_no = models.CharField(db_column='Ownership plot no', max_length=50,blank=True, null=True)
     land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
+    unit_of_extent = models.ForeignKey(Units, models.DO_NOTHING, db_column='unit of extent', blank=True, null=True)
     name_of_sharecropper = models.CharField(db_column='Name of sharecropper', max_length=50, blank=True, null=True)
     caste_of_sharecropper = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of sharecropper', blank=True, null=True)
     occupation_of_sharecropper = models.CharField(db_column='Occupation of sharecropper', max_length=50, blank=True, null=True)

@@ -2,15 +2,13 @@
 {% load static %}
 
 {% block content %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-success">
-    <strong>{{ message }}</strong>
-</div>
-{% endfor %}
-{% endif %}
-<form method='POST' id="page_20_form">
-    {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
     <h4 class='text-center'>20. Indebtedness</h4><br><br><br>
     <br><br>
     <b>A. Outstanding loans</b><br>
@@ -36,7 +34,7 @@
                     <label>Amount Outstanding</label>
                 </div>
             </div>
-            <div class= 'row'>
+            <div class='row'>
                 <div class='col-md-4 table-cell'>
                     <label>Principal</label>
                 </div>
@@ -61,43 +59,44 @@
 
 
     {% csrf_token %}
-    {{ formset_outstanding_loans_form }}
-    {% for form in formset_outstanding_loans.forms %}
-    <div class='row flex-row formset_outstanding_loans'>
-        <div class='col-md-1 table-cell'>
-            {{ form.loan_no }}
+    {{ formset_outstanding_loans.management_form }}
+    {% for outstanding_loans_form in formset_outstanding_loans.forms %}
+        <div class='row flex-row formset_outstanding_loans'>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.loan_no }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.month_and_year_of_borrowing }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.principal }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.collateral }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.rate_of_interest }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.principal_amount_outstanding }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.interest_amount_outstanding }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.total_amount_outstanding }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.amount_repaid }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.source_of_borrowing }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.purpose_of_borrowing }}
+            </div>
+            {{ outstanding_loans_form.id.as_hidden }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.month_and_year_of_borrowing }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.principal }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.collateral }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.rate_of_interest }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.principal_amount_outstanding }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.interest_amount_outstanding }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.total_amount_outstanding }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.amount_repaid }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.source_of_borrowing }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.purpose_of_borrowing }}
-        </div>
-    </div>
     {% endfor %}
 
     <br><br>
@@ -133,37 +132,38 @@
     </div>
 
     {% csrf_token %}
-    {{ formset_loans_brwd_lst_yr_and_paid_form }}
-    {% for form in formset_loans_brwd_lst_yr_and_paid.forms %}
-    <div class='row flex-row formset_loans_brwd_lst_yr_and_paid'>
-        <div class='col-md-1 table-cell'>
-            {{ form.land_no }}
+    {{ formset_loans_brwd_lst_yr_and_paid.management_form }}
+    {% for loans_brwd_lst_yr_and_paid_form in formset_loans_brwd_lst_yr_and_paid.forms %}
+        <div class='row flex-row formset_loans_brwd_lst_yr_and_paid'>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.land_no }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.month_of_borrowing }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.principal }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.collateral }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.rate_of_interest }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ foloans_brwd_lst_yr_and_paid_formrm.month_when_fully_repaid }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.total_amount_repaid }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.source_of_borrowing }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.purpose_of_borrowing }}
+            </div>
+            {{ loans_brwd_lst_yr_and_paid_form.id.as_hidden }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.month_of_borrowing }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.principal }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.collateral }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.rate_of_interest }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.month_when_fully_repaid }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.total_amount_repaid }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.source_of_borrowing }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.purpose_of_borrowing }}
-        </div>
-    </div>
     {% endfor %}
 
     <br><br>
@@ -187,7 +187,7 @@
                     <label>Savings</label>
                 </div>
             </div>
-            <div class= 'row'>
+            <div class='row'>
                 <div class='col-md-4 table-cell'>
                     <label>Rs. per week/ Month etc(specify)</label>
                 </div>
@@ -198,31 +198,32 @@
         </div>
     </div>
     {% csrf_token %}
-    {{ formset_mem_shp_in_slf_hlp_grps_form }}
-    {% for form in formset_mem_shp_in_slf_hlp_grps.forms %}
-    <div class='row flex-row formset_mem_shp_in_slf_hlp_grps'>
-        <div class='col-md-1 table-cell'>
-            {{ form.name_of_member }}
+    {{ formset_mem_shp_in_slf_hlp_grps.management_form }}
+    {% for mem_shp_in_slf_hlp_grps_form in formset_mem_shp_in_slf_hlp_grps.forms %}
+        <div class='row flex-row formset_mem_shp_in_slf_hlp_grps'>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.name_of_member }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.name_of_group_group_leader }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.bank_ngo_to_which_the_group_is_linked }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.period_of_membership }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.number_of_members_in_the_group }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.rs_per_week_month_savings }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.total_savings }}
+            </div>
+            {{ mem_shp_in_slf_hlp_grps_form.id.as_hidden }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.name_of_group_group_leader }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.bank_ngo_to_which_the_group_is_linked }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.period_of_membership }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.number_of_members_in_the_group }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.rs_per_week_month_savings }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.total_savings }}
-        </div>
-    </div>
     {% endfor %}
 
     <br><br>
@@ -246,36 +247,33 @@
     </div>
 
     {% csrf_token %}
-    {{ formset_dtls_of_bank_pst_offc_of_the_household_form }}
-    {% for form in formset_dtls_of_bank_pst_offc_of_the_household.forms %}
-    <div class='row flex-row formset_dtls_of_bank_pst_offc_of_the_household'>
-        <div class='col-md-1 table-cell'>
-            {{ form.name_of_account_holder }}
+    {{ formset_dtls_of_bank_pst_offc_of_the_household.management_form }}
+    {% for dtls_of_bank_pst_offc_of_the_household_form in formset_dtls_of_bank_pst_offc_of_the_household.forms %}
+        <div class='row flex-row formset_dtls_of_bank_pst_offc_of_the_household'>
+            <div class='col-md-1 table-cell'>
+                {{ dtls_of_bank_pst_offc_of_the_household_form.name_of_account_holder }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ dtls_of_bank_pst_offc_of_the_household_form.name_of_bank_post_office }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ fordtls_of_bank_pst_offc_of_the_household_formm.type_of_account }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ dtls_of_bank_pst_offc_of_the_household_form.date_of_last_transaction }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ dtls_of_bank_pst_offc_of_the_household_form.current_balanace }}
+            </div>
+            {{ dtls_of_bank_pst_offc_of_the_household_form.id.as_hidden }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.name_of_bank_post_office }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.type_of_account }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.date_of_last_transaction }}
-        </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.current_balanace }}
-        </div>
-    </div>
     {% endfor %}
 
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
-<script src="{% static 'js/jquery.formset.js' %}"></script>
-<script type="text/javascript">
-    $('.formset_outstanding_loans').formset();
-    $('.formset_loans_brwd_lst_yr_and_paid').formset();
-    $('.formset_mem_shp_in_slf_hlp_grps').formset();
-    $('.formset_dtls_of_bank_pst_offc_of_the_household').formset();
-</script>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.formset_outstanding_loans').formset();
+        $('.formset_loans_brwd_lst_yr_and_paid').formset();
+        $('.formset_mem_shp_in_slf_hlp_grps').formset();
+        $('.formset_dtls_of_bank_pst_offc_of_the_household').formset();
+    </script>
 {% endblock %}

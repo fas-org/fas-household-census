@@ -6,7 +6,7 @@ class OutstandingLoansForm(forms.ModelForm):
 
     class Meta:
         model = OutstandingLoans
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -17,7 +17,7 @@ class LoansBorrowedLastYearAndRepaidForm(forms.ModelForm):
 
     class Meta:
         model = LoansBorrowedLastYearAndRepaid
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -28,7 +28,7 @@ class MembershipInSelfHelpGroupsForm(forms.ModelForm):
 
     class Meta:
         model = MembershipInSelfHelpGroups
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -39,7 +39,7 @@ class DetailsOfBankPostofficeAccountOfTheHouseholdForm(forms.ModelForm):
 
     class Meta:
         model = DetailsOfBankPostofficeAccountOfTheHousehold
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}

@@ -107,9 +107,10 @@ class LandSoldForm(forms.ModelForm):
 
 
 class LandPurchasedCommentsForm(forms.ModelForm):
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = LandPurchasedComments
-        fields = ['household', 'landpurchased_comments']
+        fields = ['household', 'landpurchased_comments','id']
         exclude = ['household']
         widgets = None
         localized_fields = None

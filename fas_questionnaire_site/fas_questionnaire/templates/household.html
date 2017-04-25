@@ -27,7 +27,6 @@
 {% endfor %}
 {% endif %}
 
-<form method='POST' id="form_household">
 {% csrf_token %}
 {#    {{ household_form.id }}#}
     <div class='row1'>
@@ -52,8 +51,4 @@
             </div>
         </div>
     </div>
-    <div class='row text-center'>
-        <button class='btn btn-primary btn-submit' type="submit">Save</button>
-    </div>
-</form>
 {% endblock %}

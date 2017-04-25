@@ -184,6 +184,7 @@
     <div class='col-md-1 table-cell long-div flex-column'>
         {{production_and_sales_on_operational_holding_form.crop_clean}}
     </div>
+{{ production_and_sales_on_operational_holding_form.id.as_hidden }}
 </div>
 {% endfor %}
 
@@ -197,6 +198,7 @@
     <div class="col-md-12">
         {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
     </div>
+    {{ production_and_sales_on_operational_holding_comment_form.id.as_hidden}}
 </div>
 
 

@@ -24,17 +24,23 @@ def edit(request, pk):
         income_business_formset = formset_factory(IncomeFromOtherBusinessActivitiesForm, formset=BaseFormSet, extra=5)
         animal_inventory_formset = formset_factory(AnimalResoursesInventoryForm, formset=BaseFormSet, extra=5)
         animal_feed_formset = formset_factory(AnimalResourcesFeedForm, formset=BaseFormSet, extra=5)
+        other_expenditure_formset = formset_factory(OtherExpendituresForm, formset=BaseFormSet, extra=5)
+        output_and_income_formset = formset_factory(OutputAndIncomeForm, formset=BaseFormSet, extra=5)
 
         income_salary_forms = income_salary_formset(request.POST, prefix='salary')
         income_business_forms = income_business_formset(request.POST, prefix='business')
         animal_inventory_forms = animal_inventory_formset(request.POST, prefix='inventory')
         animal_feed_forms = animal_feed_formset(request.POST, prefix='feed')
+        other_expenditure_form = other_expenditure_formset(request.POST, prefix='other expenditure')
+        output_and_income_form = output_and_income_formset(request.POST, prefix='output')
 
         if save_formset(income_salary_forms, IncomeFromSalaries, pk) and save_formset(income_business_forms,
                                                                                       IncomeFromOtherBusinessActivities,
                                                                                       pk) \
                 and save_formset(animal_inventory_forms, AnimalResoursesInventory, pk) and save_formset(
-            animal_feed_forms, AnimalResourcesFeed, pk):
+            animal_feed_forms, AnimalResourcesFeed, pk) and save_formset(other_expenditure_form, OtherExpenditure,
+                                                                         pk) and save_formset(output_and_income_form,
+                                                                                              OutputAndIncome, pk):
             messages.success(request, 'Data saved succesfully')
         return redirect('page17_edit', pk)
 
@@ -56,7 +62,18 @@ def edit(request, pk):
     animal_feed_result_set = AnimalResourcesFeed.objects.filter(household=pk)
     animal_feed_formset = animal_feed_model_formset(queryset=animal_feed_result_set, prefix='feed')
 
+    other_expenditure_model_formset = modelformset_factory(OtherExpenditure, form=OtherExpendituresForm, extra=5)
+    other_expenditure_result_set = OtherExpenditure.objects.filter(household=pk)
+    other_expenditure_formset = other_expenditure_model_formset(queryset=other_expenditure_result_set,
+                                                                prefix='other expenditure')
+
+    output_and_income_model_formset = modelformset_factory(OutputAndIncome, form=OutputAndIncomeForm, extra=5)
+    output_and_income_result_set = OutputAndIncome.objects.filter(household=pk)
+    output_and_income_formset = output_and_income_model_formset(queryset=output_and_income_result_set, prefix='output')
+
     return render(request, 'page17.html', {'income_salary_formset': income_salary_formset,
                                            'income_business_formset': income_business_formset,
                                            'animal_inventory_formset': animal_inventory_formset,
-                                           'animal_feed_formset': animal_feed_formset})
+                                           'animal_feed_formset': animal_feed_formset,
+                                           'other_expenditure_formset': other_expenditure_formset,
+                                           'output_and_income_formset': output_and_income_formset})

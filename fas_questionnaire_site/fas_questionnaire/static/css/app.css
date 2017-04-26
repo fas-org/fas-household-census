@@ -85,7 +85,9 @@ td a{
 }
 .sub-menu a {
   padding:10px;
-  color:#337ab7;
+  background-color:#337ab7;
+  color: white;
+  border-radius: 3px;
   font-weight: 800;
   text-decoration: underline;
   text-decoration-color: #337ab7;
@@ -105,7 +107,20 @@ td a{
 #logout-button a{
   color: #58595b;
   font-weight: 600;
-  padding: 4px;
+  padding: 2px;
+  background-color: #f8f8f8;
+}
+a {
+  background-color: #337ab7;
+  color: white;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+.dynamic-form-add a {
+  display: inline-block;
+}
+.navbar-header .navbar-brand {
+   background-color: #f8f8f8;
 }
 .logout-icon {
   width: 20px;

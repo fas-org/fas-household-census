@@ -82,7 +82,13 @@ class HomesteadAreaForm(forms.ModelForm):
         error_messages = {}
 
     def clean(self):
-        if self.cleaned_data.get('components') is None or self.cleaned_data.get('area') is None:
+        print(self.cleaned_data)
+        if self.cleaned_data.get('id') is None and \
+                (self.cleaned_data.get('components') is None or self.cleaned_data.get('area') is None):
+            raise forms.ValidationError('Both Component and Area need to be entered')
+        if self.cleaned_data.get('id') is not None and \
+                (self.cleaned_data.get('components') is None and self.cleaned_data.get('area') is not None) or \
+                (self.cleaned_data.get('components') is not None and self.cleaned_data.get('area') is None):
             raise forms.ValidationError('Both Component and Area need to be entered')
         return self.cleaned_data
 

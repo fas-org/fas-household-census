@@ -132,7 +132,6 @@
 
             {{ homesteadformset.management_form }}
             {% for homesteadform in homesteadformset.forms %}
-                {{ homesteadform.id }}
             <div class='row homestead_formset_row flex-row'>
                 <div class='col-md-9 flex-column table-cell'>
                     {{ homesteadform.components }}
@@ -140,6 +139,7 @@
                 <div class='col-md-3 flex-column table-cell'>
                     {{ homesteadform.area }}
                 </div>
+                {{ homesteadform.id.as_hidden }}
             </div>
             {% endfor %}
 

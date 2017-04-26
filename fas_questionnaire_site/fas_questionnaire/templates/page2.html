@@ -34,7 +34,7 @@
         <div class='col-md-8 flex-column'>
             <div class='row flex-row'>
                 <div class='col-md-12 flex-column'>
-                    <h4 class='text-center'>3. CURRENT OWNERSHIP HOLDING</h4>
+                    <h4 class='text-center'>3.Current Ownership Holding</h4>
                 </div>
             </div>
             <div class='row flex-row'>
@@ -44,30 +44,31 @@
                 <div class='col-md-1 table-cell flex-column'>
                     <label>Ownership plot no</label>
                 </div>
-                <div class='col-md-1 table-cell flex-column'>
+                <div class='col-md-2 table-cell flex-column'>
                     <label>Extent of owned land (specify units)</label>
                 </div>
                 <div class='col-md-2 table-cell flex-column'>
                     <label>Mode of acquisition</label>
                 </div>
-                <div class='col-md-4'>
-                    <div class='row flex-row'>
-                        <div class='col-md-12 table-cell flex-column'>
-                            <label>Irrigation</label>
-                        </div>
+
+                <div class='col-md-4 table-cell long-div'>
+                    <div class='col-md-12 table-cell'>
+                        <p class='text-center'>Irrigation</p>
                     </div>
-                    <div class= 'row flex-row'>
-                        <div class='col-md-4 table-cell flex-column'>
-                            <label>Source</label>
+                    <div class='row flex-row'>
+                        <div class='col-md-4 table-cell'>
+                            <label> Source </label>
                         </div>
-                        <div class='col-md-4 table-cell flex-column'>
-                            <label>Flow/lift</label>
+                        <div class='col-md-4 table-cell'>
+                            <label> Flow/lift </label>
                         </div>
-                        <div class='col-md-4 table-cell flex-column'>
-                            <label>Ownership</label>
+                        <div class='col-md-4 table-cell'>
+                            <label> Ownership </label>
                         </div>
                     </div>
                 </div>
+
+
                 <div class='col-md-1 table-cell flex-column'>
                     <label>Value</label>
                 </div>
@@ -87,7 +88,7 @@
                 <div class='col-md-1 table-cell'>
                     {{ current_ownership_form.ownership_plot_no }}
                 </div>
-                <div class='col-md-1 table-cell'>
+                <div class='col-md-2 table-cell'>
                     {{ current_ownership_form.extent_owned_land }}
                 </div>
                 <div class='col-md-2 table-cell'>
@@ -146,18 +147,18 @@
         </div>
     </div>
 
-    <h4 class='text-center'>4. SALE AND PURCHASE OF AGRICULTURAL LAND</h4><br/>
+    <h4 class='text-center'>4.Sale and Purchase of Agricultural Land</h4><br/>
 
         <b>4.1 Land sold</b><br>
         <div class='row flex-row'>
-            <div class='col-md-1 table-cell  '>
-                <label> Year Of sale</label>
+            <div class='col-md-1 table-cell flex-column'>
+                <label>Year Of sale</label>
             </div>
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column'>
                 <label> Extent </label>
             </div>
 
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell long-div flex-column'>
                 <label> Type of Land </label>
             </div>
 
@@ -181,15 +182,15 @@
                 </div>
             </div>
 
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
             <label> Price of land </label>
             </div>
 
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
             <label> Sale transaction number </label>
             </div>
 
-            <div class='col-md-3 table-cell long-div'>
+            <div class='col-md-3 table-cell flex-column long-div'>
             <label>  Reason for sale </label>
             </div>
             <div class="cross-width"></div>
@@ -246,14 +247,14 @@
 
         <b>4.2 Land bought</b><br>
         <div class='row flex-row'>
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
             <label> Year of purchase </label>
             </div>
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
                 <label> Extent </label>
             </div>
 
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
                 <label> Type of land </label>
             </div>
 
@@ -277,11 +278,11 @@
                 </div>
             </div>
 
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
                 <label> Price of land </label>
             </div>
 
-            <div class='col-md-1 table-cell long-div'>
+            <div class='col-md-1 table-cell flex-column long-div'>
                 <label> Purchased transaction number </label>
             </div>
             <div class="cross-width"> </div>

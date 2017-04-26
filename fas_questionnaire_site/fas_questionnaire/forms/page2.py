@@ -1,5 +1,6 @@
 from django import forms
 from ..models.page2 import *
+from ..views.common import is_empty
 
 
 class AcquisitionModeForm(forms.ModelForm):
@@ -62,8 +63,10 @@ class CurrentOwnershipHoldingForm(forms.ModelForm):
         error_messages = {}
 
     def clean(self):
-        if self.cleaned_data.get('land_type') is None:
-            raise forms.ValidationError('Land Type is mandatory for entering other details in the record')
+        for param in self.cleaned_data:
+            if not param == 'land_type' and not is_empty(self.cleaned_data[param]):
+                if self.cleaned_data['land_type'] is None:
+                    raise forms.ValidationError('Land Type is mandatory for entering other details in the record')
         return self.cleaned_data
 
 

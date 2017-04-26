@@ -27,8 +27,10 @@ def edit(request,pk):
                 form.save(pk)
 
     formset_initial_data = collate_columns(pk)
-    print(formset_initial_data)
-    return render(request, 'page7.html', { 'formset': formset_initial_data})
+    #print("hi intital data " ,formset_initial_data)
+    #print(type(formset_initial_data))
+    #print("hi formset data ",formset)
+    return render(request, 'page7.html', { 'formset': formset })
 
 def collate_columns(pk):
     manure_resultset = InputUseManure.objects.filter(household=pk)

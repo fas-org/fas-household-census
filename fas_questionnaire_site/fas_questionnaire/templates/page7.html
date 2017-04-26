@@ -4,8 +4,179 @@
 {% block content %}
     {% csrf_token %}
 <h4 class='text-center'>7. INPUT USE FOR EACH CROP ON OPERATIONAL HOLDING</h4>
+
+    <div class="row flex-row">
+        <div class="col-md-1 table-cell flex-column" >
+            <label>Crop code(Serial No. as in 6A)</label>
+        </div>
+        <div class="col-md-3  flex-row-wrap">
+            <div class="col-md-12 table-cell flex-column">
+                <label> Manure</label>
+            </div>
+            <div class="col-md-2 table-cell flex-column">
+                <label>Type </label>
+            </div>
+
+            <div class="col-md-5  flex-row-wrap">
+                <div class="col-md-12 table-cell flex-column">
+                <label>Home Produced</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Qty </label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Value </label>
+                </div>
+            </div>
+            <div class="col-md-5  flex-row-wrap">
+                <div class="col-md-12 table-cell flex-column">
+                <label>Purchased</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Qty </label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Price </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2  flex-row-wrap">
+            <div class="col-md-12 table-cell flex-column">
+                <label>Chemical fertiliser</label>
+            </div>
+            <div class="col-md-4 table-cell flex-column">
+                <label>Type</label>
+            </div>
+            <div class="col-md-4 table-cell flex-column">
+                <label>Qty</label>
+            </div>
+            <div class="col-md-4 table-cell flex-column">
+                <label>Price</label>
+            </div>
+        </div>
+        <div class="col-md-3  flex-row-wrap">
+            <div class="col-md-12 table-cell flex-column">
+                <label> Seeds </label>
+            </div>
+
+            <div class="col-md-6  flex-row-wrap">
+                <div class="col-md-12 table-cell flex-column">
+                <label>Home Produced</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Qty </label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Value </label>
+                </div>
+            </div>
+            <div class="col-md-6  flex-row-wrap">
+                <div class="col-md-12 table-cell flex-column">
+                <label>Purchased</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Qty </label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label> Price </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3  flex-row-wrap">
+            <div class="col-md-5 table-cell flex-column">
+                <label> Plant Protection(Value)</label>
+            </div>
+            <div class="col-md-7  flex-row-wrap">
+               <div class="col-md-12 table-cell flex-column">
+                   <label> Irrigation charges</label>
+               </div>
+                <div class="col-md-6 table-cell flex-column">
+                   <label> Source </label>
+               </div>
+               <div class="col-md-6 table-cell flex-column">
+                   <label> Price </label>
+               </div>
+            </div>
+
+        </div>
+        <div class = "cross-width"></div>
+    </div>
     {{ formset.management_form }}
     {% for form in formset.forms %}
-    {{ form }}
+        <div class="row flex-row formset_row">
+        <div class="col-md-1 table-cell flex-column" >
+            {{ form.crop_code }}
+        </div>
+        <div class="col-md-3 flex-row-wrap">
+            <div class="col-md-2 table-cell flex-column">
+                {{ form.manure_type }}
+            </div>
+
+            <div class="col-md-5  flex-row-wrap">
+                <div class="col-md-6 table-cell flex-column">
+                    {{ form.manure_home_quantity }}
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    {{ form.manure_home_value }}
+                </div>
+            </div>
+            <div class="col-md-5  flex-row-wrap">
+                <div class="col-md-6 table-cell flex-column">
+                    {{ form.manure_purchased_quantity }}
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    {{ form.manure_purchased_price }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2  flex-row-wrap">
+            <div class="col-md-4 table-cell flex-column">
+               {{ form.fertiliser_type }}
+            </div>
+            <div class="col-md-4 table-cell flex-column">
+               {{ form.fertiliser_quantity }}
+            </div>
+            <div class="col-md-4 table-cell flex-column">
+               {{ form.fertiliser_price }}
+            </div>
+        </div>
+        <div class="col-md-3  flex-row-wrap">
+            <div class="col-md-6  flex-row-wrap">
+                <div class="col-md-6 table-cell flex-column">
+                   {{ form.home_produced_quantity }}
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                   {{ form.home_produced_value }}
+                </div>
+            </div>
+            <div class="col-md-6  flex-row-wrap">
+                <div class="col-md-6 table-cell flex-column">
+                   {{ form.purchased_quantity }}
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                   {{ form.purchased_price }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3  flex-row-wrap">
+            <div class="col-md-5 table-cell flex-column">
+               {{ form.plant_protection_price }}
+            </div>
+            <div class="col-md-7  flex-row-wrap">
+                <div class="col-md-6 table-cell flex-column">
+                    {{ form.irrigation_source }}
+               </div>
+               <div class="col-md-6 table-cell flex-column">
+                    {{ form.irrigation_price  }}
+               </div>
+            </div>
+
+        </div>
+        </div>
     {% endfor %}
+
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.formset_row').formset();
+    </script>
 {%  endblock %}

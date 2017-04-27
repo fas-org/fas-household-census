@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" placeholder="Household Number" id="Household_number" name="Household_number" required>
             </div>
             <button type="submit" id="search-button" class="btn btn-default"><img class="search-icon" src="../../static/images/search.png">Search</button>
-            <button type="button" id="logout-button" class="btn btn-default"><img class="logout-icon" src="../../static/images/logout.png"><a href={% url "logout" %}>Logout</a></button>
+            <a class='logout-link' href={% url "logout" %}><img class="logout-icon" src="../../static/images/logout.png">Logout</a>
         </form>
     </div>
 </nav>

@@ -123,6 +123,13 @@ a.add-row {
   float: left;
   color: #FFF;
 }
+.logout-link {
+    background: transparent;
+    color: #58595b !important;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 20px;
+}
 .dynamic-form-add a {
   display: inline-block;
 }
@@ -132,6 +139,7 @@ a.add-row {
 .logout-icon {
   width: 20px;
   height: 22px;
+  margin-right: 3px;
 }
 .search-icon {
   float: right;

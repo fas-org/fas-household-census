@@ -1,7 +1,11 @@
 from django import forms
+
 from ..models.page7 import InputUseSeeds,InputUseFertiliser,InputUseManure,InputUsePlantProtectionIrrigation
 from ..views.common import save_form, is_empty
 from django.forms.models import model_to_dict, fields_for_model
+
+
+
 
 
 class InputUseForm(forms.Form):
@@ -41,8 +45,10 @@ class InputUseForm(forms.Form):
         input_use_plant_protection_form = InputUsePlantProtectionIrrigationForm(data)
         input_use_fertiliser = InputUseFertiliserForm(data)
         input_use_seeds = InputUseSeedsForm(data)
-        return save_form(input_use_manure_form, household_id) and save_form(input_use_plant_protection_form, household_id) \
-                and save_form(input_use_fertiliser, household_id) and save_form(input_use_seeds, household_id)
+
+        from fas_questionnaire.views.page7 import save_page7_form
+        return save_page7_form(input_use_manure_form, household_id,InputUseManure) and save_page7_form(input_use_plant_protection_form, household_id,InputUsePlantProtectionIrrigation) \
+                and save_page7_form(input_use_fertiliser, household_id,InputUseFertiliser) and save_page7_form(input_use_seeds, household_id,InputUseSeeds)
 
 
 class InputUseManureForm(forms.ModelForm):

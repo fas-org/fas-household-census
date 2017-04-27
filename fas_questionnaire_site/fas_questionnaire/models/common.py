@@ -12,6 +12,7 @@ class Crop(models.Model):
         return self.name
 
 
+
 class PlaceOfWork(models.Model):
     place = models.CharField(max_length=50)
 

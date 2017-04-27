@@ -2,6 +2,16 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+{% for message in messages %}
+    {% ifequal message.message 'Data saved successfully' %}
+        <div class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
     {% csrf_token %}
 <h4 class='text-center'>7. INPUT USE FOR EACH CROP ON OPERATIONAL HOLDING</h4>
 

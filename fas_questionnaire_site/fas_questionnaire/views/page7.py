@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.forms.formsets import formset_factory, BaseFormSet
-from django.forms import modelformset_factory
 
 from fas_questionnaire.views.common import get_object_or_none
 from ..models.page7 import InputUseManure, InputUseSeeds, InputUsePlantProtectionIrrigation, InputUseFertiliser
@@ -28,19 +27,18 @@ number_of_forms = 0
 def edit(request, pk):
     global number_of_forms
     formset = formset_factory(InputUseForm, formset=BaseFormSet, extra=3)
+    form_save = False
     if request.method == 'POST':
         forms = formset(request.POST)
         number_of_forms = forms.__len__()
         if forms.is_valid():
             for form in forms:
-                form.save(pk)
-
+                form_save = form.save(pk, request.POST) or form_save
+        if form_save:
+            messages.success(request, 'Data saved successfully')
     formset_initial_data = collate_columns(pk, number_of_forms)
     if (len(formset_initial_data) > 0):
         formset = formset(formset_initial_data)
-    # print("hi intital data " ,formset_initial_data)
-    # print(type(formset_initial_data))
-    # print("hi formset data ",formset)
     return render(request, 'page7.html', {'formset': formset})
 
 
@@ -98,9 +96,3 @@ def collate_columns(pk, number_of_forms):
     data = dict(pair for data in temp_data for pair in data.items())
 
     return data
-
-    # crop_code_set = set()
-    # list = [x.crop_code for x in manure_resultset] + [x.crop_code for x in fertiliser_resultset] + [x.crop_code for x in plant_protection_resultset] + [x.crop_code for x in seeds_resultset]
-    # for l in list:
-    #     crop_code_set.add(l)
-    # print(crop_code_set)

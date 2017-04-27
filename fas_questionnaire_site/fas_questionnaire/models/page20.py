@@ -35,7 +35,7 @@ class PurposeOfBorrowing(models.Model):
 class OutstandingLoans(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='household')
-    loan_no = models.IntegerField(db_column='loan no', max_length=100, blank=True, null=True)
+    loan_no = models.IntegerField(db_column='loan no', blank=True, null=True)
     month_and_year_of_borrowing = models.CharField(db_column='month and year of borrowing', max_length=50, blank=True, null=True)
     principal = models.CharField(db_column='principal', max_length=50, blank=True, null=True)
     collateral = models.CharField(db_column='collateral', max_length=50, blank=True, null=True)
@@ -65,7 +65,7 @@ class MonthWhenFullyRepaid(models.Model):
 class LoansBorrowedLastYearAndRepaid(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='household')
-    loan_no = models.IntegerField(db_column='loan no', max_length=100, blank=True, null=True)
+    loan_no = models.IntegerField(db_column='loan no', blank=True, null=True)
     month_of_borrowing = models.CharField(db_column='month of borrowing', max_length=100, blank=True, null=True)
     principal = models.CharField(db_column='principal', max_length=50, blank=True, null=True)
     collateral = models.CharField(db_column='collateral', max_length=50, blank=True, null=True)
@@ -108,9 +108,9 @@ class MembershipInSelfHelpGroups(models.Model):
     name_of_group_group_leader = models.CharField(db_column='name of group group leader', max_length=100, blank=True, null=True)
     bank_ngo_to_which_the_group_is_linked = models.ForeignKey(BankNgoToWhichTheGroupIsLinked, models.DO_NOTHING, db_column='Bank Ngo To Which The Group is Linked', blank=True, null=True)
     period_of_membership = models.ForeignKey(PeriodOfMembership, models.DO_NOTHING, db_column='Period Of Membership', blank=True, null=True)
-    number_of_members_in_the_group = models.IntegerField(db_column='number of members in the group', max_length=100, blank=True, null=True)
-    rs_per_week_month_savings = models.IntegerField(db_column='rs per week month savings', max_length=100, blank=True, null=True)
-    total_savings = models.IntegerField(db_column='total savings', max_length=100, blank=True, null=True)
+    number_of_members_in_the_group = models.IntegerField(db_column='number of members in the group', blank=True, null=True)
+    rs_per_week_month_savings = models.IntegerField(db_column='rs per week month savings', blank=True, null=True)
+    total_savings = models.IntegerField(db_column='total savings', blank=True, null=True)
 
     class Meta:
         managed = True
@@ -145,7 +145,7 @@ class DetailsOfBankPostofficeAccountOfTheHousehold(models.Model):
     name_of_bank_post_office = models.ForeignKey(NameOfBankPostOffice, models.DO_NOTHING, db_column='Name Of Bank Post Office', blank=True, null=True)
     type_of_account = models.ForeignKey(TypeOfAccount, models.DO_NOTHING, db_column='Type Of Account', blank=True, null=True)
     date_of_last_transaction = models.CharField(db_column='date of last transaction', max_length=100, blank=True, null=True)
-    current_balanace = models.IntegerField(db_column='current balanace', max_length=100, blank=True, null=True)
+    current_balanace = models.IntegerField(db_column='current balanace', blank=True, null=True)
 
 
     class Meta:

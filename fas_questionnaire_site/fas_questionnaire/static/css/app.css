@@ -9,6 +9,10 @@ input, select {
     color: #337ab7;
     padding: 5px;
 }
+select {
+    height: 31px;
+    border-width: 0px;
+}
 .row1 {
   padding-top: 50px;
 }
@@ -155,4 +159,5 @@ div.comments textarea {
 .search-village #id_village {
     height: 34px;
     width: 172px;
+    border-width: 1px;
 }

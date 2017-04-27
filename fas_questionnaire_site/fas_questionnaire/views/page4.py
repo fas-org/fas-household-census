@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.forms.formsets import formset_factory, BaseFormSet
 from django.forms import modelformset_factory
 import pdb
+from .common import *
 
 @login_required(login_url='login')
 def init(request):
@@ -105,7 +106,8 @@ def new(request):
     return render(request, 'page4.html', {'formset_lm_in': land_mortgage_in_formset(prefix='lm_in'),
                                           'formset_lm_out': land_mortgage_out_formset(prefix='lm_out'),
                                           'formset_lnd_lsd_in_shr_rent': lnd_lsd_in_shr_rent_formset(prefix='lnd_lsd_in_shr_rent'),
-                                          'formset_lnd_lsd_out_shr_rent': lnd_lsd_out_shr_rent_formset(prefix='lnd_lsd_out_shr_rent')
+                                          'formset_lnd_lsd_out_shr_rent': lnd_lsd_out_shr_rent_formset(prefix='lnd_lsd_out_shr_rent'),
+                                          'search_form': get_search_form()
                                           })
 
 
@@ -200,7 +202,8 @@ def edit(request, pk):
         return render(request, 'page4.html', {'formset_lm_in': formset_lm_in,
                                               'formset_lm_out': formset_lm_out,
                                               'formset_lnd_lsd_in_shr_rent': formset_lnd_lsd_in_shr_rent,
-                                              'formset_lnd_lsd_out_shr_rent': formset_lnd_lsd_out_shr_rent})
+                                              'formset_lnd_lsd_out_shr_rent': formset_lnd_lsd_out_shr_rent,
+                                              'search_form': get_search_form()})
 
 
     except Exception:

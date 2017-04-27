@@ -44,11 +44,13 @@ def new(request):
             return render(request, 'page9.html',
                           {'current_ownership_formset': current_ownership_forms,
                            'production_means_formset': production_means_forms,
-                           'irrigation_means_formset': irrigation_means_forms})
+                           'irrigation_means_formset': irrigation_means_forms,
+                           'search_form': get_search_form()})
 
     return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset(prefix='owner'),
                                                              'production_means_formset': production_means_formset(prefix='prod'),
-                                                             'irrigation_means_formset': irrigation_means_formset(prefix='irrigation')})
+                                                             'irrigation_means_formset': irrigation_means_formset(prefix='irrigation'),
+                                          'search_form': get_search_form()})
 
 
 @login_required(login_url='login')
@@ -80,7 +82,8 @@ def edit(request, pk):
                 return render(request, 'page9.html',
                               {'current_ownership_formset': current_ownership_forms,
                                'production_means_formset': production_means_forms,
-                               'irrigation_means_formset': irrigation_means_forms})
+                               'irrigation_means_formset': irrigation_means_forms,
+                               'search_form': get_search_form()})
 
         current_ownership_model_formset = modelformset_factory(OwnershipWellsTubewells, form=OwnershipWellsTubewellsForm, extra=5)
         current_ownership_result_set = OwnershipWellsTubewells.objects.filter(household=pk)
@@ -96,7 +99,8 @@ def edit(request, pk):
 
         return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset,
                                                                  'production_means_formset': production_means_formset,
-                                                                 'irrigation_means_formset': irrigation_means_formset})
+                                                                 'irrigation_means_formset': irrigation_means_formset,
+                                              'search_form': get_search_form()})
 
     except Exception:
         return new(request)

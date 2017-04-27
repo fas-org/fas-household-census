@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.forms import formset_factory, modelformset_factory, BaseFormSet
 from ..forms.page19 import PublicDistributionSystemForm, WaterForDomesticUseForm, HousingForm, HousingCommentsForm
 from ..models.page19 import PublicDistributionSystem, WaterForDomesticUse, Housing, HousingComments
-from ..views.common import save_formset, save_form, get_object_or_none
+from ..views.common import save_formset, save_form, get_object_or_none, get_search_form
 
 
 @login_required(login_url='login')
@@ -40,4 +40,5 @@ def edit(request, pk):
     housing_result_set = Housing.objects.filter(household=pk)
     housing_formset = housing_model_formset(queryset=housing_result_set, prefix='housing')
     return render(request, 'page19.html', {'pds_form': pds_form, 'water_formset': water_formset,
-                                           'housing_formset': housing_formset, 'comments_form': comments_form})
+                                           'housing_formset': housing_formset, 'comments_form': comments_form,
+                                           'search_form': get_search_form()})

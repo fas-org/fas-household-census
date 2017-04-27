@@ -71,7 +71,8 @@ def new(request):
                        prefix='OtherDomesticDurableGoods'),
                    'inventories_form_set': inventories_form_set(prefix='Inventories'),
                    'miscellaneous_form_set': miscellaneous_form_set(prefix='Miscellaneous'),
-                   'land_details': assetLandRegistrationForm})
+                   'land_details': assetLandRegistrationForm,
+                   'search_form': get_search_form()})
 
 
 def are_all_assetForms_valid(asset_forms_array):
@@ -172,7 +173,8 @@ def edit(request, pk):
                                                'otherDomesticDurableGoods_form_set': domesticSet,
                                                'inventories_form_set': inventoriesSet,
                                                'miscellaneous_form_set': miscellaneousSet,
-                                               'land_details': assetLandRegistrationForm})
+                                               'land_details': assetLandRegistrationForm,
+                                               'search_form': get_search_form()})
     except Exception:
         return new(request)
 

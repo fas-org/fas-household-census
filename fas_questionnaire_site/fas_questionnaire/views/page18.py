@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.forms import formset_factory, modelformset_factory, BaseFormSet
 from ..forms.page18 import *
 from ..models.page18 import *
-from ..views.common import save_formset
+from ..views.common import save_formset, get_search_form
 
 
 @login_required(login_url='login')
@@ -40,4 +40,5 @@ def edit(request, pk):
     children_formset=children_model_formset(queryset=children_result_set,prefix='children')
 
     return render(request, 'page18.html', {'asset_acquisition_formset': formset,
-                                           'children_formset':children_formset})
+                                           'children_formset':children_formset,
+                                           'search_form': get_search_form()})

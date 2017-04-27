@@ -5,7 +5,7 @@ from django.forms.formsets import formset_factory, BaseFormSet
 from django.forms import modelformset_factory
 from ..forms.page17 import *
 from ..models.page17 import *
-from .common import save_formset, save_forms
+from .common import *
 
 
 @login_required(login_url='login')
@@ -76,4 +76,5 @@ def edit(request, pk):
                                            'animal_inventory_formset': animal_inventory_formset,
                                            'animal_feed_formset': animal_feed_formset,
                                            'other_expenditure_formset': other_expenditure_formset,
-                                           'output_and_income_formset': output_and_income_formset})
+                                           'output_and_income_formset': output_and_income_formset,
+                                           'search_form': get_search_form()})

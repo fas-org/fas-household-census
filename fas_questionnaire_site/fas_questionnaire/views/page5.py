@@ -1,4 +1,4 @@
-from fas_questionnaire.views.common import save_formset, save_form, get_object_or_none
+from fas_questionnaire.views.common import save_formset, save_form, get_object_or_none, get_search_form
 from ..forms.page5 import *
 from ..models.page5 import *
 from django.shortcuts import render, redirect
@@ -37,4 +37,5 @@ def edit(request, pk):
     comments_form = CroppingPatternAndCropScheduleCommentsForm(instance=comments, prefix='comments')
 
     return render(request, 'page5.html', {'production_and_sales_on_operational_holding_formset': formset,
-                                          'production_and_sales_on_operational_holding_comment_form': comments_form})
+                                          'production_and_sales_on_operational_holding_comment_form': comments_form,
+                                          'search_form': get_search_form()})

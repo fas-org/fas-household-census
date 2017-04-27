@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.forms import formset_factory, modelformset_factory, BaseFormSet
 from ..forms.page1 import HouseholdIntroductionForm, HouseholdMembersForm
 from ..models.page1 import HouseholdIntroduction, HouseholdMembers
-from ..views.common import save_formset, save_form, get_object_or_none
+from ..views.common import save_formset, save_form, get_object_or_none, get_search_form
 
 
 @login_required(login_url='login')
@@ -32,4 +32,4 @@ def edit(request, pk):
     household_members_model_formset = modelformset_factory(HouseholdMembers,form=HouseholdMembersForm, extra=5)
     result_set = HouseholdMembers.objects.filter(household=pk)
     formset = household_members_model_formset(queryset=result_set, prefix='members')
-    return render(request, 'page1.html', {'introduction_form': form, 'formset': formset})
+    return render(request, 'page1.html', {'introduction_form': form, 'formset': formset, 'search_form':get_search_form()})

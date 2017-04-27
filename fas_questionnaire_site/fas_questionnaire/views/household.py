@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
+from .common import *
 
 
 @login_required(login_url='login')
@@ -16,6 +17,13 @@ def init(request):
 
 @login_required(login_url='login')
 def new(request):
+    if request.session.get('search_err_msg') is not None:
+        del request.session['search_err_msg']
+    return new_internal(request)
+
+
+@login_required(login_url='login')
+def new_internal(request):
     if request.session.get('household') is not None:
         del request.session['household']
     if request.method == "POST":
@@ -28,7 +36,7 @@ def new(request):
             return redirect('household_edit', pk=household.pk)
     else:
         form = HouseholdForm()
-    return render(request, 'household.html', {'household_form': form})
+    return render(request, 'household.html', {'household_form': form, 'search_form':get_search_form()})
 
 
 @login_required(login_url='login')
@@ -45,9 +53,9 @@ def edit(request, pk):
                 return redirect('household_edit', pk=pk)
         else:
             form = HouseholdForm(instance=household)
-        return render(request, 'household.html', {'household_form': form})
+        return render(request, 'household.html', {'household_form': form, 'search_form':get_search_form()})
     except Exception:
-        return new(request)
+        return new_internal(request)
 
 
 @login_required(login_url='login')

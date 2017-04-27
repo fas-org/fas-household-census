@@ -47,13 +47,15 @@ def new(request):
             return render(request, 'page8.html',
                           {'extension_formset': extension_forms,
                            'institutional_support_formset': institutional_support_forms,
-                           'institutional_support_comments_form': institutional_support_comments_form
+                           'institutional_support_comments_form': institutional_support_comments_form,
+                           'search_form': get_search_form()
                            })
 
     return render(request, 'page8.html',
                   {'extension_formset': extension_formset(prefix='extensionforms'),
                    'institutional_support_formset': institutional_support_formset(prefix='institutionalsupportforms'),
-                   'institutional_support_comments_form': institutional_support_comments_form})
+                   'institutional_support_comments_form': institutional_support_comments_form,
+                   'search_form': get_search_form()})
 
 
 @login_required(login_url='login')
@@ -88,7 +90,8 @@ def edit(request, pk):
                 return render(request, 'page8.html',
                               {'extension_formset': extension_forms,
                                'institutional_support_formset': institutional_support_forms,
-                               'institutional_support_comments_form': institutional_support_comments_form
+                               'institutional_support_comments_form': institutional_support_comments_form,
+                               'search_form': get_search_form()
                                })
 
         extension_formset = modelformset_factory(Extension, form=ExtensionForm, extra=5)
@@ -103,7 +106,8 @@ def edit(request, pk):
         institutional_support_comments_form = InstitutionalSupportCommentsForm(instance=institutional_support_comments)
         return render(request, 'page8.html',
                       {'extension_formset': extensionformset, 'institutional_support_formset': institutionalsupportformset,
-                       'institutional_support_comments_form': institutional_support_comments_form})
+                       'institutional_support_comments_form': institutional_support_comments_form,
+                       'search_form': get_search_form()})
     except Exception:
         return new(request)
 

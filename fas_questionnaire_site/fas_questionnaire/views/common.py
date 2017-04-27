@@ -1,6 +1,7 @@
 from . import household as household
 from django.contrib.auth.decorators import login_required
 from ..models.household_models import Household
+from ..forms.household_forms import HouseholdForm
 
 
 def save_form_old(request, form):
@@ -100,3 +101,6 @@ def is_empty(field):
         return True
     else:
         return False
+
+def get_search_form():
+    return HouseholdForm()

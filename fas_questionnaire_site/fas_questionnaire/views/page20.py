@@ -77,4 +77,5 @@ def edit(request, pk):
     return render(request, 'page20.html', {'formset_outstanding_loans': formset_outstanding_loans,
                                            'formset_loans_brwd_lst_yr_and_paid': formset_loans_brwd_lst_yr_and_paid,
                                            'formset_mem_shp_in_slf_hlp_grps': formset_mem_shp_in_slf_hlp_grps,
-                                           'formset_dtls_of_bank_pst_offc_of_the_household': formset_dtls_of_bank_pst_offc_of_the_household})
+                                           'formset_dtls_of_bank_pst_offc_of_the_household': formset_dtls_of_bank_pst_offc_of_the_household,
+                                           'search_form': get_search_form()})

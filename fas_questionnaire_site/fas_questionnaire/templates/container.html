@@ -41,7 +41,11 @@
         {% include 'common/topnav.html' %}
         <main>
                 <div class='container-fluid'>
-
+                    {% if request.session.search_err_msg %}
+                        <div class="alert alert-warning">
+                            <strong>{{ request.session.search_err_msg|escape }}</strong>
+                        </div>
+                    {% endif %}
                   <!--  <h4 class='text-center'>FOUNDATION FOR AGRARIAN STUDIES<br>QUESTIONNAIRE FOR CENSUS OF HOUSEHOLDS, 2016</h4> -->
                     <form method="POST">
                         {% block content %}

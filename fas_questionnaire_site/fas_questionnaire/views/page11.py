@@ -33,9 +33,11 @@ def new(request):
             return redirect('page11_edit', pk=request.session['household'])
         else:
             return render(request, 'page11.html',
-                          {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_forms})
+                          {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_forms,
+                           'search_form': get_search_form()})
 
-    return render(request, 'page11.html', {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_formset(prefix='labour_days')})
+    return render(request, 'page11.html', {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_formset(prefix='labour_days'),
+                                           'search_form': get_search_form()})
 
 
 @login_required(login_url='login')
@@ -57,7 +59,8 @@ def edit(request, pk):
                 messages.success(request, 'Data saved successfully')
             else:
                 return render(request, 'page9.html',
-                              {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_forms })
+                              {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_forms,
+                               'search_form': get_search_form()})
 
         labour_days_employed_in_agricultural_operations_formset = modelformset_factory(LabourDaysEmployedInAgriculturalOperations,
                                                                                        form=LabourDaysEmployedInAgriculturalOperationsForm,
@@ -66,7 +69,8 @@ def edit(request, pk):
         labour_days_employed_in_agricultural_operations_formset = labour_days_employed_in_agricultural_operations_formset(queryset=labour_days_employed_in_agricultural_operations_result_set, prefix='owner')
 
         return render(request, 'page11.html',
-                      {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_formset})
+                      {'labour_days_employed_in_agricultural_operations_formset': labour_days_employed_in_agricultural_operations_formset,
+                       'search_form': get_search_form()})
 
     except Exception:
         return new(request)

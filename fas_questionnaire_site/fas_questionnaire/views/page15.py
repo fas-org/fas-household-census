@@ -39,11 +39,13 @@ def new(request):
         else:
             return render(request, 'page15.html',
                           {'agri_formset': agri_forms,
-                           'non_agri_formset': non_agri_forms
+                           'non_agri_formset': non_agri_forms,
+                           'search_form': get_search_form()
                            })
 
     return render(request, 'page15.html', {'agri_formset': agri_formset(prefix='agri'),
-                                           'non_agri_formset': non_agri_formset(prefix='non_agri')
+                                           'non_agri_formset': non_agri_formset(prefix='non_agri'),
+                                           'search_form': get_search_form()
                                            })
 
 
@@ -70,7 +72,8 @@ def edit(request, pk):
             else:
                 return render(request, 'page15.html',
                               {'agri_formset': agri_forms,
-                               'non_agri_formset': non_agri_forms
+                               'non_agri_formset': non_agri_forms,
+                               'search_form': get_search_form()
                                })
 
         agri_model_formset = modelformset_factory(LongTermWorkers, form=LongTermWorkersForm, extra=5)
@@ -82,7 +85,8 @@ def edit(request, pk):
         non_agri_formset = non_agri_model_formset(queryset=non_agri_result_set, prefix='non_agri')
 
         return render(request, 'page15.html', {'agri_formset': agri_formset,
-                                               'non_agri_formset': non_agri_formset
+                                               'non_agri_formset': non_agri_formset,
+                                               'search_form': get_search_form()
                                                })
 
     except Exception:

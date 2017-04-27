@@ -9,6 +9,7 @@ from ..forms.page_13 import PatternOfAgriculturalLabouringOutForm
 from ..models.page_13 import PatternOfAgriculturalLabouringOut
 from ..models.household_models import Household
 from django import forms
+from .common import *
 
 
 @login_required(login_url='login')
@@ -41,7 +42,7 @@ def new(request):
 
         return redirect('page_13_edit', pk=request.session['household'])
 
-    return render(request,'page_13.html',{'formset': pattern_formset})
+    return render(request,'page_13.html',{'formset': pattern_formset, 'search_form':get_search_form()})
 
 
 @login_required(login_url='login')
@@ -71,4 +72,4 @@ def edit(request, pk):
     pattern_model_formset= modelformset_factory(PatternOfAgriculturalLabouringOut,form=PatternOfAgriculturalLabouringOutForm,extra=5, widgets={ 'name_of_worker' : forms.Select(choices=[ (c.id, c.name) for c in HouseholdMembers.objects.filter(household=pk)])})
     result_set=PatternOfAgriculturalLabouringOut.objects.filter(household=pk)
     pattern_formset = pattern_model_formset(queryset=result_set)
-    return render(request,'page_13.html',{'formset': pattern_formset})
+    return render(request,'page_13.html',{'formset': pattern_formset, 'search_form':get_search_form()})

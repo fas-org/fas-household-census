@@ -152,3 +152,7 @@ span.required { color: red; }
 div.comments textarea {
     width: 100%;
 }
+.search-village #id_village {
+    height: 34px;
+    width: 172px;
+}

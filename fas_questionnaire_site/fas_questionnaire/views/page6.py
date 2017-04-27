@@ -1,4 +1,4 @@
-from fas_questionnaire.views.common import save_formset
+from fas_questionnaire.views.common import save_formset, get_search_form
 from ..forms.page6 import *
 from ..models.page6 import *
 from django.shortcuts import render, redirect
@@ -31,4 +31,5 @@ def edit(request, pk):
     result_set=ProductionAndSales.objects.filter(household=pk)
     formset = productionAndSales_model_formset(queryset=result_set,prefix='sales')
     return render(request, 'page6.html',
-                          {'production_and_sales_formset': formset})
+                          {'production_and_sales_formset': formset,
+                           'search_form': get_search_form()})

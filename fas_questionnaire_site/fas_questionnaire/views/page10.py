@@ -10,6 +10,7 @@ from ..models.page10 import PaymentsToManagersAndLongTermWorkers
 from ..forms.page10 import PaymentsToManagersAndLongTermWorkersForm
 from ..models.page10 import EmployManagerOrLongTermWorker
 from ..forms.page10 import EmployManagerOrLongTermWorkerForm
+from .common import *
 
 @login_required(login_url='login')
 def init(request):
@@ -54,7 +55,8 @@ def new(request):
 
     return render(request, 'page10.html', {'crops_formset': crops_formset(prefix='crop-form'),
                                                'extra_formset': extra_formset(prefix='extra-form'),
-                                               'form': OtherCostsForm(prefix='form')})
+                                               'form': OtherCostsForm(prefix='form'),
+                                           'search_form': get_search_form()})
 
 
 @login_required(login_url='login')
@@ -169,4 +171,5 @@ def edit(request, pk):
                                                'extra_formset': extra_formset,
                                                'form': OtherCostsForm(prefix='form', instance=other_instance),
                                                 'payment_formset' : payment_formset,
-                                                'employ_form' : EmployManagerOrLongTermWorkerForm(prefix='employ-form',instance=payment_instance)})
+                                                'employ_form' : EmployManagerOrLongTermWorkerForm(prefix='employ-form',instance=payment_instance),
+                                           'search_form': get_search_form()})

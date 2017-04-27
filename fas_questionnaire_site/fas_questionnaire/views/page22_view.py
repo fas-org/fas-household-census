@@ -5,6 +5,7 @@ from django.contrib import messages
 
 from ..models.page22 import CommentsAndInformationOnInvestigators
 from ..forms.page22_form import CommentsAndInformationOnInvestigatorsForm
+from .common import *
 
 @login_required(login_url='login')
 def init(request):
@@ -27,7 +28,7 @@ def new(request):
     else:
         investigatorInformationForm = CommentsAndInformationOnInvestigatorsForm()
     return render(request, 'page22.html',
-                  {'page22_form': investigatorInformationForm})
+                  {'page22_form': investigatorInformationForm, 'search_form': get_search_form()})
 
 
 @login_required(login_url='login')
@@ -47,7 +48,8 @@ def edit(request, pk):
         else:
             form = CommentsAndInformationOnInvestigatorsForm(instance=investigatorInformation)
         return render(request, 'page22.html',
-                      {'page22_form': form
+                      {'page22_form': form,
+                       'search_form': get_search_form()
                        })
     except Exception:
         return new(request)

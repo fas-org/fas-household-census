@@ -51,12 +51,14 @@ def new(request):
             return render(request, 'page16.html',
                           {'income_from_state_formset': income_from_state_forms,
                            'aggri_or_non_aggri_labour_service_formset': aggri_or_non_aggri_labour_service_forms,
-                           'freedom_of_employment_questions_form': freedom_of_employment_questions_form})
+                           'freedom_of_employment_questions_form': freedom_of_employment_questions_form,
+                           'search_form': get_search_form()})
 
     return render(request, 'page16.html', {'income_from_state_formset': income_from_state_formset(prefix='income_from_state'),
                                            'aggri_or_non_aggri_labour_service_formset': aggri_or_non_aggri_labour_service_formset(
                                                prefix='aggri_or_non_aggri_labour_service'),
-                                           'freedom_of_employment_questions_form': freedom_of_employment_questions_form})
+                                           'freedom_of_employment_questions_form': freedom_of_employment_questions_form,
+                                           'search_form': get_search_form()})
 
 
 @login_required(login_url='login')
@@ -90,7 +92,8 @@ def edit(request, pk):
                 return render(request, 'page16.html',
                               {'income_from_state_formset': income_from_state_forms,
                                'aggri_or_non_aggri_labour_service_formset': aggri_or_non_aggri_labour_service_forms,
-                               'freedom_of_employment_questions_form': freedom_of_employment_questions_form})
+                               'freedom_of_employment_questions_form': freedom_of_employment_questions_form,
+                               'search_form': get_search_form()})
 
         income_from_state_model_formset = modelformset_factory(IncomeFromStateAndCommonPropertyResources,
                                                                form=IncomeFromStateAndCommonPropertyResourcesForm, extra=5)
@@ -110,7 +113,8 @@ def edit(request, pk):
 
         return render(request, 'page16.html', {'income_from_state_formset': income_from_state_formset,
                                                'aggri_or_non_aggri_labour_service_formset': aggri_or_non_aggri_labour_service_formset,
-                                               'freedom_of_employment_questions_form': freedom_of_employment_questions_form})
+                                               'freedom_of_employment_questions_form': freedom_of_employment_questions_form,
+                                               'search_form': get_search_form()})
 
     except Exception:
         return new(request)

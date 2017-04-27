@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.forms.formsets import formset_factory, BaseFormSet
 from django.forms import modelformset_factory
 import pdb
+from .common import *
 
 @login_required(login_url='login')
 def init(request):
@@ -63,7 +64,8 @@ def new(request):
             return redirect('page3_edit', pk=request.session['household'])
 
     return render(request, 'page3.html', {'formset_lnd_lsd_in_fxd_rnt': lnd_lsd_in_fxd_rnt_formset(prefix='lnd_lsd_in_fxd_rnt'),
-                                          'formset_lnd_lsd_out_fxd_rnt': lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt')
+                                          'formset_lnd_lsd_out_fxd_rnt': lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt'),
+                                          'search_form': get_search_form()
                                         })
 
 
@@ -113,7 +115,8 @@ def edit(request, pk):
         formset_lnd_lsd_out_fxd_rnt = lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt', queryset=result_set_lnd_lsd_out_fxd_rnt)
 
         return render(request, 'page3.html', {'formset_lnd_lsd_in_fxd_rnt': formset_lnd_lsd_in_fxd_rnt,
-                                              'formset_lnd_lsd_out_fxd_rnt': formset_lnd_lsd_out_fxd_rnt
+                                              'formset_lnd_lsd_out_fxd_rnt': formset_lnd_lsd_out_fxd_rnt,
+                                              'search_form': get_search_form()
                                               })
 
     except Exception:

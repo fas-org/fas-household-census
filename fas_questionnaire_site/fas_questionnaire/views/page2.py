@@ -37,7 +37,8 @@ def edit(request, pk):
                                                   'homesteadformset': homestead_area_forms,
                                                   'landsold_formset': landsoldforms,
                                                   'landpurchased_formset': landpurchasedforms,
-                                                  'landpurchased_comments_form': landpurchased_comments_form
+                                                  'landpurchased_comments_form': landpurchased_comments_form,
+                                                  'search_form': get_search_form()
                                                   })
 
 
@@ -64,5 +65,6 @@ def edit(request, pk):
                                           'homesteadformset': homestead_area_formset,
                                           'landsold_formset': landsold_formset,
                                           'landpurchased_formset': landpurchased_formset,
-                                          'landpurchased_comments_form': landpurchased_comments_form
+                                          'landpurchased_comments_form': landpurchased_comments_form,
+                                          'search_form': get_search_form()
                                           })

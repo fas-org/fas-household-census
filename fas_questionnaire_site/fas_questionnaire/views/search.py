@@ -7,7 +7,7 @@ from django.contrib import messages
 
 def get_primary_key(village_name, household_number):
     try:
-        village = Village.objects.get(village=village_name)
+        village = Village.objects.get(id=village_name)
     except Village.DoesNotExist:
         return None
 
@@ -21,13 +21,16 @@ def get_primary_key(village_name, household_number):
 
 def search(request):
     household_number = request.POST.get('Household_number')
-    village_name = request.POST.get('Village_name')
+    village_name = request.POST.get('village')
     pk = get_primary_key(village_name, household_number)
     reobj = re.match(r'(/fas/)(.*)(/search/)', request.path, 0)
     requested_page = reobj.group(2) + "_edit"
     if pk is None:
+        request.session['search_err_msg'] = 'Household not found'
         return redirect('household_edit', pk=pk) # TODO: get user opinion on this.
     else:
+        if request.session.get('search_err_msg') is not None:
+            del request.session['search_err_msg']
         return redirect(requested_page, pk=pk)
         # TODO: set the session variable here instead of setting it in each edit view
 

@@ -91,6 +91,7 @@ td a{
   font-weight: 800;
   text-decoration: underline;
   text-decoration-color: #337ab7;
+  margin: 0px 15px;
 }
 .text-center {
   color:#337ab7;
@@ -115,6 +116,12 @@ a {
   color: white;
   border-radius: 3px;
   align-self: flex-start;
+}
+a.add-row {
+  padding: 5px;
+  margin-top: 10px;
+  float: left;
+  color: #FFF;
 }
 .dynamic-form-add a {
   display: inline-block;

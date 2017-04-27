@@ -26,9 +26,9 @@
         <header>
             {% include 'common/header.html' %}
         </header>
-        <div class="header-links">
+        <div class="header-links row">
             <div class='sub-menu'>
-                <a href={% url "household_new" %}>Enter new details</a>
+                <a href={% url "household_new" %}>New Household</a>
             </div>
             {% if request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
             <div class='sub-menu'>

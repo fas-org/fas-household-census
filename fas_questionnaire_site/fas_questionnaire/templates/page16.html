@@ -28,221 +28,236 @@
         {% endfor %}
     {% endfor %}
 
-        {% csrf_token %}
-            <h4 class='text-center'>16. FREEDOM OF EMPLOYMENT</h4><br>
-            {{ freedom_of_employment_questions_form.management_form }}
-            <div class="row table-cell">
-                <h5>A. Do the members of your household work more for one particular employer (or a few particular employers) than they
-                    do for others? Give details.</h5>
-                {{ freedom_of_employment_questions_form.your_household_work_more_for_one_particular_employer }}
-            </div>
-            <div class="row table-cell">
-                <h5>B. Are members of your family free to work for wages for an employer of their choice? Give details.</h5>
-                {{ freedom_of_employment_questions_form.members_of_your_family_free_to_work_for_wages_for_an_employer_of_their_choice }}
-            </div>
-            <div class="row table-cell">
-                <h5>C. Does any person in the family provide unpaid/under-paid labour service to any employer? Has any member of your
-                    household been coerced to work for an employer? Coerced by any person the household is indebted to? Any instance of
-                    extra-economic coercion or threat?</h5>
-                {{ freedom_of_employment_questions_form.does_any_person_in_the_family_provide_unpaid_under_paid_labour_field }}
-            </div>
-            <h5>D. Agricultural / non-agricultural labour services</h5>
+    {% csrf_token %}
+    <h4 class='text-center'>16. FREEDOM OF EMPLOYMENT</h4><br>
+    {{ freedom_of_employment_questions_form.management_form }}
+    <div class="row">
+        <div class="col-md-12">
+            <label>A. Do the members of your household work more for one particular employer (or a few particular
+                employers) than they
+                do for others? Give details.</label>
+            {{ freedom_of_employment_questions_form.your_household_work_more_for_one_particular_employer }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>B. Are members of your family free to work for wages for an employer of their choice? Give details.</h5>
+            {{ freedom_of_employment_questions_form.members_of_your_family_free_to_work_for_wages_for_an_employer_of_their_choice }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>C. Does any person in the family provide unpaid/under-paid labour service to any employer? Has any
+                member of your
+                household been coerced to work for an employer? Coerced by any person the household is indebted to? Any
+                instance of
+                extra-economic coercion or threat?</h5>
+            {{ freedom_of_employment_questions_form.does_any_person_in_the_family_provide_unpaid_under_paid_labour_field }}
+        </div>
+    </div>
+    <h4 class="text-center">D. Agricultural / non-agricultural labour services</h4>
+    <div class="row flex-row">
+        <div class="col-md-2 table-cell flex-column">
+            <label>Name of worker</label>
+        </div>
+        <div class="col-md-4 flex-column">
             <div class="row flex-row">
-                <div class="col-md-2 table-cell">
-                    <label>Name of worker</label>
+                <div class="col-md-12 flex-column table-cell">
+                    <label>Name of employer</label>
                 </div>
-                <div class="col-md-4 table-cell">
-                    <div class="row flex-row flex-column">
-                        <label>Name of employer</label>
-                    </div>
-                    <div class="row flex-row">
-                        <div class="col-md-4 table-cell">
-                            <label>Name</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                            <label>Caste</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                            <label>Land owned</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1 table-cell">
-                    <label>Type of obligation</label>
-                </div>
-                <div class="col-md-1 table-cell">
-                    <label>Description of task</label>
-                </div>
-                <div class="col-md-1 table-cell">
-                    <label>Labour days worked annually</label>
-                </div>
-                <div class="col-md-1 table-cell">
-                    <label>Hours of work</label>
-                </div>
-                <div class="col-md-1 table-cell">
-                    <label>Payment</label>
-                </div>
-                <div class="col-md-1 table-cell">
-                    <label>Comments</label>
-                </div>
-                <div class="cross-width"></div>
             </div>
+            <div class="row flex-row">
+                <div class="col-md-4 table-cell flex-column">
+                    <label>Name</label>
+                </div>
+                <div class="col-md-4 table-cell flex-column">
+                    <label>Caste</label>
+                </div>
+                <div class="col-md-4 table-cell flex-column">
+                    <label>Land owned</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Type of obligation</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Description of task</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Labour days worked annually</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Hours of work</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Payment</label>
+        </div>
+        <div class="col-md-1 table-cell flex-column">
+            <label>Comments</label>
+        </div>
+        <div class="cross-width"></div>
+    </div>
 
-            {{ aggri_or_non_aggri_labour_service_formset.management_form }}
-            {% for aggri_or_non_aggri_labour_service_form in aggri_or_non_aggri_labour_service_formset.forms %}
-                <div class="row flex-row aggri_or_non_aggri_labour_service_row ">
-                    {{ aggri_or_non_aggri_labour_service_form.id }}
-                    <div class="col-md-2 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.name_of_worker }}
+    {{ aggri_or_non_aggri_labour_service_formset.management_form }}
+    {% for aggri_or_non_aggri_labour_service_form in aggri_or_non_aggri_labour_service_formset.forms %}
+        <div class="row flex-row aggri_or_non_aggri_labour_service_row ">
+            {{ aggri_or_non_aggri_labour_service_form.id }}
+            <div class="col-md-2 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.name_of_worker }}
+            </div>
+            <div class="col-md-4">
+                <div class="row flex-row">
+                    <div class="col-md-4 table-cell">
+                        {{ aggri_or_non_aggri_labour_service_form.name_of_employer }}
                     </div>
                     <div class="col-md-4 table-cell">
-                        <div class="row flex-row">
-                            <div class="col-md-4 table-cell">
-                                {{ aggri_or_non_aggri_labour_service_form.name_of_employer }}
-                            </div>
-                            <div class="col-md-4 table-cell">
-                                {{ aggri_or_non_aggri_labour_service_form.caste_of_employer }}
-                            </div>
-                            <div class="col-md-4 table-cell">
-                                {{ aggri_or_non_aggri_labour_service_form.land_owned_by_employer }}
-                            </div>
-                        </div>
+                        {{ aggri_or_non_aggri_labour_service_form.caste_of_employer }}
                     </div>
-                    <div class="col-md-1 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.type_of_obligation }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.description_of_task }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.labour_days_worked_annually }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.hours_of_work }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.payment }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ aggri_or_non_aggri_labour_service_form.comments }}
+                    <div class="col-md-4 table-cell">
+                        {{ aggri_or_non_aggri_labour_service_form.land_owned_by_employer }}
                     </div>
                 </div>
-            {% endfor %}
-
-            <div class="row table-cell">
-                <h5>E. Is your household obliged to perform any traditional caste duties? Give details.</h5>
-                {{ freedom_of_employment_questions_form.is_your_household_obliged_to_perform_any_traditional_caste_duties }}
             </div>
-        <h4 class='text-center'>17. INCOME FROM STATE AND COMMON PROPERTY RESOURCES</h4>
-        <table style="width:100%;">
-            <tr>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Crop number first digit </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Crop number second digit </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Sale number</label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Item collected </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Name of worker </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Number of days over the last year </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Commodity sold </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Month of disposal</label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Quantity sold </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Unit of quantity consumed </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Price </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Unit of price </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Where marketed </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Marketing agency </label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> If price determined in advanced</label>
-                </th>
-                <th style="width:1%;text-align:center;" class='table-cell'>
-                    <label> Comments </label>
-                </th>
-                <th style="width:1%;text-align:center;"></th>
-            </tr>
-            {{ income_from_state_formset.management_form }}
-            {% for income_from_state_form in income_from_state_formset.forms %}
-                <tr class="income_from_state_formset_row">
-                    {{ income_from_state_form.id }}
-                    <td class='table-cell'>
-                        {{ income_from_state_form.crop_number_first_digit }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.crop_number_second_digit }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.sale_number }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.item_collected }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.name_of_worker }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.number_of_days_over_the_last_year }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.commodity_sold }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.month_of_disposal }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.quantity_sold }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.unit_of_quantity_consumed }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.price }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.unit_of_price }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.where_marketed }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.marketing_agency }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.if_price_determined_in_advance }}
-                    </td>
-                    <td class='table-cell'>
-                        {{ income_from_state_form.comments }}
-                    </td>
-                    <td></td>
-                </tr>
-            {% endfor %}
+            <div class="col-md-1 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.type_of_obligation }}
+            </div>
+            <div class="col-md-1 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.description_of_task }}
+            </div>
+            <div class="col-md-1 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.labour_days_worked_annually }}
+            </div>
+            <div class="col-md-1 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.hours_of_work }}
+            </div>
+            <div class="col-md-1 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.payment }}
+            </div>
+            <div class="col-md-1 table-cell">
+                {{ aggri_or_non_aggri_labour_service_form.comments }}
+            </div>
+        </div>
+    {% endfor %}
 
-        </table>
+    <br><br><br>
+    <div class="row">
+        <div class="col-md-12">
+            <label>E. Is your household obliged to perform any traditional caste duties? Give details.</label>
+            {{ freedom_of_employment_questions_form.is_your_household_obliged_to_perform_any_traditional_caste_duties }}
+        </div>
+    </div>
+
+    <h4 class='text-center'>17. INCOME FROM STATE AND COMMON PROPERTY RESOURCES</h4>
+    <table style="width:100%;">
+        <tr>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Crop number first digit </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Crop number second digit </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Sale number</label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Item collected </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Name of worker </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Number of days over the last year </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Commodity sold </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Month of disposal</label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Quantity sold </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Unit of quantity consumed </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Price </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Unit of price </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Where marketed </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Marketing agency </label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> If price determined in advanced</label>
+            </th>
+            <th style="width:1%;text-align:center;" class='table-cell'>
+                <label> Comments </label>
+            </th>
+            <th style="width:1%;text-align:center;"></th>
+        </tr>
+        {{ income_from_state_formset.management_form }}
+        {% for income_from_state_form in income_from_state_formset.forms %}
+            <tr class="income_from_state_formset_row">
+                {{ income_from_state_form.id }}
+                <td class='table-cell'>
+                    {{ income_from_state_form.crop_number_first_digit }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.crop_number_second_digit }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.sale_number }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.item_collected }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.name_of_worker }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.number_of_days_over_the_last_year }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.commodity_sold }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.month_of_disposal }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.quantity_sold }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.unit_of_quantity_consumed }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.price }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.unit_of_price }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.where_marketed }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.marketing_agency }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.if_price_determined_in_advance }}
+                </td>
+                <td class='table-cell'>
+                    {{ income_from_state_form.comments }}
+                </td>
+                <td></td>
+            </tr>
+        {% endfor %}
+
+    </table>
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">

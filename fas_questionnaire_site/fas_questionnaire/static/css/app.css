@@ -64,6 +64,14 @@ td a{
     text-align: center;
 }
 
+.flex-row-wrap-1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    text-align: center;
+    flex: 1 0 auto;
+}
+
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -87,6 +95,7 @@ td a{
 .cross-width {
     visibility: hidden;
 }
+
 .sub-menu a {
   padding:10px;
   background-color:#337ab7;

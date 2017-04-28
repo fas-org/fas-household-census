@@ -1,9 +1,14 @@
 from django.contrib import admin
-from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType
+from fas_questionnaire.models.page2 import AcquisitionMode, IrrigationSource, IrrigationFlow, IrrigationOwnership, \
+    HomesteadComponents
+from fas_questionnaire.models.page3 import Registration, TypeOfContract
+from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
+from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from .models.household_models import Village
-from .models.page1 import LiteracyStatus, MaritalStatus, CalendarGranularity, Relationship, Occupation, Education, Religion, TehsilOfBirth
 from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
+from .models.page1 import *
+from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month
 from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, MonthWhenFullyRepaid, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
 from .models.page22 import InvestigationNeeded
 
@@ -13,6 +18,7 @@ admin.site.register(Crop)
 admin.site.register(PlaceOfWork)
 admin.site.register(Caste)
 admin.site.register(LandType)
+admin.site.register(Registration)
 
 #household_models
 admin.site.register(Village)
@@ -26,6 +32,27 @@ admin.site.register(Occupation)
 admin.site.register(Education)
 admin.site.register(Religion)
 admin.site.register(TehsilOfBirth)
+
+#page2
+admin.site.register(AcquisitionMode)
+admin.site.register(IrrigationSource)
+admin.site.register(IrrigationFlow)
+admin.site.register(IrrigationOwnership)
+admin.site.register(HomesteadComponents)
+
+#page3
+admin.site.register(Units)
+admin.site.register(TypeOfContract)
+
+
+#page4
+admin.site.register(InterestUsufruct)
+admin.site.register(SeasonalYearlyOther)
+
+#page5
+admin.site.register(Tenurial)
+admin.site.register(HomesteadLand)
+admin.site.register(Month)
 
 #Page 10
 admin.site.register(OtherCostsItems)

@@ -161,6 +161,6 @@ div.comments textarea {
     width: 172px;
     border-width: 1px;
 }
-.readonly-form .add-row, .readonly-form .delete-row {
-    visibility: hidden;
+.readonly-form .add-row, .readonly-form .delete-row, .readonly-form .cross-width {
+    display: none;
 }

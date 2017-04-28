@@ -16,22 +16,22 @@
     {{ pds_form.id }}
     <h4 class='text-center'>22.PUBLIC DISTRIBUTION SYSTEM</h4>
     <div class="flex-row">
-        <div>
+        <div class="flex-column">
             <label>Does the household have a ration card?</label>
         </div>
-        <div>
+        <div class="flex-column">
             {{ pds_form.does_family_hold_ration_card }}
         </div>
     </div>
     <div class='row flex-row-wrap'>
         <div class='col-md-12 flex-row'>
-            <div class='col-md-3 table-cell'>
+            <div class='col-md-3 table-cell flex-column'>
                 <label>Type of card</label>
             </div>
             <div class='col-md-3 table-cell'>
                 {{ pds_form.type_of_card }}
             </div>
-            <div class='col-md-3 table-cell'>
+            <div class='col-md-3 table-cell flex-column'>
                 <label>Color of the card</label>
             </div>
             <div class='col-md-3 table-cell'>
@@ -155,7 +155,7 @@
         </div>
     </div>
     {% endfor %}
-
+    <br><br>
     <h4 class='text-center'>24.HOUSING</h4>
 
     <div class="row flex-row">
@@ -281,9 +281,7 @@
 
     {% endfor %}
 
-    <br />
-    <br />
-
+    <br><br><br>
     {{ comments_form.id }}
     <div class="flex-row">
         <label>Is the toilet used regularly, throughout the year and by all members of the household? </label>

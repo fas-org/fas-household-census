@@ -129,3 +129,13 @@ class Relationship(models.Model):
         db_table = 'Relationship'
     def __str__(self):
         return self.relationship
+
+class YesOrNo(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(db_column='title', max_length=10, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'title'
+    def __str__(self):
+        return self.title

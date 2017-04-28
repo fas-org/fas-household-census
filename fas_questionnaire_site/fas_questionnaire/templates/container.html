@@ -11,7 +11,11 @@
         {% endblock %}
         <script>
             function submitHouseholdConfirm(event){
+                {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' %}
+                if(!window.confirm("Do you really want to submit Household data."))
+                {% else %}
                 if(!window.confirm("Do you really want to submit Household data.\n You will not be able to edit the form once you submit."))
+                {% endif %}
                     event.preventDefault();
             }
 
@@ -27,13 +31,17 @@
             {% include 'common/header.html' %}
         </header>
         <div class="header-links row">
-            <div class='sub-menu'>
-                <a href={% url "household_new" %}>New Household</a>
-            </div>
-            {% if request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
-            <div class='sub-menu'>
-                <a href={% url 'household_submit' %} onclick="submitHouseholdConfirm(event)">Submit Household</a>
-            </div>
+            {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' %}
+                <div class='sub-menu'>
+                    <a href={% url "household_new" %}>Enter New Household</a>
+                </div>
+            {% endif %}
+            {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
+                {% if request.session.household is not None %}
+                    <div class='sub-menu'>
+                        <a href={% url 'household_submit' %} onclick="submitHouseholdConfirm(event)">Submit Household</a>
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
         <br/>
@@ -46,15 +54,19 @@
                             <strong>{{ request.session.search_err_msg|escape }}</strong>
                         </div>
                     {% endif %}
-                  <!--  <h4 class='text-center'>FOUNDATION FOR AGRARIAN STUDIES<br>QUESTIONNAIRE FOR CENSUS OF HOUSEHOLDS, 2016</h4> -->
+                    <!--  <h4 class='text-center'>FOUNDATION FOR AGRARIAN STUDIES<br>QUESTIONNAIRE FOR CENSUS OF HOUSEHOLDS, 2016</h4> -->
+                    {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and request.session.household is None or not request.session.household|is_submitted %}
                     <form method="POST">
+                    {% else %}
+                    <form method="POST" class="readonly-form">
+                    {% endif %}
                         {% block content %}
                         {% endblock %}
                         <div class='row text-center'>
-                            {% if request.user|has_group:'DataEntry' and request.session.household|is_submitted %}
-                            <button class='btn btn-primary btn-submit disabled' onclick="doNothing(event)">Save</button>
-                            {% else %}
-                            <button class='btn btn-primary btn-submit' type="submit">Save</button>
+                            {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and request.session.household is None or not request.session.household|is_submitted %}
+                                <button class='btn btn-primary btn-submit' type="submit">Save</button>
+                            {% elif request.user|has_group:'DataEntry' %}
+                                <button class='btn btn-primary btn-submit disabled' onclick="doNothing(event)">Save</button>
                             {% endif %}
                         </div>
                     </form>
@@ -67,6 +79,10 @@
         <footer>
 {#            {% include 'common/footer.html' %}#}
         </footer>
+
+        <script>
+            $('form.readonly-form input, form.readonly-form select, form.readonly-form textarea').attr('disabled', 'disabled');
+        </script>
 
     </body>
 </html>

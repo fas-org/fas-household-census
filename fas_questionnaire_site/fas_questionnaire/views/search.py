@@ -26,9 +26,10 @@ def search(request):
     reobj = re.match(r'(/fas/)(.*)(/search/)', request.path, 0)
     requested_page = reobj.group(2) + "_edit"
     if pk is None:
-        request.session['search_err_msg'] = 'Household not found'
+        request.session['search_err_msg'] = 'There is no house hold data with the details that you have entered'
         return redirect('household_edit', pk=pk) # TODO: get user opinion on this.
     else:
+        request.session['household'] = pk
         if request.session.get('search_err_msg') is not None:
             del request.session['search_err_msg']
         return redirect(requested_page, pk=pk)

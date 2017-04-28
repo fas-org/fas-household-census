@@ -7,6 +7,7 @@ from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from .models.household_models import Village
 from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
+from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented
 from .models.page1 import *
 from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month
 from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, MonthWhenFullyRepaid, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
@@ -60,6 +61,15 @@ admin.site.register(OtherCostsItems)
 #Page 13
 admin.site.register(WageUnit)
 admin.site.register(TypeOfWage)
+
+#Page 19
+admin.site.register(TypeOfRationCard)
+admin.site.register(ColorOfCard)
+admin.site.register(SourceOfWater)
+admin.site.register(SourceOfWaterOwnership)
+admin.site.register(WaterSourceDistanceFromHouse)
+admin.site.register(PurposeForWhichUsed)
+admin.site.register(WhetherOwnedOrRented)
 
 #Page 20
 admin.site.register(SourceOfBorrowing)

@@ -9,9 +9,8 @@ from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
 from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented
 from .models.page1 import *
-from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month
-from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, MonthWhenFullyRepaid, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
-from .models.page22 import InvestigationNeeded
+from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo
+from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
 
 #Common
 admin.site.register(Sex)
@@ -20,6 +19,8 @@ admin.site.register(PlaceOfWork)
 admin.site.register(Caste)
 admin.site.register(LandType)
 admin.site.register(Registration)
+admin.site.register(YesOrNo)
+admin.site.register(Month)
 
 #household_models
 admin.site.register(Village)
@@ -53,7 +54,6 @@ admin.site.register(SeasonalYearlyOther)
 #page5
 admin.site.register(Tenurial)
 admin.site.register(HomesteadLand)
-admin.site.register(Month)
 
 #Page 10
 admin.site.register(OtherCostsItems)
@@ -74,11 +74,7 @@ admin.site.register(WhetherOwnedOrRented)
 #Page 20
 admin.site.register(SourceOfBorrowing)
 admin.site.register(PurposeOfBorrowing)
-admin.site.register(MonthWhenFullyRepaid)
 admin.site.register(BankNgoToWhichTheGroupIsLinked)
 admin.site.register(PeriodOfMembership)
 admin.site.register(NameOfBankPostOffice)
 admin.site.register(TypeOfAccount)
-
-#Page 22
-admin.site.register(InvestigationNeeded)

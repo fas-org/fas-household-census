@@ -51,17 +51,6 @@ class OutstandingLoans(models.Model):
         managed = True
         db_table = 'Outstanding loans'
 
-class MonthWhenFullyRepaid(models.Model):
-    id = models.AutoField(primary_key=True)
-    month_when_fully_repaid = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'Month When Fully Repaid'
-
-    def __str__(self):
-        return self.month_when_fully_repaid
-
 class LoansBorrowedLastYearAndRepaid(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='household')
@@ -70,7 +59,7 @@ class LoansBorrowedLastYearAndRepaid(models.Model):
     principal = models.CharField(db_column='principal', max_length=50, blank=True, null=True)
     collateral = models.CharField(db_column='collateral', max_length=50, blank=True, null=True)
     rate_of_interest = models.CharField(db_column='rate of interest', max_length=50, blank=True, null=True)
-    month_when_fully_repaid = models.ForeignKey(MonthWhenFullyRepaid, models.DO_NOTHING, db_column='Month When Fully Repaid', blank=True, null=True)
+    month_when_fully_repaid = models.ForeignKey('Month', models.DO_NOTHING, db_column='Month When Fully Repaid', blank=True, null=True)
     total_amount_repaid = models.CharField(db_column='total amount repaid', max_length=50, blank=True, null=True)
     source_of_borrowing = models.ForeignKey(SourceOfBorrowing, models.DO_NOTHING, db_column='source of borrowing', blank=True, null=True)
     purpose_of_borrowing = models.ForeignKey(PurposeOfBorrowing, models.DO_NOTHING, db_column='purpose of borrowing', blank=True, null=True)

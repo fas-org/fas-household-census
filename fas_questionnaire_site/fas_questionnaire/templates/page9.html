@@ -12,134 +12,134 @@
 {% endfor %}
 {% endif %}
     {% csrf_token %}
-    <h5 class='text-center'>9A. OWNERSHIP OF WELLS/TUBEWELLS</h5>
+    <h4 class='text-center'>9A. Ownership of Wells/Tubewells</h4>
     <div class="table table-responsive">
-    <table style="width:200%;">
-        <tr class="table-head">
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Type of Ownership</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Year when installed</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Present depth</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Original depth</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Type</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Source of Power</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Cost of installation</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Source of finance</label>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Maintenance expenses last year</label>
-            </td>
-            <td style="width:10%;text-align:center;" class="table-cell">
-                <div class='row ' style="text-align:center;">
-                    <div class='col-md-12'>
-                        <label>Irrigation on land owned and operated by other households</label>
-                    </div>
-                </div>
-                <div class= 'row style="text-align:center;"'>
-                    <div class='col-md-1 table-cell'>
-                        <label>Crop</label>
-                    </div>
-                    <div class='col-md-5 table-cell'>
-                        <label>Sale of water</label>
-                    </div>
-                    <div class='col-md-6 table-cell'>
-                        <label>Any other land irrigated</label>
-                    </div>
-                </div>
-                <div class= 'row style="text-align:center;"'>
-                    <div class='col-md-1 table-cell'>
-                    </div>
-                    <div class='col-md-3 table-cell'>
-                        <label>Area irrigated</label>
-                    </div>
-                    <div class='col-md-2 table-cell'>
-                        <label>Total revenue</label>
-                    </div>
-                    <div class='col-md-3 table-cell'>
-                        <label>Nature of Exchange</label>
-                    </div>
-                    <div class='col-md-3 table-cell'>
-                        <label>Extent</label>
-                    </div>
-                </div>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                <label>Comments (specify if open well)</label>
-            </td>
+      <div class='row flex-row'>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Type of Ownership</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Year when installed</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Present depth</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Original depth</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Type</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Source of power</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Cost of installation</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Source of Finance</label>
+          </div>
+          <div class='col-md-1 table-cell flex-column-1'>
+              <label>Maintenance expenses last year</label>
+          </div>
 
-        </tr>
-    {{ current_ownership_formset.management_form }}
-    {% for form in current_ownership_formset.forms %}
-        <tr class='current_ownership_formset_row'>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.ownership_type }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.year_when_installed }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.present_depth }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.original_depth }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.type }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.power_source }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.installation_cost }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.finance_source }}
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.expenses_last_year }}
-            </td>
-            <td style="width:10%;text-align:center;" class="table-cell">
-                <div class='col-md-1 table-cell'>
-                    {{ form.irrigation_crop }}
+          <div class='col-md-6 flex-row-wrap-1'>
+                  <div class='col-md-12 table-cell'>
+                      <label>Irrigation on land owned and operated by other households</label>
+                  </div>
+                  <div class="col-md-2 table-cell flex-column-1">
+                    <label>Crop</label>
+                  </div>
+                  <div class='col-md-4 table-cell'>
+                      <label>Sale of water</label>
+                  </div>
+                  <div class='col-md-6 table-cell'>
+                      <label>Any other land irrigated</label>
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                  <div class='col-md-2 table-cell'>
+                      <label>Area irrigated</label>
+                  </div>
+                  <div class='col-md-2 table-cell'>
+                      <label>Total revenue</label>
+                  </div>
+                  <div class='col-md-3 table-cell'>
+                      <label>Nature of exchange</label>
+                  </div>
+                  <div class='col-md-3 table-cell'>
+                      <label>Extent</label>
+                  </div>
+          </div>
+          <div class="col-md-2 table-cell flex-column-1">
+              <label> Comments(specify if open well)</label>
+          </div>
+          <div class="cross-width flex-column"></div>
+          </div>
+
+      {% csrf_token %}
+      {{ current_ownership_formset.management_form }}
+      {% for form in current_ownership_formset.forms %}
+
+      <div class="row current_ownership_formset_row flex-row">
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.ownership_type }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.year_when_installed }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.present_depth }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.original_depth }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.type }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.power_source }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.installation_cost }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.finance_source }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+          {{ form.expenses_last_year }}
+        </div>
+
+        <div class='col-md-6 flex-row-wrap-1'>
+                <div class='col-md-12 table-cell'>
                 </div>
-                <div class='col-md-3 table-cell'>
-                    {{ form.irrigation_sale_area }}
+                <div class="col-md-2 table-cell flex-column-1">
+                  {{ form.irrigation_crop }}
                 </div>
                 <div class='col-md-2 table-cell'>
-                    {{ form.irrigation_revenue }}
+                  {{ form.irrigation_sale_area }}
+                </div>
+                <div class='col-md-2 table-cell'>
+                  {{ form.irrigation_revenue }}
                 </div>
                 <div class='col-md-3 table-cell'>
-                    {{ form.exchange_nature }}
+                  {{ form.exchange_nature }}
                 </div>
                 <div class='col-md-3 table-cell'>
-                    {{ form.irrigation_land_extent }}
+                  {{ form.irrigation_land_extent }}
                 </div>
-            </td>
-            <td style="width:2%;text-align:center;" class="table-cell">
-                {{ form.comments }}
-            </td>
-            <td style="width:2%;text-align:center;">
-            </td>
-        </tr>
+        </div>
+        <div class="col-md-2 table-cell flex-column-1">
+          {{ form.comments }}
+        </div>
+        </div>
         {% endfor %}
-    </table>
+      </div>
+
+
   </div>
     <br/><br/><br/>
-    <h5 class='text-center'>9B. SPECIFIED MEANS OF PRODUCTION: OWNERSHIP AND EARNINGS</h5>
+    <h4 class='text-center'>9B. Specified Means of Production: Ownership and Earnings</h4>
     <div class="row flex-row">
         <div class='col-md-1 table-cell flex-column'>
             <label>Item (code)</label>

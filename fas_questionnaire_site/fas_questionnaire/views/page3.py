@@ -55,11 +55,9 @@ def new(request):
                     lnd_lsd_out_fxd_rnt.save()
                     form_lnd_lsd_out_fxd_rnt_saved = True
 
-            if form_lnd_lsd_in_fxd_rnt_saved == True:
-                messages.success(request, 'Data saved for land leased in fixed rent successfully')
+            if form_lnd_lsd_in_fxd_rnt_saved and form_lnd_lsd_out_fxd_rnt_saved :
+                messages.success(request,'Data Saved Successfully')
 
-            if form_lnd_lsd_out_fxd_rnt_saved == True:
-                messages.success(request, 'Data saved for land leased out fixed rent successfully')
 
             return redirect('page3_edit', pk=request.session['household'])
 
@@ -100,11 +98,9 @@ def edit(request, pk):
                     lnd_lsd_out_fxd_rnt.save()
                     form_lnd_lsd_out_fxd_rnt_saved = True
 
-            if form_lnd_lsd_in_fxd_rnt_saved == True:
-                messages.success(request, 'Data saved for land leased in fixed rent successfully')
+            if form_lnd_lsd_in_fxd_rnt_saved and form_lnd_lsd_out_fxd_rnt_saved :
+                messages.success(request,'Data Saved Successfully')
 
-            if form_lnd_lsd_out_fxd_rnt_saved == True:
-                messages.success(request, 'Data saved for land leased out fixed rent successfully')
 
         lnd_lsd_in_fxd_rnt_formset = modelformset_factory(LandLeasedInOnFixedRent, form=LandLeasedInOnFixedRentForm, extra=5)
         result_set_lnd_lsd_in_fxd_rnt = LandLeasedInOnFixedRent.objects.filter(household_number=pk)

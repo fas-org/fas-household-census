@@ -1,5 +1,6 @@
 from django import forms
 
+from fas_questionnaire.models.page5 import CroppingPatternAndCropSchedule
 from ..models.page7 import InputUseSeeds, InputUseFertiliser, InputUseManure, InputUsePlantProtectionIrrigation
 from ..views.common import save_form, is_empty
 from django.forms.models import model_to_dict, fields_for_model
@@ -8,7 +9,10 @@ import re
 
 class InputUseForm(forms.Form):
     # fields corresponding to InputUseManure Model
-    crop_code = forms.CharField(max_length=30, required=False)
+    iquery=CroppingPatternAndCropSchedule.objects.values_list('serial_no', flat=True).distinct()
+    code_choices = [('', 'None')] + [(region,region) for region in iquery]
+    crop_code = forms.ChoiceField(code_choices,required=False, widget=forms.Select())
+    # crop_code = forms.ModelChoiceField(queryset=CroppingPatternAndCropSchedule.objects.values_list('serial_no', flat=True).distinct())
     manure_type = forms.CharField(max_length=30, required=False)
     manure_home_quantity = forms.CharField(max_length=30, required=False)
     manure_home_unit = forms.CharField(max_length=30, required=False)
@@ -36,10 +40,12 @@ class InputUseForm(forms.Form):
 
     class Meta:
         fields = (
-        'plant_protection_quantity', 'plant_protection_price', 'irrigation_price', 'irrigation_source', 'crop_code',
-        'manure_type', 'manure_home_unit', 'manure_purchased_unit', 'manure_purchased_quantity', 'manure_home_value',
-        'manure_home_qunatity', 'manure_purchase_price', 'fertiliser_price', 'fertiliser_quantity', 'fertiliser_type',
-        'home_produced_quantity', 'home_produced_value', 'purchased_price', 'purchased_quantity')
+            'plant_protection_quantity', 'plant_protection_price', 'irrigation_price', 'irrigation_source', 'crop_code',
+            'manure_type', 'manure_home_unit', 'manure_purchased_unit', 'manure_purchased_quantity',
+            'manure_home_value',
+            'manure_home_qunatity', 'manure_purchase_price', 'fertiliser_price', 'fertiliser_quantity',
+            'fertiliser_type',
+            'home_produced_quantity', 'home_produced_value', 'purchased_price', 'purchased_quantity')
 
     def save(self, household_id, *args, **kwargs):
         data = self.cleaned_data

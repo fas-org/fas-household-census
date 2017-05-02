@@ -50,7 +50,7 @@ class IrrigationOwnership(models.Model):
 
 class IrrigationSource(models.Model):
     id = models.AutoField(primary_key=True)
-    source = models.CharField(max_length=100, blank=True, null=True)
+    source = models.CharField(max_length=100,unique=True, blank=True, null=True)
 
     class Meta:
         managed = True

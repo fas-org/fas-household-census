@@ -11,24 +11,25 @@ from django.forms import modelformset_factory
 import pdb
 from .common import *
 
+
 @login_required(login_url='login')
 def init(request):
-    #pdb.set_trace()
     if request.session.get('household') is None:
         return new(request)
     else:
-        result_set_lnd_lsd_in_fxd_rnt = LandLeasedInOnFixedRent.objects.filter(household_number=request.session.get('household'))
-        result_set_lnd_lsd_out_fxd_rnt = LandLeasedOutOnFixedRent.objects.filter(household_number=request.session.get('household'))
+        result_set_lnd_lsd_in_fxd_rnt = LandLeasedInOnFixedRent.objects.filter(
+            household_number=request.session.get('household'))
+        result_set_lnd_lsd_out_fxd_rnt = LandLeasedOutOnFixedRent.objects.filter(
+            household_number=request.session.get('household'))
 
         if len(result_set_lnd_lsd_in_fxd_rnt) == 0 and \
-                        len(result_set_lnd_lsd_out_fxd_rnt) == 0 :
+                        len(result_set_lnd_lsd_out_fxd_rnt) == 0:
             return new(request)
         return edit(request, request.session['household'])
 
 
 @login_required(login_url='login')
 def new(request):
-    #pdb.set_trace()
     lnd_lsd_in_fxd_rnt_formset = formset_factory(LandLeasedInOnFixedRentForm, formset=BaseFormSet, extra=5)
     lnd_lsd_out_fxd_rnt_formset = formset_factory(LandLeasedOutOnFixedRentForm, formset=BaseFormSet, extra=5)
 
@@ -40,7 +41,7 @@ def new(request):
         form_lnd_lsd_out_fxd_rnt_saved = False
 
         if lnd_lsd_in_fxd_rnt_forms.is_valid() and \
-                lnd_lsd_out_fxd_rnt_forms.is_valid() :
+                lnd_lsd_out_fxd_rnt_forms.is_valid():
             for lnd_lsd_in_fxd_rnt_form in lnd_lsd_in_fxd_rnt_forms:
                 if lnd_lsd_in_fxd_rnt_form.is_valid() and lnd_lsd_in_fxd_rnt_form.has_changed():
                     lnd_lsd_in_fxd_rnt = lnd_lsd_in_fxd_rnt_form.save(commit=False)
@@ -55,21 +56,20 @@ def new(request):
                     lnd_lsd_out_fxd_rnt.save()
                     form_lnd_lsd_out_fxd_rnt_saved = True
 
-            if form_lnd_lsd_in_fxd_rnt_saved and form_lnd_lsd_out_fxd_rnt_saved :
-                messages.success(request,'Data Saved Successfully')
-
+            if form_lnd_lsd_in_fxd_rnt_saved or form_lnd_lsd_out_fxd_rnt_saved:
+                messages.success(request, 'Data Saved Successfully')
 
             return redirect('page3_edit', pk=request.session['household'])
 
-    return render(request, 'page3.html', {'formset_lnd_lsd_in_fxd_rnt': lnd_lsd_in_fxd_rnt_formset(prefix='lnd_lsd_in_fxd_rnt'),
-                                          'formset_lnd_lsd_out_fxd_rnt': lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt'),
-                                          'search_form': get_search_form()
-                                        })
+    return render(request, 'page3.html',
+                  {'formset_lnd_lsd_in_fxd_rnt': lnd_lsd_in_fxd_rnt_formset(prefix='lnd_lsd_in_fxd_rnt'),
+                   'formset_lnd_lsd_out_fxd_rnt': lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt'),
+                   'search_form': get_search_form()
+                   })
 
 
 @login_required(login_url='login')
 def edit(request, pk):
-    #pdb.set_trace()
     try:
         request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
         if request.method == "POST":
@@ -98,17 +98,20 @@ def edit(request, pk):
                     lnd_lsd_out_fxd_rnt.save()
                     form_lnd_lsd_out_fxd_rnt_saved = True
 
-            if form_lnd_lsd_in_fxd_rnt_saved and form_lnd_lsd_out_fxd_rnt_saved :
-                messages.success(request,'Data Saved Successfully')
+            if form_lnd_lsd_in_fxd_rnt_saved or form_lnd_lsd_out_fxd_rnt_saved:
+                messages.success(request, 'Data Saved Successfully')
 
-
-        lnd_lsd_in_fxd_rnt_formset = modelformset_factory(LandLeasedInOnFixedRent, form=LandLeasedInOnFixedRentForm, extra=5)
+        lnd_lsd_in_fxd_rnt_formset = modelformset_factory(LandLeasedInOnFixedRent, form=LandLeasedInOnFixedRentForm,
+                                                          extra=5)
         result_set_lnd_lsd_in_fxd_rnt = LandLeasedInOnFixedRent.objects.filter(household_number=pk)
-        formset_lnd_lsd_in_fxd_rnt = lnd_lsd_in_fxd_rnt_formset(prefix='lnd_lsd_in_fxd_rnt', queryset=result_set_lnd_lsd_in_fxd_rnt)
+        formset_lnd_lsd_in_fxd_rnt = lnd_lsd_in_fxd_rnt_formset(prefix='lnd_lsd_in_fxd_rnt',
+                                                                queryset=result_set_lnd_lsd_in_fxd_rnt)
 
-        lnd_lsd_out_fxd_rnt_formset = modelformset_factory(LandLeasedOutOnFixedRent, form=LandLeasedOutOnFixedRentForm, extra=5)
+        lnd_lsd_out_fxd_rnt_formset = modelformset_factory(LandLeasedOutOnFixedRent, form=LandLeasedOutOnFixedRentForm,
+                                                           extra=5)
         result_set_lnd_lsd_out_fxd_rnt = LandLeasedOutOnFixedRent.objects.filter(household_number=pk)
-        formset_lnd_lsd_out_fxd_rnt = lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt', queryset=result_set_lnd_lsd_out_fxd_rnt)
+        formset_lnd_lsd_out_fxd_rnt = lnd_lsd_out_fxd_rnt_formset(prefix='lnd_lsd_out_fxd_rnt',
+                                                                  queryset=result_set_lnd_lsd_out_fxd_rnt)
 
         return render(request, 'page3.html', {'formset_lnd_lsd_in_fxd_rnt': formset_lnd_lsd_in_fxd_rnt,
                                               'formset_lnd_lsd_out_fxd_rnt': formset_lnd_lsd_out_fxd_rnt,

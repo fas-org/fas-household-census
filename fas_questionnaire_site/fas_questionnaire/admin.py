@@ -5,6 +5,7 @@ from fas_questionnaire.models.page3 import Registration, TypeOfContract
 from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
 from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from fas_questionnaire.models.page6 import WhereMarketed, MarketingAgencies, ModeOfTransport
+from fas_questionnaire.models.page7 import ManureType, FertilizerType
 from .models.household_models import Village
 from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
@@ -61,6 +62,10 @@ admin.site.register(HomesteadLand)
 admin.site.register(WhereMarketed)
 admin.site.register(MarketingAgencies)
 admin.site.register(ModeOfTransport)
+
+#page7
+admin.site.register(ManureType)
+admin.site.register(FertilizerType)
 
 #Page 10
 admin.site.register(OtherCostsItems)

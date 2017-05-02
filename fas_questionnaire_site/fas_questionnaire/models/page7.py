@@ -1,8 +1,32 @@
 from django.db import models
 
 
+class ManureType(models.Model):
+    id = models.AutoField(primary_key=True)
+    type = models.CharField(db_column='manure_type', max_length=100, unique=True, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'manure_type'
+
+    def __str__(self):
+        return self.type
+
+
+class FertilizerType(models.Model):
+    id = models.AutoField(primary_key=True)
+    type = models.CharField(db_column='manure_type', max_length=100, unique=True, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'fertilizer_type'
+
+    def __str__(self):
+        return self.type
+
+
 class InputUseManure(models.Model):
-    id = models.AutoField(primary_key=True, unique=True, blank=True, null=True)
+    id = models.AutoField(primary_key=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
     crop_code = models.IntegerField(null=False)
     manure_type = models.CharField(max_length=50, blank=True, null=True)

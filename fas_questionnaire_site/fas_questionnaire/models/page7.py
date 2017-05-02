@@ -1,10 +1,8 @@
 from django.db import models
 
-from fas_questionnaire.models.page5 import CroppingPatternAndCropSchedule
-
 
 class InputUseManure(models.Model):
-    id = models.AutoField(primary_key=True,unique=True, blank=True, null=True)  
+    id = models.AutoField(primary_key=True, unique=True, blank=True, null=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
     crop_code = models.IntegerField(null=False)
     manure_type = models.CharField(max_length=50, blank=True, null=True)
@@ -51,10 +49,11 @@ class InputUseSeeds(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
     home_produced_quantity = models.FloatField(blank=True, null=True)
-    home_produced_value = models.CharField(max_length=50,blank=True, null=True)
+    home_produced_value = models.CharField(max_length=50, blank=True, null=True)
     purchased_quantity = models.FloatField(blank=True, null=True)
     purchased_price = models.FloatField(blank=True, null=True)
     crop_code = models.IntegerField(null=False)
+
     class Meta:
         managed = True
         db_table = 'input_type_seeds'

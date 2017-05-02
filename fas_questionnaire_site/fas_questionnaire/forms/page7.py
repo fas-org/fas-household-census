@@ -8,11 +8,8 @@ import re
 
 
 class InputUseForm(forms.Form):
-    # fields corresponding to InputUseManure Model
-    iquery=CroppingPatternAndCropSchedule.objects.values_list('serial_no', flat=True).distinct()
-    code_choices = [('', 'None')] + [(region,region) for region in iquery]
-    crop_code = forms.ChoiceField(code_choices,required=False, widget=forms.Select())
-    # crop_code = forms.ModelChoiceField(queryset=CroppingPatternAndCropSchedule.objects.values_list('serial_no', flat=True).distinct())
+    code_choices = [('', '-----')]
+    crop_code = forms.ChoiceField(code_choices, required=False, widget=forms.Select())
     manure_type = forms.CharField(max_length=30, required=False)
     manure_home_quantity = forms.CharField(max_length=30, required=False)
     manure_home_unit = forms.CharField(max_length=30, required=False)
@@ -22,21 +19,21 @@ class InputUseForm(forms.Form):
     manure_purchased_price = forms.CharField(max_length=30, required=False)
 
     # fields corresponding to InputUsePlantProtectionIrrigation
-    plant_protection_quantity = forms.CharField(max_length=50, required=False)  # This field type is a guess.
-    plant_protection_price = forms.CharField(max_length=50, required=False)  # This field type is a guess.
+    plant_protection_quantity = forms.FloatField( required=False)  
+    plant_protection_price = forms.FloatField( required=False)  
     irrigation_source = forms.CharField(max_length=50, required=False)
-    irrigation_price = forms.CharField(max_length=50, required=False)  # This field type is a guess.
+    irrigation_price = forms.FloatField( required=False)  
 
     # fields corresponding to InputUseFertiliser
-    fertiliser_type = forms.CharField(max_length=50, required=False)
-    fertiliser_quantity = forms.CharField(max_length=50, required=False)  # This field type is a guess.
-    fertiliser_price = forms.CharField(max_length=50, required=False)  # This field type is a guess.
+    fertiliser_type = forms.CharField(max_length=50,required=False)
+    fertiliser_quantity = forms.FloatField(required=False)  
+    fertiliser_price = forms.FloatField( required=False)  
 
     # fields corresponding to InpitUseSeeds
-    home_produced_quantity = forms.CharField(max_length=50, required=False)  # This field type is a guess.
-    home_produced_value = forms.CharField(max_length=50, required=False)  # This field type is a guess.
-    purchased_quantity = forms.CharField(max_length=50, required=False)  # This field type is a guess.
-    purchased_price = forms.CharField(max_length=50, required=False)
+    home_produced_quantity = forms.FloatField(required=False)  
+    home_produced_value = forms.CharField(max_length=50, required=False)  
+    purchased_quantity = forms.FloatField(required=False)  
+    purchased_price = forms.FloatField(required=False)
 
     class Meta:
         fields = (
@@ -46,6 +43,14 @@ class InputUseForm(forms.Form):
             'manure_home_qunatity', 'manure_purchase_price', 'fertiliser_price', 'fertiliser_quantity',
             'fertiliser_type',
             'home_produced_quantity', 'home_produced_value', 'purchased_price', 'purchased_quantity')
+
+    def __init__(self, *args, **kwargs):
+        super(InputUseForm, self).__init__(*args, **kwargs)
+        iquery = CroppingPatternAndCropSchedule.objects.values_list('serial_no', flat=True).distinct()
+        code_choices = [('', '-----')] + [(region, region) for region in iquery]
+        self.fields["crop_code"].choices=code_choices
+
+
 
     def save(self, household_id, *args, **kwargs):
         data = self.cleaned_data

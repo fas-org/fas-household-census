@@ -7,7 +7,7 @@ from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from .models.household_models import Village
 from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
-from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented
+from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented,TypeOfRoof,TypeOfWall,TypeOfFloor,Latrine,ElectricityConnection,SourceOfEnergyForCooking,NatureOfDisbursement
 from .models.page1 import *
 from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo
 from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
@@ -70,6 +70,12 @@ admin.site.register(SourceOfWaterOwnership)
 admin.site.register(WaterSourceDistanceFromHouse)
 admin.site.register(PurposeForWhichUsed)
 admin.site.register(WhetherOwnedOrRented)
+admin.site.register(TypeOfRoof)
+admin.site.register(TypeOfWall)
+admin.site.register(TypeOfFloor)
+admin.site.register(SourceOfEnergyForCooking)
+admin.site.register(Latrine)
+admin.site.register(NatureOfDisbursement)
 
 #Page 20
 admin.site.register(SourceOfBorrowing)

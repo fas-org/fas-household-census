@@ -24,9 +24,9 @@ class AcquisitionAndLossOfMajorAssets(models.Model):
     id = models.AutoField(primary_key=True)
     serial_no = models.IntegerField(db_column='Serial no',blank=True,null=True)
     description_of_asset = models.ForeignKey(DescriptionOfAssets,db_column='Description of asset',blank=True,null=True)
-    month_of_sale = models.ForeignKey(Month, db_column='Month of sale',blank=True,null=True)
+    month_of_sale = models.ForeignKey(Month, db_column='Month of sale',blank=True,null=True,related_name="%(class)s_Month_of_sale")
     price_received = models.FloatField(db_column='Price received', blank=True, null=True)
-    month_of_purchase = models.ForeignKey(Month, db_column='Month of purchase',blank=True,null=True)
+    month_of_purchase = models.ForeignKey(Month, db_column='Month of purchase',blank=True,null=True,related_name="%(class)s_Month_of_purchase")
     price_paid = models.FloatField(db_column='Price paid', blank=True, null=True)
 
     class Meta:

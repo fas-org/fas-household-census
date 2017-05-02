@@ -94,7 +94,7 @@
         </div>
     {% endfor %}
 
-    <br>
+    <br><br>
     <div class='row flex-row'>
         <div class="col-md-6 flex-column">
             {% csrf_token %}
@@ -164,7 +164,7 @@
             {% endfor %}
         </div>
     </div>
-
+<br>
     {% csrf_token %}
     <h4 class='text-center'> D.Output and income</h4>
     <div class='row flex-row'>
@@ -237,7 +237,7 @@
     {% endfor %}
 
 
-
+<br><br>
     {% csrf_token %}
     <h4 class='text-center'>19A. INCOME FROM BUSINESS ACTIVITIES OTHER THAN CROP PRODUCTION</h4>
     <div class='row flex-row'>
@@ -323,7 +323,7 @@
         </div>
     {% endfor %}
 
-
+<br><br>
     {% csrf_token %}
     <h4 class='text-center'>19B. INCOME FROM SALARIES, RENTS, REMITTANCES, PENSIONS, SCHOLARSHIPS AND ANY OTHER
         ACTIVITIES</h4>
@@ -369,16 +369,14 @@
             {{ salary_form.id.as_hidden }}
         </div>
     {% endfor %}
-
-
-
+<br><br>
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
-        $('.income_business_formset_row').formset();
-        $('.income_salary_formset_row').formset();
         $('.animal_inventory_formset_row').formset();
         $('.animal_feed_formset_row').formset();
         $('.other_expenditure_formset_row').formset();
         $('.output_and_income_formset').formset();
+        $('.income_business_formset_row').formset();
+        $('.income_salary_formset_row').formset();
     </script>
 {% endblock %}

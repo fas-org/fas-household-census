@@ -19,7 +19,7 @@
     </div>
     <div class='col-md-3 flex-column'>
         <div class='col-md-12 table-cell flex-column'>
-            <p class='text-center'>Sale /loss of assets</p>
+            <label>Sale /loss of assets</label>
         </div>
         <div class='row flex-row flex-row'>
             <div class='col-md-6 table-cell flex-column'>
@@ -32,7 +32,7 @@
     </div>
     <div class='col-md-3 flex-column'>
         <div class='col-md-12 table-cell flex-column'>
-            <p class='text-center'>Purchase / acquisition of assets</p>
+            <label>Purchase / acquisition of assets</label>
         </div>
         <div class='row flex-row'>
             <div class='col-md-6 table-cell flex-column'>
@@ -52,7 +52,7 @@
 
 {{ asset_acquisition_formset.management_form }}
 {% for asset_acquisition_form in asset_acquisition_formset.forms %}
-<div class="row children_formset_row flex-row">
+<div class="row asset_acquisition_formset_row flex-row">
     <div class="col-md-5 table-cell flex-column">
         {{ asset_acquisition_form.description_of_asset }}
     </div>
@@ -141,7 +141,7 @@
 {{ children_formset.management_form }}
 {% for children_form in children_formset.forms %}
 
-<div class="row asset_acquisition_formset_row flex-row">
+<div class="row children_formset_row flex-row">
     <div class=" col-md-2 table-cell flex-column-1">
         {{ children_form.name }}
     </div>

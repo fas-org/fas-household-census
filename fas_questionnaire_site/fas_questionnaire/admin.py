@@ -10,6 +10,7 @@ from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
 from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented,TypeOfRoof,TypeOfWall,TypeOfFloor,Latrine,ElectricityConnection,SourceOfEnergyForCooking,NatureOfDisbursement
 from .models.page1 import *
+from .models.page18 import DescriptionOfAssets
 from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo
 from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
 
@@ -67,6 +68,9 @@ admin.site.register(OtherCostsItems)
 #Page 13
 admin.site.register(WageUnit)
 admin.site.register(TypeOfWage)
+
+#page18
+admin.site.register(DescriptionOfAssets)
 
 #Page 19
 admin.site.register(TypeOfRationCard)

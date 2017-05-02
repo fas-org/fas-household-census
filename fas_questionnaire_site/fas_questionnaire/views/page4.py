@@ -87,19 +87,8 @@ def new(request):
                     lnd_lsd_out_shr_rent.save()
                     form_lnd_lsd_out_shr_rent_saved = True
 
-
-            if form_land_mortgage_in_saved == True:
-                messages.success(request, 'Data saved for land mortgage in successfully')
-
-            if form_land_mortgage_out_saved == True:
-                messages.success(request, 'Data saved for land mortgage out successfully')
-
-            if form_lnd_lsd_in_shr_rent_saved == True:
-                messages.success(request, 'Data saved for land leased in on share rent successfully')
-
-            if form_lnd_lsd_out_shr_rent_saved == True:
-                messages.success(request, 'Data saved for land leased out on share rent successfully')
-
+            if form_land_mortgage_in_saved or form_land_mortgage_out_saved or form_land_mortgage_out_saved or form_lnd_lsd_out_shr_rent_saved:
+                messages.success(request, 'Data saved successfully')
 
             return redirect('page4_edit', pk=request.session['household'])
 
@@ -170,17 +159,8 @@ def edit(request, pk):
                     form_lnd_lsd_out_shr_rent_saved = True
 
 
-            if form_land_mortgage_in_saved == True:
-                messages.success(request, 'Data saved land mortgage in successfully')
-
-            if form_land_mortgage_out_saved == True:
-                messages.success(request, 'Data saved land mortgage out successfully')
-
-            if form_lnd_lsd_in_shr_rent_saved == True:
-                messages.success(request, 'Data saved for land leased in on share rent successfully')
-
-            if form_lnd_lsd_out_shr_rent_saved == True:
-                messages.success(request, 'Data saved for land leased out on share rent successfully')
+            if form_land_mortgage_in_saved or form_land_mortgage_out_saved or form_land_mortgage_out_saved or form_lnd_lsd_out_shr_rent_saved:
+                messages.success(request, 'Data saved successfully')
 
 
         land_mortgage_in_formset = modelformset_factory(LandMortgagedIn, form=LandMortgagedInForm, extra=5)

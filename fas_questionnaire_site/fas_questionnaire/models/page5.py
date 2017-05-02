@@ -39,7 +39,7 @@ class HomesteadLand(models.Model):
 class CroppingPatternAndCropSchedule(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    serial_no = models.IntegerField(db_column='serial no', primary_key=False, null=False)
+    serial_no = models.IntegerField(db_column='serial no', primary_key=False, null=True,blank=True)
     crop = models.ForeignKey(Crop, models.DO_NOTHING, db_column='Crop', blank=True, null=True)
     crop_clean = models.CharField(db_column='Crop clean', max_length=50, blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)

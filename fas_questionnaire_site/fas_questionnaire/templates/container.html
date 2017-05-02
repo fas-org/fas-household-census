@@ -30,25 +30,27 @@
         <header>
             {% include 'common/header.html' %}
         </header>
-        <div class="header-links row">
-            {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' %}
-                <div class='sub-menu'>
-                    <a href={% url "household_new" %}>Enter New Household</a>
-                </div>
-            {% endif %}
-            {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
-                {% if request.session.household is not None %}
+        <div class='container-fluid'>
+
+            <div class="header-links row">
+                {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' %}
                     <div class='sub-menu'>
-                        <a href={% url 'household_submit' %} onclick="submitHouseholdConfirm(event)">Submit Household</a>
+                        <a href={% url "household_new" %}>Enter New Household</a>
                     </div>
                 {% endif %}
-            {% endif %}
-        </div>
-        <br/>
-        <!-- Top Nav -->
-        {% include 'common/topnav.html' %}
-        <main>
-                <div class='container-fluid'>
+                {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
+                    {% if request.session.household is not None %}
+                        <div class='sub-menu'>
+                            <a href={% url 'household_submit' %} onclick="submitHouseholdConfirm(event)">Submit Household</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <br/>
+            <!-- Top Nav -->
+            {% include 'common/topnav.html' %}
+            <main>
+
                     {% if request.session.search_err_msg %}
                         <div class="alert alert-warning">
                             <strong>{{ request.session.search_err_msg|escape }}</strong>
@@ -71,15 +73,14 @@
                         </div>
                     </form>
 
-                </div>
-        </main>
+            </main>
 
 
 
-        <footer>
-{#            {% include 'common/footer.html' %}#}
-        </footer>
-
+            <footer>
+    {#            {% include 'common/footer.html' %}#}
+            </footer>
+        </div>
         <script>
             $('form.readonly-form input, form.readonly-form select, form.readonly-form textarea').attr('disabled', 'disabled');
         </script>

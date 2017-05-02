@@ -2,113 +2,114 @@
 {% load static %}
 
 {% block content %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success">
-                <strong>{{ message }}</strong>
-            </div>
-        {% endfor %}
-    {% endif %}
-    <h4 class='text-center'>20.ACQUISITION AND LOSS OF MAJOR ASSETS OVER THE LAST YEAR</h4>
-    {% csrf_token %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<br>
+<h4 class='text-center'>20.ACQUISITION AND LOSS OF MAJOR ASSETS OVER THE LAST YEAR</h4>
+{% csrf_token %}
 
-
-    <div class="row table-cell flex-row">
-
-        <div class="col-md-5 table-cell flex-column">
-            <label>Description of assets</label>
+<div class="row flex-row">
+    <div class="col-md-5 table-cell flex-column">
+        <label>Description of assets</label>
+    </div>
+    <div class='col-md-3 flex-column'>
+        <div class='col-md-12 table-cell flex-column'>
+            <p class='text-center'>Sale /loss of assets</p>
         </div>
-        <div class='col-md-5 table-cell flex-column'>
-            <div class='col-md-12 table-cell flex-column'>
-                <p class='text-center'>Sale /loss of assets</p>
+        <div class='row flex-row flex-row'>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Month</label>
             </div>
-            <div class='row flex-row flex-row'>
-                <div class='col-md-6 table-cell flex-column long-div'>
-                    <label>Month</label>
-                </div>
-                <div class='col-md-6 table-cell long-div flex-column'>
-                    <label>Price received</label>
-                </div>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Price received</label>
             </div>
         </div>
-        <div class='col-md-5 table-cell flex-column'>
-            <div class='col-md-12 table-cell flex-column'>
-                <p class='text-center'>Purchase / acquisition of assets</p>
+    </div>
+    <div class='col-md-3 flex-column'>
+        <div class='col-md-12 table-cell flex-column'>
+            <p class='text-center'>Purchase / acquisition of assets</p>
+        </div>
+        <div class='row flex-row'>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Month</label>
             </div>
-            <div class='row flex-row flex-row'>
-                <div class='col-md-6 table-cell long-div flex-column'>
-                    <label>Month</label>
-                </div>
-                <div class='col-md-6 table-cell long-div flex-column'>
-                    <label>Price paid</label>
-                </div>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Price paid</label>
             </div>
         </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Serial No.</label>
-        </div>
-        <div class="cross-width">
+    </div>
+    <div class="col-md-1 table-cell flex-column">
+        <label>Serial No.</label>
+    </div>
+    <div class="cross-width">
+    </div>
+</div>
 
+{{ asset_acquisition_formset.management_form }}
+{% for asset_acquisition_form in asset_acquisition_formset.forms %}
+<div class="row children_formset_row flex-row">
+    <div class="col-md-5 table-cell flex-column">
+        {{ asset_acquisition_form.description_of_asset }}
+    </div>
+    <div class="col-md-3 flex-row">
+        <div class='col-md-6 table-cell flex-column'>
+            {{ asset_acquisition_form.month_of_sale }}
+        </div>
+        <div class='col-md-6 table-cell flex-column'>
+            {{ asset_acquisition_form.price_received }}
+        </div>
+    </div>
+    <div class='col-md-3 flex-row'>
+        <div class='col-md-6 table-cell flex-column'>
+            {{ asset_acquisition_form.month_of_purchase }}
+        </div>
+        <div class='col-md-6 table-cell flex-column'>
+            {{ asset_acquisition_form.price_paid }}
         </div>
     </div>
 
-    {{ asset_acquisition_formset.management_form }}
-    {% for asset_acquisition_form in asset_acquisition_formset.forms %}
-        <div class="row children_formset_row table-cell flex-row">
-
-            <div class="col-md-5 table-cell flex-column">
-                {{ asset_acquisition_form.description_of_asset }}
+    <div class="col-md-1 table-cell flex-column">
+        {{ asset_acquisition_form.serial_no }}
+    </div>
+</div>
+{% endfor %}
+<br><br>
+<h4 class='text-center'>21. FOR CHILDREN AGED 6-16 YEARS</h4>
+<div class="row flex-row">
+    <div class="col-md-2 table-cell flex-column-1">
+        <label>Name</label>
+    </div>
+    <div class="col-md-2 table-cell flex-column-1">
+        <label>Whether currently enrolled in educational institution </label>
+    </div>
+    <div class='col-md-8 flex-column'>
+        <div class="row flex-row">
+            <div class="col-md-6 table-cell flex-column-1">
+                <label>If currently enrolled </label>
             </div>
-            <div class='col-md-5 table-cell'>
-                <div class='row flex-row'>
-                    <div class='col-md-6  long-div'>
-                        {{ asset_acquisition_form.month_of_sale }}
-                    </div>
-                    <div class='col-md-6  table-cell long-div'>
-                        {{ asset_acquisition_form.price_received }}
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-5 flex-column table-cell'>
-                <div class='row flex-row'>
-                    <div class='col-md-6 table-cell  flex-column long-div'>
-                        {{ asset_acquisition_form.month_of_purchase }}
-                    </div>
-                    <div class='col-md-6 table-cell long-div flex-column'>
-                        {{ asset_acquisition_form.price_paid }}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-1 table-cell long-div flex-column">
-                {{ asset_acquisition_form.serial_no }}
+            <div class="col-md-6 table-cell flex-column-1">
+                <label>If not currently enrolled</label>
             </div>
         </div>
-    {% endfor %}
-    <br>
-    <br>
-    <h4 class='text-center'>21. FOR CHILDREN AGED 6-16 YEARS</h4>
-    <div class="row table-cell flex-row">
-        <div class=" col-md-2 table-cell flex-column">
-            <label>Name</label>
-        </div>
-        <div class=" col-md-2 table-cell flex-column">
-            <label>Whether currently enrolled in educational institution </label>
-        </div>
-        <div class='col-md-4 table-cell flex-column'>
-            <div class="col-md-12 table-cell flex-column">
-                <p>If currently enrolled </p>
-            </div>
-            <div class="row flex-row">
+        <div class="row flex-row">
+            <div class="col-md-6 flex-row-wrap-1">
                 <div class="col-md-4 table-cell flex-column">
                     <label>Number of days the child missed school in the last month of school in 2014</label>
                 </div>
-                <div class="col-md-8 table-cell flex-column">
-                    <div class="col-md-12 table-cell flex-column">
-                        <p> Was there any occasion over the last year when the child missed school continuously for 15
-                            days
-                            or more</p>
+                <div class="col-md-8 flex-column-1">
+                    <div class="row flex-row">
+                        <div class="col-md-12 table-cell flex-column">
+                            <label> Was there any occasion over the last year when the child missed school continuously
+                                for 15
+                                days or more</label>
+                        </div>
                     </div>
-                    <div class="flex-row row">
+                    <div class="row flex-row">
                         <div class="col-md-3 table-cell flex-column">
                             <label>Period</label>
                         </div>
@@ -118,74 +119,71 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 table-cell">
-            <div class="col-md-12 table-cell flex-column">
-                <p>If not currently enrolled</p>
-            </div>
-
-{#            <div class="row flex-row">#}
-                <div class="col-md-2 table-cell flex-column">
-                    <label> Whether ever enrolled</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column">
-                    <label>If yes, age at which withdrawn</label>
-                </div>
-                <div class="col-md-8 table-cell flex-column">
-                    <label>Reasons for non-enrolment/ dropping out</label>
-                </div>
-{#            </div>#}
-        </div>
-      <div class="cross-width">
-
-    </div>
-    </div>
-
-
-
-    {{ children_formset.management_form }}
-    {% for children_form in children_formset.forms %}
-
-        <div class="row  asset_acquisition_formset_row table-cell flex-row">
-            <div class=" col-md-2 table-cell flex-column">
-                {{ children_form.name }}
-            </div>
-            <div class=" col-md-2 table-cell flex-column">
-                {{ children_form.whether_enrolled_in_eductional_institution_currently }}
-            </div>
-            <div class='col-md-4 table-cell'>
+            <div class="col-md-6 flex-row-wrap-1">
                 <div class="row flex-row">
-                    <div class="col-md-4 table-cell">
-                        {{ children_form.no_of_days_missed_school }}
+                    <div class="col-md-2 table-cell flex-column">
+                        <label> Whether ever enrolled</label>
                     </div>
-                    <div class="col-md-8 table-cell">
-                        <div class="col-md-3 table-cell">
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>If yes, age at which withdrawn</label>
+                    </div>
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Reasons for non-enrolment/ dropping out</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cross-width"></div>
+</div>
+
+
+{{ children_formset.management_form }}
+{% for children_form in children_formset.forms %}
+
+<div class="row asset_acquisition_formset_row flex-row">
+    <div class=" col-md-2 table-cell flex-column-1">
+        {{ children_form.name }}
+    </div>
+    <div class="col-md-2 table-cell flex-column-1">
+        {{ children_form.whether_enrolled_in_eductional_institution_currently }}
+    </div>
+    <div class="col-md-8 flex-column">
+        <div class="row flex-row">
+            <div class="col-md-6 flex-row-wrap">
+                <div class="col-md-4 table-cell flex-column">
+                    {{ children_form.no_of_days_missed_school }}
+                </div>
+                <div class="col-md-8 flex-column">
+                    <div class="row flex-row">
+                        <div class="col-md-3 table-cell flex-column">
                             {{ children_form.period_missed_school }}
                         </div>
-                        <div class="col-md-9 table-cell">
+                        <div class="col-md-9 table-cell flex-column">
                             {{ children_form.reason_for_missing_school }}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 table-cell">
-                <div class="row flex-row">
-                    <div class="col-md-2 table-cell flex-column long-div">
-                        {{ children_form.whether_ever_enrolled_in_school }}
-                    </div>
-                    <div class="col-md-2 table-cell flex-column long-div">
-                        {{ children_form.age_at_which_withdrawn }}
-                    </div>
-                    <div class="col-md-8 table-cell flex-column long-div">
-                        {{ children_form.reasons_for_droppingout }}
-                    </div>
+            <div class="col-md-6 flex-row">
+                <div class="col-md-2 table-cell flex-column">
+                    {{ children_form.whether_ever_enrolled_in_school }}
+                </div>
+                <div class="col-md-2 table-cell flex-column">
+                    {{ children_form.age_at_which_withdrawn }}
+                </div>
+                <div class="col-md-8 table-cell flex-column">
+                    {{ children_form.reasons_for_droppingout }}
                 </div>
             </div>
         </div>
-    {% endfor %}
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
-    <script type="text/javascript">
-        $('.asset_acquisition_formset_row').formset();
-        $('.children_formset_row').formset();
-    </script>
+    </div>
+</div>
+{% endfor %}
+<br><br>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.asset_acquisition_formset_row').formset();
+    $('.children_formset_row').formset();
+</script>
 {% endblock %}

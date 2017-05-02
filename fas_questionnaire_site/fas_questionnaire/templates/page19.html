@@ -158,130 +158,137 @@
     <br><br>
     <h4 class='text-center'>24.HOUSING</h4>
 
-    <div class="row flex-row">
-        <div class="col-md-1 table-cell flex-column">
-            <label>Whether owned or rented</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Year of original construction</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Year of most recent repair</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>If there is a verandah</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>If there is a separate kitchen</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>No. of additional rooms</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Type of roof</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Type of Wall</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Type of Floor</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Latrine</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Electricity</label>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Source of energy for cooking</label>
-        </div>
-        <div class="col-md-4 flex-row-wrap">
-            <div class="col-md-12 table-cell flex-column">
-                <label>If any assistance provided under a govt. scheme for construction, repair of renovation of house</label>
+    <div class="table table-responsive">
+        <div class="row flex-row">
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Whether owned or rented</label>
             </div>
-            <div class="col-md-3 table-cell flex-column">
-                <label>Yes/No</label>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Year of original construction</label>
             </div>
-            <div class="col-md-3 table-cell flex-column">
-                <label>Year</label>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Year of most recent repair</label>
             </div>
-            <div class="col-md-3 table-cell flex-column">
-                <label>Nature of Disbursement</label>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>If there is a verandah</label>
             </div>
-            <div class="col-md-3 table-cell flex-column">
-                <label>If cash, specify amount</label>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>If there is a separate kitchen</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>No. of additional rooms</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Type of roof</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Type of Wall</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Type of Floor</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Latrine</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Electricity</label>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Source of energy for cooking</label>
+            </div>
+            <div class="col-md-4 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 flex-column table-cell">
+                        <label>If any assistance provided under a govt. scheme for construction, repair of renovation of house</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-3 table-cell flex-column-1">
+                        <label>Yes/No</label>
+                    </div>
+                    <div class="col-md-3 table-cell flex-column-1">
+                        <label>Year</label>
+                    </div>
+                    <div class="col-md-3 table-cell flex-column-1">
+                        <label>Nature of Disbursement</label>
+                    </div>
+                    <div class="col-md-3 table-cell flex-column-1">
+                        <label>If cash, specify amount</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                <label>Comments</label>
+            </div>
+            <div class="cross-width"></div>
+        </div>
+
+
+
+        {{ housing_formset.management_form }}
+        {% for form in housing_formset.forms %}
+        <div class="row flex-row housing_formset_row">
+                {{ form.id }}
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.owned_or_rented}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.year_of_original_construction}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.year_of_recent_repair}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.verandah_present}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.separate_kitchen}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.additional_rooms}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.type_of_roof}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.type_of_wall}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.type_of_floor}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.latrine}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.electricity}}
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.energy_for_cooking}}
+            </div>
+            <div class="col-md-4 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-3 table-cell flex-column-1">
+                        {{ form.if_provided_by_govt}}
+                    </div>
+                    <div class="col-md-3 table-cell flex-column-1">
+                        {{ form.year_when_provided}}
+                    </div>
+                    <div class="col-md-3 table-cell flex-column-1">
+                        {{ form.nature_of_disbursement}}
+                    </div>
+                    <div class="col-md-3 table-cell flex-column-1">
+                        {{ form.amount_provided_in_cash}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 table-cell flex-column-1">
+                {{ form.comments}}
             </div>
         </div>
-        <div class="col-md-1 table-cell flex-column">
-            <label>Comments</label>
-        </div>
-        <div class="cross-width"></div>
+        {% endfor %}
+        <br><br><br>
     </div>
 
-
-
-    {{ housing_formset.management_form }}
-    {% for form in housing_formset.forms %}
-    <div class="row flex-row housing_formset_row">
-            {{ form.id }}
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.owned_or_rented}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.year_of_original_construction}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.year_of_recent_repair}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.verandah_present}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.separate_kitchen}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.additional_rooms}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.type_of_roof}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.type_of_wall}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.type_of_floor}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.latrine}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.electricity}}
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.energy_for_cooking}}
-        </div>
-        <div class="col-md-4 flex-row-wrap">
-            <div class="col-md-3 table-cell flex-column">
-                {{ form.if_provided_by_govt}}
-            </div>
-            <div class="col-md-3 table-cell flex-column">
-                {{ form.year_when_provided}}
-            </div>
-            <div class="col-md-3 table-cell flex-column">
-                {{ form.nature_of_disbursement}}
-            </div>
-            <div class="col-md-3 table-cell flex-column">
-                {{ form.amount_provided_in_cash}}
-            </div>
-        </div>
-        <div class="col-md-1 table-cell flex-column">
-            {{ form.comments}}
-        </div>
-    </div>
-
-    {% endfor %}
-
-    <br><br><br>
     {{ comments_form.id }}
     <div class="flex-row">
         <label>Is the toilet used regularly, throughout the year and by all members of the household? </label>

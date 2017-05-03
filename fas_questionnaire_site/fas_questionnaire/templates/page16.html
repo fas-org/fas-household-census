@@ -149,115 +149,115 @@
     </div>
 
     <h4 class='text-center'>17. INCOME FROM STATE AND COMMON PROPERTY RESOURCES</h4>
-    <table style="width:100%;">
-        <tr>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+    <div class="table table-responsive">
+        <div class="row flex-row">
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Crop number first digit </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Crop number second digit </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Sale number</label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Item collected </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Name of worker </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Number of days over the last year </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Commodity sold </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
-                <label> Month of disposal</label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
+                <label> Month of disposal </label>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Quantity sold </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Unit of quantity consumed </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Price </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Unit of price </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Where marketed </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Marketing agency </label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
-                <label> If price determined in advanced</label>
-            </th>
-            <th style="width:1%;text-align:center;" class='table-cell'>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
+                <label> If price determined in advanced </label>
+            </div>
+            <div class="col-md-1 flex-column-1 table-cell">
                 <label> Comments </label>
-            </th>
-            <th style="width:1%;text-align:center;"></th>
-        </tr>
+            </div>
+            <div class="cross-width"></div>
+        </div>
+
         {{ income_from_state_formset.management_form }}
         {% for income_from_state_form in income_from_state_formset.forms %}
-            <tr class="income_from_state_formset_row">
+            <div class="row income_from_state_formset_row flex-row">
                 {{ income_from_state_form.id }}
-                <td class='table-cell'>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.crop_number_first_digit }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.crop_number_second_digit }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.sale_number }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.item_collected }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.name_of_worker }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.number_of_days_over_the_last_year }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.commodity_sold }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.month_of_disposal }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.quantity_sold }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.unit_of_quantity_consumed }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.price }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.unit_of_price }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.where_marketed }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.marketing_agency }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.if_price_determined_in_advance }}
-                </td>
-                <td class='table-cell'>
+                </div>
+                <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.comments }}
-                </td>
-                <td></td>
-            </tr>
+                </div>
+            </div>
         {% endfor %}
-
-    </table>
+        <br><br><br>
+    </div>
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">

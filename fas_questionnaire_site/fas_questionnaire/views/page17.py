@@ -41,7 +41,7 @@ def edit(request, pk):
             animal_feed_forms, AnimalResourcesFeed, pk) and save_formset(other_expenditure_form, OtherExpenditure,
                                                                          pk) and save_formset(output_and_income_form,
                                                                                               OutputAndIncome, pk):
-            messages.success(request, 'Data saved succesfully')
+            messages.success(request, 'Data saved successfully')
         return redirect('page17_edit', pk)
 
     income_salary_model_formset = modelformset_factory(IncomeFromSalaries, form=IncomeFromSalariesForm, extra=5)

@@ -12,6 +12,8 @@ from .models.page_13 import WageUnit, TypeOfWage
 from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented,TypeOfRoof,TypeOfWall,TypeOfFloor,Latrine,ElectricityConnection,SourceOfEnergyForCooking,NatureOfDisbursement
 from .models.page1 import *
 from .models.page18 import DescriptionOfAssets
+from .models.page17 import AnimalTypes,AnimalCattleType,FeedType,FeedSource,ItemType,ProductType
+
 from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo
 from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
 
@@ -24,6 +26,7 @@ admin.site.register(LandType)
 admin.site.register(Registration)
 admin.site.register(YesOrNo)
 admin.site.register(Month)
+admin.site.register(Units)
 
 #household_models
 admin.site.register(Village)
@@ -46,7 +49,6 @@ admin.site.register(IrrigationOwnership)
 admin.site.register(HomesteadComponents)
 
 #page3
-admin.site.register(Units)
 admin.site.register(TypeOfContract)
 
 
@@ -73,6 +75,15 @@ admin.site.register(OtherCostsItems)
 #Page 13
 admin.site.register(WageUnit)
 admin.site.register(TypeOfWage)
+
+#Page17
+admin.site.register(AnimalTypes)
+admin.site.register(AnimalCattleType)
+admin.site.register(FeedType)
+admin.site.register(FeedSource)
+admin.site.register(ItemType)
+admin.site.register(ProductType)
+
 
 #page18
 admin.site.register(DescriptionOfAssets)

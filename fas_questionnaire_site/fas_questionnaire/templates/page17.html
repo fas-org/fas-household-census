@@ -14,15 +14,15 @@
 
     <h4 class='text-center'> A. Inventory </h4>
     <div class='row flex-row'>
-        <div class='col-md-6 flex-column'>
+        <div class='col-md-9 flex-column'>
             <div class='col-md-12 table-cell flex-column'>
                 <label>Description</label>
             </div>
             <div class='row flex-row'>
-                <div class='col-md-2 table-cell flex-column'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Type (see list below)</label>
                 </div>
-                <div class="col-md-8 flex-column">
+                <div class="col-md-4 flex-column">
                     <div class='col-md-12 table-cell flex-column'>
                         <label>For cattle only</label>
                     </div>
@@ -36,19 +36,19 @@
                     </div>
                 </div>
 
-                <div class='col-md-2 table-cell flex-column'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Breed</label>
                 </div>
             </div>
         </div>
-        <div class='col-md-2 table-cell flex-column'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>No</label>
         </div>
-        <div class='col-md-2 table-cell flex-column'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Age (for cattle only)</label>
         </div>
 
-        <div class='col-md-2 table-cell flex-column'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Total present value</label>
         </div>
         <div class="cross-width">
@@ -58,12 +58,12 @@
     {{ animal_inventory_formset.management_form }}
     {% for inventory_form in animal_inventory_formset.forms %}
         <div class='row animal_inventory_formset_row flex-row'>
-            <div class='col-md-6'>
+            <div class='col-md-9'>
                 <div class='row flex-row'>
-                    <div class='col-md-2 table-cell'>
+                    <div class='col-md-4 table-cell'>
                         {{ inventory_form.type }}
                     </div>
-                    <div class="col-md-8 flex-column">
+                    <div class="col-md-4 flex-column">
                         <div class='row flex-row'>
                             <div class='col-md-6 table-cell'>
                                 {{ inventory_form.sex }}
@@ -74,20 +74,20 @@
                         </div>
                     </div>
 
-                    <div class='col-md-2 table-cell'>
+                    <div class='col-md-4 table-cell'>
                         {{ inventory_form.breed }}
                     </div>
                 </div>
 
             </div>
-            <div class='col-md-2 table-cell'>
+            <div class='col-md-1 table-cell'>
                 {{ inventory_form.no }}
             </div>
-            <div class='col-md-2 table-cell'>
+            <div class='col-md-1 table-cell'>
                 {{ inventory_form.age }}
             </div>
 
-            <div class='col-md-2 table-cell'>
+            <div class='col-md-1 table-cell'>
                 {{ inventory_form.total_present_value }}
             </div>
             {{ inventory_form.id.as_hidden }}
@@ -96,7 +96,7 @@
 
     <br><br>
     <div class='row flex-row'>
-        <div class="col-md-6 flex-column">
+        <div class="col-md-6">
             {% csrf_token %}
             <h4 class='text-center'> B.Feed</h4>
             <div class='row flex-row'>
@@ -136,7 +136,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col-md-5 col-md-offset-1 flex-column">
+        <div class="col-md-5 col-md-offset-1">
             {% csrf_token %}
             <h4 class='text-center'> C.Other Expenditure</h4>
             <div class='row flex-row'>
@@ -164,7 +164,7 @@
             {% endfor %}
         </div>
     </div>
-<br>
+    <br>
     {% csrf_token %}
     <h4 class='text-center'> D.Output and income</h4>
     <div class='row flex-row'>
@@ -237,7 +237,7 @@
     {% endfor %}
 
 
-<br><br>
+    <br><br>
     {% csrf_token %}
     <h4 class='text-center'>19A. INCOME FROM BUSINESS ACTIVITIES OTHER THAN CROP PRODUCTION</h4>
     <div class='row flex-row'>
@@ -323,7 +323,7 @@
         </div>
     {% endfor %}
 
-<br><br>
+    <br><br>
     {% csrf_token %}
     <h4 class='text-center'>19B. INCOME FROM SALARIES, RENTS, REMITTANCES, PENSIONS, SCHOLARSHIPS AND ANY OTHER
         ACTIVITIES</h4>
@@ -369,7 +369,7 @@
             {{ salary_form.id.as_hidden }}
         </div>
     {% endfor %}
-<br><br>
+    <br><br>
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $('.animal_inventory_formset_row').formset();

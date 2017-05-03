@@ -159,11 +159,11 @@ class OutputAndIncome(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     product = models.ForeignKey(ProductType, db_column='product', blank=True, null=True)
     production = models.IntegerField(db_column='production', blank=True, null=True)
-    production_unit = models.ForeignKey(Units, db_column='production_unit', null=True, blank=True)
+    production_unit = models.ForeignKey(Units, db_column='production_unit', null=True, blank=True,related_name="%(class)s_production_unit")
     sale = models.IntegerField(db_column='sale', blank=True, null=True)
-    sale_unit = models.ForeignKey(Units, db_column='sale_unit', null=True, blank=True)
+    sale_unit = models.ForeignKey(Units, db_column='sale_unit', null=True, blank=True,related_name="%(class)s_sale_unit")
     price = models.IntegerField(db_column='price', blank=True, null=True)
-    price_unit = models.ForeignKey(Units, db_column='price_unit', null=True, blank=True)
+    price_unit = models.ForeignKey(Units, db_column='price_unit', null=True, blank=True,related_name="%(class)s_price_unit")
 
     class Meta:
         managed = True

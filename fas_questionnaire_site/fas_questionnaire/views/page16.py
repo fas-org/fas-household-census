@@ -18,12 +18,11 @@ def init(request):
 @login_required(login_url='login')
 def edit(request, pk):
     request.session['household'] = pk
-    freedom_of_employment_questions = get_object_or_404(FreedomOfEmploymentQuestions, household=pk)
+    freedom_of_employment_questions = get_object_or_none(FreedomOfEmploymentQuestions, household_id=pk)
     if request.method == "POST":
-        income_from_state_formset = modelformset_factory(IncomeFromStateAndCommonPropertyResources,
-                                                         form=IncomeFromStateAndCommonPropertyResourcesForm, extra=5)
-        aggri_or_non_aggri_labour_service_formset = modelformset_factory(AgriculturalOrNonAgriculturalLabourServices,
-                                                                         form=AgriculturalOrNonAgriculturalLabourServicesForm,
+        income_from_state_formset = formset_factory(IncomeFromStateAndCommonPropertyResourcesForm, formset=BaseFormSet, extra=5)
+        aggri_or_non_aggri_labour_service_formset = formset_factory(AgriculturalOrNonAgriculturalLabourServicesForm,
+                                                                         formset=BaseFormSet,
                                                                          extra=5)
 
         income_from_state_forms = income_from_state_formset(request.POST, prefix='income_from_state')
@@ -37,7 +36,7 @@ def edit(request, pk):
                                                                                       pk) \
                 and save_form(freedom_of_employment_questions_form, pk):
             messages.success(request, 'Data saved successfully')
-        return redirect('page16_edit', pk)
+            return redirect('page16_edit', pk)
 
     income_from_state_model_formset = modelformset_factory(IncomeFromStateAndCommonPropertyResources,
                                                            form=IncomeFromStateAndCommonPropertyResourcesForm, extra=5)

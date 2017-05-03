@@ -9,6 +9,7 @@ from fas_questionnaire.models.page7 import ManureType, FertilizerType
 from fas_questionnaire.models.page8 import CultivationAdviser, InstitutionalSupportCategory
 from .models.household_models import Village
 from .models.page10 import OtherCostsItems
+from .models.page15 import WageType,WorkDescription
 from .models.page_13 import WageUnit, TypeOfWage
 from .models.page19 import TypeOfRationCard, ColorOfCard, SourceOfWater, SourceOfWaterOwnership, WaterSourceDistanceFromHouse, PurposeForWhichUsed, WhetherOwnedOrRented,TypeOfRoof,TypeOfWall,TypeOfFloor,Latrine,ElectricityConnection,SourceOfEnergyForCooking,NatureOfDisbursement
 from .models.page1 import *
@@ -82,6 +83,10 @@ admin.site.register(OtherCostsItems)
 #Page 13
 admin.site.register(WageUnit)
 admin.site.register(TypeOfWage)
+
+#Page15
+admin.site.register(WageType)
+admin.site.register(WorkDescription)
 
 #Page17
 admin.site.register(AnimalTypes)

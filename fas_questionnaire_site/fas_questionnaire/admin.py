@@ -6,6 +6,8 @@ from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
 from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from fas_questionnaire.models.page6 import WhereMarketed, MarketingAgencies, ModeOfTransport
 from fas_questionnaire.models.page7 import ManureType, FertilizerType
+from fas_questionnaire.models.page9 import ProductionMeans, NatureExchange, SourceOfFinance, PowerSource, WellType, \
+    OwnershipType
 from fas_questionnaire.models.page8 import CultivationAdviser, InstitutionalSupportCategory
 from .models.household_models import Village
 from .models.page10 import OtherCostsItems
@@ -27,6 +29,7 @@ admin.site.register(LandType)
 admin.site.register(Registration)
 admin.site.register(YesOrNo)
 admin.site.register(Month)
+admin.site.register(IrrigationFlow)
 admin.site.register(Units)
 
 #household_models
@@ -45,7 +48,6 @@ admin.site.register(TehsilOfBirth)
 #page2
 admin.site.register(AcquisitionMode)
 admin.site.register(IrrigationSource)
-admin.site.register(IrrigationFlow)
 admin.site.register(IrrigationOwnership)
 admin.site.register(HomesteadComponents)
 
@@ -75,6 +77,14 @@ admin.site.register(CultivationAdviser)
 admin.site.register(InstitutionalSupportCategory)
 admin.site.register(Institution)
 admin.site.register(SupportNature)
+
+#page9
+admin.site.register(OwnershipType)
+admin.site.register(WellType)
+admin.site.register(PowerSource)
+admin.site.register(SourceOfFinance)
+admin.site.register(NatureExchange)
+admin.site.register(ProductionMeans)
 
 #Page 10
 admin.site.register(OtherCostsItems)

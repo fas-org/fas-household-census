@@ -6,6 +6,7 @@ from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
 from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from fas_questionnaire.models.page6 import WhereMarketed, MarketingAgencies, ModeOfTransport
 from fas_questionnaire.models.page7 import ManureType, FertilizerType
+from fas_questionnaire.models.page8 import CultivationAdviser, InstitutionalSupportCategory
 from .models.household_models import Village
 from .models.page10 import OtherCostsItems
 from .models.page_13 import WageUnit, TypeOfWage
@@ -14,7 +15,7 @@ from .models.page1 import *
 from .models.page18 import DescriptionOfAssets
 from .models.page17 import AnimalTypes,AnimalCattleType,FeedType,FeedSource,ItemType,ProductType
 
-from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo
+from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo, Institution, SupportNature
 from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
 
 #Common
@@ -68,6 +69,12 @@ admin.site.register(ModeOfTransport)
 #page7
 admin.site.register(ManureType)
 admin.site.register(FertilizerType)
+
+#page8
+admin.site.register(CultivationAdviser)
+admin.site.register(InstitutionalSupportCategory)
+admin.site.register(Institution)
+admin.site.register(SupportNature)
 
 #Page 10
 admin.site.register(OtherCostsItems)

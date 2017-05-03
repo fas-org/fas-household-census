@@ -30,11 +30,6 @@ class InstitutionalSupportForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
-    def clean(self):
-        if self.cleaned_data.get('category') is None:
-            raise forms.ValidationError('Category is mandatory for entering other details')
-        return self.cleaned_data
-
 
 class InstitutionalSupportCommentsForm(forms.ModelForm):
 

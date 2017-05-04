@@ -258,8 +258,8 @@
         {% csrf_token %}
         {{ labour_days_employed_in_agricultural_operations_formset.management_form }}
         {% for labour_days_employed_in_agricultural_operations_form in labour_days_employed_in_agricultural_operations_formset.forms %}
-            {{ labour_days_employed_in_agricultural_operations_form.id }}
             <div class='row labour_days_employed_row flex-row'>
+             {{ labour_days_employed_in_agricultural_operations_form.id }}
                 <div class='col-md-1 table-cell flex-column-1'>
                     {{ labour_days_employed_in_agricultural_operations_form.crop }}
                 </div>

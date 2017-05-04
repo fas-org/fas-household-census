@@ -6,7 +6,7 @@ class LabourDaysEmployedInAgriculturalOperationsForm(forms.ModelForm):
 
     class Meta:
         model = LabourDaysEmployedInAgriculturalOperations
-        exclude = []
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}

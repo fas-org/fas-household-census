@@ -1,6 +1,7 @@
 from django.contrib import admin
 from fas_questionnaire.models.page2 import AcquisitionMode, IrrigationSource, IrrigationFlow, IrrigationOwnership, \
     HomesteadComponents
+from fas_questionnaire.models.page21 import AssetType
 from fas_questionnaire.models.page3 import Registration, TypeOfContract
 from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
 from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
@@ -132,3 +133,7 @@ admin.site.register(BankNgoToWhichTheGroupIsLinked)
 admin.site.register(PeriodOfMembership)
 admin.site.register(NameOfBankPostOffice)
 admin.site.register(TypeOfAccount)
+
+#Page21
+
+admin.site.register(AssetType)

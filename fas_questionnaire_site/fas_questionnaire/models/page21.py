@@ -10,22 +10,22 @@ class AssetCategory(models.Model):
     class Meta:
         managed = True
         db_table = 'Asset Category'
+
     def __str__(self):
         return self.asset_category
 
 
-
 class AssetType(models.Model):
     id = models.AutoField(primary_key=True)
-    asset_category_id= models.ForeignKey(AssetCategory, db_column='Asset Category id', blank=True, null=True)
+    asset_category_id = models.ForeignKey(AssetCategory, db_column='Asset Category id', blank=True, null=True)
     asset_type = models.CharField(db_column='Asset Type', max_length=50, blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'Asset Type'
+
     def __str__(self):
         return self.asset_type
-
 
 
 class AssetOwnership(models.Model):
@@ -38,6 +38,7 @@ class AssetOwnership(models.Model):
     class Meta:
         managed = True
         db_table = 'Asset Ownership'
+
 
 class AssetLandRegistration(models.Model):
     id = models.AutoField(primary_key=True)

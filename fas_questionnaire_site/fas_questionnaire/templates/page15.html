@@ -32,7 +32,7 @@
     <h4 class='text-center'>14. FOR LONG-TERM AGRICULTURAL WORKERS</h4>
     <div class="table table-responsive">
         <div class='row flex-row'>
-            <div class='col-md-1 table-cell flex-column-1'>
+            <div class='col-md-2 table-cell flex-column-1'>
                 <label>Name of worker</label>
             </div>
             <div class='col-md-6 flex-row-wrap-1'>
@@ -105,7 +105,7 @@
         {{ agri_formset.management_form }}
         {% for form in agri_formset.forms %}
             <div class='row flex-row agri_formset_row'>
-                <div class='col-md-1 table-cell flex-column-1'>
+                <div class='col-md-2 table-cell flex-column-1'>
                     {{ form.worker_name }}
                 </div>
                 <div class='col-md-6 flex-column-1'>
@@ -186,19 +186,15 @@
         <div class='col-md-2 table-cell flex-column'>
             <label>Type of wage contract (daily, weekly, monthly, piece-rate)</label>
         </div>
-        <div class='col-md-3'>
-            <div class='row'>
-                <div class='col-md-12 table-cell'>
-                    <label>Total earnings last year</label>
-                </div>
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-12 table-cell'>
+                <label>Total earnings last year</label>
             </div>
-            <div class='row'>
-                <div class='col-md-6 table-cell'>
-                    <label>Cash</label>
-                </div>
-                <div class='col-md-6 table-cell'>
-                    <label>Kind</label>
-                </div>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Cash</label>
+            </div>
+            <div class='col-md-6 table-cell flex-column'>
+                <label>Kind</label>
             </div>
         </div>
         <div class="cross-width"></div>
@@ -222,14 +218,12 @@
             <div class='col-md-2 table-cell flex-column'>
                 {{ form.wage_form }}
             </div>
-            <div class='col-md-3'>
-                <div class='row'>
-                    <div class='col-md-6 table-cell'>
-                        {{ form.earning_cash }}
-                    </div>
-                    <div class='col-md-6 table-cell'>
-                        {{ form.earning_kind }}
-                    </div>
+            <div class='col-md-3 flex-row-wrap-1'>
+                <div class='col-md-6 table-cell'>
+                    {{ form.earning_cash }}
+                </div>
+                <div class='col-md-6 table-cell'>
+                    {{ form.earning_kind }}
                 </div>
             </div>
         </div>

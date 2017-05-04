@@ -9,453 +9,447 @@
             </div>
         {% endfor %}
     {% endif %}
-        {% csrf_token %}
-        <br>
-        <b><h4 class="text-center">12. Labour Days Employed by The Household And Wage Rates for Different Agricultural Operations Last Year</h4></b>
-        <br><br>
-        <div class="table table-responsive">
-          <div class='row flex-row'>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Crop</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Crop clean</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Extent</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Tenurial status</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Operation clean</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Operation first digit</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Operation second digit</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Operation third digit</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Operation fourth digit</label>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                  <label>Agricultural operation</label>
-              </div>
-              <div class='col-md-3 flex-row-wrap-1'>
-                      <div class='col-md-12 table-cell'>
-                          <label>Family Labour</label>
-                      </div>
-                      <div class='col-md-6 table-cell'>
-                          <label>Labour days</label>
-                      </div>
-                      <div class='col-md-6 table-cell'>
-                          <label>Work hours</label>
-                      </div>
-                      <div class='col-md-2 table-cell'>
-                          <label>M</label>
-                      </div>
-                      <div class='col-md-2 table-cell'>
-                          <label>W</label>
-                      </div>
-                      <div class='col-md-2 table-cell'>
-                          <label>C</label>
-                      </div>
-                      <div class='col-md-2 table-cell'>
-                          <label>M</label>
-                      </div>
-                      <div class='col-md-2 table-cell'>
-                          <label>W</label>
-                      </div>
-                      <div class='col-md-2 table-cell'>
-                          <label>C</label>
-                      </div>
-              </div>
-              <div class='col-md-6 flex-row-wrap-1'>
-                      <div class='col-md-12 table-cell'>
-                          <label>Daily labour(including with draught animals)</label>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="col-md-12 table-cell">
-                          <label>Labour days</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="col-md-12 table-cell">
-                          <label>Work hours</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="col-md-12 table-cell">
-                          <label>Wages</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="col-md-12 table-cell">
-                          <label>Meal</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-              </div>
-              <div class="col-md-5 flex-row-wrap-1">
-                <div class="col-md-12 table-cell">
-                  <label>Exchange Labour</label>
+    {% csrf_token %}
+    <h4 class="text-center">12. Labour Days Employed by The Household And Wage Rates for Different Agricultural
+        Operations Last Year</h4>
+    <div class="table table-responsive">
+        <div class='row flex-row'>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Crop</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Crop clean</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Extent</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Tenurial status</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Operation clean</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Operation first digit</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Operation second digit</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Operation third digit</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Operation fourth digit</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Agricultural operation</label>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
+                <div class='col-md-12 table-cell'>
+                    <label>Family Labour</label>
                 </div>
-                    <div class="col-md-4">
-                      <div class="col-md-12 table-cell">
-                        <label>Labour Days</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        <label>M</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        <label>W</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        <label>C</label>
-                      </div>
+                <div class='col-md-6 table-cell'>
+                    <label>Labour days</label>
+                </div>
+                <div class='col-md-6 table-cell'>
+                    <label>Work hours</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>M</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>W</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>C</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>M</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>W</label>
+                </div>
+                <div class='col-md-2 table-cell'>
+                    <label>C</label>
+                </div>
+            </div>
+            <div class='col-md-6 flex-row-wrap-1'>
+                <div class='col-md-12 table-cell'>
+                    <label>Daily labour(including with draught animals)</label>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-12 table-cell">
+                        <label>Labour days</label>
                     </div>
-                    <div class="col-md-4">
-                      <div class="col-md-12 table-cell">
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-12 table-cell">
                         <label>Work hours</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        <label>M</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        <label>W</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        <label>C</label>
-                      </div>
                     </div>
-                    <div class="col-md-4">
-                      <div class="col-md-12 table-cell">
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-12 table-cell">
+                        <label>Wages</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-12 table-cell">
                         <label>Meal</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
+                    </div>
+                    <div class="col-md-4 table-cell">
                         <label>M</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
+                    </div>
+                    <div class="col-md-4 table-cell">
                         <label>W</label>
-                      </div>
-                      <div class="col-md-4 table-cell">
+                    </div>
+                    <div class="col-md-4 table-cell">
                         <label>C</label>
-                      </div>
                     </div>
                 </div>
-                <div class="col-md-5 flex-row-wrap-1">
-                  <div class="col-md-12 table-cell">
+            </div>
+            <div class="col-md-5 flex-row-wrap-1">
+                <div class="col-md-12 table-cell">
+                    <label>Exchange Labour</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 table-cell">
+                        <label>Labour Days</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 table-cell">
+                        <label>Work hours</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 table-cell">
+                        <label>Meal</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 flex-row-wrap-1">
+                <div class="col-md-12 table-cell">
                     <label>Long term workers</label>
-                  </div>
-                      <div class="col-md-4">
-                        <div class="col-md-12 table-cell">
-                          <label>Labour Days</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="col-md-12 table-cell">
-                          <label>Work hours</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="col-md-12 table-cell">
-                          <label>Meal</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>M</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>W</label>
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          <label>C</label>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="col-md-2 flex-row-wrap-1">
-                    <div class="col-md-12 table-cell flex-column">
-                      <label>Piece-rated workers</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 table-cell">
+                        <label>Labour Days</label>
                     </div>
-                    <div class="col-md-6 table-cell flex-column">
-                        <label>Cash Payment</label>
-                      </div>
-                      <div class="col-md-6 table-cell flex-column">
-                        <label>Payment kind</label>
-                      </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
                     </div>
-                    <div class="col-md-2 flex-row-wrap-1">
-                      <div class="col-md-12 table-cell flex-column">
-                        <label>Machine labour</label>
-                      </div>
-                      <div class="col-md-6 table-cell flex-column">
-                          <label>Work hours</label>
-                        </div>
-                        <div class="col-md-6 table-cell flex-column">
-                          <label>Payment</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3 table-cell flex-column-1">
-                          <label> Comment </label>
-                      </div>
-                      <div class="cross-width flex-column-1"></div>
-                  </div>
-          {% csrf_token %}
-          {{ labour_days_employed_in_agricultural_operations_formset.management_form }}
-          {% for labour_days_employed_in_agricultural_operations_form in labour_days_employed_in_agricultural_operations_formset.forms %}
-          {{ labour_days_employed_in_agricultural_operations_form.id }}
-          <div class='row labour_days_employed_row flex-row'>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.crop }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.crop_clean }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.extent }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.tenurial_status }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.operation_clean }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.operation_first_digit }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.operation_second_digit }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.operation_third_digit }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.operation_forth_digit }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ labour_days_employed_in_agricultural_operations_form.operation }}
-              </div>
-              <div class='col-md-3 flex-row-wrap-1'>
-                      <div class='col-md-2 table-cell'>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 table-cell">
+                        <label>Work hours</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 table-cell">
+                        <label>Meal</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>M</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>W</label>
+                    </div>
+                    <div class="col-md-4 table-cell">
+                        <label>C</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 flex-row-wrap-1">
+                <div class="col-md-12 table-cell flex-column">
+                    <label>Piece-rated workers</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label>Cash Payment</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label>Payment kind</label>
+                </div>
+            </div>
+            <div class="col-md-2 flex-row-wrap-1">
+                <div class="col-md-12 table-cell flex-column">
+                    <label>Machine labour</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label>Work hours</label>
+                </div>
+                <div class="col-md-6 table-cell flex-column">
+                    <label>Payment</label>
+                </div>
+            </div>
+            <div class="col-md-3 table-cell flex-column-1">
+                <label> Comment </label>
+            </div>
+            <div class="cross-width flex-column-1"></div>
+        </div>
+        {% csrf_token %}
+        {{ labour_days_employed_in_agricultural_operations_formset.management_form }}
+        {% for labour_days_employed_in_agricultural_operations_form in labour_days_employed_in_agricultural_operations_formset.forms %}
+            {{ labour_days_employed_in_agricultural_operations_form.id }}
+            <div class='row labour_days_employed_row flex-row'>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.crop }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.crop_clean }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.extent }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.tenurial_status }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.operation_clean }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.operation_first_digit }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.operation_second_digit }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.operation_third_digit }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.operation_forth_digit }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ labour_days_employed_in_agricultural_operations_form.operation }}
+                </div>
+                <div class='col-md-3 flex-row-wrap-1'>
+                    <div class='col-md-2 table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.family_labour_days_men }}
-                      </div>
-                      <div class='col-md-2 table-cell'>
+                    </div>
+                    <div class='col-md-2 table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.family_labour_days_women }}
-                      </div>
-                      <div class='col-md-2 table-cell'>
+                    </div>
+                    <div class='col-md-2 table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.family_labour_days_children }}
-                      </div>
-                      <div class='col-md-2 table-cell'>
+                    </div>
+                    <div class='col-md-2 table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.family_work_hours_men }}
-                      </div>
-                      <div class='col-md-2 table-cell'>
+                    </div>
+                    <div class='col-md-2 table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.family_work_hours_women }}
-                      </div>
-                      <div class='col-md-2 table-cell'>
+                    </div>
+                    <div class='col-md-2 table-cell'>
                         {{ labour_days_employed_in_agricultural_operations_form.family_work_hours_children }}
-                      </div>
-              </div>
-              <div class='col-md-6 flex-row-wrap-1'>
-                      <div class="col-md-3 flex-row">
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_labour_days_men }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_labour_days_women }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_labour_days_children }}
-                        </div>
-                      </div>
-                      <div class="col-md-3 flex-row">
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_work_hours_men }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_work_hours_women }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_work_hours_children }}
-                        </div>
-                      </div>
-                      <div class="col-md-3 flex-row">
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_wages_male }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_wages_women }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.daily_wages_children }}
-                        </div>
-                      </div>
-                      <div class="col-md-3 flex-row">
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.meal_daily_men }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.meal_daily_women }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.meal_daily_children }}
-                        </div>
-                      </div>
-              </div>
-              <div class="col-md-5 flex-row-wrap-1">
-                    <div class="col-md-4 flex-row">
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_days_men }}
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_days_women }}
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_days_children }}
-                      </div>
                     </div>
-                    <div class="col-md-4 flex-row">
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_hours_men }}
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_hours_women }}
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_hours_children }}
-                      </div>
+                </div>
+                <div class='col-md-6 flex-row-wrap-1'>
+                    <div class="col-md-3 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_labour_days_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_labour_days_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_labour_days_children }}
+                        </div>
                     </div>
-                    <div class="col-md-4 flex-row">
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.meal_exchange_men }}
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.meal_exchange_women }}
-                      </div>
-                      <div class="col-md-4 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.meal_exchange_children }}
-                      </div>
+                    <div class="col-md-3 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_work_hours_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_work_hours_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_work_hours_children }}
+                        </div>
+                    </div>
+                    <div class="col-md-3 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_wages_male }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_wages_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.daily_wages_children }}
+                        </div>
+                    </div>
+                    <div class="col-md-3 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_daily_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_daily_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_daily_children }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-5 flex-row-wrap-1">
-                      <div class="col-md-4 flex-row">
+                    <div class="col-md-4 flex-row">
                         <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.long_term_labour_days_men }}
+                            {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_days_men }}
                         </div>
                         <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.long_term_labour_days_women }}
+                            {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_days_women }}
                         </div>
                         <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.long_term_labour_days_children }}
+                            {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_days_children }}
                         </div>
-                      </div>
-                      <div class="col-md-4 flex-row">
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.long_term_work_hrs_men }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.long_term_work_hrs_women }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.long_term_work_hrs_children }}
-                        </div>
-                      </div>
-                      <div class="col-md-4 flex-row">
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.meal_long_term_men }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.meal_long_term_women }}
-                        </div>
-                        <div class="col-md-4 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.meal_long_term_children }}
-                        </div>
-                      </div>
-                  </div>
-                  <div class="col-md-2 flex-row-wrap-1">
-                    <div class="col-md-6 table-cell">
-                      {{ labour_days_employed_in_agricultural_operations_form.piece_rate_payment_cash }}
-                      </div>
-                      <div class="col-md-6 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.piece_rate_payment_kind }}
-                      </div>
                     </div>
-                    <div class="col-md-2 flex-row-wrap-1">
-                      <div class="col-md-6 table-cell">
-                        {{ labour_days_employed_in_agricultural_operations_form.machine_labour_hours }}
+                    <div class="col-md-4 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_hours_men }}
                         </div>
-                        <div class="col-md-6 table-cell">
-                          {{ labour_days_employed_in_agricultural_operations_form.machine_labour_payment }}
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_hours_women }}
                         </div>
-                      </div>
-                      <div class="col-md-3 table-cell flex-column-1">
-                        {{ labour_days_employed_in_agricultural_operations_form.comments }}
-                      </div>
-                  </div>
-                  {% endfor %}
-        <br><br><br>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.exchange_labour_hours_children }}
+                        </div>
+                    </div>
+                    <div class="col-md-4 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_exchange_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_exchange_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_exchange_children }}
+                        </div>
+                    </div>
                 </div>
+                <div class="col-md-5 flex-row-wrap-1">
+                    <div class="col-md-4 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.long_term_labour_days_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.long_term_labour_days_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.long_term_labour_days_children }}
+                        </div>
+                    </div>
+                    <div class="col-md-4 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.long_term_work_hrs_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.long_term_work_hrs_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.long_term_work_hrs_children }}
+                        </div>
+                    </div>
+                    <div class="col-md-4 flex-row">
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_long_term_men }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_long_term_women }}
+                        </div>
+                        <div class="col-md-4 table-cell">
+                            {{ labour_days_employed_in_agricultural_operations_form.meal_long_term_children }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 flex-row-wrap-1">
+                    <div class="col-md-6 table-cell">
+                        {{ labour_days_employed_in_agricultural_operations_form.piece_rate_payment_cash }}
+                    </div>
+                    <div class="col-md-6 table-cell">
+                        {{ labour_days_employed_in_agricultural_operations_form.piece_rate_payment_kind }}
+                    </div>
+                </div>
+                <div class="col-md-2 flex-row-wrap-1">
+                    <div class="col-md-6 table-cell">
+                        {{ labour_days_employed_in_agricultural_operations_form.machine_labour_hours }}
+                    </div>
+                    <div class="col-md-6 table-cell">
+                        {{ labour_days_employed_in_agricultural_operations_form.machine_labour_payment }}
+                    </div>
+                </div>
+                <div class="col-md-3 table-cell flex-column-1">
+                    {{ labour_days_employed_in_agricultural_operations_form.comments }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
-        $('.labour_days_employed_row').formset({
-            prefix: '{{ labour_days_employed_in_agricultural_operations_formset.prefix }}'
-        });
+        $('.labour_days_employed_row').formset();
     </script>
-
-
 {% endblock %}

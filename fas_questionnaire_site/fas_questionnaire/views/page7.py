@@ -7,9 +7,9 @@ from django.forms.formsets import formset_factory, BaseFormSet
 
 from fas_questionnaire.views.common import get_object_or_none
 from ..models.page7 import InputUseManure, InputUseSeeds, InputUsePlantProtectionIrrigation, InputUseFertiliser
-from ..forms.page7 import InputUseForm, InputUseFertiliserForm, InputUseManureForm, InputUseSeedsForm, \
-    InputUsePlantProtectionIrrigationForm
+from ..forms.page7 import InputUseForm
 from ..models.household_models import Household
+from .common import get_search_form
 
 
 @login_required(login_url='login')
@@ -39,7 +39,7 @@ def edit(request, pk):
     formset_initial_data = collate_columns(pk, number_of_forms)
     if (len(formset_initial_data) > 0):
         formset = formset(formset_initial_data)
-    return render(request, 'page7.html', {'formset': formset})
+    return render(request, 'page7.html', {'formset': formset, 'search_form': get_search_form()})
 
 
 def save_page7_form(form, household_id, model):

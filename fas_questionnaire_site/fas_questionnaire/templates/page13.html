@@ -2,13 +2,22 @@
 {% load static %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% ifequal message.message 'Data saved successfully' %}
+                <div class="alert alert-success">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endifequal %}
+        {% endfor %}
+    {% endif %}
 <h4 class='text-center'>13.PATTERN OF AGRICULTURAL LABOURING OUT BY HOUSEHOLD MEMBERS IN THE PREVIOUS YEAR</h4>
     <div class="row flex-row">
-        <div class="col-md-2 flex-row" >
-            <div class="col-md-9 table-cell flex-column">
+        <div class="col-md-3 flex-row" >
+            <div class="col-md-8 table-cell flex-column">
                 <label>Name of the Worker</label>
             </div>
-            <div class="col-md-3 table-cell flex-column">
+            <div class="col-md-4 table-cell flex-column">
                 <label>Sex</label>
             </div>
         </div>
@@ -54,11 +63,11 @@
     {% for form in formset.forms %}
     <div class="row flex-row formset_row">
         {{ form.id }}
-        <div class="col-md-2 flex-row" >
-            <div class="col-md-9 table-cell flex-column">
+        <div class="col-md-3 flex-row" >
+            <div class="col-md-8 table-cell flex-column">
                {{form.name_of_worker}}
             </div>
-            <div class="col-md-3 table-cell flex-column">
+            <div class="col-md-4 table-cell flex-column">
                 {{form.sex}}
             </div>
         </div>
@@ -96,10 +105,9 @@
         </div>
     </div>
     {% endfor %}
-
+    <br><br>
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
-    $('.formset_row').formset({ 'addText': 'add another worker' });
-    $('input[name="form-INITIAL_FORMS"]').val(0);
+    $('.formset_row').formset();
 </script>
 {% endblock %}

@@ -11,7 +11,7 @@
 {% endif %}
 <h4 class='text-center'>26. ASSET OWNERSHIP</h4>
     {% csrf_token %}
-    <div class="row table-cell flex-row">
+    <div class="row flex-row">
         <div class="col-md-4 table-cell flex-column">
             <label>Immovables</label>
         </div>
@@ -26,7 +26,7 @@
     {% csrf_token %}
     {{ immovables_form_set.management_form }}
     {% for immovables_form in immovables_form_set.forms %}
-    <div class="row  immovables_formset_row table-cell flex-row">
+    <div class="row  immovables_formset_row flex-row">
         <div class="col-md-4 table-cell">
             {{immovables_form.type_of_asset}}
         </div>
@@ -43,8 +43,8 @@
     <br>
     <br>
 
- <div class="row table-cell flex-row">
-        <div class="col-md-4 ">
+ <div class="row flex-row">
+        <div class="col-md-4 table-cell">
             <label>Means of transport</label>
         </div>
         <div class="col-md-4 table-cell">
@@ -58,8 +58,8 @@
     {% csrf_token %}
     {{ meansoftransport_form_set.management_form }}
     {% for meansoftransport_form in meansoftransport_form_set.forms %}
-    <div class="row  transport_formset_row table-cell flex-row">
-        <div class="col-md-4 ">
+    <div class="row  transport_formset_row  flex-row">
+        <div class="col-md-4 table-cell">
             {{meansoftransport_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">
@@ -75,8 +75,8 @@
     <br>
     <br>
 
- <div class="row table-cell flex-row">
-        <div class="col-md-4 ">
+ <div class="row flex-row">
+        <div class="col-md-4 table-cell">
             <label>Furniture</label>
         </div>
         <div class="col-md-4 table-cell">
@@ -90,8 +90,8 @@
 
     {{ furniture_form_set.management_form }}
     {% for furniture_form in furniture_form_set.forms %}
-    <div class="row  furniture_formset_row table-cell flex-row">
-        <div class="col-md-4 ">
+    <div class="row  furniture_formset_row flex-row">
+        <div class="col-md-4 table-cell">
             {{furniture_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">
@@ -107,8 +107,8 @@
     <br>
     <br>
 
- <div class="row table-cell flex-row">
-        <div class="col-md-4 ">
+ <div class="row flex-row">
+        <div class="col-md-4 table-cell">
             <label>Electric equipment</label>
         </div>
         <div class="col-md-4 table-cell">
@@ -122,8 +122,8 @@
 
     {{ electricEquipments_form_set.management_form }}
     {% for electricEquipments_form in electricEquipments_form_set.forms %}
-    <div class="row  electrical_formset_row table-cell flex-row">
-        <div class="col-md-4 ">
+    <div class="row  electrical_formset_row flex-row">
+        <div class="col-md-4 table-cell">
             {{electricEquipments_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">
@@ -139,8 +139,8 @@
     <br>
     <br>
 
- <div class="row table-cell flex-row">
-        <div class="col-md-4 ">
+ <div class="row flex-row">
+        <div class="col-md-4 table-cell">
             <label>Other domestic durable goods</label>
         </div>
         <div class="col-md-4 table-cell">
@@ -154,8 +154,8 @@
 
     {{ otherDomesticDurableGoods_form_set.management_form }}
     {% for otherDomesticDurableGoods_form in otherDomesticDurableGoods_form_set.forms %}
-    <div class="row  othergoods_formset_row table-cell flex-row">
-        <div class="col-md-4 ">
+    <div class="row  othergoods_formset_row flex-row">
+        <div class="col-md-4 table-cell">
             {{otherDomesticDurableGoods_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">
@@ -171,8 +171,8 @@
     <br>
     <br>
 
- <div class="row table-cell flex-row">
-        <div class="col-md-4 ">
+ <div class="row flex-row">
+        <div class="col-md-4 table-cell">
             <label>Inventories</label>
         </div>
         <div class="col-md-4 table-cell">
@@ -186,8 +186,8 @@
 
     {{ inventories_form_set.management_form }}
     {% for inventories_form in inventories_form_set.forms %}
-    <div class="row  inventories_formset_row table-cell flex-row">
-        <div class="col-md-4 ">
+    <div class="row  inventories_formset_row flex-row">
+        <div class="col-md-4 table-cell">
             {{inventories_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">
@@ -203,8 +203,8 @@
     <br>
     <br>
 
- <div class="row table-cell flex-row">
-        <div class="col-md-4 ">
+ <div class="row flex-row">
+        <div class="col-md-4 table-cell">
             <label>Miscellaneous</label>
         </div>
         <div class="col-md-4 table-cell">
@@ -218,8 +218,8 @@
 
     {{ miscellaneous_form_set.management_form }}
     {% for miscellaneous_form in miscellaneous_form_set.forms %}
-    <div class="row  miscellaneous_formset_row table-cell flex-row">
-        <div class="col-md-4 ">
+    <div class="row  miscellaneous_formset_row flex-row">
+        <div class="col-md-4 table-cell">
             {{miscellaneous_form.type_of_asset}}
         </div>
         <div class="col-md-4 table-cell">

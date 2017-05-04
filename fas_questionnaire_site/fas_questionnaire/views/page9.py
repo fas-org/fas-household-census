@@ -25,14 +25,17 @@ def new(request):
     current_ownership_formset = formset_factory(OwnershipWellsTubewellsForm, formset=BaseFormSet, extra=5)
     production_means_formset = formset_factory(SpecifiedProductionMeansForm, formset=BaseFormSet, extra=5)
     irrigation_means_formset = formset_factory(SpecifiedIrrigationMeansForm, formset=BaseFormSet, extra=2)
+
     if request.method == "POST":
         current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
-        production_means_forms = production_means_formset(request.POST, prefix='prod')
-        irrigation_means_forms = irrigation_means_formset(request.POST, prefix='irrigation')
+        production_means_forms = production_means_formset(request.POST,prefix='prod')
+        irrigation_means_forms = irrigation_means_formset(request.POST,prefix='irrigation')
         current_ownership_forms_saved = False
         production_means_forms_saved = False
         irrigation_means_forms_saved = False
         if current_ownership_forms.is_valid() and production_means_forms.is_valid() and irrigation_means_forms.is_valid():
+            set_item_type(production_means_forms, "production")
+            set_item_type(irrigation_means_forms, "irrigation")
             current_ownership_forms_saved = save_forms(request, current_ownership_forms)
             production_means_forms_saved = save_forms(request, production_means_forms)
             irrigation_means_forms_saved = save_forms(request, irrigation_means_forms)
@@ -53,6 +56,12 @@ def new(request):
                                           'search_form': get_search_form()})
 
 
+def set_item_type(forms, type):
+    for form in forms:
+        fas_object = form.save(commit=False)
+        fas_object.item_type=type
+        
+
 @login_required(login_url='login')
 def edit(request, pk):
     try:
@@ -64,7 +73,7 @@ def edit(request, pk):
 
             current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
             production_means_forms = production_means_formset(request.POST, prefix='prod')
-            irrigation_means_forms = irrigation_means_formset(request.POST, prefix='irrigation')
+            irrigation_means_forms = irrigation_means_formset(request.POST,prefix='irrigation')
 
             current_ownership_forms_saved = False
             production_means_forms_saved = False
@@ -72,6 +81,9 @@ def edit(request, pk):
             if current_ownership_forms.is_valid() and production_means_forms.is_valid() and irrigation_means_forms.is_valid():
                 OwnershipWellsTubewells.objects.filter(household=pk).delete()
                 SpecifiedProductionMeans.objects.filter(household=pk).delete()
+                set_item_type(production_means_forms, "production")
+                set_item_type(irrigation_means_forms, "irrigation")
+
                 current_ownership_forms_saved = save_forms(request, current_ownership_forms)
                 production_means_forms_saved = save_forms(request, production_means_forms)
                 irrigation_means_forms_saved = save_forms(request, irrigation_means_forms)
@@ -90,11 +102,11 @@ def edit(request, pk):
         current_ownership_formset = current_ownership_model_formset(queryset=current_ownership_result_set, prefix='owner')
 
         production_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedProductionMeansForm, extra=5)
-        production_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk)
+        production_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk,item_type='production')
         production_means_formset = production_means_model_formset(queryset=production_means_result_set, prefix='prod')
 
         irrigation_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedIrrigationMeansForm, extra=2)
-        irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk)
+        irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk,item_type='irrigation')
         irrigation_means_formset = irrigation_means_model_formset(queryset=irrigation_means_result_set, prefix='irrigation')
 
         return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset,

@@ -1,3 +1,4 @@
+
 {% extends "container.html" %}
 {% load static %}
 
@@ -238,6 +239,7 @@
         <div class='col-md-2 table-cell flex-column'>
             {{ form.comments }}
         </div>
+        {{ form.item_type.as_hidden }}
     </div>
     {% endfor %}
     <br>
@@ -290,22 +292,14 @@
         <div class='col-md-2 table-cell flex-column'>
             {{ form.comments }}
         </div>
+    {{ form.item_type.as_hidden }}
     </div>
     {% endfor %}
 
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
-    $('.current_ownership_formset_row').formset({
-        prefix: '{{ current_ownership_formset.prefix }}',
-        formCssClass: 'current_ownership_formset'
-    });
-    $('.production_means_formset_row').formset({
-        prefix: '{{ production_means_formset.prefix }}',
-        formCssClass: 'production_means_formset'
-    });
-    $('.irrigation_means_formset_row').formset({
-        prefix: '{{ irrigation_means_formset.prefix }}',
-        formCssClass: 'irrigation_means_formset'
-    });
+    $('.current_ownership_formset_row').formset({});
+    $('.production_means_formset_row').formset({});
+    $('.irrigation_means_formset_row').formset({});
 </script>
 {% endblock %}

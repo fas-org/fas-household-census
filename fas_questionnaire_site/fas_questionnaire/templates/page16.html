@@ -102,7 +102,6 @@
     {{ aggri_or_non_aggri_labour_service_formset.management_form }}
     {% for aggri_or_non_aggri_labour_service_form in aggri_or_non_aggri_labour_service_formset.forms %}
         <div class="row flex-row aggri_or_non_aggri_labour_service_row ">
-            {{ aggri_or_non_aggri_labour_service_form.id }}
             <div class="col-md-2 table-cell">
                 {{ aggri_or_non_aggri_labour_service_form.name_of_worker }}
             </div>
@@ -137,6 +136,7 @@
             <div class="col-md-1 table-cell">
                 {{ aggri_or_non_aggri_labour_service_form.comments }}
             </div>
+            {{ aggri_or_non_aggri_labour_service_form.id.as_hidden }}
         </div>
     {% endfor %}
 
@@ -205,7 +205,6 @@
         {{ income_from_state_formset.management_form }}
         {% for income_from_state_form in income_from_state_formset.forms %}
             <div class="row income_from_state_formset_row flex-row">
-                {{ income_from_state_form.id }}
                 <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.crop_number_first_digit }}
                 </div>
@@ -254,6 +253,7 @@
                 <div class='col-md-1 flex-column-1 table-cell'>
                     {{ income_from_state_form.comments }}
                 </div>
+                {{ income_from_state_form.id.as_hidden }}
             </div>
         {% endfor %}
         <br><br><br>
@@ -261,14 +261,7 @@
 
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
-        $('.income_from_state_formset_row').formset({
-            prefix: '{{ income_from_state_formset.prefix }}',
-            formCssClass: 'income_from_state_formset'
-        });
-
-        $('.aggri_or_non_aggri_labour_service_row').formset({
-            prefix: '{{ aggri_or_non_aggri_labour_service_formset.prefix }}',
-            formCssClass: 'aggri_or_non_aggri_labour_service_formset'
-        });
+        $('.income_from_state_formset_row').formset();
+        $('.aggri_or_non_aggri_labour_service_row').formset();
     </script>
 {% endblock %}

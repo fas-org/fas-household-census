@@ -18,37 +18,38 @@
 {% endfor %}
 {% endfor %}
 {% csrf_token %}
-<h4 class='text-center'>6. Production and Sales on Operational Holding In the Last Agricultural Year</h4>
+<h4 class='text-center'>6. PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h4>
 <b>A. Cropping pattern and crop schedule</b><br>
+<div class="table table-responsive">
 <div class='row flex-row'>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Serial No.</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Corp</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Variety</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Tenurial Status</label>
     </div>
-    <div class='col-md-1 table-cell long-div  flex-column'>
+    <div class='col-md-1 table-cell long-div  flex-column-1'>
         <label>Crop / Homestead Land</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Extent</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Month of sowing </label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Month of harvesting</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Source of irrigation<sup>*</sup></label>
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-3 flex-row-wrap-1'>
         <div class='col-md-12 table-cell flex-column'>
             <p class='text-center'>Production</p>
         </div>
@@ -64,7 +65,7 @@
     </div>
         </div>
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-3 flex-row-wrap-1'>
         <div class='col-md-12 table-cell'>
             <p class='text-center'>Household consumption including amount kept for use as seeds</p>
         </div>
@@ -80,27 +81,27 @@
     </div>
         </div>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Comments</label>
     </div>
 
 
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Loans Advances Taken From Buyer</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Principal</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Interest On Loans Advances</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Output Price If Fixed In Advance</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Other Conditions</label>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Crop Clean</label>
     </div>
     <div class="cross-width"></div>
@@ -109,34 +110,34 @@
 {{ production_and_sales_on_operational_holding_formset.management_form }}
 {% for production_and_sales_on_operational_holding_form in production_and_sales_on_operational_holding_formset.forms %}
 <div class='row flex-row croppingpattern_formset_row flex-row' >
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.serial_no}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.crop}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.variety}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.tenurial_status}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.crop_homestead_land}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.extent}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.month_of_sowing}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.month_of_harvesting}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-3 flex-row-wrap-1'>
         <div class='row flex-row'>
             <div class='col-md-4 table-cell flex-column'>
                 {{production_and_sales_on_operational_holding_form.production_main_product}}
@@ -149,7 +150,7 @@
     </div>
         </div>
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-3 flex-row-wrap-1'>
         <div class='row flex-row'>
             <div class='col-md-4 table-cell flex-column'>
                 {{production_and_sales_on_operational_holding_form.consumption_main_product}}
@@ -162,31 +163,32 @@
     </div>
         </div>
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.comments}}
     </div>
 
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.loans_advances_taken_from_buyer}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.principal}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.interest_on_loans_advances}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.output_price_if_fixed_in_advance}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.other_conditions}}
     </div>
-    <div class='col-md-1 table-cell long-div flex-column'>
+    <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.crop_clean}}
     </div>
 {{ production_and_sales_on_operational_holding_form.id.as_hidden }}
 </div>
 {% endfor %}
+</div>
     <p><sup>*</sup> <small>Specify if drip or sprinkler irrigation was used. Also, specify clearly if only part of the area was irrigated from any source.</small></p>
 <br>
 <div class="row flex-row">
@@ -195,7 +197,7 @@
     </div>
 </div>
 <div class="row flex-row">
-    <div class="col-md-12">
+    <div class="col-md-12 flex-column">
         {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
     </div>
     {{ production_and_sales_on_operational_holding_comment_form.id.as_hidden}}

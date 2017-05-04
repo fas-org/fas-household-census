@@ -11,8 +11,8 @@
 {% endif %}
 <form method='POST' id="land_mortgaged_in_section5">
     {% csrf_token %}
-    <h4 class='text-center'>5.Land Holding: Leased and Mortgaged</h4><br><br><br>
-    <br><br>
+    <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4>
+    <br>
     <b>5.2.1 Land mortgaged in</b><br>
     <div class='row flex-row'>
         <div class='col-md-1 table-cell flex-column'>
@@ -93,7 +93,7 @@
         </div>
     </div>
     {% endfor %}
-
+    <br>
     <br><br>
     <b>5.2.1 Land mortgaged out</b><br>
     <div class='row flex-row'>
@@ -174,7 +174,7 @@
         </div>
     </div>
     {% endfor %}
-
+    <br>
     <br><br>
     <b>5.3.1 Land leased in on share-rent</b><br>
       <div class="table table-responsive">
@@ -255,10 +255,10 @@
                   <div class="col-md-12">
                     <label>Fertiliser</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -266,10 +266,10 @@
                   <div class="col-md-12">
                     <label>Seed</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -277,10 +277,10 @@
                   <div class="col-md-12">
                     <label>Pesticide</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -288,10 +288,10 @@
                   <div class="col-md-12">
                     <label>Electricity</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -299,10 +299,10 @@
                   <div class="col-md-12">
                     <label>Pumpset</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -310,10 +310,10 @@
                   <div class="col-md-12">
                     <label>Labour</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -368,8 +368,6 @@
               {{ form.extent }}
             </div>
             <div class='col-md-3 flex-row-wrap-1'>
-                    <div class='col-md-12 table-cell'>
-                    </div>
                     <div class='col-md-4 table-cell'>
                       {{ form.name_of_lessor }}
                     </div>
@@ -391,12 +389,7 @@
             </div>
 
             <div class="col-md-4 flex-row-wrap-1">
-                <div class="col-md-12 table-cell">
-                </div>
-                    <div class="col-md-6 table-cell">
-                    </div>
-                    <div class="col-md-6 table-cell">
-                    </div>
+
                     <div class="col-md-3 table-cell">
                       {{ form.percentage_share_of_crop }}
                     </div>
@@ -412,11 +405,9 @@
             </div>
 
             <div class="col-md-12 flex-row-wrap-1">
-              <div class="col-md-12 table-cell">
-              </div>
+
                   <div class="col-md-2 table-cell">
-                    <div class="col-md-12">
-                    </div>
+
                     <div class="col-md-6 table-cell">
                       {{ form.share_in_fym_field }}
                     </div>
@@ -425,68 +416,63 @@
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_fertiliser_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_fertiliser_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_seed_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_seed_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_pesticide_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_pesticide_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_electricity_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_electricity_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
                     <div class="col-md-12">
                     </div>
-                    <div class="col-md-8 table-cell">
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_pumpset_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_pumpset_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
                     <div class="col-md-12">
                     </div>
-                    <div class="col-md-8 table-cell">
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_labour_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_labour_quantity_field }}
                     </div>
                   </div>
                   <div class="col-md-2 table-cell">
-                    <div class="col-md-12">
-                    </div>
+
                     <div class="col-md-6 table-cell">
                       {{ form.share_in_irrigation_field }}
                     </div>
@@ -495,8 +481,7 @@
                     </div>
                   </div>
                   <div class="col-md-2 table-cell">
-                    <div class="col-md-12">
-                    </div>
+
                     <div class="col-md-6 table-cell">
                       {{ form.share_in_machinery_field }}
                     </div>
@@ -600,10 +585,10 @@
                   <div class="col-md-12">
                     <label>Fertiliser</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3f table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -611,10 +596,10 @@
                   <div class="col-md-12">
                     <label>Seed</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -622,10 +607,10 @@
                   <div class="col-md-12">
                     <label>Pesticide</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -633,10 +618,10 @@
                   <div class="col-md-12">
                     <label>Electricity</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -644,10 +629,10 @@
                   <div class="col-md-12">
                     <label>Pumpset</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -655,10 +640,10 @@
                   <div class="col-md-12">
                     <label>Labour</label>
                   </div>
-                  <div class="col-md-8 table-cell">
+                  <div class="col-md-9 table-cell">
                     <label>Percentage</label>
                   </div>
-                  <div class="col-md-4 table-cell">
+                  <div class="col-md-3 table-cell">
                     <label>Rs</label>
                   </div>
                 </div>
@@ -713,8 +698,7 @@
               {{ form.extent }}
             </div>
             <div class='col-md-3 flex-row-wrap-1'>
-                    <div class='col-md-12 table-cell'>
-                    </div>
+
                     <div class='col-md-4 table-cell'>
                       {{ form.name_of_sharecropper }}
                     </div>
@@ -736,12 +720,7 @@
             </div>
 
             <div class="col-md-4 flex-row-wrap-1">
-                <div class="col-md-12 table-cell">
-                </div>
-                    <div class="col-md-6 table-cell">
-                    </div>
-                    <div class="col-md-6 table-cell">
-                    </div>
+
                     <div class="col-md-3 table-cell">
                       {{ form.percentage_share_of_crop }}
                     </div>
@@ -757,11 +736,9 @@
             </div>
 
             <div class="col-md-12 flex-row-wrap-1">
-              <div class="col-md-12 table-cell">
-              </div>
+
                   <div class="col-md-2 table-cell">
-                    <div class="col-md-12">
-                    </div>
+
                     <div class="col-md-6 table-cell">
                       {{ form.share_in_fym_field }}
                     </div>
@@ -770,68 +747,61 @@
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_fertiliser_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_fertiliser_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_seed_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_seed_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_pesticide_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_pesticide_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_electricity_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_electricity_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_pumpset_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_pumpset_rs_field }}
                     </div>
                   </div>
                   <div class="col-md-1 table-cell">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="col-md-8 table-cell">
+
+                    <div class="col-md-9 table-cell">
                       {{ form.share_in_labour_field }}
                     </div>
-                    <div class="col-md-4 table-cell">
+                    <div class="col-md-3 table-cell">
                       {{ form.share_in_labour_quantity_field }}
                     </div>
                   </div>
                   <div class="col-md-2 table-cell">
-                    <div class="col-md-12">
-                    </div>
+
                     <div class="col-md-6 table-cell">
                       {{ form.share_in_irrigation_field }}
                     </div>
@@ -840,8 +810,7 @@
                     </div>
                   </div>
                   <div class="col-md-2 table-cell">
-                    <div class="col-md-12">
-                    </div>
+
                     <div class="col-md-6 table-cell">
                       {{ form.share_in_machinery_field }}
                     </div>

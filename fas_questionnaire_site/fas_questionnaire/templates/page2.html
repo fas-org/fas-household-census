@@ -31,10 +31,10 @@
     {% csrf_token %}
 
     <div class = 'row'>
-        <div class='col-md-8 flex-column'>
+        <div class='col-md-10 flex-column'>
             <div class='row flex-row'>
                 <div class='col-md-12 flex-column'>
-                    <h4 class='text-center'>3.Current Ownership Holding</h4>
+                    <h4 class='text-center'>3. CURRENT OWNERSHIP HOLDING</h4>
                 </div>
             </div>
             <div class='row flex-row'>
@@ -51,9 +51,9 @@
                     <label>Mode of acquisition</label>
                 </div>
 
-                <div class='col-md-4 table-cell long-div'>
+                <div class='col-md-4 long-div'>
                     <div class='col-md-12 table-cell'>
-                        <p class='text-center'>Irrigation</p>
+                        <label>Irrigation</label>
                     </div>
                     <div class='row flex-row'>
                         <div class='col-md-4 table-cell'>
@@ -82,16 +82,16 @@
             {% for current_ownership_form in current_ownership_formset.forms %}
             <div class='row current_ownership_formset_row flex-row'>
                     {{ current_ownership_form.id }}
-                <div class='col-md-2 table-cell'>
+                <div class='col-md-2 table-cell flex-column'>
                     {{ current_ownership_form.land_type }}
                 </div>
-                <div class='col-md-1 table-cell'>
+                <div class='col-md-1 table-cell flex-column'>
                     {{ current_ownership_form.ownership_plot_no }}
                 </div>
-                <div class='col-md-2 table-cell'>
+                <div class='col-md-2 table-cell flex-column'>
                     {{ current_ownership_form.extent_owned_land }}
                 </div>
-                <div class='col-md-2 table-cell'>
+                <div class='col-md-2 table-cell flex-column'>
                     {{ current_ownership_form.acquisition_mode }}
                 </div>
                 <div class="col-md-4">
@@ -162,21 +162,21 @@
                 <label> Type of Land </label>
             </div>
 
-            <div class='col-md-4 table-cell long-div'>
-                <div class='col-md-12 table-cell'>
-                    <p class='text-center'>Buyer</p>
+            <div class='col-md-4 long-div'>
+                <div class='col-md-12 table-cell flex-column'>
+                    <label>Buyer</label>
                 </div>
                 <div class='row flex-row'>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Name </label>
                     </div>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Caste </label>
                     </div>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Occupation </label>
                     </div>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Place of residence </label>
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                     {{ landsold_form.type_of_land_sold }}
                 </div>
 
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4'>
                     <div class='row flex-row'>
                         <div class='col-md-3 table-cell'>
                             {{ landsold_form.name_of_buyer }}
@@ -244,7 +244,7 @@
 
         <br>
         <br>
-
+        <br>
         <b>4.2 Land bought</b><br>
         <div class='row flex-row'>
             <div class='col-md-1 table-cell flex-column long-div'>
@@ -258,21 +258,21 @@
                 <label> Type of land </label>
             </div>
 
-            <div class='col-md-4 table-cell long-div'>
-                <div class='col-md-12 table-cell'>
-                    <p class='text-center'>Seller</p>
+            <div class='col-md-4 long-div'>
+                <div class='col-md-12 table-cell flex-column'>
+                    <label>Seller</label>
                 </div>
                 <div class='row flex-row'>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                     <label> Name </label>
                     </div>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Caste </label>
                     </div>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Occupations </label>
                     </div>
-                    <div class='col-md-3 table-cell'>
+                    <div class='col-md-3 table-cell flex-column'>
                         <label> Place of residence </label>
                     </div>
                 </div>
@@ -303,7 +303,7 @@
                     {{ landpurchased_form.type_of_land_purchased }}
                 </div>
 
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4'>
                     <div class='row flex-row'>
                         <div class='col-md-3 table-cell'>
                             {{ landpurchased_form.name_of_seller }}
@@ -329,6 +329,9 @@
                 </div>
             </div>
         {% endfor %}
+        <br>
+        <br>
+        <br>
         <div class="row">
             {{ landpurchased_comments_form.id }}
             <label> Comments </label>

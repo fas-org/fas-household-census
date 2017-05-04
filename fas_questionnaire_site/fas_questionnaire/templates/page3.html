@@ -11,7 +11,7 @@
 {% endif %}
 <form method='POST' id="land_mortgaged_in_section5">
     {% csrf_token %}
-    <h4 class='text-center'>5.Land Holding: Leased and Mortgaged</h4><br><br><br>
+    <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4><br><br>
     <div class="table table-responsive">
     <div class='row flex-row'>
         <div class='col-md-1 table-cell flex-column-1'>
@@ -24,41 +24,41 @@
             <label>Extent</label>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-                <div class='col-md-12 table-cell'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Lessor</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Name</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Caste</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Occupation</label>
                 </div>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-                <div class='col-md-12 table-cell'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Tenurial Status</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Registered or Unregistered</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Type of contract</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Since when leased in</label>
                 </div>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-                <div class='col-md-12 table-cell'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Annual fixed Rent</label>
                 </div>
-                <div class='col-md-6 table-cell'>
+                <div class='col-md-6 table-cell flex-column'>
                     <label>Cash</label>
                 </div>
-                <div class='col-md-6 table-cell'>
+                <div class='col-md-6 table-cell flex-column'>
                     <label>Kind</label>
                 </div>
         </div>
@@ -77,34 +77,34 @@
           <div class="col-md-12 table-cell">
             <label>Inputs provided by owner</label>
           </div>
-              <div class="col-md-2 table-cell">
+              <div class="col-md-2 table-cell flex-column">
               <label>Qty of hay taken</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of manure provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of fertiliser provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of seed provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of pesticide provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of electricity paid</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>If pumpset provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>If irrigation provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>If machinery provided</label>
               </div>
-              <div class="col-md-2 table-cell">
+              <div class="col-md-2 table-cell flex-column">
                   <label> Comments </label>
               </div>
           </div>
@@ -127,8 +127,7 @@
       </div>
 
       <div class='col-md-3 flex-row-wrap-1'>
-              <div class='col-md-12 table-cell'>
-              </div>
+
               <div class='col-md-4 table-cell'>
                 {{ form.name_of_lessor }}
               </div>
@@ -140,8 +139,7 @@
               </div>
       </div>
       <div class='col-md-3 flex-row-wrap-1'>
-              <div class='col-md-12 table-cell'>
-              </div>
+
               <div class='col-md-4 table-cell'>
                 {{ form.registered_unregistered }}
               </div>
@@ -153,8 +151,7 @@
               </div>
       </div>
       <div class='col-md-3 flex-row-wrap-1'>
-              <div class='col-md-12 table-cell'>
-              </div>
+
               <div class='col-md-6 table-cell'>
                 {{ form.annual_rent_in_cash }}
               </div>
@@ -172,8 +169,7 @@
         {{ form.further_interest_payment_on_rent }}
       </div>
       <div class="col-md-12 flex-row-wrap-1">
-        <div class="col-md-12 table-cell">
-      </div>
+
             <div class="col-md-2 table-cell">
               {{ form.qty_of_hay_taken_by_owner }}
             </div>
@@ -224,41 +220,41 @@
             <label>Extent</label>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-                <div class='col-md-12 table-cell'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Lesse</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Name</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Caste</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Occupation</label>
                 </div>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-                <div class='col-md-12 table-cell'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Tenurial Status</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Registered or Unregistered</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Type of contract</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Since when leased out</label>
                 </div>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-                <div class='col-md-12 table-cell'>
+                <div class='col-md-12 table-cell flex-column'>
                     <label>Annual fixed Rent</label>
                 </div>
-                <div class='col-md-6 table-cell'>
+                <div class='col-md-6 table-cell flex-column'>
                     <label>Cash</label>
                 </div>
-                <div class='col-md-6 table-cell'>
+                <div class='col-md-6 table-cell flex-column'>
                     <label>Kind</label>
                 </div>
         </div>
@@ -274,37 +270,37 @@
 
 
         <div class="col-md-12 flex-row-wrap-1">
-          <div class="col-md-12 table-cell">
+          <div class="col-md-12 table-cell flex-column">
             <label>Inputs provided by you</label>
           </div>
-              <div class="col-md-2 table-cell">
+              <div class="col-md-2 table-cell flex-column">
               <label>Qty of hay taken</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of manure provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of fertiliser provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of seed provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of pesticide provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>Value of electricity paid</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>If pumpset provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>If irrigation provided</label>
               </div>
-              <div class="col-md-1 table-cell">
+              <div class="col-md-1 table-cell flex-column">
               <label>If machinery provided</label>
               </div>
-              <div class="col-md-2 table-cell">
+              <div class="col-md-2 table-cell flex-column">
                   <label> Comments </label>
               </div>
           </div>
@@ -326,8 +322,7 @@
       </div>
 
       <div class='col-md-3 flex-row-wrap-1'>
-              <div class='col-md-12 table-cell'>
-              </div>
+
               <div class='col-md-4 table-cell'>
                 {{ form.name_of_lessee }}
               </div>
@@ -339,8 +334,7 @@
               </div>
       </div>
       <div class='col-md-3 flex-row-wrap-1'>
-              <div class='col-md-12 table-cell'>
-              </div>
+
               <div class='col-md-4 table-cell'>
                 {{ form.registered_unregistered }}
               </div>
@@ -352,8 +346,7 @@
               </div>
       </div>
       <div class='col-md-3 flex-row-wrap-1'>
-              <div class='col-md-12 table-cell'>
-              </div>
+
               <div class='col-md-6 table-cell'>
                 {{ form.annual_rent_in_cash }}
               </div>
@@ -371,8 +364,7 @@
         {{ form.further_interest_on_rent }}
       </div>
       <div class="col-md-12 flex-row-wrap-1">
-        <div class="col-md-12 table-cell">
-      </div>
+
             <div class="col-md-2 table-cell">
               {{ form.qty_of_hay_taken }}
             </div>

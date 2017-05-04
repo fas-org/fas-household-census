@@ -46,7 +46,7 @@ def edit(request, pk):
                 and save_formset(mem_shp_in_slf_hlp_grps_forms, MembershipInSelfHelpGroups, pk) \
                 and save_formset(dtls_of_bank_pst_offc_of_the_household_forms,
                                  DetailsOfBankPostofficeAccountOfTheHousehold, pk):
-            messages.success(request, 'Data saved succesfully')
+            messages.success(request, 'Data saved successfully')
             return redirect('page20_edit', pk)
 
     outstanding_loans_formset = modelformset_factory(OutstandingLoans, form=OutstandingLoansForm, extra=5)

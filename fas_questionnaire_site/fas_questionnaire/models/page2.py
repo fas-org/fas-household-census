@@ -62,6 +62,7 @@ class IrrigationSource(models.Model):
 
 class CurrentOwnershipHolding(models.Model):
     id = models.AutoField(primary_key=True)
+    sno = models.IntegerField(blank=True, null=True, unique=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_plot_no = models.FloatField(db_column='Ownership plot no', blank=True, null=True)
     land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
@@ -97,6 +98,7 @@ class HomesteadComponents(models.Model):
 class HomesteadArea(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
+    sno = models.IntegerField(blank=True, null=True)
     components = models.ForeignKey(HomesteadComponents, models.DO_NOTHING, db_column='Components', blank=True,
                                    null=True)
     area = models.FloatField(db_column='Area', blank=True, null=True)
@@ -106,18 +108,9 @@ class HomesteadArea(models.Model):
         db_table = 'Homestead Area'
 
 
-class LandPurchasedComments(models.Model):
-    id = models.AutoField(primary_key=True)
-    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    landpurchased_comments = models.CharField(db_column='comments', max_length=250, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'Land Purchased Comments'
-
-
 class LandPurchased(models.Model):
     id = models.AutoField(primary_key=True)
+    sno = models.IntegerField(blank=True, null=True, unique=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
     year_of_purchase = models.IntegerField(db_column='Year of purchase',
@@ -142,9 +135,6 @@ class LandPurchased(models.Model):
     purchase_transaction_number = models.FloatField(db_column='Purchase transaction number',
                                                     blank=True, null=True)
     comments = models.CharField(max_length=50, blank=True, null=True)
-    landpurchased_comments = models.ForeignKey('LandPurchasedComments', models.DO_NOTHING,
-                                               db_column='land purchased comments',
-                                               blank=True, null=True)
 
     class Meta:
         managed = True
@@ -153,6 +143,7 @@ class LandPurchased(models.Model):
 
 class LandSold(models.Model):
     id = models.AutoField(primary_key=True)
+    sno = models.IntegerField(blank=True, null=True, unique=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
     year_of_sale = models.IntegerField(db_column='Year of sale', blank=True,

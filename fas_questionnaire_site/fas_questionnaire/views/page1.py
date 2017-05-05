@@ -20,7 +20,7 @@ def edit(request, pk):
 
     if request.method == "POST":
         form = HouseholdIntroductionForm(request.POST, prefix='introduction')
-        household_members_formset = formset_factory(HouseholdMembersForm, formset=BaseFormSet, extra=1, min_num=1)
+        household_members_formset = formset_factory(HouseholdMembersForm, formset=BaseFormSet, extra=1)
         forms = household_members_formset(request.POST, prefix='members')
         if save_form(form, pk) and save_formset(forms, HouseholdMembers, pk):
             messages.success(request, 'Data saved successfully')
@@ -29,7 +29,7 @@ def edit(request, pk):
     introduction = get_object_or_none(HouseholdIntroduction, pk)
     form = HouseholdIntroductionForm(instance=introduction, prefix='introduction')
 
-    household_members_model_formset = modelformset_factory(HouseholdMembers,form=HouseholdMembersForm, extra=1, min_num=1)
+    household_members_model_formset = modelformset_factory(HouseholdMembers,form=HouseholdMembersForm, extra=1)
     result_set = HouseholdMembers.objects.filter(household=pk)
     formset = household_members_model_formset(queryset=result_set, prefix='members')
 

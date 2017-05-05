@@ -115,16 +115,3 @@ class LandSoldForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
-
-
-class LandPurchasedCommentsForm(forms.ModelForm):
-    id = forms.CharField(widget=forms.HiddenInput(), required=False)
-    class Meta:
-        model = LandPurchasedComments
-        fields = ['household', 'landpurchased_comments','id']
-        exclude = ['household']
-        widgets = None
-        localized_fields = None
-        labels = {}
-        help_texts = {}
-        error_messages = {}

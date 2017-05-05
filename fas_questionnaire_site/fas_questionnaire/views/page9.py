@@ -23,21 +23,17 @@ def init(request):
 @login_required(login_url='login')
 def new(request):
     current_ownership_formset = formset_factory(OwnershipWellsTubewellsForm, formset=BaseFormSet, extra=5)
-    production_means_formset = formset_factory(SpecifiedProductionMeansForm, formset=BaseFormSet, extra=5)
     irrigation_means_formset = formset_factory(SpecifiedIrrigationMeansForm, formset=BaseFormSet, extra=2)
 
     if request.method == "POST":
         current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
-        production_means_forms = production_means_formset(request.POST,prefix='prod')
         irrigation_means_forms = irrigation_means_formset(request.POST,prefix='irrigation')
         current_ownership_forms_saved = False
         production_means_forms_saved = False
         irrigation_means_forms_saved = False
-        if current_ownership_forms.is_valid() and production_means_forms.is_valid() and irrigation_means_forms.is_valid():
-            set_item_type(production_means_forms, "production")
+        if current_ownership_forms.is_valid() and irrigation_means_forms.is_valid():
             set_item_type(irrigation_means_forms, "irrigation")
             current_ownership_forms_saved = save_forms(request, current_ownership_forms)
-            production_means_forms_saved = save_forms(request, production_means_forms)
             irrigation_means_forms_saved = save_forms(request, irrigation_means_forms)
 
         if current_ownership_forms_saved or production_means_forms_saved or irrigation_means_forms_saved:
@@ -46,12 +42,10 @@ def new(request):
         else:
             return render(request, 'page9.html',
                           {'current_ownership_formset': current_ownership_forms,
-                           'production_means_formset': production_means_forms,
                            'irrigation_means_formset': irrigation_means_forms,
                            'search_form': get_search_form()})
 
     return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset(prefix='owner'),
-                                                             'production_means_formset': production_means_formset(prefix='prod'),
                                                              'irrigation_means_formset': irrigation_means_formset(prefix='irrigation'),
                                           'search_form': get_search_form()})
 
@@ -68,24 +62,20 @@ def edit(request, pk):
         request.session['household'] = pk
         if request.method == "POST":
             current_ownership_formset = formset_factory(OwnershipWellsTubewellsForm, formset=BaseFormSet, extra=5)
-            production_means_formset = formset_factory(SpecifiedProductionMeansForm, formset=BaseFormSet, extra=5)
             irrigation_means_formset = formset_factory(SpecifiedIrrigationMeansForm, formset=BaseFormSet, extra=2)
 
             current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
-            production_means_forms = production_means_formset(request.POST, prefix='prod')
             irrigation_means_forms = irrigation_means_formset(request.POST,prefix='irrigation')
 
             current_ownership_forms_saved = False
             production_means_forms_saved = False
             irrigation_means_forms_saved = False
-            if current_ownership_forms.is_valid() and production_means_forms.is_valid() and irrigation_means_forms.is_valid():
+            if current_ownership_forms.is_valid()  and irrigation_means_forms.is_valid():
                 OwnershipWellsTubewells.objects.filter(household=pk).delete()
                 SpecifiedProductionMeans.objects.filter(household=pk).delete()
-                set_item_type(production_means_forms, "production")
                 set_item_type(irrigation_means_forms, "irrigation")
 
                 current_ownership_forms_saved = save_forms(request, current_ownership_forms)
-                production_means_forms_saved = save_forms(request, production_means_forms)
                 irrigation_means_forms_saved = save_forms(request, irrigation_means_forms)
 
             if current_ownership_forms_saved or production_means_forms_saved or irrigation_means_forms_saved:
@@ -93,7 +83,6 @@ def edit(request, pk):
             else:
                 return render(request, 'page9.html',
                               {'current_ownership_formset': current_ownership_forms,
-                               'production_means_formset': production_means_forms,
                                'irrigation_means_formset': irrigation_means_forms,
                                'search_form': get_search_form()})
 
@@ -101,16 +90,11 @@ def edit(request, pk):
         current_ownership_result_set = OwnershipWellsTubewells.objects.filter(household=pk)
         current_ownership_formset = current_ownership_model_formset(queryset=current_ownership_result_set, prefix='owner')
 
-        production_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedProductionMeansForm, extra=5)
-        production_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk,item_type='production')
-        production_means_formset = production_means_model_formset(queryset=production_means_result_set, prefix='prod')
-
         irrigation_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedIrrigationMeansForm, extra=2)
         irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk,item_type='irrigation')
         irrigation_means_formset = irrigation_means_model_formset(queryset=irrigation_means_result_set, prefix='irrigation')
 
         return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset,
-                                                                 'production_means_formset': production_means_formset,
                                                                  'irrigation_means_formset': irrigation_means_formset,
                                               'search_form': get_search_form()})
 

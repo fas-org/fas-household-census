@@ -33,37 +33,28 @@ class HomesteadLand(models.Model):
     class Meta:
         managed = True
         db_table = 'Homestead Land'
+
     def __str__(self):
         return self.land_name
+
 
 class CroppingPatternAndCropSchedule(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    serial_no = models.IntegerField(db_column='serial no', primary_key=False, null=True,blank=True)
+    crop_number_first_digit = models.FloatField(db_column='first digit', null=True, blank=True)
+    crop_number_second_digit = models.FloatField(db_column='second digit', null=True, blank=True)
     crop = models.ForeignKey(Crop, models.DO_NOTHING, db_column='Crop', blank=True, null=True)
-    crop_clean = models.CharField(db_column='Crop clean', max_length=50, blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)
     tenurial_status = models.ForeignKey(Tenurial, models.DO_NOTHING, db_column='tenurial status', blank=True, null=True)
     crop_homestead_land = models.ForeignKey(HomesteadLand, models.DO_NOTHING, db_column='Crop/ Homestead land',
                                             blank=True, null=True)
     extent = models.FloatField(db_column='Extent', blank=True, null=True)
-    month_of_sowing = models.ForeignKey(Month,models.DO_NOTHING,db_column='Month of sowing',blank=True, null=True,related_name='month_of_sowing')
-    month_of_harvesting = models.ForeignKey(Month,models.DO_NOTHING,db_column='Month of harvesting',blank=True, null=True,related_name='month_of_harvesting')
-    source_of_irrigation = models.ForeignKey(IrrigationSource,models.DO_NOTHING,db_column='Source of irrigation',blank=True, null=True,related_name='source_of_irrigation')
-    production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    unit_production = models.ForeignKey(Units, db_column='Unit, production', blank=True, null=True,related_name='unit_production')
-    production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
-    consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    unit_consumption = models.ForeignKey(Units, db_column='Unit, consumption', blank=True, null=True,related_name='unit_consumption')
-    consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
-    loans_advances_taken_from_buyer = models.CharField(db_column='Loans/advances taken from buyer', max_length=50,
-                                                       blank=True, null=True)
-    principal = models.FloatField(db_column='Principal', blank=True, null=True)
-    interest_on_loans_advances = models.CharField(db_column='Interest on loans/advances', max_length=50, blank=True,
-                                                  null=True)
-    output_price_if_fixed_in_advance = models.FloatField(db_column='Output price, if fixed in advance', blank=True,
-                                                         null=True)
-    other_conditions = models.CharField(db_column='Other conditions', max_length=50, blank=True, null=True)
+    month_of_sowing = models.ForeignKey(Month, models.DO_NOTHING, db_column='Month of sowing', blank=True, null=True,
+                                        related_name='month_of_sowing')
+    month_of_harvesting = models.ForeignKey(Month, models.DO_NOTHING, db_column='Month of harvesting', blank=True,
+                                            null=True, related_name='month_of_harvesting')
+    source_of_irrigation = models.ForeignKey(IrrigationSource, models.DO_NOTHING, db_column='Source of irrigation',
+                                             blank=True, null=True, related_name='source_of_irrigation')
 
     comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
 
@@ -72,7 +63,7 @@ class CroppingPatternAndCropSchedule(models.Model):
         db_table = 'cropping pattern and crop schedule'
 
     def __str__(self):
-        return str(self.serial_no)
+        return str(self.crop_number_first_digit)
 
 
 class CroppingPatternAndCropScheduleComments(models.Model):

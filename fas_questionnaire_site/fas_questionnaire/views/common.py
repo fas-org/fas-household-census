@@ -4,6 +4,9 @@ from ..models.household_models import Household
 from ..models.page1 import HouseholdMembers
 from ..forms.household_forms import HouseholdForm
 from django import forms
+from ..forms.common import CommentsForm
+from ..models.common import Comments
+from django.forms import modelformset_factory
 
 
 def save_form_old(request, form):
@@ -113,3 +116,8 @@ def get_household_members(household_id):
 
 def get_household_members_as_widget(household_id, field_name):
     return { field_name : forms.Select(choices=([(c.id, c.name) for c in get_household_members(household_id)]))}
+
+def get_comments_formset(household_id, page_no):
+    comments_formset = modelformset_factory(Comments, form=CommentsForm, extra=1, min_num=1)
+    comments_result_set = Comments.objects.filter(household_id=household_id, page_no=page_no)
+    return comments_formset(queryset=comments_result_set, prefix='comments')

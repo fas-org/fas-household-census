@@ -176,3 +176,9 @@ div.comments textarea {
 .justify-content-start {
     justify-content: flex-start;
 }
+.comments-input-field input, .comments-input-field textarea {
+    color: #337ab7;
+    border: none;
+    height: 50px;
+    width: 100%;
+}

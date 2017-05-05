@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{% static 'css/app.css' %}"/>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="{% static 'js/jquery.formset.js' %}"></script>
         {% block head %}
         {% endblock %}
         <script>
@@ -64,6 +65,9 @@
                     {% endif %}
                         {% block content %}
                         {% endblock %}
+
+                        {% include 'common/comments.html' %}
+
                         <div class='row text-center'>
                             {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and request.session.household is None or request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
                                 <button class='btn btn-primary btn-submit' type="submit">Save</button>

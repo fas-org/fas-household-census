@@ -68,6 +68,7 @@ class HouseholdIntroduction(models.Model):
 
 class HouseholdMembers(models.Model):
     id = models.AutoField(primary_key=True)
+    sno = models.IntegerField(blank=True, null=True)
     name = models.CharField(max_length=45, blank=True, null=True)
     sex = models.ForeignKey('Sex', models.DO_NOTHING, db_column='sex', blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)

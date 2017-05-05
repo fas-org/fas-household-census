@@ -65,9 +65,6 @@
                     {% endif %}
                         {% block content %}
                         {% endblock %}
-
-                        {% include 'common/comments.html' %}
-
                         <div class='row text-center'>
                             {% if request.user|has_group:'Admin' or request.user|has_group:'Incharge' or request.user|has_group:'DataEntry' and request.session.household is None or request.user|has_group:'DataEntry' and not request.session.household|is_submitted %}
                                 <button class='btn btn-primary btn-submit' type="submit">Save</button>

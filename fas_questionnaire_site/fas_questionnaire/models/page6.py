@@ -57,7 +57,7 @@ class Production(models.Model):
 
     crop_number_first_digit = models.FloatField(db_column='production_crop_number_first_digit', null=True, blank=True)
     crop_number_second_digit = models.FloatField(db_column='production_crop_number_second_digit', null=True, blank=True)
-    crop = models.CharField(db_column='crop', max_length=100, null=True, blank=True)
+    crop = models.ForeignKey(Crop,models.DO_NOTHING,db_column='crop', null=True, blank=True)
 
     production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
     unit_main_production = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, production', blank=True,

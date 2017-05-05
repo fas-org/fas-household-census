@@ -1,7 +1,9 @@
 from . import household as household
 from django.contrib.auth.decorators import login_required
 from ..models.household_models import Household
+from ..models.page1 import HouseholdMembers
 from ..forms.household_forms import HouseholdForm
+from django import forms
 
 
 def save_form_old(request, form):
@@ -105,3 +107,10 @@ def is_empty(field):
 
 def get_search_form():
     return HouseholdForm()
+
+def get_household_members(household_id):
+    household_model = get_object_or_none(Household, household_id)
+    return HouseholdMembers.objects.filter(household=household_model)
+
+def get_household_members_as_widget(household_id, field_name):
+    return { field_name : forms.Select(choices=([(c.id, c.name) for c in get_household_members(household_id)]))}

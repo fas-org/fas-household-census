@@ -42,17 +42,11 @@
     </li>
     <li {% if 'page11' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'page11_init' %}>11</a>
-    </li>
-    <li class="disabled">
-            <a href="#">12</a>
+            <a href={% url 'page11_init' %}>11/12</a>
     </li>
     <li {% if 'page13' in request.get_full_path %} class="active" {% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>
-            <a href={% url 'page13_init' %}>13</a>
-    </li>
-    <li class="disabled">
-            <a href="#">14</a>
+            <a href={% url 'page13_init' %}>13/14</a>
     </li>
     <li {% if 'page15' in request.get_full_path %} class="active"{% endif %}
             {% if request.session.household == None %} class="disabled" {% endif %}>

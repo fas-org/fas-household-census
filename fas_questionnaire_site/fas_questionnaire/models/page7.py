@@ -28,41 +28,53 @@ class FertilizerType(models.Model):
 class InputUseManure(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
-    crop_code = models.IntegerField(null=False)
-    manure_type = models.CharField(max_length=50, blank=True, null=True)
-    manure_home_quantity = models.TextField(blank=True, null=True)
-    manure_home_unit = models.CharField(max_length=50, blank=True, null=True)
-    manure_home_value = models.TextField(blank=True, null=True)
-    manure_purchased_quantity = models.TextField(blank=True, null=True)
-    manure_purchased_unit = models.CharField(max_length=50, blank=True, null=True)
-    manure_purchased_price = models.TextField(blank=True, null=True)
+    crop_code = models.IntegerField(blank=True, null=True)
+    manure_type = models.ForeignKey(ManureType, blank=True, null=True)
+    manure_home_quantity = models.FloatField(blank=True, null=True)
+    manure_home_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_manure_home_unit')
+    manure_home_value = models.FloatField(blank=True, null=True)
+    manure_purchased_quantity = models.FloatField(blank=True, null=True)
+    manure_purchased_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_manure_purchased_unit')
+    manure_purchased_value = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'input_use_manure'
 
 
-class InputUsePlantProtectionIrrigation(models.Model):
+class InputUsePlantProtection(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
-    crop_code = models.IntegerField(null=False)
+    crop_code = models.IntegerField(blank=True, null=True)
     plant_protection_quantity = models.FloatField(blank=True, null=True)
-    plant_protection_price = models.FloatField(blank=True, null=True)
-    irrigation_source = models.CharField(max_length=50, blank=True, null=True)
-    irrigation_price = models.FloatField(blank=True, null=True)
+    plant_protection_value = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'input_use_plant_protection_irrigation'
+        db_table = 'input_use_plant_protection'
+
+
+class InputUseIrrigation(models.Model):
+    id = models.AutoField(primary_key=True)
+    household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
+    crop_code = models.IntegerField(blank=True, null=True)
+    irrigation_source = models.ForeignKey('IrrigationSource', blank=True, null=True)
+    irrigation_cost = models.FloatField(blank=True, null=True)
+    irrigation_unit_price = models.ForeignKey('Units', blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'input_use_irrigation'
 
 
 class InputUseFertiliser(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
-    crop_code = models.IntegerField(null=False)
-    fertiliser_type = models.CharField(max_length=50, blank=True, null=True)
+    crop_code = models.IntegerField(blank=True, null=True)
+    fertiliser_type = models.ForeignKey(FertilizerType, blank=True, null=True)
     fertiliser_quantity = models.FloatField(blank=True, null=True)
-    fertiliser_price = models.FloatField(blank=True, null=True)
+    fertiliser_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_fertiliser_unit')
+    fertiliser_value = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = True
@@ -72,11 +84,14 @@ class InputUseFertiliser(models.Model):
 class InputUseSeeds(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
+    crop_code_first_digit = models.IntegerField(blank=True, null=True)
+    crop_code_second_digit = models.IntegerField(blank=True, null=True)
     home_produced_quantity = models.FloatField(blank=True, null=True)
+    home_produced_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_home_produced_unit')
     home_produced_value = models.CharField(max_length=50, blank=True, null=True)
     purchased_quantity = models.FloatField(blank=True, null=True)
-    purchased_price = models.FloatField(blank=True, null=True)
-    crop_code = models.IntegerField(null=False)
+    purchased_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_purchased_unit')
+    purchased_value = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = True

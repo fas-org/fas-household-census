@@ -3,7 +3,7 @@ from django.db import models
 
 class PatternOfAgriculturalLabouringOut(models.Model):
     id = models.AutoField(primary_key=True)
-    name_of_worker = models.ForeignKey('HouseholdMembers', on_delete= models.CASCADE, blank=True, null=True)
+    name_of_worker = models.IntegerField(db_column='name_of_worker', blank=True, null=True)
     sex = models.ForeignKey('Sex', on_delete= models.CASCADE, blank=True, null=True)
     crop = models.ForeignKey('Crop', on_delete= models.CASCADE, blank=True, null=True)
     operation = models.CharField(max_length=50, blank=True, null=True)

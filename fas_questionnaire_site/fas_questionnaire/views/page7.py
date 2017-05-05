@@ -1,13 +1,14 @@
 from functools import reduce
 
+from django.forms import modelformset_factory
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.forms.formsets import formset_factory, BaseFormSet
 
-from fas_questionnaire.views.common import get_object_or_none
-from ..models.page7 import InputUseManure, InputUseSeeds, InputUsePlantProtectionIrrigation, InputUseFertiliser
-from ..forms.page7 import InputUseForm
+from fas_questionnaire.views.common import get_object_or_none, save_formset
+from ..models.page7 import InputUseManure, InputUseSeeds, InputUsePlantProtection, InputUseIrrigation, InputUseFertiliser
+from ..forms.page7 import *
 from ..models.household_models import Household
 from .common import get_search_form
 
@@ -20,79 +21,58 @@ def init(request):
         return edit(request, request.session['household'])
 
 
-number_of_forms = 0
-
-
 @login_required(login_url='login')
 def edit(request, pk):
-    global number_of_forms
-    formset = formset_factory(InputUseForm, formset=BaseFormSet, extra=3)
-    form_save = False
-    if request.method == 'POST':
-        forms = formset(request.POST)
-        number_of_forms = forms.__len__()
-        if forms.is_valid():
-            for form in forms:
-                form_save = form.save(pk, request.POST) or form_save
-        if form_save:
+    request.session['household'] = pk
+    if request.method == "POST":
+
+        manure_formset = formset_factory(InputUseManureForm, formset=BaseFormSet, extra=1, min_num=1)
+        seeds_formset = formset_factory(InputUseSeedsForm, formset=BaseFormSet, extra=1, min_num=1)
+        plant_protection_formset = formset_factory(InputUsePlantProtectionForm, formset=BaseFormSet, extra=1, min_num=1)
+        irrigation_formset = formset_factory(InputUseIrrigationForm, formset=BaseFormSet, extra=1, min_num=1)
+        fertiliser_formset = formset_factory(InputUseFertiliserForm, formset=BaseFormSet, extra=1, min_num=1)
+
+        manure_forms = manure_formset(request.POST, prefix='manure')
+        seeds_forms = seeds_formset(request.POST, prefix='seeds')
+        plant_protection_forms = plant_protection_formset(request.POST, prefix='plant_protection')
+        irrigation_forms = irrigation_formset(request.POST, prefix='irrigation')
+        fertiliser_forms = fertiliser_formset(request.POST, prefix='fertiliser')
+
+        if save_formset(manure_forms, InputUseManure, pk) \
+                and save_formset(seeds_forms, InputUseSeeds, pk) \
+                and save_formset(plant_protection_forms, InputUsePlantProtection, pk) \
+                and save_formset(fertiliser_forms, InputUseFertiliser, pk) \
+                and save_formset(irrigation_forms,
+                                 InputUseIrrigation, pk):
             messages.success(request, 'Data saved successfully')
-    formset_initial_data = collate_columns(pk, number_of_forms)
-    if (len(formset_initial_data) > 0):
-        formset = formset(formset_initial_data)
-    return render(request, 'page7.html', {'formset': formset, 'search_form': get_search_form()})
+            return redirect('page7_edit', pk)
+
+    manure_formset_factory = modelformset_factory(InputUseManure, form=InputUseManureForm, extra=1)
+    result_set_manure = InputUseManure.objects.filter(household=pk)
+    formset_manure = manure_formset_factory(prefix='manure',queryset=result_set_manure)
 
 
-def save_page7_form(form, household_id, model):
-    if form.is_valid():
-        if form.has_changed():
-            record = form.save(commit=False)
-            try:
-                form_crop_code = form.data['crop_code']
-                form_id = model.objects.get(crop_code=form_crop_code).id
-            except Exception:
-                form_id = None
-            if form_id:
-                record.id = int(form_id)
-            record.household = get_object_or_none(Household, household_id)
-            record.save()
-            return True
-        return True
-    return False
+    seeds_formset_factory= modelformset_factory(InputUseSeeds, form=InputUseSeedsForm, extra=1)
+    result_set_seeds = InputUseSeeds.objects.filter(household=pk)
+    formset_seeds = seeds_formset_factory(prefix='seeds',queryset=result_set_seeds)
 
 
-def collate_columns(pk, number_of_forms):
-    manure_resultset = InputUseManure.objects.filter(household=pk)
-    fertiliser_resultset = InputUseFertiliser.objects.filter(household=pk)
-    plant_protection_resultset = InputUsePlantProtectionIrrigation.objects.filter(household=pk)
-    seeds_resultset = InputUseSeeds.objects.filter(household=pk)
-    temp_data = [{'form-TOTAL_FORMS': number_of_forms, 'form-INITIAL_FORMS': '0', 'form-MIN_NUM_FORMS': '0',
-                  'form-MAX_NUM_FORMS': '1000',
-                  'form-' + str(counter) + '-crop_code': manure.crop_code,
-                  'form-' + str(counter) + '-manure_type': manure.manure_type,
-                  'form-' + str(counter) + '-manure_home_quantity': manure.manure_home_quantity,
-                  'form-' + str(counter) + '-manure_home_unit': manure.manure_home_unit,
-                  'form-' + str(counter) + '-manure_home_value': manure.manure_home_value,
-                  'form-' + str(counter) + '-manure_purchased_quantity': manure.manure_purchased_quantity,
-                  'form-' + str(counter) + '-manure_purchased_unit': manure.manure_purchased_unit,
-                  'form-' + str(counter) + '-manure_purchased_price': manure.manure_purchased_price,
+    plant_protection_formset_factory= modelformset_factory(InputUsePlantProtection, form=InputUsePlantProtectionForm, extra=1)
+    result_set_plant_protection = InputUsePlantProtection.objects.filter(household=pk)
+    formset_plant_protection = plant_protection_formset_factory(prefix='plant_protection',queryset=result_set_plant_protection)
 
-                  'form-' + str(counter) + '-plant_protection_quantity': plant.plant_protection_quantity,
-                  'form-' + str(counter) + '-plant_protection_price': plant.plant_protection_price,
-                  'form-' + str(counter) + '-irrigation_source': plant.irrigation_source,
-                  'form-' + str(counter) + '-irrigation_price': plant.irrigation_price,
 
-                  'form-' + str(counter) + '-fertiliser_type': fertiliser.fertiliser_type,
-                  'form-' + str(counter) + '-fertiliser_quantity': fertiliser.fertiliser_quantity,
-                  'form-' + str(counter) + '-fertiliser_price': fertiliser.fertiliser_price,
+    irrigation_formset_factory= modelformset_factory(InputUseIrrigation, form=InputUseIrrigationForm, extra=1)
+    result_set_irrigation = InputUseIrrigation.objects.filter(household=pk)
+    formset_irrigation = irrigation_formset_factory(prefix='irrigation',queryset=result_set_irrigation)
 
-                  'form-' + str(counter) + '-home_produced_quantity': seed.home_produced_quantity,
-                  'form-' + str(counter) + '-home_produced_value': seed.home_produced_value,
-                  'form-' + str(counter) + '-purchased_quantity': seed.purchased_quantity,
-                  'form-' + str(counter) + '-purchased_price': seed.purchased_price}
-                 for counter, manure in enumerate(manure_resultset) for fertiliser in fertiliser_resultset for plant in
-                 plant_protection_resultset for seed in seeds_resultset
-                 if manure.crop_code == fertiliser.crop_code == plant.crop_code == seed.crop_code]
+    fertiliser_formset_factory= modelformset_factory(InputUseFertiliser, form=InputUseFertiliserForm, extra=1)
+    result_set_fertiliser = InputUseFertiliser.objects.filter(household=pk)
+    formset_fertiliser = fertiliser_formset_factory(prefix='fertiliser',queryset=result_set_fertiliser)
 
-    data = dict(pair for data in temp_data for pair in data.items())
-
-    return data
+    return render(request, 'page7.html', {'formset_manure': formset_manure,
+                                           'formset_seeds': formset_seeds,
+                                           'formset_plant_protection': formset_plant_protection,
+                                           'formset_irrigation': formset_irrigation,
+                                           'formset_fertiliser': formset_fertiliser,
+                                           'search_form': get_search_form()})

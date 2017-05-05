@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
-from .common import *
 
 
 @login_required(login_url='login')
@@ -36,6 +35,7 @@ def new_internal(request):
             return redirect('household_edit', pk=household.pk)
     else:
         form = HouseholdForm()
+    from fas_questionnaire.views.common import get_search_form
     return render(request, 'household.html', {'household_form': form, 'search_form':get_search_form()})
 
 

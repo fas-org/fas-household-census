@@ -3,7 +3,7 @@
     "model": "fas_questionnaire.assetcategory",
     "pk": 1,
     "fields": {
-      "asset_category": "Electric Equipments"
+      "asset_category": "ElectricEquipments"
     }
   },
   {
@@ -17,7 +17,7 @@
     "model": "fas_questionnaire.assetcategory",
     "pk": 3,
     "fields": {
-      "asset_category": "Means Of Transport"
+      "asset_category": "MeansOfTransport"
     }
   },
   {
@@ -45,7 +45,7 @@
     "model": "fas_questionnaire.assetcategory",
     "pk": 7,
     "fields": {
-      "asset_category": "Other Domestic Durable Goods"
+      "asset_category": "OtherDomesticDurableGoods"
     }
   }
 ]

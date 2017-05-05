@@ -40,7 +40,6 @@ def save_forms(request, forms):
 
 def save_formset(forms, model, household_id, **kwargs): #Pass key-word args for filter
     """add, update and delete models using formset"""
-    print(forms.is_valid());
     if forms.is_valid():
         active_ids = []
         for form in forms:

@@ -1,3 +1,4 @@
+from fas_questionnaire.models.page5 import CroppingPatternAndCropSchedule
 from . import household as household
 from django.contrib.auth.decorators import login_required
 from ..models.household_models import Household
@@ -121,3 +122,11 @@ def get_comments_formset(household_id, page_no):
     comments_formset = modelformset_factory(Comments, form=CommentsForm, extra=1)
     comments_result_set = Comments.objects.filter(household_id=household_id, page_no=page_no)
     return comments_formset(queryset=comments_result_set, prefix='comments')
+
+
+def get_crop_schedule(household_id):
+    return CroppingPatternAndCropSchedule.objects.filter(household=household_id)
+
+
+def get_crop_first_digit_as_widget(household_id, field_name):
+    return {field_name: forms.Select(choices= [('', '-----')]+([(c.id, getattr(c, field_name)) for c in get_crop_schedule(household_id)]))}

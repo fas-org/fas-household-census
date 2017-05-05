@@ -54,28 +54,35 @@ class ModeOfTransport(models.Model):
 class Production(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    crop_number_first_digit = models.ForeignKey(CroppingPatternAndCropSchedule, models.DO_NOTHING,db_column='first digit',to_field= 'crop_number_first_digit',related_name='production_crop_number_first_digit',null=True, blank=True)
-    crop_number_second_digit = models.ForeignKey(CroppingPatternAndCropSchedule, models.DO_NOTHING,db_column='second digit', to_field='crop_number_second_digit',related_name='production_crop_number_second_digit',null=True, blank=True)
-    crop = models.ForeignKey(Crop, on_delete=models.CASCADE, blank=True, null=True)
+
+    crop_number_first_digit = models.FloatField(db_column='production_crop_number_first_digit', null=True, blank=True)
+    crop_number_second_digit = models.FloatField(db_column='production_crop_number_second_digit', null=True, blank=True)
+    crop = models.CharField(db_column='crop', max_length=100, null=True, blank=True)
 
     production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    unit_main_production = models.ForeignKey(Units, models.DO_NOTHING,db_column='Unit, production',blank=True, null=True,
+    unit_main_production = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, production', blank=True,
+                                             null=True,
                                              related_name='unit_main_production')
-    unit_by_production = models.ForeignKey(Units, models.DO_NOTHING,db_column='Unit, by production' ,blank=True, null=True,
+    unit_by_production = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, by production', blank=True,
+                                           null=True,
                                            related_name='unit_by_production')
     production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
 
     consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    unit_main_consumption = models.ForeignKey(Units, models.DO_NOTHING,db_column='Unit, main consumption', blank=True, null=True,
+    unit_main_consumption = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, main consumption', blank=True,
+                                              null=True,
                                               related_name="unit_main_consumption")
-    unit_by_consumption = models.ForeignKey(Units, models.DO_NOTHING,db_column='Unit, by consumption', blank=True, null=True,
+    unit_by_consumption = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, by consumption', blank=True,
+                                            null=True,
                                             related_name='unit_by_consumption')
     consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
 
     rent_and_wages_main_product = models.FloatField(db_column='Rent and Wages, main product', blank=True, null=True)
-    unit_main_rent_and_wages = models.ForeignKey(Units, models.DO_NOTHING,db_column='Unit, main rent and wages', blank=True, null=True,
+    unit_main_rent_and_wages = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, main rent and wages',
+                                                 blank=True, null=True,
                                                  related_name="unit_main_rent_and_wages")
-    unit_by_rent_and_wages = models.ForeignKey(Units,models.DO_NOTHING, db_column='Unit, by rent and wages', blank=True, null=True,
+    unit_by_rent_and_wages = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, by rent and wages',
+                                               blank=True, null=True,
                                                related_name='unit_by_rent_and_wages')
     rent_and_wages_by_product = models.CharField(db_column='rent and wages, by product', max_length=50, blank=True,
                                                  null=True)
@@ -96,12 +103,12 @@ class SalesOfProduction(models.Model):
     sale_number = models.FloatField(db_column='Sale number', blank=True, null=True)
     commodity_sold = models.CharField(db_column='Commodity sold', max_length=50, blank=True, null=True)
     quantity = models.FloatField(db_column='Quantity', blank=True, null=True)
-    unit_of_quantity = models.ForeignKey(Units,models.DO_NOTHING, db_column='Unit of quantity', blank=True, null=True,
+    unit_of_quantity = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit of quantity', blank=True, null=True,
                                          related_name='unit_of_quantity')
     month_of_disposal = models.ForeignKey(Month, models.DO_NOTHING, db_column='Month of disposal', blank=True,
                                           null=True)
     price = models.FloatField(db_column='Price', blank=True, null=True)
-    unit_of_price = models.ForeignKey(Units,models.DO_NOTHING, db_column='Unit of price', blank=True, null=True,
+    unit_of_price = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit of price', blank=True, null=True,
                                       related_name='unit_of_price')
     where_marketed = models.ForeignKey(WhereMarketed, models.DO_NOTHING, db_column='Where marketed', blank=True,
                                        null=True)

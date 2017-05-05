@@ -1,4 +1,4 @@
-from fas_questionnaire.views.common import save_formset, get_search_form
+from fas_questionnaire.views.common import save_formset, get_search_form, get_crop_first_digit_as_widget
 from ..forms.page6 import *
 from ..models.page6 import *
 from django.shortcuts import render, redirect
@@ -20,7 +20,6 @@ def init(request):
 def edit(request, pk):
     request.session['household'] = pk
     if request.method == 'POST':
-        # production_formset=formset_factory()
         production_formset = formset_factory(ProductionForm, formset=BaseFormSet, extra=5)
         production_forms = production_formset(request.POST, prefix='production',auto_id=False)
 
@@ -31,7 +30,9 @@ def edit(request, pk):
             messages.success(request, 'Data saved successfully')
         return redirect('page6_edit', pk)
 
-    production_model_formset = modelformset_factory(Production, form=ProductionForm, extra=5)
+    z = get_crop_first_digit_as_widget(pk,'crop_number_first_digit').copy()
+    z.update(get_crop_first_digit_as_widget(pk,'crop_number_second_digit'))
+    production_model_formset = modelformset_factory(Production, form=ProductionForm, extra=5,widgets=z)
     result_set = Production.objects.filter(household=pk)
     production_formset = production_model_formset(queryset=result_set, prefix='production')
 

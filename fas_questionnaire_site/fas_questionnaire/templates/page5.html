@@ -20,7 +20,7 @@
 {% csrf_token %}
 <h4 class='text-center'>6. PRODUCTION AND SALES ON OPERATIONAL HOLDING IN THE LAST AGRICULTURAL YEAR</h4>
 <b>A. Cropping pattern and crop schedule</b><br>
-<div class="table table-responsive">
+<div class="">
 <div class='row flex-row'>
     <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Crop No.</label>
@@ -60,7 +60,7 @@
 {{ production_and_sales_on_operational_holding_formset.management_form }}
 {% for production_and_sales_on_operational_holding_form in production_and_sales_on_operational_holding_formset.forms %}
 <div class='row flex-row croppingpattern_formset_row flex-row' >
-    <div class='col-md-1 table-cell long-div flex-column-1'>
+    <div class='col-md-1 long-div flex-column-1'>
         <div class='row'>
         <div class='col-md-6 table-cell flex-column'>
             {{ production_and_sales_on_operational_holding_form.crop_number_first_digit }}
@@ -104,7 +104,7 @@
 </div>
 {% endfor %}
 </div>
-    <p><sup>*</sup> <small>Specify if drip or sprinkler irrigation was used. Also, specify clearly if only part of the area was irrigated from any source.</small></p>
+    <p><sup>*</sup> <small>&nbsp;&nbsp;&nbsp; Specify if drip or sprinkler irrigation was used. Also, specify clearly if only part of the area was irrigated from any source.</small></p>
 <br>
 <div class="row flex-row">
     <div class="col-md-12">

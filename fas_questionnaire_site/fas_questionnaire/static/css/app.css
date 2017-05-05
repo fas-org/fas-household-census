@@ -173,3 +173,6 @@ div.comments textarea {
 .readonly-form .add-row, .readonly-form .delete-row, .readonly-form .cross-width {
     display: none;
 }
+.justify-content-start {
+    justify-content: flex-start;
+}

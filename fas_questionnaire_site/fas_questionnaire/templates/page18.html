@@ -14,6 +14,9 @@
 {% csrf_token %}
 
 <div class="row flex-row">
+    <div class="col-md-1 table-cell flex-column">
+        <label>Serial No.</label>
+    </div>
     <div class="col-md-5 table-cell flex-column">
         <label>Description of assets</label>
     </div>
@@ -43,9 +46,6 @@
             </div>
         </div>
     </div>
-    <div class="col-md-1 table-cell flex-column">
-        <label>Serial No.</label>
-    </div>
     <div class="cross-width">
     </div>
 </div>
@@ -53,6 +53,9 @@
 {{ asset_acquisition_formset.management_form }}
 {% for asset_acquisition_form in asset_acquisition_formset.forms %}
 <div class="row asset_acquisition_formset_row flex-row">
+    <div class="col-md-1 table-cell flex-column">
+        {{ asset_acquisition_form.serial_no }}
+    </div>
     <div class="col-md-5 table-cell flex-column">
         {{ asset_acquisition_form.description_of_asset }}
     </div>
@@ -71,10 +74,6 @@
         <div class='col-md-6 table-cell flex-column'>
             {{ asset_acquisition_form.price_paid }}
         </div>
-    </div>
-
-    <div class="col-md-1 table-cell flex-column">
-        {{ asset_acquisition_form.serial_no }}
     </div>
 </div>
 {% endfor %}

@@ -11,94 +11,93 @@
 
     {% csrf_token %}
     <h4 class='text-center'> 18. ANIMAL RESOURCES </h4>
-
-    <h4 class='text-center'> A. Inventory </h4>
-    <div class='row flex-row'>
-        <div class='col-md-9 flex-column'>
-            <div class='col-md-12 table-cell flex-column'>
-                <label>Description</label>
-            </div>
+    <div class="row flex-row">
+        <div class="col-md-7">
+            <label>A.Inventory</label>
             <div class='row flex-row'>
-                <div class='col-md-4 table-cell flex-column'>
-                    <label>Type of livestock</label>
-                </div>
-                <div class="col-md-4 flex-column">
+                <div class='col-md-9 flex-column'>
                     <div class='col-md-12 table-cell flex-column'>
-                        <label>For cattle only</label>
+                        <label>Description</label>
                     </div>
                     <div class='row flex-row'>
-                        <div class='col-md-6 table-cell flex-column'>
-                            <label>Sex</label>
+                        <div class='col-md-4 table-cell flex-column'>
+                            <label>Type of livestock</label>
                         </div>
-                        <div class='col-md-6 table-cell flex-column'>
-                            <label>Adult / Calf</label>
+                        <div class="col-md-4 flex-column">
+                            <div class='col-md-12 table-cell flex-column'>
+                                <label>For cattle only</label>
+                            </div>
+                            <div class='row flex-row'>
+                                <div class='col-md-6 table-cell flex-column'>
+                                    <label>Sex</label>
+                                </div>
+                                <div class='col-md-6 table-cell flex-column'>
+                                    <label>Adult / Calf</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-4 table-cell flex-column'>
+                            <label>Breed</label>
                         </div>
                     </div>
                 </div>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>No</label>
+                </div>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>Age (for cattle only)</label>
+                </div>
 
-                <div class='col-md-4 table-cell flex-column'>
-                    <label>Breed</label>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>Total present value</label>
+                </div>
+                <div class="cross-width">
                 </div>
             </div>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>No</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Age (for cattle only)</label>
-        </div>
 
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Total present value</label>
-        </div>
-        <div class="cross-width">
-        </div>
-    </div>
-
-    {{ animal_inventory_formset.management_form }}
-    {% for inventory_form in animal_inventory_formset.forms %}
-        <div class='row animal_inventory_formset_row flex-row'>
-            <div class='col-md-9'>
-                <div class='row flex-row'>
-                    <div class='col-md-4 table-cell'>
-                        {{ inventory_form.type }}
-                    </div>
-                    <div class="col-md-4 flex-column">
+            {{ animal_inventory_formset.management_form }}
+            {% for inventory_form in animal_inventory_formset.forms %}
+                <div class='row animal_inventory_formset_row flex-row'>
+                    <div class='col-md-9'>
                         <div class='row flex-row'>
-                            <div class='col-md-6 table-cell'>
-                                {{ inventory_form.sex }}
+                            <div class='col-md-4 table-cell'>
+                                {{ inventory_form.type }}
                             </div>
-                            <div class='col-md-6 table-cell'>
-                                {{ inventory_form.cattle_type }}
+                            <div class="col-md-4 flex-column">
+                                <div class='row flex-row'>
+                                    <div class='col-md-6 table-cell'>
+                                        {{ inventory_form.sex }}
+                                    </div>
+                                    <div class='col-md-6 table-cell'>
+                                        {{ inventory_form.cattle_type }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='col-md-4 table-cell'>
+                                {{ inventory_form.breed }}
                             </div>
                         </div>
+
+                    </div>
+                    <div class='col-md-1 table-cell'>
+                        {{ inventory_form.no }}
+                    </div>
+                    <div class='col-md-1 table-cell'>
+                        {{ inventory_form.age }}
                     </div>
 
-                    <div class='col-md-4 table-cell'>
-                        {{ inventory_form.breed }}
+                    <div class='col-md-1 table-cell'>
+                        {{ inventory_form.total_present_value }}
                     </div>
+                    {{ inventory_form.id.as_hidden }}
                 </div>
-
-            </div>
-            <div class='col-md-1 table-cell'>
-                {{ inventory_form.no }}
-            </div>
-            <div class='col-md-1 table-cell'>
-                {{ inventory_form.age }}
-            </div>
-
-            <div class='col-md-1 table-cell'>
-                {{ inventory_form.total_present_value }}
-            </div>
-            {{ inventory_form.id.as_hidden }}
+            {% endfor %}
         </div>
-    {% endfor %}
 
-    <br><br>
-    <div class='row flex-row'>
-        <div class="col-md-6">
+        <div class="col-md-3 col-md-offset-1">
+            <label>B.Feed</label>
             {% csrf_token %}
-            <h4 class='text-center'> B.Feed</h4>
             <div class='row flex-row'>
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Type of feed</label>
@@ -136,9 +135,12 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col-md-5 col-md-offset-1">
+    </div>
+    <br><br>
+    <div class='row flex-row'>
+        <div class="col-md-3">
+            <label>C.Other Expenditure</label>
             {% csrf_token %}
-            <h4 class='text-center'> C.Other Expenditure</h4>
             <div class='row flex-row'>
                 <div class='col-md-6 table-cell flex-column'>
                     <label>Item</label>
@@ -163,11 +165,11 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
-    <br>
-    {% csrf_token %}
-    <h4 class='text-center'> D.Output and income</h4>
+    <div class="col-md-8 col-md-offset-1">
+        <label>D.Output and income</label>
+        {% csrf_token %}
     <div class='row flex-row'>
+
         <div class='col-md-4 table-cell flex-column'>
             <label>Product</label>
         </div>
@@ -235,10 +237,11 @@
             </div>
         </div>
     {% endfor %}
-
-
-    <br><br>
     {% csrf_token %}
+    </div>
+    </div>
+    <br>
+
     <h4 class='text-center'>19A. INCOME FROM BUSINESS ACTIVITIES OTHER THAN CROP PRODUCTION</h4>
     <div class='row flex-row'>
         <div class='col-md-2 table-cell flex-column'>

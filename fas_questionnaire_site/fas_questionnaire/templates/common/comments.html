@@ -1,0 +1,28 @@
+<br>
+<h4 class="text-center">Comments</h4>
+<div class="row flex-row">
+    <div class="col-md-1 table-cell flex-column">
+        <label>Comment Number</label>
+    </div>
+    <div class="col-md-11 table-cell flex-column">
+        <label>Comments</label>
+    </div>
+    <div class="cross-width"></div>
+</div>
+
+{% csrf_token %}
+{{ comments.management_form }}
+{% for comments_form in comments.forms %}
+<div class="row flex-row comments-form">
+    <div class="col-md-1 table-cell comments-input-field">
+        {{ comments_form.comment_number }}
+    </div>
+    <div class="col-md-11 table-cell comments-input-field">
+        {{ comments_form.comments }}
+    </div>
+</div>
+{% endfor %}
+<br><br>
+<script type="text/javascript">
+    $('.comments-form').formset();
+</script>

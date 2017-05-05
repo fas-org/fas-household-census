@@ -23,7 +23,7 @@
 <div class="table table-responsive">
 <div class='row flex-row'>
     <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Serial No.</label>
+        <label>Crop No.</label>
     </div>
     <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Corp</label>
@@ -49,61 +49,11 @@
     <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Source of irrigation<sup>*</sup></label>
     </div>
-    <div class='col-md-3 flex-row-wrap-1'>
-        <div class='col-md-12 table-cell flex-column'>
-            <p class='text-center'>Production</p>
-        </div>
-        <div class='row flex-row'>
-            <div class='col-md-4 table-cell'>
-                <label>Grain/Main Products</label>
-            </div>
-            <div class='col-md-4 table-cell'>
-                <label>Straw and other by-products</label>
-            </div>
-             <div class='col-md-4 table-cell long-div flex-column'>
-        <label>Unit Production</label>
-    </div>
-        </div>
-    </div>
-    <div class='col-md-3 flex-row-wrap-1'>
-        <div class='col-md-12 table-cell'>
-            <p class='text-center'>Household consumption including amount kept for use as seeds</p>
-        </div>
-        <div class='row flex-row'>
-            <div class='col-md-4 table-cell'>
-                Grain/Main products
-            </div>
-            <div class='col-md-4 table-cell'>
-                <label>Straw and other by-products</label>
-            </div>
-            <div class='col-md-4 table-cell long-div flex-column'>
-        <label>Unit Consumption</label>
-    </div>
-        </div>
-    </div>
+
     <div class='col-md-1 table-cell long-div flex-column-1'>
         <label>Comments</label>
     </div>
 
-
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Loans Advances Taken From Buyer</label>
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Principal</label>
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Interest On Loans Advances</label>
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Output Price If Fixed In Advance</label>
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Other Conditions</label>
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        <label>Crop Clean</label>
-    </div>
     <div class="cross-width"></div>
 </div>
 
@@ -111,7 +61,14 @@
 {% for production_and_sales_on_operational_holding_form in production_and_sales_on_operational_holding_formset.forms %}
 <div class='row flex-row croppingpattern_formset_row flex-row' >
     <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.serial_no}}
+        <div class='row'>
+        <div class='col-md-6 table-cell flex-column'>
+            {{ production_and_sales_on_operational_holding_form.crop_number_first_digit }}
+        </div>
+        <div class='col-md-6 table-cell flex-column'>
+            {{ production_and_sales_on_operational_holding_form.crop_number_second_digit }}
+        </div>
+            </div>
     </div>
     <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.crop}}
@@ -137,54 +94,12 @@
     <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.source_of_irrigation}}
     </div>
-    <div class='col-md-3 flex-row-wrap-1'>
-        <div class='row flex-row'>
-            <div class='col-md-4 table-cell flex-column'>
-                {{production_and_sales_on_operational_holding_form.production_main_product}}
-            </div>
-            <div class='col-md-4 table-cell flex-column'>
-                {{production_and_sales_on_operational_holding_form.production_by_product}}
-            </div>
-            <div class='col-md-4 table-cell long-div flex-column'>
-        {{production_and_sales_on_operational_holding_form.unit_production}}
-    </div>
-        </div>
-    </div>
-    <div class='col-md-3 flex-row-wrap-1'>
-        <div class='row flex-row'>
-            <div class='col-md-4 table-cell flex-column'>
-                {{production_and_sales_on_operational_holding_form.consumption_main_product}}
-            </div>
-            <div class='col-md-4 table-cell flex-column'>
-                {{production_and_sales_on_operational_holding_form.consumption_by_product}}
-            </div>
-              <div class='col-md-4 table-cell long-div flex-column'>
-        {{production_and_sales_on_operational_holding_form.unit_consumption}}
-    </div>
-        </div>
-    </div>
+
     <div class='col-md-1 table-cell long-div flex-column-1'>
         {{production_and_sales_on_operational_holding_form.comments}}
     </div>
 
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.loans_advances_taken_from_buyer}}
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.principal}}
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.interest_on_loans_advances}}
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.output_price_if_fixed_in_advance}}
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.other_conditions}}
-    </div>
-    <div class='col-md-1 table-cell long-div flex-column-1'>
-        {{production_and_sales_on_operational_holding_form.crop_clean}}
-    </div>
+
 {{ production_and_sales_on_operational_holding_form.id.as_hidden }}
 </div>
 {% endfor %}

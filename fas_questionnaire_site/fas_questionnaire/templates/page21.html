@@ -36,6 +36,7 @@
         <div class="col-md-4 table-cell">
             {{immovables_form.value_of_assets}}
         </div>
+    {{ immovables_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -68,6 +69,7 @@
         <div class="col-md-4 table-cell">
             {{meansoftransport_form.value_of_assets}}
         </div>
+    {{ meansoftransport_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -100,6 +102,7 @@
         <div class="col-md-4 table-cell">
             {{furniture_form.value_of_assets}}
         </div>
+    {{ furniture_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -132,6 +135,7 @@
         <div class="col-md-4 table-cell">
             {{electricEquipments_form.value_of_assets}}
         </div>
+    {{ electricEquipments_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -164,6 +168,7 @@
         <div class="col-md-4 table-cell">
             {{otherDomesticDurableGoods_form.value_of_assets}}
         </div>
+    {{ otherDomesticDurableGoods_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -196,6 +201,7 @@
         <div class="col-md-4 table-cell">
             {{inventories_form.value_of_assets}}
         </div>
+    {{ inventories_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -228,6 +234,7 @@
         <div class="col-md-4 table-cell">
             {{miscellaneous_form.value_of_assets}}
         </div>
+    {{ miscellaneous_form.id.as_hidden }}
     </div>
     {% endfor %}
 
@@ -241,6 +248,7 @@ give details</label>
         <div class="col-md-12 flex-column">
             {{land_details.land_registered_details}}
         </div>
+        {{ land_details.id.as_hidden }}
     </div>
 
 <script src="{% static 'js/jquery.formset.js' %}"></script>

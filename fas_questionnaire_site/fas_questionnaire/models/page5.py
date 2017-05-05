@@ -41,8 +41,8 @@ class HomesteadLand(models.Model):
 class CroppingPatternAndCropSchedule(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    crop_number_first_digit = models.FloatField(db_column='first digit', null=True, blank=True)
-    crop_number_second_digit = models.FloatField(db_column='second digit', null=True, blank=True)
+    crop_number_first_digit = models.FloatField(db_column='first digit', unique=True, null=True, blank=True)
+    crop_number_second_digit = models.FloatField(db_column='second digit', unique=True, null=True, blank=True)
     crop = models.ForeignKey(Crop, models.DO_NOTHING, db_column='Crop', blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)
     tenurial_status = models.ForeignKey(Tenurial, models.DO_NOTHING, db_column='tenurial status', blank=True, null=True)
@@ -61,9 +61,6 @@ class CroppingPatternAndCropSchedule(models.Model):
     class Meta:
         managed = True
         db_table = 'cropping pattern and crop schedule'
-
-    def __str__(self):
-        return str(self.crop_number_first_digit)
 
 
 class CroppingPatternAndCropScheduleComments(models.Model):

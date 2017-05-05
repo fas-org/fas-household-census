@@ -2,208 +2,270 @@
 {% load static %}
 
 {% block content %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-success">
-    <strong>{{ message }}</strong>
-</div>
-{% endfor %}
-{% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
 
-{% for dict in production_and_sales_formset.errors %}
-{% for error in dict.values %}
-<div class="alert alert-danger">
-    <strong>{{ error|escape }}</strong>
-</div>
-{% endfor %}
-{% endfor %}
+    {% for dict in sales_formset.errors %}
+        {% for error in dict.values %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
     {% csrf_token %}
     <br>
-    <b>B. Production And Sales</b>
+    <b>B. Production</b>
     <br>
     <br>
+    <div class="flex-row">
 
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell long-div'>
-             <label>Serial No.</label>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Crop No.</label>
         </div>
         <div class='col-md-1 table-cell long-div'>
-             <label> Crop </label>
+            <label> Crop </label>
         </div>
-        <div class='col-md-11'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Sales of grain/main product</p>
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-12 table-cell flex-column'>
+                <p class='text-center'>Production</p>
             </div>
             <div class='row flex-row'>
-                <div class='col-md-1 table-cell long-div'>
-                    <label>Month of Disposal</label>
+                <div class='col-md-4 table-cell'>
+                    <label>Grain/Main Products</label>
                 </div>
-                <div class='col-md-2 table-cell long-div'>
-                   <label>Quantity</label>
+                <div class='col-md-2 table-cell long-div flex-column'>
+                    <lablel>Units</lablel>
                 </div>
-                <div class='col-md-2 table-cell long-div'>
-                    <label>Price</label>
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    <label>Where Marketed</label>
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    <label>Marketing Agency</label>
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    <label>Marketing Agency Value</label>
-                </div>
-                <div class='col-md-2 table-cell long-div'>
-                    <div class='col-md-12 table-cell'>
-                        <p class='text-center'>Transport to the Market</p>
-                    </div>
-                    <div class='row flex-row'>
-                        <div class='col-md-6 table-cell long-div'>
-                            <label>Mode</label>
-                        </div>
-                        <div class='col-md-6 table-cell long-div'>
-                            <label>Cost Incurred</label>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    <label>Other marketing costs</label>
-                </div>
-                <div class='col-md-2 table-cell long-div'>
-                    <label>was the price fixed before harvest?</label>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-1'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Sales of by-products</p>
-            </div>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell long-div'>
-                     <label>Amt</label>
-                </div>
-                <div class='col-md-6 table-cell long-div'>
-                   <label>Price</label>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-2'>
-            <div class='col-md-12 table-cell'>
-                <p class='text-center'>Quantity used for payment of rent and wages</p>
-            </div>
-            <div class='row flex-row'>
-                <div class='col-md-6 table-cell long-div'>
-                   <label>Grain Main Product</label>
-                </div>
-                <div class='col-md-6 table-cell long-div'>
+                <div class='col-md-4 table-cell'>
                     <label>Straw and other by-products</label>
                 </div>
+                <div class='col-md-2 table-cell long-div flex-column'>
+                    <label>Units </label>
+                </div>
             </div>
         </div>
-        <div class='col-md-1 table-cell long-div'>
-            <label> Sale Number </label>
+
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-12 table-cell flex-column'>
+                <p class='text-center'>Household Consumption</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-4 table-cell'>
+                    <label>Grain/Main Products</label>
+                </div>
+                <div class='col-md-2 table-cell long-div flex-column'>
+                    <label>Units</label>
+                </div>
+                <div class='col-md-4 table-cell'>
+                    <label>Straw and other by-products</label>
+                </div>
+                <div class='col-md-2 table-cell long-div flex-column'>
+                    <label>Units</label>
+                </div>
+            </div>
         </div>
-        <div class='col-md-1 table-cell long-div'>
-            <label> Commodity sold </label>
+
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-12 table-cell flex-column'>
+                <p class='text-center'>Rent nand Wages</p>
+            </div>
+            <div class='row flex-row'>
+                <div class='col-md-4 table-cell flex-column'>
+                    <label>Grain/Main Products</label>
+                </div>
+                <div class='col-md-2 table-cell long-div flex-column'>
+                    <label>Units </label>
+                </div>
+                <div class='col-md-4 table-cell flex-column'>
+                    <label>Straw and other by-products</label>
+                </div>
+                <div class='col-md-4 table-cell long-div flex-column'>
+                    <label>Units</label>
+                </div>
+            </div>
         </div>
-        <div class='col-md-1 table-cell long-div'>
-            <label> Comments</label>
+        <div class="col-md-1  table-cell flex-column">
+            <label>Notes</label>
         </div>
         <div class="cross-width"></div>
     </div>
 
-    {{ production_and_sales_formset.management_form }}
-    {% for production_and_sales_form in production_and_sales_formset.forms %}
-    <div class='row productionsales_formset_row flex-row'>
-        <div class='col-md-1 table-cell'>
-            {{production_and_sales_form.crop_serial_no}}
-        </div>
-        <div class='col-md-1 table-cell '>
-            {{ production_and_sales_form.crop }}
-        </div>
-        <div class='col-md-11'>
-            <div class='row flex-row'>
-                <div class='col-md-1 table-cell'>
-                    {{production_and_sales_form.month_of_disposal}}
-                </div>
-                <div class='col-md-2 table-cell long-div'>
-                       <div class="col-md-6 table-cell">
-                        {{ production_and_sales_form.quantity }}
-                    </div>
-                    <div class="col-md-6 table-cell">
-                        {{ production_and_sales_form.unit_of_quantity }}
-                    </div>
-                </div>
-                <div class='col-md-2 table-cell long-div'>
-                    <div class="col-md-5 table-cell">
-                        {{ production_and_sales_form.price }}
-                    </div>
-                    <div class="col-md-7 table-cell">
-                        {{ production_and_sales_form.unit_of_price }}
-                    </div>
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    {{production_and_sales_form.where_marketed}}
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    {{production_and_sales_form.marketing_agency}}
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    {{production_and_sales_form.marketing_agency_value}}
-                </div>
-                <div class='col-md-2 table-cell long-div'>
-                    <div class='row flex-row'>
-                        <div class='col-md-6 table-cell long-div'>
-                            {{production_and_sales_form.sales_of_main_product_transportation_mode}}
-                        </div>
-                        <div class='col-md-6 table-cell long-div'>
-                            {{production_and_sales_form.sales_of_main_product_transportation_cost}}
-                        </div>
-                    </div>
-                </div>
-                <div class='col-md-1 table-cell long-div'>
-                    {{production_and_sales_form.sales_of_main_product_other_marketing_costs}}
-                </div>
-                <div class='col-md-2 table-cell long-div'>
-                    {{production_and_sales_form.if_price_determined_in_advance}}
-                </div>
-            </div>
-        </div>
-        <div class='col-md-1'>
-        <div class='row flex-row'>
-            <div class='col-md-6 table-cell long-div'>
-                {{production_and_sales_form.sales_of_by_product_amt}}
-            </div>
-            <div class='col-md-6 table-cell long-div'>
-                {{production_and_sales_form.sales_of_by_product_price}}
-            </div>
-        </div>
-      </div>
-        <div class='col-md-2'>
-        <div class='row flex-row'>
-            <div class='col-md-6 table-cell long-div'>
-                {{production_and_sales_form.quantity_of_main_product_used_for_payment}}
-            </div>
-            <div class='col-md-6 table-cell long-div'>
-                {{production_and_sales_form.quantity_of_by_product_used_for_payment}}
-            </div>
-        </div>
-    </div>
-    <div class='col-md-1 table-cell long-div'>
-        {{ production_and_sales_form.sale_number }}
-    </div>
-    <div class='col-md-1 table-cell long-div'>
-        {{ production_and_sales_form.commodity_sold }}
-    </div>
-    <div class="col-md-1 table-cell long-div">
-        {{ production_and_sales_form.comments }}
-    </div>
-      {{ production_and_sales_form.id.as_hidden }}
-    </div>
- {% endfor %}
+    {{ production_formset.management_form }}
+    {% for production_form in production_formset.forms %}
+        <div class="flex-row production_formset_row">
 
-<script src="{% static 'js/jquery.formset.js' %}"></script>
-<script type="text/javascript">
-    $('.productionsales_formset_row').formset();
-</script>
+            <div class='col-md-2 table-cell long-div'>
+                <div>
+                    <div class='col-md-6 table-cell '>
+                        {{ production_form.crop_number_first_digit }}
+                    </div>
+                    <div class='col-md-6 table-cell '>
+                        {{ production_form.crop_number_second_digit }}
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{ production_form.crop }}
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
+                <div class='row flex-row'>
+                    <div class='col-md-4 table-cell'>
+                        {{ production_form.production_main_product }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div flex-column'>
+                        {{ production_form.unit_main_production }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ production_form.production_by_product }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div flex-column'>
+                        {{ production_form.unit_by_production }}
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-3 flex-row-wrap-1'>
+                <div class='row flex-row'>
+                    <div class='col-md-4 table-cell'>
+                        {{ production_form.consumption_main_product }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div flex-column'>
+                        {{ production_form.unit_main_consumption }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ production_form.consumption_by_product }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div flex-column'>
+                        {{ production_form.unit_by_consumption }}
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-3 flex-row-wrap-1'>
+                <div class='row flex-row'>
+                    <div class='col-md-4 table-cell flex-column'>
+                        {{ production_form.rent_and_wages_main_product }}
+                    </div>
+                    <div class='col-md-2 table-cell long-div flex-column'>
+                        {{ production_form.unit_main_rent_and_wages }}
+                    </div>
+                    <div class='col-md-4 table-cell flex-column'>
+                        {{ production_form.rent_and_wages_by_product }}
+                    </div>
+                    <div class='col-md-4 table-cell long-div flex-column'>
+                        {{ production_form.unit_by_rent_and_wages }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1  table-cell flex-column">
+                {{ production_form.comments }}
+            </div>
+            {{ production_form.id.as_hidden }}
+        </div>
+    {% endfor %}
+
+    <br>
+    <br><br>
+    <b>Sales of crop produce</b>
+    <div class='row flex-row'>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Crop No.</label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label> Sales no. </label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label> Commodity sold </label>
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Quantity</label>
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Unit</label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label>month of Disposal</label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label>Price</label>
+        </div>
+        <div class='col-md-1 table-cell long-div'>
+            <label>Unit</label>
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Where Marketed</label>
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Marketing Agency</label>
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Was the price fixed before harvest?</label>
+        </div>
+        <div class='col-md-2 table-cell long-div'>
+            <label>Notes</label>
+        </div>
+    <div class="cross-width"></div>
+    </div>
+
+    {{ sales_formset.management_form }}
+    {% for sales_form in sales_formset.forms %}
+        <div class='row flex-row sales_formset_row'>
+            <div class='col-md-2 table-cell long-div'>
+                <div>
+                    <div class='col-md-6 table-cell '>
+                        {{ sales_form.crop_number_first_digit }}
+                    </div>
+                    <div class='col-md-6 table-cell '>
+                        {{ sales_form.crop_number_second_digit }}
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{ sales_form.sale_number }}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{ sales_form.commodity_sold }}
+            </div>
+            <div class='col-md-2 table-cell long-div'>
+
+                {{ sales_form.quantity }}
+            </div>
+            <div class='col-md-2 table-cell long-div'>
+                {{ sales_form.unit_of_quantity }}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{ sales_form.month_of_disposal }}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{ sales_form.price }}
+            </div>
+            <div class='col-md-1 table-cell long-div'>
+                {{ sales_form.unit_of_price }}
+            </div>
+            <div class='col-md-2 table-cell long-div'>
+                {{ sales_form.where_marketed }}
+            </div>
+            <div class='col-md-2 table-cell long-div'>
+                {{ sales_form.marketing_agency }}
+            </div>
+            <div class='col-md-2 table-cell long-div'>
+                {{ sales_form.if_price_determined_in_advance }}
+            </div>
+            <div class='col-md-2 table-cell long-div'>
+                {{ sales_form.comments }}
+            </div>
+        {{ sales_form.id.as_hidden }}
+        </div>
+    {% endfor %}
+
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.production_formset_row').formset();
+        $('.sales_formset_row').formset();
+    </script>
 {% endblock %}

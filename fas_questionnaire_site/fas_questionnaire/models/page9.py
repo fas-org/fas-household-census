@@ -74,7 +74,7 @@ class NatureExchange(models.Model):
 
 class OwnershipWellsTubewells(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True, unique=True)
+    sno = models.IntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_type = models.ForeignKey('OwnershipType', models.DO_NOTHING, db_column='Type of Ownership', blank=True, null=True)
     year_when_installed = models.IntegerField(db_column='Year when installed', blank=True, null=True)
@@ -114,7 +114,6 @@ class SpecifiedProductionMeans(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     irrigation_item_code = models.ForeignKey(IrrigationFlow, models.DO_NOTHING, db_column='Irrigation item code', blank=True, null=True)
     production_item_code = models.ForeignKey(ProductionMeans, models.DO_NOTHING, db_column='Production item code', blank=True, null=True)
-    item_type=models.CharField(db_column='item type',max_length=20,blank=True,null=True)
     ownership_number = models.IntegerField(db_column='Ownership Number', blank=True, null=True)
     year_of_purchase = models.IntegerField(db_column='Year of Purchase', blank=True, null=True)
     price_paid = models.IntegerField(db_column='Year when installed', blank=True, null=True)

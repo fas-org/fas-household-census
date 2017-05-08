@@ -26,7 +26,8 @@ def edit(request, pk):
         lnd_lsd_out_fxd_rnt_formset = formset_factory(LandLeasedOutOnFixedRentForm, formset=BaseFormSet, extra=1)
         lnd_lsd_out_fxd_rnt_forms = lnd_lsd_out_fxd_rnt_formset(request.POST, prefix='lnd_lsd_out_fxd_rnt')
 
-        if save_formset(lnd_lsd_in_fxd_rnt_forms, LandLeasedInOnFixedRent, pk) and save_formset(lnd_lsd_out_fxd_rnt_forms,LandLeasedOutOnFixedRent,pk):
+        if save_formset(lnd_lsd_in_fxd_rnt_forms, LandLeasedInOnFixedRent, pk) and save_formset(lnd_lsd_out_fxd_rnt_forms,LandLeasedOutOnFixedRent,pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 3):
             messages.success(request, 'Data saved successfully')
         return redirect('page3_edit', pk)
 
@@ -44,5 +45,5 @@ def edit(request, pk):
 
     return render(request, 'page3.html', {'formset_lnd_lsd_in_fxd_rnt': formset_lnd_lsd_in_fxd_rnt,
                                           'formset_lnd_lsd_out_fxd_rnt': formset_lnd_lsd_out_fxd_rnt,
-                                          'search_form': get_search_form()
-                                          })
+                                          'search_form': get_search_form(),
+                                          'comments': get_comments_formset(pk, 3)})

@@ -14,4 +14,4 @@ class InformationOnInvestigators(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Comments and Information on Investigators'
+        db_table = 'Information on Investigators'

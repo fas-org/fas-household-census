@@ -87,7 +87,7 @@ class LandLeasedInOnShareRentForm(forms.ModelForm):
                   'interest_free_loan_by_owner',
                   'amount_of_other_loan',
                   'interest_of_other_loan',
-                  'comment',]
+                  'comments',]
         exclude = ['household']
         widgets = None
         localized_fields = None
@@ -135,7 +135,7 @@ class LandLeasedOutOnShareRentForm(forms.ModelForm):
                   'interest_free_loan_by_owner',
                   'amount_of_other_loan',
                   'interest_of_other_loan',
-                  'comment']
+                  'comments']
         exclude = ['household']
         widgets = None
         localized_fields = None

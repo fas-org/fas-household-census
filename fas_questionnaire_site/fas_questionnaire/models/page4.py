@@ -47,7 +47,7 @@ class LandMortgagedIn(models.Model):
     mortgage_period = models.CharField(db_column='Mortgage period', max_length=50, blank=True, null=True)
     mortgage_money = models.CharField(db_column='Mortgage money', max_length=50, blank=True, null=True)
     interest_usufruct = models.ForeignKey(InterestUsufruct, models.DO_NOTHING, db_column='Interest/usufruct', blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -65,7 +65,7 @@ class LandMortgagedOut(models.Model):
     mortgage_period = models.CharField(db_column='Mortgage period', max_length=50, blank=True, null=True)
     mortgage_money = models.CharField(db_column='Mortgage money', max_length=50, blank=True, null=True)
     interest_usufruct = models.ForeignKey(InterestUsufruct, models.DO_NOTHING, db_column='Interest/usufruct',blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -110,7 +110,7 @@ class LandLeasedInOnShareRent(models.Model):
     interest_free_loan_by_owner = models.CharField(db_column='Interest free loan by owner', max_length=50, blank=True, null=True)
     amount_of_other_loan = models.CharField(db_column='Amount of other loan', max_length=50, blank=True, null=True)
     interest_of_other_loan = models.CharField(db_column='Interest of other loan', max_length=50, blank=True, null=True)
-    comment = models.CharField(db_column='Comment', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -155,7 +155,7 @@ class LandLeasedOutOnShareRent(models.Model):
     share_in_irrigation_rs_field = models.CharField(db_column='Share in irrigation (Rs)', max_length=50, blank=True, null=True)
     share_in_machinery_field = models.CharField(db_column='Share in machinery percentage', max_length=50, blank=True, null=True)
     share_in_machinery_quantity_field = models.CharField(db_column='Share in machinery (quantity)', max_length=50, blank=True, null=True)
-    comment = models.CharField(db_column='Comment', max_length=255, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
 
     class Meta:

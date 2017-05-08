@@ -38,7 +38,8 @@ def edit(request, pk):
                                                                                       LandMortgagedOut,
                                                                                       pk) and save_formset(
                 lnd_lsd_in_shr_rent_forms, LandLeasedInOnShareRent, pk) and save_formset(lnd_lsd_out_shr_rent_forms,
-                                                                                         LandLeasedOutOnShareRent, pk):
+                                                                                         LandLeasedOutOnShareRent, pk) \
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 4):
             messages.success(request, 'Data saved successfully')
         return redirect('page4_edit', pk)
 
@@ -65,4 +66,5 @@ def edit(request, pk):
                                           'formset_lm_out': formset_lm_out,
                                           'formset_lnd_lsd_in_shr_rent': formset_lnd_lsd_in_shr_rent,
                                           'formset_lnd_lsd_out_shr_rent': formset_lnd_lsd_out_shr_rent,
-                                          'search_form': get_search_form()})
+                                          'search_form': get_search_form(),
+                                          'comments': get_comments_formset(pk, 4)})

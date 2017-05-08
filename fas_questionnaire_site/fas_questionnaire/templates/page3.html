@@ -9,7 +9,6 @@
           </div>
 {% endfor %}
 {% endif %}
-<form method='POST' id="land_mortgaged_in_section5">
     {% csrf_token %}
     <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4><br><br>
     <div class="table table-responsive">
@@ -404,4 +403,5 @@
     $('.formset_row_lnd_lsd_in_fxd_rnt').formset();
     $('.formset_row_lnd_lsd_out_fxd_rnt').formset();
 </script>
+    {% include 'common/comments.html' %}
 {% endblock %}

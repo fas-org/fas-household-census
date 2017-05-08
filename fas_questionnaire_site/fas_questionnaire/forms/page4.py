@@ -8,7 +8,7 @@ from ..models.page4 import LandLeasedOutOnShareRent
 class LandMortgagedInForm(forms.ModelForm):
     class Meta:
         model = LandMortgagedIn
-        fields = ['household_number',
+        fields = ['household',
                   'land_type',
                   'extent',
                   'name_of_mortgagor',
@@ -19,7 +19,7 @@ class LandMortgagedInForm(forms.ModelForm):
                   'mortgage_money',
                   'interest_usufruct',
                   'comments']
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -29,7 +29,7 @@ class LandMortgagedInForm(forms.ModelForm):
 class LandMortgagedOutForm(forms.ModelForm):
     class Meta:
         model = LandMortgagedOut
-        fields = ['household_number',
+        fields = ['household',
                   'land_type',
                   'extent',
                   'name_of_mortgagee',
@@ -40,7 +40,7 @@ class LandMortgagedOutForm(forms.ModelForm):
                   'mortgage_money',
                   'interest_usufruct',
                   'comments']
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -51,7 +51,7 @@ class LandMortgagedOutForm(forms.ModelForm):
 class LandLeasedInOnShareRentForm(forms.ModelForm):
     class Meta:
         model = LandLeasedInOnShareRent
-        fields = ['household_number',
+        fields = ['household',
                   'operational_plot_no',
                   'land_type',
                   'extent',
@@ -88,7 +88,7 @@ class LandLeasedInOnShareRentForm(forms.ModelForm):
                   'amount_of_other_loan',
                   'interest_of_other_loan',
                   'comment',]
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -99,7 +99,7 @@ class LandLeasedInOnShareRentForm(forms.ModelForm):
 class LandLeasedOutOnShareRentForm(forms.ModelForm):
     class Meta:
         model = LandLeasedOutOnShareRent
-        fields = ['household_number',
+        fields = ['household',
                   'ownership_plot_no',
                   'land_type',
                   'extent',
@@ -136,7 +136,7 @@ class LandLeasedOutOnShareRentForm(forms.ModelForm):
                   'amount_of_other_loan',
                   'interest_of_other_loan',
                   'comment']
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}

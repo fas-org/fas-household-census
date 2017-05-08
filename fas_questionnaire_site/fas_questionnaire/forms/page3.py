@@ -6,7 +6,7 @@ from ..models.page3 import LandLeasedOutOnFixedRent
 class LandLeasedInOnFixedRentForm(forms.ModelForm):
     class Meta:
         model = LandLeasedInOnFixedRent
-        fields = ['household_number',
+        fields = ['household',
                   'plot_no',
                   'land_type',
                   'extent',
@@ -32,7 +32,7 @@ class LandLeasedInOnFixedRentForm(forms.ModelForm):
                   'if_irrigation_provided_by_owner',
                   'if_machinery_provided_by_owner',
                   'comments']
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}
@@ -43,7 +43,7 @@ class LandLeasedInOnFixedRentForm(forms.ModelForm):
 class LandLeasedOutOnFixedRentForm(forms.ModelForm):
     class Meta:
         model = LandLeasedOutOnFixedRent
-        fields = ['household_number',
+        fields = ['household',
                   'ownership_plot_no',
                   'land_type',
                   'extent',
@@ -69,7 +69,7 @@ class LandLeasedOutOnFixedRentForm(forms.ModelForm):
                   'if_irrigation_provided_by_owner',
                   'if_machinery_provided_by_owner',
                   'comments']
-        exclude = ['household_number']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}

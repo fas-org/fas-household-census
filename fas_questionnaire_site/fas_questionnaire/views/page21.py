@@ -41,6 +41,7 @@ def save_formset_page21(forms, model, household_id,category):
 @login_required(login_url='login')
 def edit(request, pk):
     request.session['household'] = pk  # TODO: temporary, remove when search functionality is implemented
+    error = False
     if request.method == "POST":
         # assetLandRegistrationForm = AssetLandRegistrationForm(request.POST)
         immovables_form_set = formset_factory(ImmovableForm, formset=BaseFormSet, extra=5)
@@ -61,11 +62,25 @@ def edit(request, pk):
         inventoriesForms = inventories_form_set(request.POST, prefix='Inventories')
         miscellaneousForms = miscellaneous_form_set(request.POST, prefix='Miscellaneous')
         assetLandRegistrationForm = AssetLandRegistrationForm(request.POST,prefix='registration')
-        # assetOwnership_save = False
+
         if save_formset_page21(immovablesForms, AssetOwnership, pk,'Immovables') and save_formset_page21(meansOfTransportForms, AssetOwnership,pk,'MeansOfTransport') and save_formset_page21(furnitureForms,AssetOwnership,pk,'Furniture') and \
                 save_formset_page21(electricEquipmentsForms, AssetOwnership, pk,'ElectricEquipments') and save_formset_page21(otherDomesticDurableGoodsForms,AssetOwnership, pk,'OtherDomesticDurableGoods') and save_formset_page21(inventoriesForms, AssetOwnership, pk,'Inventories') and save_formset_page21(miscellaneousForms, AssetOwnership,pk,'Miscellaneous') and save_form(assetLandRegistrationForm, pk):
             messages.success(request, 'Data saved successfully')
-        return redirect('page21_edit', pk)
+            return redirect('page21_edit', pk)
+        else:
+            error = True
+        return render(request, 'page21.html', {
+            'immovables_form_set': immovablesForms,
+            'meansoftransport_form_set': meansOfTransportForms,
+            'furniture_form_set': furnitureForms,
+            'electricEquipments_form_set': electricEquipmentsForms,
+            'otherDomesticDurableGoods_form_set': otherDomesticDurableGoodsForms,
+            'inventories_form_set': inventoriesForms,
+            'miscellaneous_form_set': miscellaneousForms,
+            'land_details': assetLandRegistrationForm,
+            'search_form': get_search_form(),'all_formsets':error})
+
+
 
     assetLandRegistration = get_object_or_none(AssetLandRegistration, pk)
     assetLandRegistrationForm = AssetLandRegistrationForm(instance=assetLandRegistration,prefix='registration')
@@ -125,4 +140,4 @@ def edit(request, pk):
                                            'inventories_form_set': inventoriesSet,
                                            'miscellaneous_form_set': miscellaneousSet,
                                            'land_details': assetLandRegistrationForm,
-                                           'search_form': get_search_form()})
+                                           'search_form': get_search_form(), 'all_formsets': error})

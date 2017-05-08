@@ -106,21 +106,10 @@
 </div>
     <p><sup>*</sup> <small>&nbsp;&nbsp;&nbsp; Specify if drip or sprinkler irrigation was used. Also, specify clearly if only part of the area was irrigated from any source.</small></p>
 <br>
-<div class="row flex-row">
-    <div class="col-md-12">
-        {{production_and_sales_on_operational_holding_comment_form.comments_notes.label_tag}}
-    </div>
-</div>
-<div class="row flex-row">
-    <div class="col-md-12 flex-column">
-        {{production_and_sales_on_operational_holding_comment_form.comments_notes}}
-    </div>
-    {{ production_and_sales_on_operational_holding_comment_form.id.as_hidden}}
-</div>
 
-
-<script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
     $('.croppingpattern_formset_row').formset();
 </script>
+
+{% include 'common/comments.html' %}
 {% endblock %}

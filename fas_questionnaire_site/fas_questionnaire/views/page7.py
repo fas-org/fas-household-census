@@ -5,12 +5,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.forms.formsets import formset_factory, BaseFormSet
-
-from fas_questionnaire.views.common import get_object_or_none, save_formset
-from ..models.page7 import InputUseManure, InputUseSeeds, InputUsePlantProtection, InputUseIrrigation, InputUseFertiliser
+from fas_questionnaire.views.common import save_formset
 from ..forms.page7 import *
-from ..models.household_models import Household
-from .common import get_search_form
+from ..models.common import Comments
+from .common import get_search_form, get_comments_formset_to_save, get_comments_formset
 
 
 @login_required(login_url='login')
@@ -43,7 +41,8 @@ def edit(request, pk):
                 and save_formset(plant_protection_forms, InputUsePlantProtection, pk) \
                 and save_formset(fertiliser_forms, InputUseFertiliser, pk) \
                 and save_formset(irrigation_forms,
-                                 InputUseIrrigation, pk):
+                                 InputUseIrrigation, pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 7):
             messages.success(request, 'Data saved successfully')
             return redirect('page7_edit', pk)
 
@@ -75,4 +74,5 @@ def edit(request, pk):
                                            'formset_plant_protection': formset_plant_protection,
                                            'formset_irrigation': formset_irrigation,
                                            'formset_fertiliser': formset_fertiliser,
-                                           'search_form': get_search_form()})
+                                           'search_form': get_search_form(),
+                                          'comments': get_comments_formset(pk, 7)})

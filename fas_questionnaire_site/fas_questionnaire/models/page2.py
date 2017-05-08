@@ -102,6 +102,7 @@ class HomesteadArea(models.Model):
     components = models.ForeignKey(HomesteadComponents, models.DO_NOTHING, db_column='Components', blank=True,
                                    null=True)
     area = models.FloatField(db_column='Area', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -134,7 +135,7 @@ class LandPurchased(models.Model):
                                                   blank=True, null=True)
     purchase_transaction_number = models.FloatField(db_column='Purchase transaction number',
                                                     blank=True, null=True)
-    comments = models.CharField(max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -168,6 +169,7 @@ class LandSold(models.Model):
                                                 blank=True, null=True)
     reasons_for_sale = models.CharField(db_column='Reasons for sale',
                                         max_length=250, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

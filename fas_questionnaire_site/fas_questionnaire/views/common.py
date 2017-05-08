@@ -7,7 +7,7 @@ from ..forms.household_forms import HouseholdForm
 from django import forms
 from ..forms.common import CommentsForm
 from ..models.common import Comments
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, formset_factory, BaseFormSet
 
 
 def save_form_old(request, form):
@@ -44,7 +44,7 @@ def save_forms(request, forms):
     return form_saved
 
 
-def save_formset(forms, model, household_id, **kwargs): #Pass key-word args for filter
+def save_formset(forms, model, household_id, page_no=None, **kwargs): #Pass key-word args for filter
     """add, update and delete models using formset"""
     if forms.is_valid():
         active_ids = []
@@ -58,12 +58,17 @@ def save_formset(forms, model, household_id, **kwargs): #Pass key-word args for 
                 if form_id:
                     record.id = int(form_id)
                 record.household = get_object_or_none(Household, household_id)
+                if page_no is not None and model == Comments:
+                    record.page_no = page_no
                 record.save()
                 active_ids.append(record.id)
             else:
                 if form_id:
                     active_ids.append(int(form_id))
-        all_ids = list(model.objects.filter(household=household_id, **kwargs).values_list('id',flat=True))
+        if page_no is not None and model == Comments:
+            all_ids = list(model.objects.filter(household=household_id, page_no=page_no, **kwargs).values_list('id', flat=True))
+        else:
+            all_ids = list(model.objects.filter(household=household_id, **kwargs).values_list('id',flat=True))
         model.objects.filter(id__in=[ x for x in all_ids if x not in active_ids]).delete()
         return True
     return False
@@ -120,9 +125,12 @@ def get_household_members_as_widget(household_id, field_name):
 
 def get_comments_formset(household_id, page_no):
     comments_formset = modelformset_factory(Comments, form=CommentsForm, extra=1)
-    comments_result_set = Comments.objects.filter(household_id=household_id, page_no=page_no)
+    comments_result_set = Comments.objects.filter(household=household_id, page_no=page_no)
     return comments_formset(queryset=comments_result_set, prefix='comments')
 
+def get_comments_formset_to_save(request):
+    comments_formset = formset_factory(CommentsForm, formset=BaseFormSet, extra=1)
+    return comments_formset(request.POST, prefix='comments')
 
 def get_crop_schedule(household_id):
     return CroppingPatternAndCropSchedule.objects.filter(household=household_id)

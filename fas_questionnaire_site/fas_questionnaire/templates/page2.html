@@ -31,7 +31,7 @@
 {% csrf_token %}
 
 <div class='row'>
-    <div class='col-md-10 flex-column'>
+    <div class='col-md-9 flex-column'>
         <div class="col-md-11">
             <div class='row flex-row'>
                 <div class='col-md-12 flex-column'>
@@ -127,7 +127,7 @@
         </div>
     </div>
 
-    <div class='col-md-2 flex-column'>
+    <div class='col-md-3 flex-column'>
         <div class='row flex-row'>
             <div class='col-md-12 flex-column'>
                 <h4 class='text-center'>Table 3.1. Homestead area</h4>
@@ -137,11 +137,14 @@
             <div class='col-md-2 flex-column table-cell'>
                 <label>S.No</label>
             </div>
-            <div class='col-md-7 flex-column table-cell'>
+            <div class='col-md-5 flex-column table-cell'>
                 <label>Components</label>
             </div>
-            <div class='col-md-3 flex-column table-cell'>
+            <div class='col-md-2 flex-column table-cell'>
                 <label>Area</label>
+            </div>
+            <div class='col-md-3 flex-column table-cell'>
+                <label>Comments</label>
             </div>
             <div class="cross-width"></div>
         </div>
@@ -152,11 +155,14 @@
             <div class='col-md-2 flex-column table-cell'>
                 {{ homesteadform.sno }}
             </div>
-            <div class='col-md-7 flex-column table-cell'>
+            <div class='col-md-5 flex-column table-cell'>
                 {{ homesteadform.components }}
             </div>
-            <div class='col-md-3 flex-column table-cell'>
+            <div class='col-md-2 flex-column table-cell'>
                 {{ homesteadform.area }}
+            </div>
+            <div class='col-md-3 flex-column table-cell'>
+                {{ homesteadform.comments }}
             </div>
             {{ homesteadform.id.as_hidden }}
         </div>
@@ -166,7 +172,7 @@
 </div>
 
 <br><br>
-<h4 class='text-center text-uppercase'>4.Sale and Purchase of Agricultural Land</h4><br/>
+<h4 class='text-center text-uppercase'>4.Sale and Purchase of Agricultural Land</h4>
 
 <h4 class="text-center">4.1 Land sold</h4>
 <div class='row flex-row'>
@@ -213,9 +219,11 @@
     <div class='col-md-1 table-cell flex-column long-div'>
         <label> Sale transaction number </label>
     </div>
-
-    <div class='col-md-3 table-cell flex-column long-div'>
+    <div class='col-md-2 table-cell flex-column long-div'>
         <label> Reason for sale </label>
+    </div>
+    <div class='col-md-1 table-cell flex-column long-div'>
+        <label> Comments </label>
     </div>
     <div class="cross-width"></div>
 </div>
@@ -265,8 +273,11 @@
         {{ landsold_form.sale_transaction_number }}
     </div>
 
-    <div class='col-md-3 table-cell'>
+    <div class='col-md-2 table-cell'>
         {{ landsold_form.reasons_for_sale }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ landsold_form.comments }}
     </div>
 </div>
 {% endfor %}
@@ -317,6 +328,9 @@
     <div class='col-md-1 table-cell flex-column long-div'>
         <label> Purchased transaction number </label>
     </div>
+    <div class='col-md-1 table-cell flex-column long-div'>
+        <label> Comments </label>
+    </div>
     <div class="cross-width"></div>
 </div>
 
@@ -364,10 +378,11 @@
     <div class='col-md-1 table-cell'>
         {{ landpurchased_form.purchase_transaction_number }}
     </div>
+    <div class='col-md-1 table-cell'>
+        {{ landpurchased_form.comments }}
+    </div>
 </div>
 {% endfor %}
-<br>
-<br>
 <br>
 
 <script type="text/javascript">

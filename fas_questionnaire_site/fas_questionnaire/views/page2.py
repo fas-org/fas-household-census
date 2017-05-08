@@ -28,7 +28,10 @@ def edit(request, pk):
         homestead_area_forms = homestead_area_formset(request.POST, prefix='homestead')
         landsoldforms = landsold_formset(request.POST, prefix='landsold')
         landpurchasedforms = landpurchased_formset(request.POST, prefix='landpurchased')
-        if (save_formset(ownership_forms, CurrentOwnershipHolding, pk) and save_formset(homestead_area_forms, HomesteadArea, pk) and save_formset(landsoldforms, LandSold, pk) and save_formset(landpurchasedforms, LandPurchased, pk) and save_form(landpurchased_comments_form, pk)):
+
+        if (save_formset(ownership_forms, CurrentOwnershipHolding, pk) and save_formset(homestead_area_forms, HomesteadArea, pk)
+            and save_formset(landsoldforms, LandSold, pk) and save_formset(landpurchasedforms, LandPurchased, pk)
+            and save_formset(get_comments_formset_to_save(request), Comments, pk, 2)):
             messages.success(request, "Data saved successfully")
             return redirect('page2_edit', pk)
         else:
@@ -37,7 +40,7 @@ def edit(request, pk):
                                                   'landsold_formset': landsoldforms,
                                                   'landpurchased_formset': landpurchasedforms,
                                                   'search_form': get_search_form(),
-                                                  'comments': get_comments_formset(pk, 1)
+                                                  'comments': get_comments_formset(pk, 2)
                                                   })
 
 
@@ -63,5 +66,5 @@ def edit(request, pk):
                                           'landsold_formset': landsold_formset,
                                           'landpurchased_formset': landpurchased_formset,
                                           'search_form': get_search_form(),
-                                          'comments': get_comments_formset(pk, 1)
+                                          'comments': get_comments_formset(pk, 2)
                                           })

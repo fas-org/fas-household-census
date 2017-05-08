@@ -86,8 +86,7 @@ class Production(models.Model):
                                                related_name='unit_by_rent_and_wages')
     rent_and_wages_by_product = models.CharField(db_column='rent and wages, by product', max_length=50, blank=True,
                                                  null=True)
-
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -117,7 +116,7 @@ class SalesOfProduction(models.Model):
     if_price_determined_in_advance = models.ForeignKey(YesOrNo, models.DO_NOTHING,
                                                        db_column='If price determined in advance', blank=True,
                                                        null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.forms import formset_factory, modelformset_factory, BaseFormSet
 from ..forms.page1 import HouseholdIntroductionForm, HouseholdMembersForm
 from ..models.page1 import HouseholdIntroduction, HouseholdMembers
-from ..views.common import save_formset, save_form, get_object_or_none, get_search_form, get_comments_formset
+from ..views.common import save_formset, save_form, get_object_or_none, get_search_form, \
+    get_comments_formset, get_comments_formset_to_save
+from ..models.common import Comments
 
 @login_required(login_url='login')
 def init(request):
@@ -20,9 +22,12 @@ def edit(request, pk):
 
     if request.method == "POST":
         form = HouseholdIntroductionForm(request.POST, prefix='introduction')
+
         household_members_formset = formset_factory(HouseholdMembersForm, formset=BaseFormSet, extra=1)
         forms = household_members_formset(request.POST, prefix='members')
-        if save_form(form, pk) and save_formset(forms, HouseholdMembers, pk):
+
+        if save_form(form, pk) and save_formset(forms, HouseholdMembers, pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 1):
             messages.success(request, 'Data saved successfully')
         return redirect('page1_edit', pk)
 
@@ -33,4 +38,7 @@ def edit(request, pk):
     result_set = HouseholdMembers.objects.filter(household=pk)
     formset = household_members_model_formset(queryset=result_set, prefix='members')
 
-    return render(request, 'page1.html', {'introduction_form': form, 'formset': formset, 'search_form':get_search_form(), 'comments': get_comments_formset(pk, 1)})
+    return render(request, 'page1.html', {'introduction_form': form,
+                                          'formset': formset,
+                                          'search_form':get_search_form(),
+                                          'comments': get_comments_formset(pk, 1)})

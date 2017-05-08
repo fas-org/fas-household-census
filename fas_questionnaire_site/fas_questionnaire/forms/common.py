@@ -6,7 +6,7 @@ class CommentsForm(forms.ModelForm):
 
     class Meta:
         model = Comments
-        exclude = ['household_id', 'page_no']
+        exclude = ['household']
         widgets = None
         localized_fields = None
         labels = {}

@@ -36,6 +36,7 @@ class InputUseManure(models.Model):
     manure_purchased_quantity = models.FloatField(blank=True, null=True)
     manure_purchased_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_manure_purchased_unit')
     manure_purchased_value = models.FloatField(blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -48,6 +49,7 @@ class InputUsePlantProtection(models.Model):
     crop_code = models.IntegerField(blank=True, null=True)
     plant_protection_quantity = models.FloatField(blank=True, null=True)
     plant_protection_value = models.FloatField(blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -61,6 +63,7 @@ class InputUseIrrigation(models.Model):
     irrigation_source = models.ForeignKey('IrrigationSource', blank=True, null=True)
     irrigation_cost = models.FloatField(blank=True, null=True)
     irrigation_unit_price = models.ForeignKey('Units', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -75,6 +78,7 @@ class InputUseFertiliser(models.Model):
     fertiliser_quantity = models.FloatField(blank=True, null=True)
     fertiliser_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_fertiliser_unit')
     fertiliser_value = models.FloatField(blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -92,6 +96,7 @@ class InputUseSeeds(models.Model):
     purchased_quantity = models.FloatField(blank=True, null=True)
     purchased_unit = models.ForeignKey('Units', blank=True, null=True, related_name='%(class)s_purchased_unit')
     purchased_value = models.FloatField(blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

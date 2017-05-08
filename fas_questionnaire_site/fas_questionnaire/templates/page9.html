@@ -55,25 +55,25 @@
             <div class="col-md-2 table-cell flex-column">
                 <label>Crop</label>
             </div>
-            <div class='col-md-4 table-cell'>
-                <label>Sale of water</label>
-            </div>
-            <div class='col-md-6 table-cell'>
-                <label>Any other land irrigated</label>
-            </div>
-            <div class="col-md-2">
-            </div>
-            <div class='col-md-2 table-cell'>
-                <label>Area irrigated</label>
-            </div>
-            <div class='col-md-2 table-cell'>
-                <label>Total revenue</label>
-            </div>
-            <div class='col-md-3 table-cell'>
-                <label>Nature of exchange</label>
-            </div>
-            <div class='col-md-3 table-cell'>
-                <label>Extent</label>
+            <div class="col-md-10">
+                <div class='col-md-6 table-cell'>
+                    <label>Sale of water</label>
+                </div>
+                <div class='col-md-6 table-cell'>
+                    <label>Any other land irrigated</label>
+                </div>
+                <div class='col-md-3 table-cell'>
+                    <label>Area irrigated</label>
+                </div>
+                <div class='col-md-3 table-cell'>
+                    <label>Total revenue</label>
+                </div>
+                <div class='col-md-3 table-cell'>
+                    <label>Nature of exchange</label>
+                </div>
+                <div class='col-md-3 table-cell'>
+                    <label>Extent</label>
+                </div>
             </div>
         </div>
         <div class="col-md-2 table-cell flex-column-1">
@@ -125,17 +125,19 @@
             <div class="col-md-2 table-cell flex-column-1">
                 {{ form.irrigation_crop }}
             </div>
-            <div class='col-md-2 table-cell'>
-                {{ form.irrigation_sale_area }}
-            </div>
-            <div class='col-md-2 table-cell'>
-                {{ form.irrigation_revenue }}
-            </div>
-            <div class='col-md-3 table-cell'>
-                {{ form.exchange_nature }}
-            </div>
-            <div class='col-md-3 table-cell'>
-                {{ form.irrigation_land_extent }}
+            <div class="col-md-10">
+                <div class='col-md-3 table-cell'>
+                    {{ form.irrigation_sale_area }}
+                </div>
+                <div class='col-md-3 table-cell'>
+                    {{ form.irrigation_revenue }}
+                </div>
+                <div class='col-md-3 table-cell'>
+                    {{ form.exchange_nature }}
+                </div>
+                <div class='col-md-3 table-cell'>
+                    {{ form.irrigation_land_extent }}
+                </div>
             </div>
         </div>
         <div class="col-md-2 table-cell flex-column-1">
@@ -145,8 +147,6 @@
     {% endfor %}
 </div>
 
-
-<br/>
 <h4 class='text-center'>9B. Specified Means of Production: Ownership and Earnings</h4>
 <div class="row flex-row">
     <div class='col-md-1 table-cell flex-column'>
@@ -244,14 +244,9 @@
     {{ form.item_type.as_hidden }}
 </div>
 {% endfor %}
-<br>
-<br>
-
 <script type="text/javascript">
     $('.current_ownership_formset_row').formset({});
-    $('.production_means_formset_row').formset({});
     $('.irrigation_means_formset_row').formset({});
-
-
 </script>
+{% include 'common/comments.html' %}
 {% endblock %}

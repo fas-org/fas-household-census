@@ -25,18 +25,3 @@ class CroppingPatternAndCropScheduleForm(forms.ModelForm):
         localized_fields = None
         help_texts = {}
         error_messages = {}
-
-
-class CroppingPatternAndCropScheduleCommentsForm(forms.ModelForm):
-    id = forms.CharField(widget=forms.HiddenInput(), required=False)
-
-    class Meta:
-        model = CroppingPatternAndCropScheduleComments
-        fields = ['household', 'comments_notes', 'id']
-        exclude = ['household']
-        widgets = {
-            'comments_notes': forms.Textarea(attrs={'rows': 10, 'cols': 198})
-        }
-        localized_fields = None
-        help_texts = {}
-        error_messages = {}

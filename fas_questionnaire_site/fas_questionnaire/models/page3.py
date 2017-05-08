@@ -63,7 +63,7 @@ class LandLeasedInOnFixedRent(models.Model):
     if_pumpset_provided_by_owner = models.CharField(db_column='If pumpset provided by owner', max_length=50, blank=True, null=True)
     if_irrigation_provided_by_owner = models.CharField(db_column='If irrigation provided by owner', max_length=50, blank=True, null=True)
     if_machinery_provided_by_owner = models.CharField(db_column='If machinery provided by owner', max_length=50, blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -100,7 +100,7 @@ class LandLeasedOutOnFixedRent(models.Model):
     if_you_provided_the_pumpset = models.CharField(db_column='If you provided the pumpset', max_length=50, blank=True, null=True)
     if_irrigation_provided_by_owner = models.CharField(db_column='If irrigation provided by owner', max_length=50, blank=True, null=True)
     if_machinery_provided_by_owner = models.CharField(db_column='If machinery provided by owner', max_length=50, blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

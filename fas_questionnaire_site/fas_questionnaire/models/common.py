@@ -143,7 +143,11 @@ class YesOrNo(models.Model):
 
 class Comments(models.Model):
     id = models.AutoField(primary_key=True)
-    household_id = models.ForeignKey('Household', on_delete=models.CASCADE)
+    household = models.ForeignKey('Household', on_delete=models.CASCADE)
     page_no = models.IntegerField(blank=True, null=True)
     comment_number = models.CharField(max_length=100, blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'comments'

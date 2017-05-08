@@ -61,13 +61,3 @@ class CroppingPatternAndCropSchedule(models.Model):
     class Meta:
         managed = True
         db_table = 'cropping pattern and crop schedule'
-
-
-class CroppingPatternAndCropScheduleComments(models.Model):
-    id = models.AutoField(primary_key=True)
-    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    comments_notes = models.TextField(db_column='comments/notes', max_length=500, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'cropping pattern and crop schedule comments'

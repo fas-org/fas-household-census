@@ -19,29 +19,27 @@
     {% endfor %}
     {% csrf_token %}
     <br>
-    <b>B. Production</b>
-    <br>
-    <br>
+    <h4 class="text-center">B. Production</h4>
     <div class="flex-row">
 
-        <div class='col-md-2 table-cell long-div'>
+        <div class='col-md-2 table-cell flex-column long-div'>
             <label>Crop No.</label>
         </div>
-        <div class='col-md-1 table-cell long-div'>
+        <div class='col-md-1 table-cell long-div flex-column'>
             <label> Crop </label>
         </div>
         <div class='col-md-3 flex-row-wrap-1'>
-            <div class='col-md-12 table-cell flex-column'>
-                <p class='text-center'>Production</p>
+            <div class='col-md-12 table-cell flex-column flex-column'>
+                <label>Production</label>
             </div>
-            <div class='row flex-row'>
-                <div class='col-md-4 table-cell'>
+            <div class='row flex-row-wrap-1'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Grain/Main Products</label>
                 </div>
                 <div class='col-md-2 table-cell long-div flex-column'>
                     <lablel>Units</lablel>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Straw and other by-products</label>
                 </div>
                 <div class='col-md-2 table-cell long-div flex-column'>
@@ -52,16 +50,16 @@
 
         <div class='col-md-3 flex-row-wrap-1'>
             <div class='col-md-12 table-cell flex-column'>
-                <p class='text-center'>Household Consumption</p>
+                <label>Household Consumption</label>
             </div>
-            <div class='row flex-row'>
-                <div class='col-md-4 table-cell'>
+            <div class='row flex-row-wrap-1'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Grain/Main Products</label>
                 </div>
                 <div class='col-md-2 table-cell long-div flex-column'>
                     <label>Units</label>
                 </div>
-                <div class='col-md-4 table-cell'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Straw and other by-products</label>
                 </div>
                 <div class='col-md-2 table-cell long-div flex-column'>
@@ -72,9 +70,9 @@
 
         <div class='col-md-3 flex-row-wrap-1'>
             <div class='col-md-12 table-cell flex-column'>
-                <p class='text-center'>Rent nand Wages</p>
+                <label>Rent nand Wages</label>
             </div>
-            <div class='row flex-row'>
+            <div class='row flex-row-wrap-1'>
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Grain/Main Products</label>
                 </div>
@@ -84,13 +82,13 @@
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Straw and other by-products</label>
                 </div>
-                <div class='col-md-4 table-cell long-div flex-column'>
+                <div class='col-md-2 table-cell long-div flex-column'>
                     <label>Units</label>
                 </div>
             </div>
         </div>
         <div class="col-md-1  table-cell flex-column">
-            <label>Notes</label>
+            <label>Comments</label>
         </div>
         <div class="cross-width"></div>
     </div>
@@ -99,7 +97,7 @@
     {% for production_form in production_formset.forms %}
         <div class="flex-row production_formset_row">
 
-            <div class='col-md-2 table-cell long-div'>
+            <div class='col-md-2 long-div'>
                 <div>
                     <div class='col-md-6 table-cell '>
                         {{ production_form.crop_number_first_digit }}
@@ -112,7 +110,7 @@
             <div class='col-md-1 table-cell long-div'>
                 {{ production_form.crop }}
             </div>
-            <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-3 flex-column-1'>
                 <div class='row flex-row'>
                     <div class='col-md-4 table-cell'>
                         {{ production_form.production_main_product }}
@@ -129,7 +127,7 @@
                 </div>
             </div>
 
-            <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-3 flex-column-1'>
                 <div class='row flex-row'>
                     <div class='col-md-4 table-cell'>
                         {{ production_form.consumption_main_product }}
@@ -146,7 +144,7 @@
                 </div>
             </div>
 
-            <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-3 flex-column-1'>
                 <div class='row flex-row'>
                     <div class='col-md-4 table-cell flex-column'>
                         {{ production_form.rent_and_wages_main_product }}
@@ -157,7 +155,7 @@
                     <div class='col-md-4 table-cell flex-column'>
                         {{ production_form.rent_and_wages_by_product }}
                     </div>
-                    <div class='col-md-4 table-cell long-div flex-column'>
+                    <div class='col-md-2 table-cell long-div flex-column'>
                         {{ production_form.unit_by_rent_and_wages }}
                     </div>
                 </div>
@@ -169,9 +167,8 @@
         </div>
     {% endfor %}
 
-    <br>
     <br><br>
-    <b>Sales of crop produce</b>
+    <h4 class="text-center">Sales of crop produce</h4>
     <div class='row flex-row'>
         <div class='col-md-2 table-cell long-div'>
             <label>Crop No.</label>
@@ -207,7 +204,7 @@
             <label>Was the price fixed before harvest?</label>
         </div>
         <div class='col-md-2 table-cell long-div'>
-            <label>Notes</label>
+            <label>Comments</label>
         </div>
     <div class="cross-width"></div>
     </div>
@@ -215,7 +212,7 @@
     {{ sales_formset.management_form }}
     {% for sales_form in sales_formset.forms %}
         <div class='row flex-row sales_formset_row'>
-            <div class='col-md-2 table-cell long-div'>
+            <div class='col-md-2 long-div'>
                 <div>
                     <div class='col-md-6 table-cell '>
                         {{ sales_form.crop_number_first_digit }}
@@ -263,9 +260,10 @@
         </div>
     {% endfor %}
 
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $('.production_formset_row').formset();
         $('.sales_formset_row').formset();
     </script>
+
+    {% include 'common/comments.html' %}
 {% endblock %}

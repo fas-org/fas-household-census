@@ -90,7 +90,7 @@ class OwnershipWellsTubewells(models.Model):
     irrigation_revenue = models.IntegerField(db_column='Irrigation Revenue', blank=True, null=True)
     exchange_nature = models.ForeignKey(NatureExchange, models.DO_NOTHING, db_column='Nature Exchange', blank=True, null=True)
     irrigation_land_extent = models.IntegerField(db_column='Irrigation Land Extent', blank=True, null=True)
-    comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -123,7 +123,7 @@ class SpecifiedProductionMeans(models.Model):
     maintenance_charges = models.IntegerField(db_column='Maintenance charges', blank=True, null=True)
     rental_earnings = models.IntegerField(db_column='Rental earnings', blank=True, null=True)
     rental_earnings_units = models.ForeignKey('Units', models.DO_NOTHING, db_column='Rental earning units', blank=True, null=True)
-    comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

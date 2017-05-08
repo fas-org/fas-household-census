@@ -6,7 +6,7 @@ class ExtensionForm(forms.ModelForm):
 
     class Meta:
         model = Extension
-        fields = ['household', 'from_whom_advice_received', 'type_of_advice_received_description']
+        fields = ['household', 'from_whom_advice_received', 'type_of_advice_received_description', 'comments']
         exclude = ['household']
         widgets = None
         localized_fields = None
@@ -27,22 +27,5 @@ class InstitutionalSupportForm(forms.ModelForm):
         widgets = None
         localized_fields = None
         labels = {}
-        help_texts = {}
-        error_messages = {}
-
-
-class InstitutionalSupportCommentsForm(forms.ModelForm):
-
-    class Meta:
-        model = InstitutionalSupportComments
-        fields = ['household', 'institutional_support_comments']
-        exclude = ['household']
-        widgets = {
-            'institutional_support_comments': forms.Textarea(attrs={'rows': 10, 'cols': 198})
-        }
-        localized_fields = None
-        labels = {
-            'institutional_support_comments': 'Comments/ Notes'
-        }
         help_texts = {}
         error_messages = {}

@@ -17,14 +17,14 @@
 
 <div class="row flex-row table table-responsive">
 
-    <div class="col-md-4 flex-column-1 justify-content-start">
+    <div class="col-md-5 flex-column-1 justify-content-start">
         <div style="top:0px;float:left">
             <h4 class='text-center'>7.1 Manure</h4>
             <div class="row flex-row">
                 <div class="col-md-2 table-cell flex-column">
                     <label>Crop code</label>
                 </div>
-                <div class="col-md-10  flex-row-wrap">
+                <div class="col-md-8 flex-row-wrap">
                     <div class="col-md-12 table-cell flex-column">
                         <label> Manure</label>
                     </div>
@@ -61,6 +61,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2 table-cell flex-column">
+                    <label>Comments</label>
+                </div>
                 <div class="cross-width"></div>
             </div>
 
@@ -71,7 +74,7 @@
                 <div class="col-md-2 table-cell flex-column">
                     {{ manure_form.crop_code }}
                 </div>
-                <div class="col-md-10  flex-row-wrap">
+                <div class="col-md-8  flex-row-wrap">
                     <div class="col-md-2 table-cell flex-column">
                         {{ manure_form.manure_type }}
                     </div>
@@ -99,6 +102,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2 table-cell flex-column">
+                    {{ manure_form.comments }}
+                </div>
             </div>
             {% endfor %}
             <br><br><br>
@@ -113,7 +119,7 @@
                     <div class="col-md-2 table-cell flex-column">
                         <label>Crop code</label>
                     </div>
-                    <div class="col-md-10 flex-row-wrap">
+                    <div class="col-md-8 flex-row-wrap">
                         <div class="col-md-12 table-cell flex-column">
                             <label> Fertiliser</label>
                         </div>
@@ -130,6 +136,9 @@
                             <label>Value </label>
                         </div>
                     </div>
+                    <div class="col-md-2 table-cell flex-column">
+                        <label>Comments</label>
+                    </div>
                     <div class="cross-width"></div>
                 </div>
 
@@ -141,7 +150,7 @@
                         <div class="col-md-2 table-cell flex-column">
                             {{ fertiliser_form.crop_code }}
                         </div>
-                        <div class="col-md-10  flex-row-wrap">
+                        <div class="col-md-8  flex-row-wrap">
                             <div class="col-md-3 table-cell flex-column">
                                 {{ fertiliser_form.fertiliser_type }}
                             </div>
@@ -155,6 +164,9 @@
                                 {{ fertiliser_form.fertiliser_value }}
                             </div>
                         </div>
+                        <div class="col-md-2 table-cell flex-column">
+                            {{ fertiliser_form.comments }}
+                        </div>
                     </div>
                     {% endfor %}
                     <br><br><br>
@@ -163,14 +175,14 @@
         </div>
     </div>
 
-    <div class="col-md-4 flex-column-1 justify-content-start">
+    <div class="col-md-5 flex-column-1 justify-content-start">
         <div>
             <h4 class='text-center'>7.3 Seeds</h4>
             <div class="row flex-row">
                 <div class="col-md-2 table-cell flex-column">
                     <label>Crop code</label>
                 </div>
-                <div class="col-md-10  flex-row-wrap">
+                <div class="col-md-8  flex-row-wrap">
                     <div class="col-md-12 table-cell flex-column">
                         <label> Seeds</label>
                     </div>
@@ -203,6 +215,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2 table-cell flex-column">
+                    <label>Comments</label>
+                </div>
                 <div class="cross-width"></div>
             </div>
 
@@ -218,7 +233,7 @@
                         {{ seeds_form.crop_code_second_digit }}
                     </div>
                 </div>
-                <div class="col-md-10  flex-row-wrap">
+                <div class="col-md-8  flex-row-wrap">
                     <div class="col-md-6 flex-row-wrap">
                         <div class="col-md-4 table-cell flex-column">
                             {{ seeds_form.home_produced_quantity }}
@@ -242,6 +257,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2 table-cell">
+                    {{ seeds_form.comments }}
+                </div>
             </div>
             {% endfor %}
             <br><br><br>
@@ -252,11 +270,14 @@
         <div class="col-md-10 col-md-offset-1">
             <h4 class='text-center'>7.4 Plant Protection</h4>
             <div class="row flex-row">
-                <div class="col-md-4 table-cell flex-column">
+                <div class="col-md-3 table-cell flex-column">
                     <label>Crop code</label>
                 </div>
-                <div class="col-md-8 table-cell flex-column">
+                <div class="col-md-6 table-cell flex-column">
                     <label>Expenditure</label>
+                </div>
+                <div class="col-md-3 table-cell flex-column">
+                    <label>Comments</label>
                 </div>
                 <div class="cross-width"></div>
             </div>
@@ -265,11 +286,14 @@
             {{ formset_plant_protection.management_form }}
             {% for plant_protection_form in formset_plant_protection.forms %}
             <div class="row flex-row plant_protection_form">
-                <div class="col-md-4 table-cell flex-column">
+                <div class="col-md-3 table-cell flex-column">
                     {{ plant_protection_form.crop_code }}
                 </div>
-                <div class="col-md-8 table-cell flex-column">
+                <div class="col-md-6 table-cell flex-column">
                     {{ plant_protection_form.plant_protection_value }}
+                </div>
+                <div class="col-md-3 table-cell flex-column">
+                    {{ plant_protection_form.comments }}
                 </div>
             </div>
             {% endfor %}
@@ -277,21 +301,24 @@
         </div>
     </div>
 
-    <div class="col-md-3 flex-column-1 justify-content-start">
+    <div class="col-md-4 flex-column-1 justify-content-start">
         <div>
             <h4 class='text-center'>7.5 Irrigation Charges</h4>
             <div class="row flex-row">
                 <div class="col-md-3 table-cell flex-column">
                     <label>Crop code</label>
                 </div>
-                <div class="col-md-3 table-cell flex-column">
+                <div class="col-md-2 table-cell flex-column">
                     <label>Source</label>
                 </div>
-                <div class="col-md-3 table-cell flex-column">
+                <div class="col-md-2 table-cell flex-column">
                     <label>Cost</label>
                 </div>
-                <div class="col-md-3 table-cell flex-column">
+                <div class="col-md-2 table-cell flex-column">
                     <label>Unit Price</label>
+                </div>
+                <div class="col-md-3 table-cell flex-column">
+                    <label>Comments</label>
                 </div>
                 <div class="cross-width"></div>
             </div>
@@ -303,14 +330,17 @@
                 <div class="col-md-3 table-cell flex-column">
                     {{ irrigation_form.crop_code }}
                 </div>
-                <div class="col-md-3 table-cell flex-column">
+                <div class="col-md-2 table-cell flex-column">
                     {{ irrigation_form.irrigation_source }}
                 </div>
-                <div class="col-md-3 table-cell flex-column">
+                <div class="col-md-2 table-cell flex-column">
                     {{ irrigation_form.irrigation_cost }}
                 </div>
-                <div class="col-md-3 table-cell flex-column">
+                <div class="col-md-2 table-cell flex-column">
                     {{ irrigation_form.irrigation_unit_price }}
+                </div>
+                <div class="col-md-3 table-cell flex-column">
+                    {{ irrigation_form.comments }}
                 </div>
             </div>
             {% endfor %}
@@ -320,15 +350,12 @@
 
 </div>
 
-<script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
 $('.manure_form').formset();
 $('.fertiliser_form').formset();
 $('.seeds_form').formset();
 $('.plant_protection_form').formset();
 $('.irrigation_form').formset();
-
-
-
 </script>
+{% include 'common/comments.html' %}
 {%  endblock %}

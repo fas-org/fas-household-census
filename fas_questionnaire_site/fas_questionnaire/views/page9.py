@@ -11,92 +11,43 @@ from ..models.page9 import *
 @login_required(login_url='login')
 def init(request):
     if request.session.get('household') is None:
-        return new(request)
+        return redirect('household_edit')
     else:
-        ownership_result_set = OwnershipWellsTubewells.objects.filter(household=request.session.get('household'))
-        production_means_result_set = SpecifiedProductionMeans.objects.filter(household=request.session.get('household'))
-        if len(ownership_result_set) == 0 and len(production_means_result_set) == 0:
-            return new(request)
         return edit(request, request.session['household'])
 
-
 @login_required(login_url='login')
-def new(request):
-    current_ownership_formset = formset_factory(OwnershipWellsTubewellsForm, formset=BaseFormSet, extra=5)
-    irrigation_means_formset = formset_factory(SpecifiedIrrigationMeansForm, formset=BaseFormSet, extra=2)
-
+def edit(request, pk):
+    request.session['household'] = pk
     if request.method == "POST":
-        current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
-        irrigation_means_forms = irrigation_means_formset(request.POST,prefix='irrigation')
-        current_ownership_forms_saved = False
-        production_means_forms_saved = False
-        irrigation_means_forms_saved = False
-        if current_ownership_forms.is_valid() and irrigation_means_forms.is_valid():
-            set_item_type(irrigation_means_forms, "irrigation")
-            current_ownership_forms_saved = save_forms(request, current_ownership_forms)
-            irrigation_means_forms_saved = save_forms(request, irrigation_means_forms)
+        current_ownership_formset = formset_factory(OwnershipWellsTubewellsForm, formset=BaseFormSet, extra=1)
+        irrigation_means_formset = formset_factory(SpecifiedIrrigationMeansForm, formset=BaseFormSet, extra=1)
 
-        if current_ownership_forms_saved or production_means_forms_saved or irrigation_means_forms_saved:
+        current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
+        irrigation_means_forms = irrigation_means_formset(request.POST, prefix='irrigation')
+
+        if save_formset(current_ownership_forms, OwnershipWellsTubewells, pk) \
+                and save_formset(irrigation_means_forms, SpecifiedProductionMeans, pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 9):
             messages.success(request, 'Data saved successfully')
-            return redirect('page9_edit', pk=request.session['household'])
+            return redirect('page9_edit', pk)
         else:
             return render(request, 'page9.html',
                           {'current_ownership_formset': current_ownership_forms,
                            'irrigation_means_formset': irrigation_means_forms,
-                           'search_form': get_search_form()})
+                           'search_form': get_search_form(),
+                           'comments': get_comments_formset(pk, 9)})
 
-    return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset(prefix='owner'),
-                                                             'irrigation_means_formset': irrigation_means_formset(prefix='irrigation'),
-                                          'search_form': get_search_form()})
+    current_ownership_model_formset = modelformset_factory(OwnershipWellsTubewells, form=OwnershipWellsTubewellsForm,
+                                                           extra=1)
+    current_ownership_result_set = OwnershipWellsTubewells.objects.filter(household=pk)
+    current_ownership_formset = current_ownership_model_formset(queryset=current_ownership_result_set, prefix='owner')
 
+    irrigation_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedIrrigationMeansForm,
+                                                          extra=1)
+    irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk, item_type='irrigation')
+    irrigation_means_formset = irrigation_means_model_formset(queryset=irrigation_means_result_set, prefix='irrigation')
 
-def set_item_type(forms, type):
-    for form in forms:
-        fas_object = form.save(commit=False)
-        fas_object.item_type=type
-        
-
-@login_required(login_url='login')
-def edit(request, pk):
-    try:
-        request.session['household'] = pk
-        if request.method == "POST":
-            current_ownership_formset = formset_factory(OwnershipWellsTubewellsForm, formset=BaseFormSet, extra=5)
-            irrigation_means_formset = formset_factory(SpecifiedIrrigationMeansForm, formset=BaseFormSet, extra=2)
-
-            current_ownership_forms = current_ownership_formset(request.POST, prefix='owner')
-            irrigation_means_forms = irrigation_means_formset(request.POST,prefix='irrigation')
-
-            current_ownership_forms_saved = False
-            production_means_forms_saved = False
-            irrigation_means_forms_saved = False
-            if current_ownership_forms.is_valid()  and irrigation_means_forms.is_valid():
-                OwnershipWellsTubewells.objects.filter(household=pk).delete()
-                SpecifiedProductionMeans.objects.filter(household=pk).delete()
-                set_item_type(irrigation_means_forms, "irrigation")
-
-                current_ownership_forms_saved = save_forms(request, current_ownership_forms)
-                irrigation_means_forms_saved = save_forms(request, irrigation_means_forms)
-
-            if current_ownership_forms_saved or production_means_forms_saved or irrigation_means_forms_saved:
-                messages.success(request, 'Data saved successfully')
-            else:
-                return render(request, 'page9.html',
-                              {'current_ownership_formset': current_ownership_forms,
-                               'irrigation_means_formset': irrigation_means_forms,
-                               'search_form': get_search_form()})
-
-        current_ownership_model_formset = modelformset_factory(OwnershipWellsTubewells, form=OwnershipWellsTubewellsForm, extra=5)
-        current_ownership_result_set = OwnershipWellsTubewells.objects.filter(household=pk)
-        current_ownership_formset = current_ownership_model_formset(queryset=current_ownership_result_set, prefix='owner')
-
-        irrigation_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedIrrigationMeansForm, extra=2)
-        irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk,item_type='irrigation')
-        irrigation_means_formset = irrigation_means_model_formset(queryset=irrigation_means_result_set, prefix='irrigation')
-
-        return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset,
-                                                                 'irrigation_means_formset': irrigation_means_formset,
-                                              'search_form': get_search_form()})
-
-    except Exception:
-        return new(request)
+    return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset,
+                                          'irrigation_means_formset': irrigation_means_formset,
+                                          'search_form': get_search_form(),
+                                          'comments': get_comments_formset(pk, 9)})

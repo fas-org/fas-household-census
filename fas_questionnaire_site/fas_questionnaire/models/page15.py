@@ -57,7 +57,7 @@ class LongTermWorkers(models.Model):
     months_employed = models.FloatField(db_column='Number of months for which employed last year', blank=True, null=True)
     earning_cash = models.FloatField(db_column='Earnings-cash', blank=True, null=True)
     earning_kind = models.CharField(max_length=50, db_column='Earnings-kind', blank=True, null=True)
-    comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -76,7 +76,7 @@ class NonAgricultureWorkers(models.Model):
     earning_cash = models.CharField(max_length=50, db_column='Earnings in cash', blank=True, null=True)
     earning_kind = models.CharField(max_length=50, db_column='Earnings in kind', blank=True, null=True)
     earning_total = models.CharField(max_length=50, db_column='Total Earnings', blank=True, null=True)
-    comments = models.CharField(max_length=250, db_column='Comments', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

@@ -250,7 +250,7 @@
                     <label>Payment</label>
                 </div>
             </div>
-            <div class="col-md-3 table-cell flex-column-1">
+            <div class="col-md-1 table-cell flex-column-1">
                 <label> Comment </label>
             </div>
             <div class="cross-width flex-column-1"></div>
@@ -442,7 +442,7 @@
                         {{ labour_days_employed_in_agricultural_operations_form.machine_labour_payment }}
                     </div>
                 </div>
-                <div class="col-md-3 table-cell flex-column-1">
+                <div class="col-md-1 table-cell flex-column-1">
                     {{ labour_days_employed_in_agricultural_operations_form.comments }}
                 </div>
             </div>
@@ -451,4 +451,5 @@
     <script type="text/javascript">
         $('.labour_days_employed_row').formset();
     </script>
+    {% include 'common/comments.html' %}
 {% endblock %}

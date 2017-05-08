@@ -3,9 +3,8 @@ from __future__ import unicode_literals
 from django.db import models
 from .household_models import Household
 
-class CommentsAndInformationOnInvestigators(models.Model):
+class InformationOnInvestigators(models.Model):
     household=models.ForeignKey(Household,models.DO_NOTHING,db_column='household')
-    comments_observations = models.TextField(db_column='comments/observations', blank=True, null=True)
     name_of_investigator = models.CharField(db_column='Name of investigator', max_length=50, blank=True, null=True)
     date_of_interview = models.CharField(db_column='Date of interview', max_length=50, blank=True, null=True)
     time_taken = models.CharField(db_column='Time taken', max_length=50, blank=True, null=True)

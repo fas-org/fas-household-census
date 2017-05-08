@@ -59,8 +59,14 @@
             <div class='col-md-3 table-cell flex-column'>
                 <label>Reasons for not having a card</label>
             </div>
-            <div class='col-md-9 table-cell'>
+            <div class='col-md-6 table-cell'>
                 {{ pds_form.reasons_for_not_having_card }}
+            </div>
+            <div class='col-md-1 table-cell flex-column'>
+                <label>Comments</label>
+            </div>
+            <div class='col-md-2 table-cell'>
+                {{ pds_form.comments }}
             </div>
         </div>
     </div>
@@ -303,6 +309,6 @@
         $('input[name="water-INITIAL_FORMS"]').val(0);
         $('input[name="housing-INITIAL_FORMS"]').val(0);
     </script>
-
+    {% include 'common/comments.html' %}
 
 {% endblock %}

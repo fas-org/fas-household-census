@@ -12,10 +12,10 @@
     {% csrf_token %}
     <h4 class='text-center'> 18. ANIMAL RESOURCES </h4>
     <div class="row flex-row">
-        <div class="col-md-7">
-            <label>A.Inventory</label>
+        <div class="col-md-8">
+            <h4 class="text-center">A.Inventory</h4>
             <div class='row flex-row'>
-                <div class='col-md-9 flex-column'>
+                <div class='col-md-8 flex-column'>
                     <div class='col-md-12 table-cell flex-column'>
                         <label>Description</label>
                     </div>
@@ -51,6 +51,9 @@
                 <div class='col-md-1 table-cell flex-column'>
                     <label>Total present value</label>
                 </div>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>Comments</label>
+                </div>
                 <div class="cross-width">
                 </div>
             </div>
@@ -58,7 +61,7 @@
             {{ animal_inventory_formset.management_form }}
             {% for inventory_form in animal_inventory_formset.forms %}
                 <div class='row animal_inventory_formset_row flex-row'>
-                    <div class='col-md-9'>
+                    <div class='col-md-8'>
                         <div class='row flex-row'>
                             <div class='col-md-4 table-cell'>
                                 {{ inventory_form.type }}
@@ -90,63 +93,77 @@
                     <div class='col-md-1 table-cell'>
                         {{ inventory_form.total_present_value }}
                     </div>
+                    <div class='col-md-1 table-cell'>
+                        {{ inventory_form.comments }}
+                    </div>
                     {{ inventory_form.id.as_hidden }}
                 </div>
             {% endfor %}
         </div>
 
-        <div class="col-md-3 col-md-offset-1">
-            <label>B.Feed</label>
-            {% csrf_token %}
-            <div class='row flex-row'>
-                <div class='col-md-4 table-cell flex-column'>
-                    <label>Type of feed</label>
-                </div>
-                <div class='col-md-4 table-cell flex-column'>
-                    <label>Homegrown / Purchased</label>
-                </div>
-                <div class='col-md-2 table-cell flex-column'>
-                    <label>QTY</label>
-                </div>
-                <div class='col-md-2 table-cell flex-column'>
-                    <label>Value</label>
-                </div>
-                <div class="cross-width">
+        <div class="col-md-4">
+            <div class="col-md-10 col-md-offset-1">
+                <h4 class="text-center">B.Feed</h4>
+                {% csrf_token %}
+                <div class='row flex-row'>
+                    <div class='col-md-3 table-cell flex-column'>
+                        <label>Type of feed</label>
+                    </div>
+                    <div class='col-md-3 table-cell flex-column'>
+                        <label>Homegrown / Purchased</label>
+                    </div>
+                    <div class='col-md-2 table-cell flex-column'>
+                        <label>QTY</label>
+                    </div>
+                    <div class='col-md-2 table-cell flex-column'>
+                        <label>Value</label>
+                    </div>
+                    <div class='col-md-2 table-cell flex-column'>
+                        <label>Comments</label>
+                    </div>
+                    <div class="cross-width">
 
+                    </div>
                 </div>
+
+                {{ animal_feed_formset.management_form }}
+                {% for feed_form in animal_feed_formset.forms %}
+                    <div class='row animal_feed_formset_row flex-row'>
+                        <div class='col-md-3 table-cell'>
+                            {{ feed_form.type_of_feed }}
+                        </div>
+                        <div class='col-md-3 table-cell'>
+                            {{ feed_form.source }}
+                        </div>
+                        <div class='col-md-2 table-cell'>
+                            {{ feed_form.qty }}
+                        </div>
+                        <div class='col-md-2 table-cell'>
+                            {{ feed_form.value }}
+                        </div>
+                        <div class='col-md-2 table-cell'>
+                            {{ feed_form.comments }}
+                        </div>
+                        {{ feed_form.id.as_hidden }}
+                    </div>
+                {% endfor %}
             </div>
-
-            {{ animal_feed_formset.management_form }}
-            {% for feed_form in animal_feed_formset.forms %}
-                <div class='row animal_feed_formset_row flex-row'>
-                    <div class='col-md-4 table-cell'>
-                        {{ feed_form.type_of_feed }}
-                    </div>
-                    <div class='col-md-4 table-cell'>
-                        {{ feed_form.source }}
-                    </div>
-                    <div class='col-md-2 table-cell'>
-                        {{ feed_form.qty }}
-                    </div>
-                    <div class='col-md-2 table-cell'>
-                        {{ feed_form.value }}
-                    </div>
-                    {{ feed_form.id.as_hidden }}
-                </div>
-            {% endfor %}
         </div>
     </div>
     <br><br>
     <div class='row flex-row'>
         <div class="col-md-3">
-            <label>C.Other Expenditure</label>
+            <h4 class="text-center">C.Other Expenditure</h4>
             {% csrf_token %}
             <div class='row flex-row'>
-                <div class='col-md-6 table-cell flex-column'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Item</label>
                 </div>
-                <div class='col-md-6 table-cell flex-column'>
+                <div class='col-md-4 table-cell flex-column'>
                     <label>Expenditure</label>
+                </div>
+                <div class='col-md-4 table-cell flex-column'>
+                    <label>Comments</label>
                 </div>
                 <div class="cross-width">
                 </div>
@@ -155,22 +172,25 @@
             {{ other_expenditure_formset.management_form }}
             {% for feed_form in other_expenditure_formset.forms %}
                 <div class='row other_expenditure_formset_row flex-row'>
-                    <div class='col-md-6 table-cell'>
+                    <div class='col-md-4 table-cell'>
                         {{ feed_form.item }}
                     </div>
-                    <div class='col-md-6 table-cell'>
+                    <div class='col-md-4 table-cell'>
                         {{ feed_form.expenditure }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ feed_form.comments }}
                     </div>
                     {{ feed_form.id.as_hidden }}
                 </div>
             {% endfor %}
         </div>
     <div class="col-md-8 col-md-offset-1">
-        <label>D.Output and income</label>
+        <h4 class="text-center">D.Output and income</h4>
         {% csrf_token %}
     <div class='row flex-row'>
 
-        <div class='col-md-4 table-cell flex-column'>
+        <div class='col-md-2 table-cell flex-column'>
             <label>Product</label>
         </div>
         <div class='col-md-8 flex-column'>
@@ -200,6 +220,9 @@
                 </div>
             </div>
         </div>
+        <div class='col-md-2 table-cell flex-column'>
+            <label>Comments</label>
+        </div>
         <div class="cross-width">
         </div>
     </div>
@@ -207,7 +230,7 @@
     {{ output_and_income_formset.management_form }}
     {% for feed_form in output_and_income_formset.forms %}
         <div class='row output_and_income_formset flex-row'>
-            <div class='col-md-4 table-cell flex-column'>
+            <div class='col-md-2 table-cell flex-column'>
                 {{ feed_form.product }}
             </div>
             <div class='col-md-8 flex-column'>
@@ -234,6 +257,9 @@
                         {{ feed_form.id.as_hidden }}
                     </div>
                 </div>
+            </div>
+            <div class='col-md-2 table-cell flex-column'>
+                {{ feed_form.comments }}
             </div>
         </div>
     {% endfor %}
@@ -372,7 +398,6 @@
             {{ salary_form.id.as_hidden }}
         </div>
     {% endfor %}
-    <br><br>
 
     <script type="text/javascript">
         $('.animal_inventory_formset_row').formset();
@@ -382,4 +407,5 @@
         $('.income_business_formset_row').formset();
         $('.income_salary_formset_row').formset();
     </script>
+    {% include 'common/comments.html' %}
 {% endblock %}

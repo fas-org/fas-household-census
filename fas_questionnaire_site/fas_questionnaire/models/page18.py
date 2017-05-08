@@ -28,6 +28,7 @@ class AcquisitionAndLossOfMajorAssets(models.Model):
     price_received = models.FloatField(db_column='Price received', blank=True, null=True)
     month_of_purchase = models.ForeignKey(Month, db_column='Month of purchase',blank=True,null=True,related_name="%(class)s_Month_of_purchase")
     price_paid = models.FloatField(db_column='Price paid', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -43,7 +44,8 @@ class ForChildrenOfAge616Years(models.Model):
     reason_for_missing_school = models.CharField(db_column='Reason for missing school', max_length=200, blank=True, null=True)  
     whether_ever_enrolled_in_school = models.NullBooleanField(db_column='Whether ever enrolled in school')  
     age_at_which_withdrawn = models.CharField(db_column='Age at which withdrawn', max_length=50, blank=True, null=True)  
-    reasons_for_droppingout = models.CharField(db_column='reasons for droppingout', max_length=300, blank=True, null=True)  
+    reasons_for_droppingout = models.CharField(db_column='reasons for droppingout', max_length=300, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

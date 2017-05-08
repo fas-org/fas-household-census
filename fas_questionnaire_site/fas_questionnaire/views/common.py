@@ -125,7 +125,10 @@ def get_household_members_as_widget(household_id, field_name):
 
 def get_comments_formset(household_id, page_no):
     comments_formset = modelformset_factory(Comments, form=CommentsForm, extra=1)
-    comments_result_set = Comments.objects.filter(household=household_id, page_no=page_no)
+    if page_no is None:
+        comments_result_set = Comments.objects.filter(household=household_id)
+    else:
+        comments_result_set = Comments.objects.filter(household=household_id, page_no=page_no)
     return comments_formset(queryset=comments_result_set, prefix='comments')
 
 def get_comments_formset_to_save(request):

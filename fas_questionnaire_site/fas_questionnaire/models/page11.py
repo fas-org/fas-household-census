@@ -65,7 +65,7 @@ class LabourDaysEmployedInAgriculturalOperations(models.Model):
     piece_rate_payment_kind = models.CharField(db_column='Piece rate payment - kind', max_length=50, blank=True, null=True)
     machine_labour_hours = models.FloatField(db_column='Machine labour hours', blank=True, null=True)
     machine_labour_payment = models.CharField(db_column='Machine labour payment', max_length=255, blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

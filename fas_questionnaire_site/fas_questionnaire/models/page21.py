@@ -34,6 +34,7 @@ class AssetOwnership(models.Model):
     type_of_asset = models.ForeignKey(AssetType, db_column='Type of asset', blank=True, null=True)
     number_of_assets_owned = models.IntegerField(db_column='Number of assets owned',blank=True,null=True)
     value_of_assets = models.IntegerField(db_column='Value of assets',blank=True,null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -44,6 +45,7 @@ class AssetLandRegistration(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='household')
     land_registered_details = models.TextField(db_column='land registered details', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

@@ -2,6 +2,7 @@ from django.db import models
 
 
 class OtherCosts(models.Model):
+    id = models.AutoField(primary_key=True)  # This field type is a guess.
     item = models.CharField(max_length=50, blank=True)
     amount_spent = models.IntegerField(blank=True, null=True)
     month_of_payment = models.ForeignKey('Month',db_column="month_of_payment", max_length=50, blank=True, null=True)

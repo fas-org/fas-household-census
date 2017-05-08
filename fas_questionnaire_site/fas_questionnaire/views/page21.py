@@ -44,14 +44,14 @@ def edit(request, pk):
     error = False
     if request.method == "POST":
         # assetLandRegistrationForm = AssetLandRegistrationForm(request.POST)
-        immovables_form_set = formset_factory(ImmovableForm, formset=BaseFormSet, extra=5)
-        meansOfTransport_form_set = formset_factory(MeansOfTransportForm, formset=BaseFormSet, extra=5)
-        electricEquipments_form_set = formset_factory(ElectricEquipmentsForm, formset=BaseFormSet, extra=5)
+        immovables_form_set = formset_factory(ImmovableForm, formset=BaseFormSet, extra=1)
+        meansOfTransport_form_set = formset_factory(MeansOfTransportForm, formset=BaseFormSet, extra=1)
+        electricEquipments_form_set = formset_factory(ElectricEquipmentsForm, formset=BaseFormSet, extra=1)
         otherDomesticDurableGoods_form_set = formset_factory(OtherDomesticDurableGoodsForm, formset=BaseFormSet,
-                                                             extra=5)
-        furniture_form_set = formset_factory(FurnitureForm, formset=BaseFormSet, extra=5)
-        inventories_form_set = formset_factory(InventoriesForm, formset=BaseFormSet, extra=5)
-        miscellaneous_form_set = formset_factory(MiscellaneousForm, formset=BaseFormSet, extra=5)
+                                                             extra=1)
+        furniture_form_set = formset_factory(FurnitureForm, formset=BaseFormSet, extra=1)
+        inventories_form_set = formset_factory(InventoriesForm, formset=BaseFormSet, extra=1)
+        miscellaneous_form_set = formset_factory(MiscellaneousForm, formset=BaseFormSet, extra=1)
 
         immovablesForms = immovables_form_set(request.POST, prefix='Immovables')
         meansOfTransportForms = meansOfTransport_form_set(request.POST, prefix='MeansOfTransport')
@@ -64,7 +64,9 @@ def edit(request, pk):
         assetLandRegistrationForm = AssetLandRegistrationForm(request.POST,prefix='registration')
 
         if save_formset_page21(immovablesForms, AssetOwnership, pk,'Immovables') and save_formset_page21(meansOfTransportForms, AssetOwnership,pk,'MeansOfTransport') and save_formset_page21(furnitureForms,AssetOwnership,pk,'Furniture') and \
-                save_formset_page21(electricEquipmentsForms, AssetOwnership, pk,'ElectricEquipments') and save_formset_page21(otherDomesticDurableGoodsForms,AssetOwnership, pk,'OtherDomesticDurableGoods') and save_formset_page21(inventoriesForms, AssetOwnership, pk,'Inventories') and save_formset_page21(miscellaneousForms, AssetOwnership,pk,'Miscellaneous') and save_form(assetLandRegistrationForm, pk):
+                save_formset_page21(electricEquipmentsForms, AssetOwnership, pk,'ElectricEquipments') and save_formset_page21(otherDomesticDurableGoodsForms,AssetOwnership, pk,'OtherDomesticDurableGoods') and save_formset_page21(inventoriesForms, AssetOwnership, pk,'Inventories') \
+                and save_formset_page21(miscellaneousForms, AssetOwnership,pk,'Miscellaneous') and save_form(assetLandRegistrationForm, pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 21):
             messages.success(request, 'Data saved successfully')
             return redirect('page21_edit', pk)
         else:
@@ -78,18 +80,19 @@ def edit(request, pk):
             'inventories_form_set': inventoriesForms,
             'miscellaneous_form_set': miscellaneousForms,
             'land_details': assetLandRegistrationForm,
-            'search_form': get_search_form(),'all_formsets':error})
+            'search_form': get_search_form(),'all_formsets':error,
+            'comments': get_comments_formset(pk, 21)})
 
 
 
     assetLandRegistration = get_object_or_none(AssetLandRegistration, pk)
     assetLandRegistrationForm = AssetLandRegistrationForm(instance=assetLandRegistration,prefix='registration')
 
-    immovables_model_form = modelformset_factory(AssetOwnership, form=ImmovableForm, extra=5)
+    immovables_model_form = modelformset_factory(AssetOwnership, form=ImmovableForm, extra=1)
     immovables_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in AssetType.objects.filter( asset_category_id=AssetCategory.objects.get(asset_category="Immovables").id)])
     immovablesSet = immovables_model_form(queryset=immovables_result_set, prefix='Immovables')
 
-    meansOfTransport_model_form = modelformset_factory(AssetOwnership, form=MeansOfTransportForm, extra=5)
+    meansOfTransport_model_form = modelformset_factory(AssetOwnership, form=MeansOfTransportForm, extra=1)
     meansOfTransport_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in
                                                                                                  AssetType.objects.filter(
                                                                                                      asset_category_id=AssetCategory.objects.get(
@@ -97,35 +100,35 @@ def edit(request, pk):
     meansOfTransportSet = meansOfTransport_model_form(queryset=meansOfTransport_result_set,
                                                       prefix='MeansOfTransport')
 
-    furniture_model_form = modelformset_factory(AssetOwnership, form=FurnitureForm, extra=5)
+    furniture_model_form = modelformset_factory(AssetOwnership, form=FurnitureForm, extra=1)
     furniture_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in
                                                                                           AssetType.objects.filter(
                                                                                               asset_category_id=AssetCategory.objects.get(
                                                                                                   asset_category="Furniture").id)])
     furnitureSet = furniture_model_form(queryset=furniture_result_set, prefix='Furniture')
 
-    electric_model_form = modelformset_factory(AssetOwnership, form=ElectricEquipmentsForm, extra=5)
+    electric_model_form = modelformset_factory(AssetOwnership, form=ElectricEquipmentsForm, extra=1)
     electric_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in
                                                                                          AssetType.objects.filter(
                                                                                              asset_category_id=AssetCategory.objects.get(
                                                                                                  asset_category="ElectricEquipments").id)])
     electricSet = electric_model_form(queryset=electric_result_set, prefix='ElectricEquipments')
 
-    domestic_model_form = modelformset_factory(AssetOwnership, form=OtherDomesticDurableGoodsForm, extra=5)
+    domestic_model_form = modelformset_factory(AssetOwnership, form=OtherDomesticDurableGoodsForm, extra=1)
     domestic_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in
                                                                                          AssetType.objects.filter(
                                                                                              asset_category_id=AssetCategory.objects.get(
                                                                                                  asset_category="OtherDomesticDurableGoods").id)])
     domesticSet = domestic_model_form(queryset=domestic_result_set, prefix='OtherDomesticDurableGoods')
 
-    inventories_model_form = modelformset_factory(AssetOwnership, form=InventoriesForm, extra=5)
+    inventories_model_form = modelformset_factory(AssetOwnership, form=InventoriesForm, extra=1)
     inventories_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in
                                                                                             AssetType.objects.filter(
                                                                                                 asset_category_id=AssetCategory.objects.get(
                                                                                                     asset_category="Inventories").id)])
     inventoriesSet = inventories_model_form(queryset=inventories_result_set, prefix='Inventories')
 
-    miscellaneous_model_form = modelformset_factory(AssetOwnership, form=MiscellaneousForm, extra=5)
+    miscellaneous_model_form = modelformset_factory(AssetOwnership, form=MiscellaneousForm, extra=1)
     miscellaneous_result_set = AssetOwnership.objects.filter(household=pk, type_of_asset__in=[x.id for x in
                                                                                               AssetType.objects.filter(
                                                                                                   asset_category_id=AssetCategory.objects.get(
@@ -140,4 +143,5 @@ def edit(request, pk):
                                            'inventories_form_set': inventoriesSet,
                                            'miscellaneous_form_set': miscellaneousSet,
                                            'land_details': assetLandRegistrationForm,
-                                           'search_form': get_search_form(), 'all_formsets': error})
+                                           'search_form': get_search_form(), 'all_formsets': error,
+                                           'comments': get_comments_formset(pk, 21)})

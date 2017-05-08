@@ -14,7 +14,7 @@ class PatternOfAgriculturalLabouringOut(models.Model):
     wages_kind = models.CharField(max_length=100, blank=True, null=True)
     unit = models.ForeignKey('WageUnit', on_delete= models.CASCADE, blank=True, null=True)
     hours_of_work = models.FloatField(blank=True, null=True)
-    comments = models.CharField(max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
     household = models.ForeignKey('Household', on_delete= models.CASCADE, db_column='household')
 
     class Meta:

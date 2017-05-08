@@ -186,7 +186,7 @@
         <div class='col-md-2 table-cell flex-column'>
             <label>Type of wage contract (daily, weekly, monthly, piece-rate)</label>
         </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+        <div class='col-md-2 flex-row-wrap-1'>
             <div class='col-md-12 table-cell'>
                 <label>Total earnings last year</label>
             </div>
@@ -196,6 +196,9 @@
             <div class='col-md-6 table-cell flex-column'>
                 <label>Kind</label>
             </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Comments</label>
         </div>
         <div class="cross-width"></div>
     </div>
@@ -218,7 +221,7 @@
             <div class='col-md-2 table-cell flex-column'>
                 {{ form.wage_form }}
             </div>
-            <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-2 flex-row-wrap-1'>
                 <div class='col-md-6 table-cell'>
                     {{ form.earning_cash }}
                 </div>
@@ -226,12 +229,16 @@
                     {{ form.earning_kind }}
                 </div>
             </div>
+            <div class='col-md-1 table-cell flex-column'>
+                {{ form.comments }}
+            </div>
         </div>
     {% endfor %}
 
-    <br><br>
+    <br>
     <script type="text/javascript">
         $('.agri_formset_row').formset();
         $('.non_agri_formset_row').formset();
     </script>
+    {% include 'common/comments.html' %}
 {% endblock %}

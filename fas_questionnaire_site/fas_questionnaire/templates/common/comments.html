@@ -14,6 +14,8 @@
 {{ comments.management_form }}
 {% for comments_form in comments.forms %}
 <div class="row flex-row comments-form">
+    {{ comments_form.id.as_hidden }}
+    {{ comments_form.page_no.as_hidden }}
     <div class="col-md-1 table-cell comments-input-field">
         {{ comments_form.comment_number }}
     </div>

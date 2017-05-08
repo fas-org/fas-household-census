@@ -20,10 +20,10 @@ def edit(request, pk):
     request.session['household'] = pk
     freedom_of_employment_questions = get_object_or_none(FreedomOfEmploymentQuestions, household_id=pk)
     if request.method == "POST":
-        income_from_state_formset = formset_factory(IncomeFromStateAndCommonPropertyResourcesForm, formset=BaseFormSet, extra=5)
+        income_from_state_formset = formset_factory(IncomeFromStateAndCommonPropertyResourcesForm, formset=BaseFormSet, extra=1)
         aggri_or_non_aggri_labour_service_formset = formset_factory(AgriculturalOrNonAgriculturalLabourServicesForm,
                                                                          formset=BaseFormSet,
-                                                                         extra=5)
+                                                                         extra=1)
 
         income_from_state_forms = income_from_state_formset(request.POST, prefix='income_from_state')
         aggri_or_non_aggri_labour_service_forms = aggri_or_non_aggri_labour_service_formset(request.POST,
@@ -31,22 +31,22 @@ def edit(request, pk):
         freedom_of_employment_questions_form = FreedomOfEmploymentQuestionsForm(request.POST,
                                                                                 instance=freedom_of_employment_questions)
 
-        if save_formset(income_from_state_forms, IncomeFromStateAndCommonPropertyResources, pk) and save_formset(aggri_or_non_aggri_labour_service_forms,
-                                                                                                                 AgriculturalOrNonAgriculturalLabourServices,
-                                                                                      pk) \
-                and save_form(freedom_of_employment_questions_form, pk):
+        if save_formset(income_from_state_forms, IncomeFromStateAndCommonPropertyResources, pk) \
+                and save_formset(aggri_or_non_aggri_labour_service_forms, AgriculturalOrNonAgriculturalLabourServices, pk) \
+                and save_form(freedom_of_employment_questions_form, pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 16):
             messages.success(request, 'Data saved successfully')
             return redirect('page16_edit', pk)
 
     income_from_state_model_formset = modelformset_factory(IncomeFromStateAndCommonPropertyResources,
-                                                           form=IncomeFromStateAndCommonPropertyResourcesForm, extra=5)
+                                                           form=IncomeFromStateAndCommonPropertyResourcesForm, extra=1)
     income_from_state_result_set = IncomeFromStateAndCommonPropertyResources.objects.filter(household=pk)
     income_from_state_formset = income_from_state_model_formset(queryset=income_from_state_result_set,
                                                                 prefix='income_from_state')
 
     aggri_or_non_aggri_labour_service_model_formset = modelformset_factory(AgriculturalOrNonAgriculturalLabourServices,
                                                                            form=AgriculturalOrNonAgriculturalLabourServicesForm,
-                                                                           extra=5)
+                                                                           extra=1)
     aggri_or_non_aggri_labour_service_result_set = AgriculturalOrNonAgriculturalLabourServices.objects.filter(
         household=pk)
     aggri_or_non_aggri_labour_service_formset = aggri_or_non_aggri_labour_service_model_formset(
@@ -58,4 +58,5 @@ def edit(request, pk):
     return render(request, 'page16.html', {'income_from_state_formset': income_from_state_formset,
                                            'aggri_or_non_aggri_labour_service_formset': aggri_or_non_aggri_labour_service_formset,
                                            'freedom_of_employment_questions_form': freedom_of_employment_questions_form,
-                                           'search_form': get_search_form()})
+                                           'search_form': get_search_form(),
+                                           'comments': get_comments_formset(pk, 16)})

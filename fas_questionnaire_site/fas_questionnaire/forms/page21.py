@@ -10,7 +10,8 @@ class ImmovableForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -33,7 +34,8 @@ class MeansOfTransportForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -56,7 +58,8 @@ class FurnitureForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -79,7 +82,8 @@ class ElectricEquipmentsForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -102,7 +106,8 @@ class OtherDomesticDurableGoodsForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -125,7 +130,8 @@ class InventoriesForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -148,7 +154,8 @@ class MiscellaneousForm(forms.ModelForm):
                   'type_of_asset',
                   'asset_group',
                   'number_of_assets_owned',
-                  'value_of_assets']
+                  'value_of_assets',
+                  'comments']
         exclude = ['household', 'asset_group']
         localized_fields = None
         help_texts = {}
@@ -168,10 +175,10 @@ class AssetLandRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = AssetLandRegistration
-        fields = ['id', 'household', 'land_registered_details']
+        fields = ['id', 'household', 'land_registered_details', 'comments']
         exclude = ['household']
         widgets = {
-            'land_registered_details': forms.Textarea(attrs={'rows': 7, 'cols': 198})
+            'land_registered_details': forms.Textarea(attrs={'rows': 3, 'width': '100%'})
         }
         localized_fields = None
         help_texts = {}

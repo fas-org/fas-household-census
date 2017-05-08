@@ -15,7 +15,7 @@
         <div class='col-md-1 table-cell flex-column'>
             <label>Loan No</label>
         </div>
-        <div class='col-md-2 table-cell flex-column'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Month and Year of Borrowing</label>
         </div>
         <div class='col-md-1 table-cell flex-column'>
@@ -54,6 +54,9 @@
         <div class='col-md-1 table-cell flex-column'>
             <label>Purpose of Borrowing</label>
         </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Comments</label>
+        </div>
         <div class="cross-width"></div>
     </div>
 
@@ -65,7 +68,7 @@
             <div class='col-md-1 table-cell'>
                 {{ outstanding_loans_form.loan_no }}
             </div>
-            <div class='col-md-2 table-cell'>
+            <div class='col-md-1 table-cell'>
                 {{ outstanding_loans_form.month_and_year_of_borrowing }}
             </div>
             <div class='col-md-1 table-cell'>
@@ -95,6 +98,9 @@
             <div class='col-md-1 table-cell'>
                 {{ outstanding_loans_form.purpose_of_borrowing }}
             </div>
+            <div class='col-md-1 table-cell'>
+                {{ outstanding_loans_form.comments }}
+            </div>
             {{ outstanding_loans_form.id.as_hidden }}
         </div>
     {% endfor %}
@@ -120,7 +126,7 @@
         <div class='col-md-1 table-cell flex-column'>
             <label>Month when Fully Paid</label>
         </div>
-        <div class='col-md-2 table-cell flex-column'>
+        <div class='col-md-1 table-cell flex-column'>
             <label>Total Amount Repaid</label>
         </div>
         <div class='col-md-2 table-cell flex-column'>
@@ -128,6 +134,9 @@
         </div>
         <div class='col-md-2 table-cell flex-column'>
             <label>Purpose of Borrowing</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Comments</label>
         </div>
         <div class="cross-width"></div>
     </div>
@@ -154,7 +163,7 @@
             <div class='col-md-1 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.month_when_fully_repaid }}
             </div>
-            <div class='col-md-2 table-cell'>
+            <div class='col-md-1 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.total_amount_repaid }}
             </div>
             <div class='col-md-2 table-cell'>
@@ -162,6 +171,9 @@
             </div>
             <div class='col-md-2 table-cell'>
                 {{ loans_brwd_lst_yr_and_paid_form.purpose_of_borrowing }}
+            </div>
+            <div class='col-md-1 table-cell'>
+                {{ loans_brwd_lst_yr_and_paid_form.comments }}
             </div>
             {{ loans_brwd_lst_yr_and_paid_form.id.as_hidden }}
         </div>
@@ -185,7 +197,7 @@
         <div class='col-md-1 table-cell flex-column'>
             <label>Number of members in the group</label>
         </div>
-        <div class='col-md-3 flex-column'>
+        <div class='col-md-2 flex-column'>
             <div class='row flex-row'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Savings</label>
@@ -199,6 +211,9 @@
                     <label>Total</label>
                 </div>
             </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column'>
+            <label>Comments</label>
         </div>
         <div class="cross-width"></div>
     </div>
@@ -221,7 +236,7 @@
             <div class='col-md-1 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.number_of_members_in_the_group }}
             </div>
-            <div class='col-md-3'>
+            <div class='col-md-2'>
                 <div class='row'>
                     <div class='col-md-6 table-cell'>
                         {{ mem_shp_in_slf_hlp_grps_form.rs_per_week_month_savings }}
@@ -231,13 +246,16 @@
                     </div>
                 </div>
             </div>
+            <div class='col-md-1 table-cell'>
+                {{ mem_shp_in_slf_hlp_grps_form.comments }}
+            </div>
             {{ mem_shp_in_slf_hlp_grps_form.id.as_hidden }}
         </div>
     {% endfor %}
 
     <br>
     <h4 class="text-center">D. Details of bank/ post office of the household</h4>
-    <div class="col-md-offset-2 col-md-10 flex-column">
+    <div class="col-md-offset-1 col-md-10 flex-column">
         <div class='row flex-row'>
             <div class='col-md-2 table-cell flex-column'>
                 <label>Name/s of account holders</label>
@@ -254,11 +272,14 @@
             <div class='col-md-2 table-cell flex-column'>
                 <label>Current balance</label>
             </div>
+            <div class='col-md-2 table-cell flex-column'>
+                <label>Comments</label>
+            </div>
             <div class="cross-width"></div>
         </div>
     </div>
 
-    <div class="col-md-offset-2 col-md-10 flex-column">
+    <div class="col-md-offset-1 col-md-10 flex-column">
         {% csrf_token %}
         {{ formset_dtls_of_bank_pst_offc_of_the_household.management_form }}
         {% for dtls_of_bank_pst_offc_of_the_household_form in formset_dtls_of_bank_pst_offc_of_the_household.forms %}
@@ -278,16 +299,19 @@
                 <div class='col-md-2 table-cell'>
                     {{ dtls_of_bank_pst_offc_of_the_household_form.current_balanace }}
                 </div>
+                <div class='col-md-2 table-cell'>
+                    {{ dtls_of_bank_pst_offc_of_the_household_form.comments }}
+                </div>
                 {{ dtls_of_bank_pst_offc_of_the_household_form.id.as_hidden }}
             </div>
         {% endfor %}
     </div>
-
+    <br><br><br><br>
     <script type="text/javascript">
         $('.formset_outstanding_loans').formset();
         $('.formset_loans_brwd_lst_yr_and_paid').formset();
         $('.formset_mem_shp_in_slf_hlp_grps').formset();
         $('.formset_dtls_of_bank_pst_offc_of_the_household').formset();
     </script>
-    <br><br>
+    {% include 'common/comments.html' %}
 {% endblock %}

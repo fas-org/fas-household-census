@@ -29,7 +29,7 @@ class IncomeFromStateAndCommonPropertyResources(models.Model):
     where_marketed = models.ForeignKey('WhereMarketed', db_column='Where marketed', max_length=50, blank=True, null=True)
     marketing_agency = models.ForeignKey('MarketingAgencies', db_column='Marketing agency', max_length=50, blank=True, null=True)
     if_price_determined_in_advance = models.CharField(db_column='If price determined in advance', max_length=50, blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=250, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -70,7 +70,7 @@ class AgriculturalOrNonAgriculturalLabourServices(models.Model):
     labour_days_worked_annually = models.FloatField(db_column='Labour days worked annually', blank=True, null=True)
     hours_of_work = models.FloatField(db_column='Hours of work', blank=True, null=True)
     payment = models.FloatField(db_column='Payment', blank=True, null=True)
-    comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

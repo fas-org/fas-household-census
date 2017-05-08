@@ -27,12 +27,12 @@ def init(request):
 def edit(request, pk):
     request.session['household'] = pk
     if request.method == "POST":
-        outstanding_loans_formset = formset_factory(OutstandingLoansForm, formset=BaseFormSet, extra=5)
+        outstanding_loans_formset = formset_factory(OutstandingLoansForm, formset=BaseFormSet, extra=1)
         loans_brwd_lst_yr_and_paid_formset = formset_factory(LoansBorrowedLastYearAndRepaidForm, formset=BaseFormSet,
-                                                             extra=5)
-        mem_shp_in_slf_hlp_grps_formset = formset_factory(MembershipInSelfHelpGroupsForm, formset=BaseFormSet, extra=5)
+                                                             extra=1)
+        mem_shp_in_slf_hlp_grps_formset = formset_factory(MembershipInSelfHelpGroupsForm, formset=BaseFormSet, extra=1)
         dtls_of_bank_pst_offc_of_the_household_formset = formset_factory(
-            DetailsOfBankPostofficeAccountOfTheHouseholdForm, formset=BaseFormSet, extra=5)
+            DetailsOfBankPostofficeAccountOfTheHouseholdForm, formset=BaseFormSet, extra=1)
 
         outstanding_loans_forms = outstanding_loans_formset(request.POST, prefix='outstanding_loans')
         loans_brwd_lst_yr_and_paid_forms = loans_brwd_lst_yr_and_paid_formset(request.POST,
@@ -44,31 +44,31 @@ def edit(request, pk):
         if save_formset(outstanding_loans_forms, OutstandingLoans, pk) \
                 and save_formset(loans_brwd_lst_yr_and_paid_forms, LoansBorrowedLastYearAndRepaid, pk) \
                 and save_formset(mem_shp_in_slf_hlp_grps_forms, MembershipInSelfHelpGroups, pk) \
-                and save_formset(dtls_of_bank_pst_offc_of_the_household_forms,
-                                 DetailsOfBankPostofficeAccountOfTheHousehold, pk):
+                and save_formset(dtls_of_bank_pst_offc_of_the_household_forms, DetailsOfBankPostofficeAccountOfTheHousehold, pk)\
+                and save_formset(get_comments_formset_to_save(request), Comments, pk, 20):
             messages.success(request, 'Data saved successfully')
             return redirect('page20_edit', pk)
 
-    outstanding_loans_formset = modelformset_factory(OutstandingLoans, form=OutstandingLoansForm, extra=5)
+    outstanding_loans_formset = modelformset_factory(OutstandingLoans, form=OutstandingLoansForm, extra=1)
     result_set_outstanding_loans = OutstandingLoans.objects.filter(household=pk)
     formset_outstanding_loans = outstanding_loans_formset(prefix='outstanding_loans',
                                                           queryset=result_set_outstanding_loans)
 
     loans_brwd_lst_yr_and_paid_formset = modelformset_factory(LoansBorrowedLastYearAndRepaid,
-                                                              form=LoansBorrowedLastYearAndRepaidForm, extra=5)
+                                                              form=LoansBorrowedLastYearAndRepaidForm, extra=1)
     result_set_loans_brwd_lst_yr_and_paid = LoansBorrowedLastYearAndRepaid.objects.filter(household=pk)
     formset_loans_brwd_lst_yr_and_paid = loans_brwd_lst_yr_and_paid_formset(prefix='loans_brwd_lst_yr_and_paid',
                                                                             queryset=result_set_loans_brwd_lst_yr_and_paid)
 
     mem_shp_in_slf_hlp_grps_formset = modelformset_factory(MembershipInSelfHelpGroups,
-                                                           form=MembershipInSelfHelpGroupsForm, extra=5)
+                                                           form=MembershipInSelfHelpGroupsForm, extra=1)
     result_set_mem_shp_in_slf_hlp_grps = MembershipInSelfHelpGroups.objects.filter(household=pk)
     formset_mem_shp_in_slf_hlp_grps = mem_shp_in_slf_hlp_grps_formset(prefix='mem_shp_in_slf_hlp_grps',
                                                                       queryset=result_set_mem_shp_in_slf_hlp_grps)
 
     dtls_of_bank_pst_offc_of_the_household_formset = modelformset_factory(DetailsOfBankPostofficeAccountOfTheHousehold,
                                                                           form=DetailsOfBankPostofficeAccountOfTheHouseholdForm,
-                                                                          extra=5)
+                                                                          extra=1)
     result_set_dtls_of_bank_pst_offc_of_the_household = DetailsOfBankPostofficeAccountOfTheHousehold.objects.filter(
         household=pk)
     formset_dtls_of_bank_pst_offc_of_the_household = dtls_of_bank_pst_offc_of_the_household_formset(
@@ -78,4 +78,5 @@ def edit(request, pk):
                                            'formset_loans_brwd_lst_yr_and_paid': formset_loans_brwd_lst_yr_and_paid,
                                            'formset_mem_shp_in_slf_hlp_grps': formset_mem_shp_in_slf_hlp_grps,
                                            'formset_dtls_of_bank_pst_offc_of_the_household': formset_dtls_of_bank_pst_offc_of_the_household,
-                                           'search_form': get_search_form()})
+                                           'search_form': get_search_form(),
+                                           'comments': get_comments_formset(pk, 20)})

@@ -2,211 +2,225 @@
 {% load static %}
 
 {% block content %}
-    <h4 class='text-center' xmlns="http://www.w3.org/1999/html">10. OTHER COSTS INCURRED LAST YEAR</h4>
+
+{% if messages %}
+{% for message in messages %}
+{% ifequal message.message 'Data saved successfully' %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endifequal %}
+{% endfor %}
+{% endif %}
+
+<h4 class='text-center' xmlns="http://www.w3.org/1999/html">10. OTHER COSTS INCURRED LAST YEAR</h4>
+<div class="row flex-row">
+    <div class="col-md-3 flex-column-wrap-1">
+        <div class="col-md-12 table-cell flex-column">
+            <label>Item(code)</label>
+        </div>
+        <div class="col-md-12 table-cell flex-column">
+            <label>Crop Insurance (specify crop)</label>
+        </div>
+    </div>
+    <div class="col-md-2 table-cell flex-column">
+        <label>Amount spent</label>
+    </div>
+    <div class="col-md-2 table-cell flex-column">
+        <label>Month of Payment</label>
+    </div>
+    <div class="col-md-4 table-cell flex-column">
+        <label>Comments</label>
+    </div>
+</div>
+{% csrf_token %}
+{{ crops_formset.management_form }}
+{% for form in crops_formset.forms %}
+<div class="row formset_row_1 flex-row">
+    {{ form.id }}
+    <div class="col-md-3 table-cell">
+        {{ form.item }}
+    </div>
+    <div class="col-md-2 table-cell">
+        {{ form.amount_spent }}
+    </div>
+    <div class="col-md-2 table-cell">
+        {{ form.month_of_payment }}
+    </div>
+    <div class="col-md-4 table-cell">
+        {{ form.comments }}
+    </div>
+</div>
+{% endfor %}
+
+<br><br><br>
+{{ extra_formset.management_form }}
+{% for form in extra_formset.forms %}
+<div class="row formset_row_2 flex-row">
+    {{ form.id }}
+    <div class="col-md-3 table-cell">
+        {{ form.item }}
+    </div>
+    <div class="col-md-2 table-cell">
+        {{ form.amount_spent }}
+    </div>
+    <div class="col-md-2 table-cell">
+        {{ form.month_of_payment }}
+    </div>
+    <div class="col-md-4 table-cell">
+        {{ form.comments }}
+    </div>
+</div>
+{% endfor %}
+<br><br><br>
+<label>Others (specify)</label>
+<div class="row flex-row">
+    <div class="col-md-3">
+        {{ other_form.item }}
+    </div>
+    <div class="col-md-2 table-cell">
+        {{ other_form.amount_spent }}
+    </div>
+    <div class="col-md-2 table-cell">
+        {{ other_form.month_of_payment }}
+    </div>
+    <div class="col-md-4 table-cell">
+        {{ other_form.comments }}
+    </div>
+</div>
+
+
+<h4 class="text-center">11. PAYMENTS MADE TO MANAGERS AND LONG-TERM WORKERS</h4>
+{{ employ_form.id }}
+<div style="display:flex;">
+    <div>
+        <label>Did you employ a manager last year?</label>
+    </div>
+    <div>
+        {{ employ_form.employ_manager }}
+    </div>
+</div>
+<div style="display:flex;">
+    <div>
+        <label>Did you employ a long term worker last year?</label>
+    </div>
+    <div>
+        {{ employ_form.employ_long_term_worker }}
+    </div>
+</div>
+
+<div class="table table-responsive">
     <div class="row flex-row">
-        <div class="col-md-3 flex-column-wrap-1">
-            <div class="col-md-12 table-cell flex-column">
-                <label>Item(code)</label>
-            </div>
-            <div class="col-md-12 table-cell flex-column">
-                <label>Crop Insurance (specify crop)</label>
-            </div>
+        <div class="col-md-2 table-cell flex-column-1">
+            <label>Name of Worker/Manager</label>
         </div>
-        <div class="col-md-2 table-cell flex-column">
-            <label>Amount spent</label>
+        <div class="col-md-1 table-cell flex-column-1">
+            <label>Sex</label>
         </div>
-        <div class="col-md-2 table-cell flex-column">
-            <label>Month of Payment</label>
+        <div class="col-md-1 table-cell flex-column-1">
+            <label>Caste</label>
         </div>
-        <div class="col-md-4 table-cell flex-column">
-            <label>Comments</label>
+        <div class="col-md-1 table-cell flex-column-1">
+            <label>Since when employed</label>
         </div>
-    </div>
-    {% csrf_token %}
-    {{ crops_formset.management_form }}
-    {% for form in crops_formset.forms %}
-        <div class="row formset_row_1 flex-row">
-            {{ form.id }}
-            <div class="col-md-3 table-cell">
-                {{ form.item }}
+        <div class="col-md-1 table-cell flex-column-1">
+            <label>Number of months employed last year</label>
+        </div>
+        <div class="col-md-3 flex-row-wrap-1">
+            <div class="col-md-12 table-cell flex-column-1">
+                <label>Wage rate(specify periodicty of payment)</label>
             </div>
-            <div class="col-md-2 table-cell">
-                {{ form.amount_spent }}
+            <div class="col-md-5 table-cell flex-column-1">
+                <label>In cash</label>
             </div>
-            <div class="col-md-2 table-cell">
-                {{ form.month_of_payment }}
-            </div>
-            <div class="col-md-4 table-cell">
-                {{ form.comments }}
+            <div class="col-md-7 table-cell flex-column-1">
+                <label>In kind (including gifts given on special occasions)</label>
             </div>
         </div>
-    {% endfor %}
-
-    <br><br><br>
-    {{ extra_formset.management_form }}
-    {% for form in extra_formset.forms %}
-        <div class="row formset_row_2 flex-row">
-            {{ form.id }}
-            <div class="col-md-3 table-cell">
-                {{ form.item }}
+        <div class="col-md-6 flex-row-wrap-1">
+            <div class="col-md-12 table-cell flex-column-1">
+                <label>Activites in which the worker participated last year (tick relevant activities)</label>
             </div>
-            <div class="col-md-2 table-cell">
-                {{ form.amount_spent }}
-            </div>
-            <div class="col-md-2 table-cell">
-                {{ form.month_of_payment }}
-            </div>
-            <div class="col-md-4 table-cell">
-                {{ form.comments }}
-            </div>
-        </div>
-    {% endfor %}
-    <br><br><br>
-    <label>Others (specify)</label>
-    <div class="row flex-row">
-        <div class="col-md-3">
-            {{ form.item }}
-        </div>
-        <div class="col-md-2 table-cell">
-            {{ form.amount_spent }}
-        </div>
-        <div class="col-md-2 table-cell">
-            {{ form.month_of_payment }}
-        </div>
-        <div class="col-md-4 table-cell">
-            {{ form.comments }}
-        </div>
-    </div>
-
-
-    <h4 class="text-center">11. PAYMENTS MADE TO MANAGERS AND LONG-TERM WORKERS</h4>
-    {{ employ_form.id }}
-    <div style="display:flex;">
-        <div>
-            <label>Did you employ a manager last year?</label>
-        </div>
-        <div>
-            {{ employ_form.employ_manager }}
-        </div>
-    </div>
-    <div style="display:flex;">
-        <div>
-            <label>Did you employ a long term worker last year?</label>
-        </div>
-        <div>
-            {{ employ_form.employ_long_term_worker }}
-        </div>
-    </div>
-
-    <div class="table table-responsive">
-        <div class="row flex-row">
             <div class="col-md-2 table-cell flex-column-1">
-                <label>Name of Worker/Manager</label>
+                <label>Agricultural Labour</label>
             </div>
-            <div class="col-md-1 table-cell flex-column-1">
-                <label>Sex</label>
+            <div class="col-md-2 table-cell flex-column-1">
+                <label>Operating agricultural machinery</label>
             </div>
-            <div class="col-md-1 table-cell flex-column-1">
-                <label>Caste</label>
+            <div class="col-md-2 table-cell flex-column-1">
+                <label>Tending nimals</label>
             </div>
-            <div class="col-md-1 table-cell flex-column-1">
-                <label>Since when employed</label>
+            <div class="col-md-2 table-cell flex-column-1">
+                <label>Non-agricultural businesses</label>
             </div>
-            <div class="col-md-1 table-cell flex-column-1">
-                <label>Number of months employed last year</label>
+            <div class="col-md-2 table-cell flex-column-1">
+                <label>Domestic work</label>
             </div>
-            <div class="col-md-3 flex-row-wrap-1">
-                <div class="col-md-12 table-cell flex-column-1">
-                    <label>Wage rate(specify periodicty of payment)</label>
-                </div>
-                <div class="col-md-5 table-cell flex-column-1">
-                    <label>In cash</label>
-                </div>
-                <div class="col-md-7 table-cell flex-column-1">
-                    <label>In kind (including gifts given on special occasions)</label>
-                </div>
+            <div class="col-md-2 table-cell flex-column-1">
+                <label>Others(specify)</label>
             </div>
-            <div class="col-md-6 flex-row-wrap-1">
-                <div class="col-md-12 table-cell flex-column-1">
-                    <label>Activites in which the worker participated last year (tick relevant activities)</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column-1">
-                    <label>Agricultural Labour</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column-1">
-                    <label>Operating agricultural machinery</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column-1">
-                    <label>Tending nimals</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column-1">
-                    <label>Non-agricultural businesses</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column-1">
-                    <label>Domestic work</label>
-                </div>
-                <div class="col-md-2 table-cell flex-column-1">
-                    <label>Others(specify)</label>
-                </div>
-            </div>
-            <div class="cross-width"></div>
         </div>
-        {{ payment_formset.management_form }}
-        {% for form in payment_formset.forms %}
-            <div class="row flex-row formset_row_3">
-                {{ form.id }}
-                <div class="col-md-2 table-cell flex-column-1">
-                    {{ form.name_of_worker }}
-                </div>
-                <div class="col-md-1 table-cell flex-column-1">
-                    {{ form.sex }}
-                </div>
-                <div class="col-md-1 table-cell flex-column-1">
-                    {{ form.caste }}
-                </div>
-                <div class="col-md-1 table-cell flex-column-1">
-                    {{ form.since_when_employed }}
-                </div>
-                <div class="col-md-1 table-cell flex-column-1">
-                    {{ form.number_of_months_employed_last_year }}
-                </div>
-                <div class="col-md-3 flex-row-wrap-1">
-                    <div class="col-md-5 table-cell flex-column-1">
-                        {{ form.payment_in_cash }}
-                    </div>
-                    <div class="col-md-7 table-cell flex-column-1">
-                        {{ form.payment_in_kind }}
-                    </div>
-                </div>
-                <div class="col-md-6 flex-row-wrap-1">
-                    <div class="col-md-2 table-cell flex-column-1">
-                        {{ form.agricultural_labour }}
-                    </div>
-                    <div class="col-md-2 table-cell flex-column-1">
-                        {{ form.operating_agricultural_machinery }}
-                    </div>
-                    <div class="col-md-2 table-cell flex-column-1">
-                        {{ form.tending_animals }}
-                    </div>
-                    <div class="col-md-2 table-cell flex-column-1">
-                        {{ form.non_agricultural_businesses }}
-                    </div>
-                    <div class="col-md-2 table-cell flex-column-1">
-                        {{ form.domestic_work }}
-                    </div>
-                    <div class="col-md-2 table-cell flex-column-1">
-                        {{ form.activities_others }}
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+        <div class="cross-width"></div>
     </div>
-    <br><br>
+    {{ payment_formset.management_form }}
+    {% for form in payment_formset.forms %}
+    <div class="row flex-row formset_row_3">
+        {{ form.id }}
+        <div class="col-md-2 table-cell flex-column-1">
+            {{ form.name_of_worker }}
+        </div>
+        <div class="col-md-1 table-cell flex-column-1">
+            {{ form.sex }}
+        </div>
+        <div class="col-md-1 table-cell flex-column-1">
+            {{ form.caste }}
+        </div>
+        <div class="col-md-1 table-cell flex-column-1">
+            {{ form.since_when_employed }}
+        </div>
+        <div class="col-md-1 table-cell flex-column-1">
+            {{ form.number_of_months_employed_last_year }}
+        </div>
+        <div class="col-md-3 flex-row-wrap-1">
+            <div class="col-md-5 table-cell flex-column-1">
+                {{ form.payment_in_cash }}
+            </div>
+            <div class="col-md-7 table-cell flex-column-1">
+                {{ form.payment_in_kind }}
+            </div>
+        </div>
+        <div class="col-md-6 flex-row-wrap-1">
+            <div class="col-md-2 table-cell flex-column-1">
+                {{ form.agricultural_labour }}
+            </div>
+            <div class="col-md-2 table-cell flex-column-1">
+                {{ form.operating_agricultural_machinery }}
+            </div>
+            <div class="col-md-2 table-cell flex-column-1">
+                {{ form.tending_animals }}
+            </div>
+            <div class="col-md-2 table-cell flex-column-1">
+                {{ form.non_agricultural_businesses }}
+            </div>
+            <div class="col-md-2 table-cell flex-column-1">
+                {{ form.domestic_work }}
+            </div>
+            <div class="col-md-2 table-cell flex-column-1">
+                {{ form.activities_others }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br><br>
 
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
-    <script type="text/javascript">
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
         $('.formset_row_1').formset();
         $('.formset_row_2').formset();
         $('.formset_row_3').formset()
-    </script>
+
+
+</script>
+{% include 'common/comments.html' %}
 {% endblock %}

@@ -10,6 +10,7 @@ class PublicDistributionSystem(models.Model):
     no_of_children_on_card = models.IntegerField(blank=True, null=True)
     reasons_for_not_having_card = models.CharField(max_length=255, blank=True, null=True)
     household = models.ForeignKey('Household',on_delete=models.CASCADE, db_column='household', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -53,7 +54,7 @@ class WaterForDomesticUse(models.Model):
     for_animals = models.ForeignKey('PurposeForWhichUsed', models.CASCADE, db_column='for_animals', blank=True, null=True, related_name='%(class)s_for_animals')
     cost_payment = models.CharField(max_length=20, blank=True, null=True)
     restrictions = models.CharField(max_length=150, blank=True, null=True)
-    comments = models.CharField(max_length=150, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
     household = models.ForeignKey('Household', models.CASCADE, db_column='household', blank=True, null=True)
 
     class Meta:
@@ -127,7 +128,7 @@ class Housing(models.Model):
     year_when_provided = models.CharField(max_length=10, blank=True, null=True)
     nature_of_disbursement = models.ForeignKey('NatureOfDisbursement', models.CASCADE, db_column='nature_of_disbursement', blank=True, null=True)
     amount_provided_in_cash = models.CharField(max_length=20, blank=True, null=True)
-    comments = models.CharField(max_length=50, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
     household = models.ForeignKey('Household', models.CASCADE, db_column='household', blank=True, null=True)
 
 

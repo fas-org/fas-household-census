@@ -76,6 +76,7 @@ class AnimalResoursesInventory(models.Model):
     no = models.IntegerField(db_column='No', blank=True, null=True)
     age = models.IntegerField(db_column='Age', blank=True, null=True)
     total_present_value = models.IntegerField(db_column='Total present valuse', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -113,6 +114,7 @@ class AnimalResourcesFeed(models.Model):
     source = models.ForeignKey(FeedSource, models.DO_NOTHING, db_column='Feed Source', blank=True, null=True)
     qty = models.IntegerField(db_column='QTY', blank=True, null=True)
     value = models.IntegerField(db_column='Value', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -136,6 +138,7 @@ class OtherExpenditure(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     item = models.ForeignKey(ItemType, db_column='Item Name', blank=True, null=True)
     expenditure = models.IntegerField(db_column='Expenditure', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -164,6 +167,7 @@ class OutputAndIncome(models.Model):
     sale_unit = models.ForeignKey(Units, db_column='sale_unit', null=True, blank=True,related_name="%(class)s_sale_unit")
     price = models.IntegerField(db_column='price', blank=True, null=True)
     price_unit = models.ForeignKey(Units, db_column='price_unit', null=True, blank=True,related_name="%(class)s_price_unit")
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

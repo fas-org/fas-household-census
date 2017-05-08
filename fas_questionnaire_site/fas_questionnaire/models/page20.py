@@ -46,6 +46,7 @@ class OutstandingLoans(models.Model):
     amount_repaid = models.CharField(db_column='amount repaid', max_length=50, blank=True, null=True)
     source_of_borrowing = models.ForeignKey(SourceOfBorrowing, models.DO_NOTHING, db_column='source of borrowing', blank=True, null=True)
     purpose_of_borrowing = models.ForeignKey(PurposeOfBorrowing, models.DO_NOTHING, db_column='purpose of borrowing', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -63,6 +64,7 @@ class LoansBorrowedLastYearAndRepaid(models.Model):
     total_amount_repaid = models.CharField(db_column='total amount repaid', max_length=50, blank=True, null=True)
     source_of_borrowing = models.ForeignKey(SourceOfBorrowing, models.DO_NOTHING, db_column='source of borrowing', blank=True, null=True)
     purpose_of_borrowing = models.ForeignKey(PurposeOfBorrowing, models.DO_NOTHING, db_column='purpose of borrowing', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -100,6 +102,7 @@ class MembershipInSelfHelpGroups(models.Model):
     number_of_members_in_the_group = models.IntegerField(db_column='number of members in the group', blank=True, null=True)
     rs_per_week_month_savings = models.IntegerField(db_column='rs per week month savings', blank=True, null=True)
     total_savings = models.IntegerField(db_column='total savings', blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -135,7 +138,7 @@ class DetailsOfBankPostofficeAccountOfTheHousehold(models.Model):
     type_of_account = models.ForeignKey(TypeOfAccount, models.DO_NOTHING, db_column='Type Of Account', blank=True, null=True)
     date_of_last_transaction = models.CharField(db_column='date of last transaction', max_length=100, blank=True, null=True)
     current_balanace = models.IntegerField(db_column='current balanace', blank=True, null=True)
-
+    comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True

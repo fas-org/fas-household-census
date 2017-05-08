@@ -1,12 +1,11 @@
 from django import forms
-from ..models.page22 import CommentsAndInformationOnInvestigators
+from ..models.page22 import InformationOnInvestigators
 
 
-class CommentsAndInformationOnInvestigatorsForm(forms.ModelForm):
+class InformationOnInvestigatorsForm(forms.ModelForm):
     class Meta:
-        model = CommentsAndInformationOnInvestigators
+        model = InformationOnInvestigators
         fields = ['household',
-                  'comments_observations',
                   'name_of_investigator',
                   'date_of_interview',
                   'time_taken',
@@ -16,7 +15,6 @@ class CommentsAndInformationOnInvestigatorsForm(forms.ModelForm):
                   ]
         exclude = ['household']
         labels = {
-            'comments_observations': 'Comments/Observations',
             'name_of_investigator': 'Name of Investigator/s',
             'date_of_interview': 'Date of interview',
             'time_taken': 'Time taken for interview',

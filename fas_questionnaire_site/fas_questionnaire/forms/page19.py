@@ -27,5 +27,5 @@ class HousingCommentsForm(forms.ModelForm):
         model = HousingComments
         exclude = ['household']
         widgets = {
-            'comments' : forms.Textarea(attrs={'width':'100%'})
+            'comments' : forms.Textarea(attrs={'width':'100%', 'rows':'3'})
         }

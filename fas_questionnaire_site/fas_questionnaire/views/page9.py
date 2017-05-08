@@ -44,7 +44,7 @@ def edit(request, pk):
 
     irrigation_means_model_formset = modelformset_factory(SpecifiedProductionMeans, form=SpecifiedIrrigationMeansForm,
                                                           extra=1)
-    irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk, item_type='irrigation')
+    irrigation_means_result_set = SpecifiedProductionMeans.objects.filter(household=pk)
     irrigation_means_formset = irrigation_means_model_formset(queryset=irrigation_means_result_set, prefix='irrigation')
 
     return render(request, 'page9.html', {'current_ownership_formset': current_ownership_formset,

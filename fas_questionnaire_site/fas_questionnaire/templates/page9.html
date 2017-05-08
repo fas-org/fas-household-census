@@ -143,6 +143,7 @@
         <div class="col-md-2 table-cell flex-column-1">
             {{ form.comments }}
         </div>
+    {{form.id.as_hidden  }}
     </div>
     {% endfor %}
 </div>
@@ -241,7 +242,7 @@
     <div class='col-md-2 table-cell flex-column'>
         {{ form.comments }}
     </div>
-    {{ form.item_type.as_hidden }}
+    {{ form.id.as_hidden }}
 </div>
 {% endfor %}
 <script type="text/javascript">

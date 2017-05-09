@@ -74,8 +74,9 @@
 {% endfor %}
 <br><br><br>
 <label>Others (specify)</label>
-<div class="row flex-row">
-    <div class="col-md-3">
+<div class="row flex-row-wrap">
+ {{ other_form.id }}
+    <div class="col-md-3 table-cell">
         {{ other_form.item }}
     </div>
     <div class="col-md-2 table-cell">

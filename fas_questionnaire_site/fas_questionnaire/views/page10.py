@@ -74,7 +74,7 @@ def edit(request, pk):
             OtherCosts.objects.filter(id__in=[ x for x in all_ids if x not in active_ids]).delete()
 
         if other_form.is_valid() and other_form.has_changed():
-            id = other_form.data[form.prefix+'-id']
+            id = other_form.data[other_form.prefix+'-id']
             record = other_form.save(commit=False)
             if id:
                 record.id = int(id)

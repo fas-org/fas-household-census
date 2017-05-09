@@ -3,6 +3,7 @@ from ..models.page10 import OtherCosts, OtherCostsItems, PaymentsToManagersAndLo
 
 
 class OtherCostsForm(forms.ModelForm):
+    id = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = OtherCosts
         exclude = ['household', 'record_type']

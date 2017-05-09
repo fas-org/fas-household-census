@@ -31,9 +31,9 @@ def edit(request, pk):
             messages.success(request, 'Data saved successfully')
         return redirect('page6_edit', pk)
 
-    z = get_crop_first_digit_as_widget(pk,'crop_number_first_digit').copy()
-    z.update(get_crop_first_digit_as_widget(pk,'crop_number_second_digit'))
-    production_model_formset = modelformset_factory(Production, form=ProductionForm, extra=1,widgets=z)
+    crop_digits_list = get_crop_first_digit_as_widget(pk,'crop_number_first_digit').copy()
+    crop_digits_list.update(get_crop_first_digit_as_widget(pk,'crop_number_second_digit'))
+    production_model_formset = modelformset_factory(Production, form=ProductionForm, extra=1,widgets=crop_digits_list)
     result_set = Production.objects.filter(household=pk)
     production_formset = production_model_formset(queryset=result_set, prefix='production')
 

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+
 from ..forms.page4 import LandMortgagedInForm
 from ..models.page4 import LandMortgagedIn
 from ..forms.page4 import LandMortgagedOutForm

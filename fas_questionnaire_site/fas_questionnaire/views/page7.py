@@ -53,8 +53,7 @@ def edit(request, pk):
     formset_manure = manure_formset_factory(prefix='manure', queryset=result_set_manure)
 
     seeds_formset_factory = modelformset_factory(InputUseSeeds, form=InputUseSeedsForm, extra=1)
-    # result_set_seeds = InputUseSeeds.objects.filter(household=pk)
-    result_set_seeds = CroppingPatternAndCropSchedule.objects.filter(household=pk).values('crop_number_first_digit','crop_number_second_digit')
+    result_set_seeds = InputUseSeeds.objects.filter(household=pk)
 
     formset_seeds = seeds_formset_factory(prefix='seeds', queryset=result_set_seeds)
 

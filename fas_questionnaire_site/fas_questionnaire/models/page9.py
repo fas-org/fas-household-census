@@ -103,7 +103,7 @@ class ProductionMeans(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Means of Production'
+        db_table = 'Production Means'
 
     def __str__(self):
         return self.type

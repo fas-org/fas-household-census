@@ -45,8 +45,8 @@ class FreedomOfEmploymentQuestions(models.Model):
                                                                                                                'for an employer of their '
                                                                                                                'choice', max_length=250,
                                                                                                      blank=True, null=True)
-    does_any_person_in_the_family_provide_unpaid_under_paid_labour_field = models.CharField(db_column='Does any person in the family '
-                                                                                                      'provide unpaid/under-paid labour '
+    does_any_person_in_the_family_provide_unpaid_under_paid_labour_field = models.CharField(db_column='Does any person in the family'
+                                                                                                      'provide unpaid/under-paid labour'
                                                                                                       '', max_length=250, blank=True,
                                                                                             null=True)
     is_your_household_obliged_to_perform_any_traditional_caste_duties = models.CharField(db_column='household obliged to perform '

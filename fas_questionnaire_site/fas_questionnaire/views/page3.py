@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+
 from ..forms.page3 import LandLeasedInOnFixedRentForm
 from ..models.page3 import LandLeasedInOnFixedRent
 from ..forms.page3 import LandLeasedOutOnFixedRentForm

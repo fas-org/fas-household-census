@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory, BaseFormSet, modelformset_factory
 from django.shortcuts import render, redirect
 from django.contrib import messages

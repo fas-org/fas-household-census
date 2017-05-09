@@ -1,10 +1,9 @@
-from ..forms.household_forms import HouseholdForm
-from ..models.household_models import Household
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
-from .common import *
+from fas_questionnaire.forms.household_forms import HouseholdForm
+from fas_questionnaire.models.household_models import Household
 
 
 @login_required(login_url='login')
@@ -36,7 +35,7 @@ def new_internal(request):
             return redirect('household_edit', pk=household.pk)
     else:
         form = HouseholdForm()
-    return render(request, 'household.html', {'household_form': form, 'search_form':get_search_form()})
+    return render(request, 'household.html', {'household_form': form, 'search_form': HouseholdForm()})
 
 
 @login_required(login_url='login')
@@ -53,7 +52,7 @@ def edit(request, pk):
                 return redirect('household_edit', pk=pk)
         else:
             form = HouseholdForm(instance=household)
-        return render(request, 'household.html', {'household_form': form, 'search_form':get_search_form()})
+        return render(request, 'household.html', {'household_form': form, 'search_form': HouseholdForm()})
     except Exception:
         return new_internal(request)
 

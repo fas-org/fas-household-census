@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+
 from ..forms.page2 import *
 from ..models.page2 import *
 from django.shortcuts import render, redirect

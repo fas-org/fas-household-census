@@ -47,7 +47,7 @@ def edit(request, pk):
 
     aggri_or_non_aggri_labour_service_model_formset = modelformset_factory(AgriculturalOrNonAgriculturalLabourServices,
                                                                            form=AgriculturalOrNonAgriculturalLabourServicesForm,
-                                                                           extra=1)
+                                                                           extra=1, widgets = get_household_members_as_widget(pk, 'name_of_worker'))
     aggri_or_non_aggri_labour_service_result_set = AgriculturalOrNonAgriculturalLabourServices.objects.filter(
         household=pk)
     aggri_or_non_aggri_labour_service_formset = aggri_or_non_aggri_labour_service_model_formset(

@@ -31,11 +31,11 @@ def edit(request, pk):
             messages.success(request, 'Data saved successfully')
             return redirect('page15_edit', pk)
 
-    agri_model_formset = modelformset_factory(LongTermWorkers, form=LongTermWorkersForm, extra=1)
+    agri_model_formset = modelformset_factory(LongTermWorkers, form=LongTermWorkersForm, extra=1,widgets = get_household_members_as_widget(pk, 'worker_name'))
     agri_result_set = LongTermWorkers.objects.filter(household=pk)
     agri_formset = agri_model_formset(queryset=agri_result_set, prefix='agri')
 
-    non_agri_model_formset = modelformset_factory(NonAgricultureWorkers, form=NonAgricultureWorkersForm, extra=1)
+    non_agri_model_formset = modelformset_factory(NonAgricultureWorkers, form=NonAgricultureWorkersForm, extra=1,widgets = get_household_members_as_widget(pk, 'worker_name'))
     non_agri_result_set = NonAgricultureWorkers.objects.filter(household=pk)
     non_agri_formset = non_agri_model_formset(queryset=non_agri_result_set, prefix='non_agri')
 

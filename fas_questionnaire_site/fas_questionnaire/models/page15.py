@@ -40,7 +40,7 @@ class WorkDescription(models.Model):
 class LongTermWorkers(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    worker_name = models.ForeignKey(HouseholdMembers, models.DO_NOTHING, db_column='Name of worker', blank=True, null=True)
+    worker_name = models.IntegerField(db_column='Name of worker', blank=True, null=True)
     employer_name = models.CharField(max_length=100, db_column='Name of employer', blank=True, null=True)
     residence_village = models.CharField(max_length=100, db_column='Village of residence', blank=True, null=True)
     caste = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste', blank=True, null=True)
@@ -67,7 +67,7 @@ class LongTermWorkers(models.Model):
 class NonAgricultureWorkers(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    worker_name = models.ForeignKey(HouseholdMembers, models.DO_NOTHING, db_column='Name of worker', blank=True, null=True)
+    worker_name = models.IntegerField(db_column='Name of worker', blank=True, null=True)
     sex = models.ForeignKey(Sex, models.DO_NOTHING, db_column='Sex', blank=True, null=True)
     work_description = models.ForeignKey(WorkDescription, models.DO_NOTHING, db_column='Description', blank=True, null=True)
     work_place = models.ForeignKey('PlaceOfWork', max_length=255, db_column='Place of work', blank=True, null=True)

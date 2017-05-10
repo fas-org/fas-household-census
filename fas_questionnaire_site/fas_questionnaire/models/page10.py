@@ -24,7 +24,7 @@ class OtherCostsItems(models.Model):
 
 
 class PaymentsToManagersAndLongTermWorkers(models.Model):
-    name_of_worker = models.CharField(max_length=100, blank=True, null=True)
+    name_of_worker = models.IntegerField(blank=True, null=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)
     sex = models.ForeignKey('Sex', models.DO_NOTHING, db_column='sex', blank=True, null=True)
     caste = models.ForeignKey('Caste', models.DO_NOTHING, db_column='caste', blank=True, null=True)

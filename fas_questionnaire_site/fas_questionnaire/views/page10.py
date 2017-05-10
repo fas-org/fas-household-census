@@ -126,7 +126,7 @@ def edit(request, pk):
     crops_formset = crops_model_formset(queryset=crops_result_set, prefix='crop-form')
     extra_formset = extra_model_formset(queryset=extra_result_set, prefix='extra-form')
 
-    payment_model_formset=modelformset_factory(PaymentsToManagersAndLongTermWorkers,form=PaymentsToManagersAndLongTermWorkersForm, extra=1)
+    payment_model_formset=modelformset_factory(PaymentsToManagersAndLongTermWorkers,form=PaymentsToManagersAndLongTermWorkersForm, extra=1, widgets= get_household_members_as_widget(pk, 'name_of_worker'))
     payment_resultset = PaymentsToManagersAndLongTermWorkers.objects.filter(household=pk)
     payment_formset = payment_model_formset(queryset=payment_resultset,prefix='payment-form')
     return render(request, 'page10.html', {'crops_formset': crops_formset,

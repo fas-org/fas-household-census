@@ -44,12 +44,12 @@ def edit(request, pk):
             messages.success(request, 'Data saved successfully')
         return redirect('page17_edit', pk)
 
-    income_salary_model_formset = modelformset_factory(IncomeFromSalaries, form=IncomeFromSalariesForm, extra=1)
+    income_salary_model_formset = modelformset_factory(IncomeFromSalaries, form=IncomeFromSalariesForm, extra=1,widgets = get_household_members_as_widget(pk, 'worker_name'))
     income_salary_result_set = IncomeFromSalaries.objects.filter(household=pk)
     income_salary_formset = income_salary_model_formset(queryset=income_salary_result_set, prefix='salary')
 
     income_business_model_formset = modelformset_factory(IncomeFromOtherBusinessActivities,
-                                                         form=IncomeFromOtherBusinessActivitiesForm, extra=1)
+                                                         form=IncomeFromOtherBusinessActivitiesForm, extra=1, widgets = get_household_members_as_widget(pk, 'name_of_worker'))
     income_business_result_set = IncomeFromOtherBusinessActivities.objects.filter(household=pk)
     income_business_formset = income_business_model_formset(queryset=income_business_result_set, prefix='business')
 

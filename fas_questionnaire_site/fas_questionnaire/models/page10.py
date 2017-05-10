@@ -32,11 +32,11 @@ class PaymentsToManagersAndLongTermWorkers(models.Model):
     number_of_months_employed_last_year = models.FloatField(blank=True, null=True)  # This field type is a guess.
     payment_in_cash = models.IntegerField(blank=True, null=True)  # This field type is a guess.
     payment_in_kind = models.CharField(max_length=100, blank=True, null=True)
-    agricultural_labour = models.NullBooleanField()
-    operating_agricultural_machinery = models.NullBooleanField()
-    tending_animals = models.NullBooleanField()
-    non_agricultural_businesses = models.NullBooleanField()
-    domestic_work = models.NullBooleanField()
+    agricultural_labour =  models.CharField(max_length=100, blank=True, null=True)
+    operating_agricultural_machinery = models.CharField(max_length=100, blank=True, null=True)
+    tending_animals =  models.CharField(max_length=100, blank=True, null=True)
+    non_agricultural_businesses =  models.CharField(max_length=100, blank=True, null=True)
+    domestic_work =  models.CharField(max_length=100, blank=True, null=True)
     activities_others = models.CharField(max_length=100, blank=True, null=True)
     id = models.AutoField(primary_key=True)  # This field type is a guess.
 
@@ -46,8 +46,8 @@ class PaymentsToManagersAndLongTermWorkers(models.Model):
 
 
 class EmployManagerOrLongTermWorker(models.Model):
-    employ_manager = models.NullBooleanField(null=True, blank=True)
-    employ_long_term_worker = models.NullBooleanField(null=True, blank=True)
+    employ_manager = models.CharField(max_length=100,db_column='employ_manager',null=True, blank=True)
+    employ_long_term_worker = models.CharField(max_length=100,db_column='employ_long_term_worker',null=True, blank=True)
     household = models.ForeignKey('Household', on_delete=models.CASCADE)
     id = models.AutoField(primary_key=True)  # This field type is a guess.
 

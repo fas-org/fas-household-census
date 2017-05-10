@@ -70,7 +70,7 @@ class HouseholdMembers(models.Model):
     id = models.AutoField(primary_key=True)
     sno = models.IntegerField(blank=True, null=True)
     name = models.CharField(max_length=45, blank=True, null=True)
-    sex = models.CharField(max_length=50, db_column='Sex')
+    sex = models.CharField(max_length=50, db_column='Sex',blank=True,null=True)
     age = models.IntegerField(blank=True, null=True)
     age_unit = models.CharField(max_length=100,db_column='age_unit', blank=True, null=True)
     relationship = models.CharField(max_length=100,db_column='relationship',blank=True, null=True)

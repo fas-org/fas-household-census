@@ -221,8 +221,9 @@
     {{ formset_mem_shp_in_slf_hlp_grps.management_form }}
     {% for mem_shp_in_slf_hlp_grps_form in formset_mem_shp_in_slf_hlp_grps.forms %}
         <div class='row flex-row formset_mem_shp_in_slf_hlp_grps'>
+            {{ mem_shp_in_slf_hlp_grps_form.id }}
             <div class='col-md-2 table-cell'>
-                {{ mem_shp_in_slf_hlp_grps_form.name_of_member }}
+                {{ mem_shp_in_slf_hlp_grps_form.name_of_worker }}
             </div>
             <div class='col-md-2 table-cell'>
                 {{ mem_shp_in_slf_hlp_grps_form.name_of_group_group_leader }}

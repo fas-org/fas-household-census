@@ -121,7 +121,7 @@ def get_household_members(household_id):
     return HouseholdMembers.objects.filter(household=household_model)
 
 def get_household_members_as_widget(household_id, field_name):
-    return { field_name : forms.Select(choices=([(c.id, c.name) for c in get_household_members(household_id)]))}
+    return { field_name : forms.Select(choices=[('', '-----')]+([(c.id, c.name) for c in get_household_members(household_id)]))}
 
 def get_comments_formset(household_id, page_no):
     comments_formset = modelformset_factory(Comments, form=CommentsForm, extra=1)

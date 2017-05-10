@@ -61,14 +61,14 @@ def edit(request, pk):
                                                                             queryset=result_set_loans_brwd_lst_yr_and_paid)
 
     mem_shp_in_slf_hlp_grps_formset = modelformset_factory(MembershipInSelfHelpGroups,
-                                                           form=MembershipInSelfHelpGroupsForm, extra=1)
+                                                           form=MembershipInSelfHelpGroupsForm, extra=1,widgets = get_household_members_as_widget(pk, 'name_of_worker'))
     result_set_mem_shp_in_slf_hlp_grps = MembershipInSelfHelpGroups.objects.filter(household=pk)
     formset_mem_shp_in_slf_hlp_grps = mem_shp_in_slf_hlp_grps_formset(prefix='mem_shp_in_slf_hlp_grps',
                                                                       queryset=result_set_mem_shp_in_slf_hlp_grps)
 
     dtls_of_bank_pst_offc_of_the_household_formset = modelformset_factory(DetailsOfBankPostofficeAccountOfTheHousehold,
                                                                           form=DetailsOfBankPostofficeAccountOfTheHouseholdForm,
-                                                                          extra=1)
+                                                                          extra=1,widgets=get_household_members_as_widget(pk, 'name_of_account_holder'))
     result_set_dtls_of_bank_pst_offc_of_the_household = DetailsOfBankPostofficeAccountOfTheHousehold.objects.filter(
         household=pk)
     formset_dtls_of_bank_pst_offc_of_the_household = dtls_of_bank_pst_offc_of_the_household_formset(

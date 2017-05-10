@@ -95,7 +95,7 @@ class PeriodOfMembership(models.Model):
 class MembershipInSelfHelpGroups(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='household')
-    name_of_member = models.ForeignKey('HouseholdMembers', db_column='name of member', max_length=100, blank=True, null=True)
+    name_of_worker = models.IntegerField(db_column='name_of_worker', blank=True, null=True)
     name_of_group_group_leader = models.CharField(db_column='name of group group leader', max_length=100, blank=True, null=True)
     bank_ngo_to_which_the_group_is_linked = models.ForeignKey(BankNgoToWhichTheGroupIsLinked, models.DO_NOTHING, db_column='Bank Ngo To Which The Group is Linked', blank=True, null=True)
     period_of_membership = models.ForeignKey(PeriodOfMembership, models.DO_NOTHING, db_column='Period Of Membership', blank=True, null=True)
@@ -107,6 +107,9 @@ class MembershipInSelfHelpGroups(models.Model):
     class Meta:
         managed = True
         db_table = 'Membership in self help groups'
+
+    def __str__(self):
+        return self.name_of_worker
 
 class NameOfBankPostOffice(models.Model):
     id = models.AutoField(primary_key=True)
@@ -133,7 +136,7 @@ class TypeOfAccount(models.Model):
 class DetailsOfBankPostofficeAccountOfTheHousehold(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='household')
-    name_of_account_holder = models.ForeignKey('HouseholdMembers', db_column='name of account holder', max_length=100, blank=True, null=True)
+    name_of_account_holder = models.IntegerField(db_column='name of account holder', blank=True, null=True)
     name_of_bank_post_office = models.ForeignKey(NameOfBankPostOffice, models.DO_NOTHING, db_column='Name Of Bank Post Office', blank=True, null=True)
     type_of_account = models.ForeignKey(TypeOfAccount, models.DO_NOTHING, db_column='Type Of Account', blank=True, null=True)
     date_of_last_transaction = models.CharField(db_column='date of last transaction', max_length=100, blank=True, null=True)

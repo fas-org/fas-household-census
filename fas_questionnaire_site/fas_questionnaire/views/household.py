@@ -30,6 +30,7 @@ def new_internal(request):
         if form.is_valid():
             household = form.save(commit=False)
             household.save()
+            request.session['search_err_msg'] = None
             messages.success(request, 'Data saved successfully')
             request.session['household'] = household.pk
             return redirect('household_edit', pk=household.pk)

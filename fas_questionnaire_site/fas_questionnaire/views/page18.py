@@ -5,8 +5,7 @@ from django.forms import formset_factory, modelformset_factory, BaseFormSet
 from ..forms.page18 import *
 from ..models.page18 import *
 from ..models.common import Comments
-from ..views.common import save_formset, get_search_form, get_comments_formset, get_comments_formset_to_save
-
+from ..views.common import *
 
 @login_required(login_url='login')
 def init(request):
@@ -37,7 +36,7 @@ def edit(request, pk):
     result_set = AcquisitionAndLossOfMajorAssets.objects.filter(household=pk)
     formset = asset_aquisition_model_formset(queryset=result_set, prefix='assets')
 
-    children_model_formset = modelformset_factory(ForChildrenOfAge616Years,form=ForChildrenOfAge616YearsForm,extra=1)
+    children_model_formset = modelformset_factory(ForChildrenOfAge616Years,form=ForChildrenOfAge616YearsForm,extra=1, widgets = get_household_members_as_widget(pk, 'name'))
     children_result_set=ForChildrenOfAge616Years.objects.filter(household=pk)
     children_formset=children_model_formset(queryset=children_result_set,prefix='children')
 

@@ -65,7 +65,7 @@ class CurrentOwnershipHolding(models.Model):
     sno = models.IntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_plot_no = models.FloatField(db_column='Ownership plot no', blank=True, null=True)
-    land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
+    land_type = models.CharField(max_length=100,db_column='Land type', blank=True, null=True)
     extent_owned_land = models.FloatField(db_column='Extent of owned land', blank=True, null=True)
     acquisition_mode = models.ForeignKey('AcquisitionMode', models.DO_NOTHING, db_column='acquisition_mode', blank=True,
                                          null=True)

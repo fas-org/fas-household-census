@@ -2,28 +2,28 @@
 {% load static %}
 
 {% block content %}
-  {% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-success">
-            <strong>{{ message }}</strong>
-          </div>
-{% endfor %}
-{% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
     {% csrf_token %}
     <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4><br><br>
     <div class="table table-responsive">
-    <b>5.1.1 Land leased in on fixed rent</b>
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Plot No</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Land Type</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Extent</label>
-        </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+        <b>5.1.1 Land leased in on fixed rent</b>
+        <div class='row flex-row'>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Plot No</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Land Type</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Extent</label>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Lessor</label>
                 </div>
@@ -36,8 +36,8 @@
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Occupation</label>
                 </div>
-        </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Tenurial Status</label>
                 </div>
@@ -50,8 +50,8 @@
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Since when leased in</label>
                 </div>
-        </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Annual fixed Rent</label>
                 </div>
@@ -61,166 +61,166 @@
                 <div class='col-md-6 table-cell flex-column'>
                     <label>Kind</label>
                 </div>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Interest free borrowing</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Loan with interest</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Further interest payment on rent</label>
+            </div>
+
+
+            <div class="col-md-12 flex-row-wrap-1">
+                <div class="col-md-12 table-cell">
+                    <label>Inputs provided by owner</label>
+                </div>
+                <div class="col-md-2 table-cell flex-column">
+                    <label>Qty of hay taken</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of manure provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of fertiliser provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of seed provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of pesticide provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of electricity paid</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>If pumpset provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>If irrigation provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>If machinery provided</label>
+                </div>
+                <div class="col-md-2 table-cell flex-column">
+                    <label> Comments </label>
+                </div>
+            </div>
+            <div class="cross-width flex-column"></div>
         </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Interest free borrowing</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Loan with interest</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Further interest payment on rent</label>
-        </div>
 
+        {% csrf_token %}
+        {{ formset_lnd_lsd_in_fxd_rnt.management_form }}
+        {% for form in formset_lnd_lsd_in_fxd_rnt.forms %}
 
-        <div class="col-md-12 flex-row-wrap-1">
-          <div class="col-md-12 table-cell">
-            <label>Inputs provided by owner</label>
-          </div>
-              <div class="col-md-2 table-cell flex-column">
-              <label>Qty of hay taken</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of manure provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of fertiliser provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of seed provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of pesticide provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of electricity paid</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>If pumpset provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>If irrigation provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>If machinery provided</label>
-              </div>
-              <div class="col-md-2 table-cell flex-column">
-                  <label> Comments </label>
-              </div>
-          </div>
-          <div class="cross-width flex-column"></div>
-        </div>
+            <div class="row formset_row_lnd_lsd_in_fxd_rnt flex-row">
+                <div class="col-md-1 table-cell flex-column-1">
+                    {{ form.plot_no }}
+                </div>
+                <div class="col-md-1 table-cell flex-column-1">
+                    {{ form.land_type }}
+                </div>
+                <div class="col-md-1 table-cell flex-column-1">
+                    {{ form.extent }}
+                </div>
 
-    {% csrf_token %}
-    {{ formset_lnd_lsd_in_fxd_rnt.management_form }}
-    {% for form in formset_lnd_lsd_in_fxd_rnt.forms %}
+                <div class='col-md-3 flex-row-wrap-1'>
 
-    <div class="row formset_row_lnd_lsd_in_fxd_rnt flex-row">
-      <div class="col-md-1 table-cell flex-column-1">
-        {{ form.plot_no }}
-      </div>
-      <div class="col-md-1 table-cell flex-column-1">
-        {{ form.land_type }}
-      </div>
-      <div class="col-md-1 table-cell flex-column-1">
-        {{ form.extent }}
-      </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.name_of_lessor }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.caste_of_lessor }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.occupation_of_lessor }}
+                    </div>
+                </div>
+                <div class='col-md-3 flex-row-wrap-1'>
 
-      <div class='col-md-3 flex-row-wrap-1'>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.registered_unregistered }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.type_of_contract }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.since_when_leased_in }}
+                    </div>
+                </div>
+                <div class='col-md-3 flex-row-wrap-1'>
 
-              <div class='col-md-4 table-cell'>
-                {{ form.name_of_lessor }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.caste_of_lessor }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.occupation_of_lessor }}
-              </div>
-      </div>
-      <div class='col-md-3 flex-row-wrap-1'>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.annual_rent_in_cash }}
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.annual_rent_in_kind }}
+                    </div>
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ form.interest_free_borrowing }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ form.loan_with_interest }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ form.further_interest_payment_on_rent }}
+                </div>
+                <div class="col-md-12 flex-row-wrap-1">
 
-              <div class='col-md-4 table-cell'>
-                {{ form.registered_unregistered }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.type_of_contract }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.since_when_leased_in }}
-              </div>
-      </div>
-      <div class='col-md-3 flex-row-wrap-1'>
-
-              <div class='col-md-6 table-cell'>
-                {{ form.annual_rent_in_cash }}
-              </div>
-              <div class='col-md-6 table-cell'>
-                {{ form.annual_rent_in_kind }}
-              </div>
-      </div>
-      <div class='col-md-1 table-cell flex-column-1'>
-        {{ form.interest_free_borrowing }}
-      </div>
-      <div class='col-md-1 table-cell flex-column-1'>
-        {{ form.loan_with_interest }}
-      </div>
-      <div class='col-md-1 table-cell flex-column-1'>
-        {{ form.further_interest_payment_on_rent }}
-      </div>
-      <div class="col-md-12 flex-row-wrap-1">
-
-            <div class="col-md-2 table-cell">
-              {{ form.qty_of_hay_taken_by_owner }}
+                    <div class="col-md-2 table-cell">
+                        {{ form.qty_of_hay_taken_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_manure_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_fertiliser_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_seed_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_pesticide_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_electricity_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.if_pumpset_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.if_irrigation_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.if_machinery_provided_by_owner }}
+                    </div>
+                    <div class="col-md-2 table-cell">
+                        {{ form.comments }}
+                    </div>
+                </div>
             </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_manure_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_fertiliser_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_seed_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_pesticide_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_electricity_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.if_pumpset_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.if_irrigation_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.if_machinery_provided_by_owner }}
-            </div>
-            <div class="col-md-2 table-cell">
-              {{ form.comments }}
-            </div>
-        </div>
-      </div>
-      {% endfor %}
-    <br><br><br>
+        {% endfor %}
+        <br><br><br>
     </div>
 
 
-    <br><br>
+    <br>
     <b>5.1.2 Land leased out on fixed rent</b><br>
     <div class="table table-responsive">
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Ownership Plot No</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Land Type</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Extent</label>
-        </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+        <div class='row flex-row'>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Ownership Plot No</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Land Type</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Extent</label>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Lesse</label>
                 </div>
@@ -233,8 +233,8 @@
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Occupation</label>
                 </div>
-        </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Tenurial Status</label>
                 </div>
@@ -247,8 +247,8 @@
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Since when leased out</label>
                 </div>
-        </div>
-        <div class='col-md-3 flex-row-wrap-1'>
+            </div>
+            <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
                     <label>Annual fixed Rent</label>
                 </div>
@@ -258,153 +258,153 @@
                 <div class='col-md-6 table-cell flex-column'>
                     <label>Kind</label>
                 </div>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Interest free loan given</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Loan with interest given</label>
+            </div>
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>Further interest on rent</label>
+            </div>
+
+
+            <div class="col-md-12 flex-row-wrap-1">
+                <div class="col-md-12 table-cell flex-column">
+                    <label>Inputs provided by you</label>
+                </div>
+                <div class="col-md-2 table-cell flex-column">
+                    <label>Qty of hay taken</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of manure provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of fertiliser provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of seed provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of pesticide provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>Value of electricity paid</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>If pumpset provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>If irrigation provided</label>
+                </div>
+                <div class="col-md-1 table-cell flex-column">
+                    <label>If machinery provided</label>
+                </div>
+                <div class="col-md-2 table-cell flex-column">
+                    <label> Comments </label>
+                </div>
+            </div>
+            <div class="cross-width flex-column"></div>
         </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Interest free loan given</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Loan with interest given</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Further interest on rent</label>
-        </div>
 
+        {% csrf_token %}
+        {{ formset_lnd_lsd_out_fxd_rnt.management_form }}
+        {% for form in formset_lnd_lsd_out_fxd_rnt.forms %}
+            <div class="row formset_row_lnd_lsd_out_fxd_rnt flex-row">
+                <div class="col-md-1 table-cell flex-column-1">
+                    {{ form.ownership_plot_no }}
+                </div>
+                <div class="col-md-1 table-cell flex-column-1">
+                    {{ form.land_type }}
+                </div>
+                <div class="col-md-1 table-cell flex-column-1">
+                    {{ form.extent }}
+                </div>
 
-        <div class="col-md-12 flex-row-wrap-1">
-          <div class="col-md-12 table-cell flex-column">
-            <label>Inputs provided by you</label>
-          </div>
-              <div class="col-md-2 table-cell flex-column">
-              <label>Qty of hay taken</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of manure provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of fertiliser provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of seed provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of pesticide provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>Value of electricity paid</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>If pumpset provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>If irrigation provided</label>
-              </div>
-              <div class="col-md-1 table-cell flex-column">
-              <label>If machinery provided</label>
-              </div>
-              <div class="col-md-2 table-cell flex-column">
-                  <label> Comments </label>
-              </div>
-          </div>
-          <div class="cross-width flex-column"></div>
-        </div>
+                <div class='col-md-3 flex-row-wrap-1'>
 
-    {% csrf_token %}
-    {{ formset_lnd_lsd_out_fxd_rnt.management_form }}
-    {% for form in formset_lnd_lsd_out_fxd_rnt.forms %}
-    <div class="row formset_row_lnd_lsd_out_fxd_rnt flex-row">
-      <div class="col-md-1 table-cell flex-column-1">
-        {{ form.ownership_plot_no }}
-      </div>
-      <div class="col-md-1 table-cell flex-column-1">
-        {{ form.land_type }}
-      </div>
-      <div class="col-md-1 table-cell flex-column-1">
-        {{ form.extent }}
-      </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.name_of_lessee }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.caste_of_lessee }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.occupation_of_lessee }}
+                    </div>
+                </div>
+                <div class='col-md-3 flex-row-wrap-1'>
 
-      <div class='col-md-3 flex-row-wrap-1'>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.registered_unregistered }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.type_of_contract }}
+                    </div>
+                    <div class='col-md-4 table-cell'>
+                        {{ form.since_when_leased_out }}
+                    </div>
+                </div>
+                <div class='col-md-3 flex-row-wrap-1'>
 
-              <div class='col-md-4 table-cell'>
-                {{ form.name_of_lessee }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.caste_of_lessee }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.occupation_of_lessee }}
-              </div>
-      </div>
-      <div class='col-md-3 flex-row-wrap-1'>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.annual_rent_in_cash }}
+                    </div>
+                    <div class='col-md-6 table-cell'>
+                        {{ form.annual_rent_in_kind }}
+                    </div>
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ form.interest_free_loan_given }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ form.loan_with_interest_given }}
+                </div>
+                <div class='col-md-1 table-cell flex-column-1'>
+                    {{ form.further_interest_on_rent }}
+                </div>
+                <div class="col-md-12 flex-row-wrap-1">
 
-              <div class='col-md-4 table-cell'>
-                {{ form.registered_unregistered }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.type_of_contract }}
-              </div>
-              <div class='col-md-4 table-cell'>
-                {{ form.since_when_leased_out }}
-              </div>
-      </div>
-      <div class='col-md-3 flex-row-wrap-1'>
+                    <div class="col-md-2 table-cell">
+                        {{ form.qty_of_hay_taken }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_manure_provided_by_you }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_fertiliser_provided_by_you }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_seed_provided_by_you }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_pesticide_provided_by_you }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.value_of_electricity_paid_for_by_you }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.if_you_provided_the_pumpset }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.if_irrigation_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
+                        {{ form.if_machinery_provided_by_owner }}
+                    </div>
+                    <div class="col-md-2 table-cell">
+                        {{ form.comments }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <br><br><br>
+    </div>
 
-              <div class='col-md-6 table-cell'>
-                {{ form.annual_rent_in_cash }}
-              </div>
-              <div class='col-md-6 table-cell'>
-                {{ form.annual_rent_in_kind }}
-              </div>
-      </div>
-      <div class='col-md-1 table-cell flex-column-1'>
-        {{ form.interest_free_loan_given }}
-      </div>
-      <div class='col-md-1 table-cell flex-column-1'>
-        {{ form.loan_with_interest_given }}
-      </div>
-      <div class='col-md-1 table-cell flex-column-1'>
-        {{ form.further_interest_on_rent }}
-      </div>
-      <div class="col-md-12 flex-row-wrap-1">
-
-            <div class="col-md-2 table-cell">
-              {{ form.qty_of_hay_taken }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_manure_provided_by_you }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_fertiliser_provided_by_you }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_seed_provided_by_you }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_pesticide_provided_by_you }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.value_of_electricity_paid_for_by_you }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.if_you_provided_the_pumpset }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.if_irrigation_provided_by_owner }}
-            </div>
-            <div class="col-md-1 table-cell">
-              {{ form.if_machinery_provided_by_owner }}
-            </div>
-            <div class="col-md-2 table-cell">
-              {{ form.comments }}
-            </div>
-        </div>
-      </div>
-    {% endfor %}
-    <br><br><br>
-  </div>
-
-<script type="text/javascript">
-    $('.formset_row_lnd_lsd_in_fxd_rnt').formset();
-    $('.formset_row_lnd_lsd_out_fxd_rnt').formset();
-</script>
+    <script type="text/javascript">
+        $('.formset_row_lnd_lsd_in_fxd_rnt').formset();
+        $('.formset_row_lnd_lsd_out_fxd_rnt').formset();
+    </script>
     {% include 'common/comments.html' %}
 {% endblock %}

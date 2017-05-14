@@ -1,5 +1,8 @@
 from django import forms
-from ..models.page3 import LandLeasedInOnFixedRent
+
+from fas_questionnaire.forms.common import ListTextWidget
+from fas_questionnaire.models.common import LandType, Caste
+from ..models.page3 import LandLeasedInOnFixedRent, Registration, TypeOfContract
 from ..models.page3 import LandLeasedOutOnFixedRent
 
 
@@ -39,6 +42,17 @@ class LandLeasedInOnFixedRentForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def __init__(self, *args, **kwargs):
+        super(LandLeasedInOnFixedRentForm, self).__init__(*args, **kwargs)
+        type_of_land_purchased_list = LandType.objects.values_list('type')
+        self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list, name='type_of_land_purchased-list')
+        caste_of_seller_list = Caste.objects.values_list('caste')
+        self.fields['caste_of_lessor'].widget = ListTextWidget(data_list=caste_of_seller_list, name='caste_of_seller-list')
+        registered_unregistered_list = Registration.objects.values_list('registration')
+        self.fields['registered_unregistered'].widget = ListTextWidget(data_list=registered_unregistered_list, name='registered_unregistered_list')
+        contract_list = TypeOfContract.objects.values_list('type_of_contract')
+        self.fields['type_of_contract'].widget = ListTextWidget(data_list=contract_list, name='contract-list')
+
 
 class LandLeasedOutOnFixedRentForm(forms.ModelForm):
     class Meta:
@@ -76,5 +90,13 @@ class LandLeasedOutOnFixedRentForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
-
-
+    def __init__(self, *args, **kwargs):
+        super(LandLeasedOutOnFixedRentForm, self).__init__(*args, **kwargs)
+        type_of_land_purchased_list = LandType.objects.values_list('type')
+        self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list, name='type_of_land_purchased-list')
+        caste_of_seller_list = Caste.objects.values_list('caste')
+        self.fields['caste_of_lessee'].widget = ListTextWidget(data_list=caste_of_seller_list,name='caste_of_seller-list')
+        registered_unregistered_list = Registration.objects.values_list('registration')
+        self.fields['registered_unregistered'].widget = ListTextWidget(data_list=registered_unregistered_list,name='registered_unregistered_list')
+        contract_list = TypeOfContract.objects.values_list('type_of_contract')
+        self.fields['type_of_contract'].widget = ListTextWidget(data_list=contract_list, name='contract-list')

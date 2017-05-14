@@ -40,15 +40,15 @@ class LandLeasedInOnFixedRent(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     plot_no = models.IntegerField(db_column='Plot no', blank=True, null=True)
-    land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
+    land_type = models.CharField(max_length=100, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
     unit_of_extent = models.ForeignKey(Units, models.DO_NOTHING, db_column='unit of extent', blank=True, null=True)
     name_of_lessor = models.CharField(db_column='Name of lessor', max_length=50, blank=True, null=True)
-    caste_of_lessor = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of lessor', blank=True, null=True)
+    caste_of_lessor = models.CharField(max_length=100,db_column='Caste of lessor', blank=True, null=True)
     occupation_of_lessor = models.CharField(db_column='Occupation of lessor', max_length=50, blank=True, null=True)
-    registered_unregistered = models.ForeignKey(Registration, models.DO_NOTHING, db_column='Registered/unregistered',
+    registered_unregistered = models.CharField(max_length=100,db_column='Registered/unregistered',
                                                 blank=True, null=True)
-    type_of_contract = models.ForeignKey(TypeOfContract, models.DO_NOTHING, db_column='Type of contract', blank=True,
+    type_of_contract = models.CharField(max_length=100,db_column='Type of contract', blank=True,
                                          null=True)
     since_when_leased_in = models.CharField(db_column='Since when leased in', max_length=50, blank=True, null=True)
     annual_rent_in_cash = models.CharField(db_column='Annual rent in cash', max_length=50, blank=True, null=True)
@@ -89,15 +89,15 @@ class LandLeasedOutOnFixedRent(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_plot_no = models.IntegerField(db_column='Ownership plot no', blank=True, null=True)
-    land_type = models.ForeignKey(LandType, models.DO_NOTHING, db_column='Land type', blank=True, null=True)
+    land_type = models.CharField(max_length=100, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
     unit_of_extent = models.ForeignKey(Units, models.DO_NOTHING, db_column='unit of extent', blank=True, null=True)
     name_of_lessee = models.CharField(db_column='Name of lessee', max_length=50, blank=True, null=True)
-    caste_of_lessee = models.ForeignKey(Caste, models.DO_NOTHING, db_column='Caste of lessee', blank=True, null=True)
+    caste_of_lessee = models.CharField(max_length=100,db_column='Caste of lessee', blank=True, null=True)
     occupation_of_lessee = models.CharField(db_column='Occupation of lessee', max_length=50, blank=True, null=True)
-    registered_unregistered = models.ForeignKey(Registration, models.DO_NOTHING, db_column='Registered/unregistered',
+    registered_unregistered = models.CharField(max_length=100, db_column='Registered/unregistered',
                                                 blank=True, null=True)
-    type_of_contract = models.ForeignKey(TypeOfContract, models.DO_NOTHING, db_column='Type of contract', blank=True,
+    type_of_contract = models.CharField(max_length=100, db_column='Type of contract', blank=True,
                                          null=True)
     since_when_leased_out = models.CharField(db_column='Since when leased out', max_length=50, blank=True, null=True)
     annual_rent_in_cash = models.CharField(db_column='Annual rent in cash', max_length=50, blank=True, null=True)

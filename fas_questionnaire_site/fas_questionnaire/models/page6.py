@@ -57,33 +57,27 @@ class Production(models.Model):
 
     crop_number_first_digit = models.FloatField(db_column='production_crop_number_first_digit', null=True, blank=True)
     crop_number_second_digit = models.FloatField(db_column='production_crop_number_second_digit', null=True, blank=True)
-    crop = models.ForeignKey(Crop,models.DO_NOTHING,db_column='crop', null=True, blank=True)
+    crop = models.CharField(max_length=100,db_column='crop', null=True, blank=True)
 
     production_main_product = models.FloatField(db_column='Production, main product', blank=True, null=True)
-    unit_main_production = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, production', blank=True,
-                                             null=True,
-                                             related_name='unit_main_production')
-    unit_by_production = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, by production', blank=True,
-                                           null=True,
-                                           related_name='unit_by_production')
+    unit_main_production = models.CharField(max_length=100,db_column='Unit, production', blank=True,
+                                             null=True)
+    unit_by_production = models.CharField(max_length=100,db_column='Unit, by production', blank=True,
+                                           null=True)
     production_by_product = models.CharField(db_column='Production, by product', max_length=50, blank=True, null=True)
 
     consumption_main_product = models.FloatField(db_column='Consumption, main product', blank=True, null=True)
-    unit_main_consumption = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, main consumption', blank=True,
-                                              null=True,
-                                              related_name="unit_main_consumption")
-    unit_by_consumption = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, by consumption', blank=True,
-                                            null=True,
-                                            related_name='unit_by_consumption')
+    unit_main_consumption = models.CharField(max_length=100,db_column='Unit, main consumption', blank=True,
+                                              null=True)
+    unit_by_consumption = models.CharField(max_length=100,db_column='Unit, by consumption', blank=True,
+                                            null=True)
     consumption_by_product = models.CharField(db_column='Consumption, by product', max_length=50, blank=True, null=True)
 
     rent_and_wages_main_product = models.FloatField(db_column='Rent and Wages, main product', blank=True, null=True)
-    unit_main_rent_and_wages = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, main rent and wages',
-                                                 blank=True, null=True,
-                                                 related_name="unit_main_rent_and_wages")
-    unit_by_rent_and_wages = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit, by rent and wages',
-                                               blank=True, null=True,
-                                               related_name='unit_by_rent_and_wages')
+    unit_main_rent_and_wages = models.CharField(max_length=100,db_column='Unit, main rent and wages',
+                                                 blank=True, null=True)
+    unit_by_rent_and_wages = models.CharField(max_length=100,db_column='Unit, by rent and wages',
+                                               blank=True, null=True)
     rent_and_wages_by_product = models.CharField(db_column='rent and wages, by product', max_length=50, blank=True,
                                                  null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
@@ -102,18 +96,17 @@ class SalesOfProduction(models.Model):
     sale_number = models.FloatField(db_column='Sale number', blank=True, null=True)
     commodity_sold = models.CharField(db_column='Commodity sold', max_length=50, blank=True, null=True)
     quantity = models.FloatField(db_column='Quantity', blank=True, null=True)
-    unit_of_quantity = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit of quantity', blank=True, null=True,
-                                         related_name='unit_of_quantity')
-    month_of_disposal = models.ForeignKey(Month, models.DO_NOTHING, db_column='Month of disposal', blank=True,
+    unit_of_quantity = models.CharField(max_length=100,db_column='Unit of quantity', blank=True, null=True,
+                                         )
+    month_of_disposal = models.CharField(max_length=100,db_column='Month of disposal', blank=True,
                                           null=True)
     price = models.FloatField(db_column='Price', blank=True, null=True)
-    unit_of_price = models.ForeignKey(Units, models.DO_NOTHING, db_column='Unit of price', blank=True, null=True,
-                                      related_name='unit_of_price')
-    where_marketed = models.ForeignKey(WhereMarketed, models.DO_NOTHING, db_column='Where marketed', blank=True,
+    unit_of_price = models.CharField(max_length=100,db_column='Unit of price', blank=True, null=True,
+                                      )
+    where_marketed = models.CharField(max_length=100, db_column='Where marketed', blank=True,
                                        null=True)
-    marketing_agency = models.ForeignKey(MarketingAgencies, models.DO_NOTHING, db_column='Marketing agency',
-                                         max_length=50, blank=True, null=True)
-    if_price_determined_in_advance = models.ForeignKey(YesOrNo, models.DO_NOTHING,
+    marketing_agency = models.CharField(max_length=100, db_column='Marketing agency',blank=True, null=True)
+    if_price_determined_in_advance = models.CharField(max_length=100,
                                                        db_column='If price determined in advance', blank=True,
                                                        null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)

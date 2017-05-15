@@ -69,9 +69,9 @@ class AnimalTypes(models.Model):
 class AnimalResoursesInventory(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    type = models.ForeignKey(AnimalTypes, models.DO_NOTHING, db_column='Type', blank=True, null=True)
-    sex = models.ForeignKey(Sex, models.DO_NOTHING, db_column='sex', blank=True, null=True)
-    cattle_type = models.ForeignKey(AnimalCattleType, models.DO_NOTHING, db_column='Cattle type', blank=True, null=True)
+    type = models.CharField(max_length=100,db_column='Type', blank=True, null=True)
+    sex = models.CharField(max_length=100,db_column='sex', blank=True, null=True)
+    cattle_type = models.CharField(max_length=100,db_column='Cattle type', blank=True, null=True)
     breed = models.CharField(db_column='Breed', max_length=50, blank=True, null=True)
     no = models.IntegerField(db_column='No', blank=True, null=True)
     age = models.IntegerField(db_column='Age', blank=True, null=True)
@@ -109,9 +109,9 @@ class FeedSource(models.Model):
 
 class AnimalResourcesFeed(models.Model):
     id = models.AutoField(primary_key=True)
-    type_of_feed = models.ForeignKey(FeedType, db_column='Type of Feed', blank=True, null=True)
-    household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    source = models.ForeignKey(FeedSource, models.DO_NOTHING, db_column='Feed Source', blank=True, null=True)
+    type_of_feed = models.ForeignKey(FeedType,max_length=100,db_column='Type of Feed', blank=True, null=True)
+    household = models.CharField(max_length=100,db_column='household')
+    source = models.ForeignKey(FeedSource,max_length=100,db_column='Feed Source', blank=True, null=True)
     qty = models.IntegerField(db_column='QTY', blank=True, null=True)
     value = models.IntegerField(db_column='Value', blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
@@ -136,7 +136,7 @@ class ItemType(models.Model):
 class OtherExpenditure(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    item = models.ForeignKey(ItemType, db_column='Item Name', blank=True, null=True)
+    item = models.CharField(max_length=100,db_column='Item Name', blank=True, null=True)
     expenditure = models.IntegerField(db_column='Expenditure', blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
 
@@ -160,13 +160,13 @@ class ProductType(models.Model):
 class OutputAndIncome(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    product = models.ForeignKey(ProductType, db_column='product', blank=True, null=True)
+    product = models.CharField(max_length=100,db_column='product', blank=True, null=True)
     production = models.IntegerField(db_column='production', blank=True, null=True)
-    production_unit = models.ForeignKey(Units, db_column='production_unit', null=True, blank=True,related_name="%(class)s_production_unit")
+    production_unit = models.CharField(max_length=100,db_column='production_unit', null=True, blank=True)
     sale = models.IntegerField(db_column='sale', blank=True, null=True)
-    sale_unit = models.ForeignKey(Units, db_column='sale_unit', null=True, blank=True,related_name="%(class)s_sale_unit")
+    sale_unit = models.CharField(max_length=100,db_column='sale_unit', null=True, blank=True)
     price = models.IntegerField(db_column='price', blank=True, null=True)
-    price_unit = models.ForeignKey(Units, db_column='price_unit', null=True, blank=True,related_name="%(class)s_price_unit")
+    price_unit = models.CharField(max_length=100,db_column='price_unit', null=True, blank=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:

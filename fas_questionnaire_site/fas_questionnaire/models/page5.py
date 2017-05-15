@@ -43,18 +43,17 @@ class CroppingPatternAndCropSchedule(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     crop_number_first_digit = models.FloatField(db_column='first digit', null=True, blank=True)
     crop_number_second_digit = models.FloatField(db_column='second digit', null=True, blank=True)
-    crop = models.ForeignKey(Crop, models.DO_NOTHING, db_column='Crop', blank=True, null=True)
+    crop = models.CharField(db_column='Crop',max_length=100, blank=True, null=True)
     variety = models.CharField(db_column='Variety', max_length=50, blank=True, null=True)
-    tenurial_status = models.ForeignKey(Tenurial, models.DO_NOTHING, db_column='tenurial status', blank=True, null=True)
-    crop_homestead_land = models.ForeignKey(HomesteadLand, models.DO_NOTHING, db_column='Crop/ Homestead land',
+    tenurial_status = models.CharField(db_column='tenurial status', max_length=100,blank=True, null=True)
+    crop_homestead_land = models.CharField(db_column='Crop/ Homestead land',max_length=100,
                                             blank=True, null=True)
     extent = models.FloatField(db_column='Extent', blank=True, null=True)
-    month_of_sowing = models.ForeignKey(Month, models.DO_NOTHING, db_column='Month of sowing', blank=True, null=True,
-                                        related_name='month_of_sowing')
-    month_of_harvesting = models.ForeignKey(Month, models.DO_NOTHING, db_column='Month of harvesting', blank=True,
-                                            null=True, related_name='month_of_harvesting')
-    source_of_irrigation = models.ForeignKey(IrrigationSource, models.DO_NOTHING, db_column='Source of irrigation',
-                                             blank=True, null=True, related_name='source_of_irrigation')
+    month_of_sowing = models.CharField(max_length=100,db_column='Month of sowing', blank=True, null=True)
+    month_of_harvesting = models.CharField(max_length=100,db_column='Month of harvesting', blank=True,
+                                            null=True)
+    source_of_irrigation = models.CharField(max_length=100, db_column='Source of irrigation',
+                                             blank=True, null=True)
 
     comments = models.CharField(db_column='Comments', max_length=50, blank=True, null=True)
 

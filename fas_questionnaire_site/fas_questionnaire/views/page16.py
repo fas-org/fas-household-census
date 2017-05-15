@@ -40,7 +40,7 @@ def edit(request, pk):
             return redirect('page16_edit', pk)
 
     income_from_state_model_formset = modelformset_factory(IncomeFromStateAndCommonPropertyResources,
-                                                           form=IncomeFromStateAndCommonPropertyResourcesForm, extra=1)
+                                                           form=IncomeFromStateAndCommonPropertyResourcesForm, extra=1,widgets = get_household_members_as_widget(pk, 'name_of_worker'))
     income_from_state_result_set = IncomeFromStateAndCommonPropertyResources.objects.filter(household=pk)
     income_from_state_formset = income_from_state_model_formset(queryset=income_from_state_result_set,
                                                                 prefix='income_from_state')

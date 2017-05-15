@@ -2,7 +2,8 @@ from django import forms
 
 from fas_questionnaire.forms.common import ListTextWidget
 from fas_questionnaire.models.common import LandType, Caste, Occupation
-from ..models.page4 import LandMortgagedIn
+from fas_questionnaire.models.page3 import Registration
+from ..models.page4 import LandMortgagedIn, InterestUsufruct, SeasonalYearlyOther
 from ..models.page4 import LandMortgagedOut
 from ..models.page4 import LandLeasedInOnShareRent
 from ..models.page4 import LandLeasedOutOnShareRent
@@ -29,15 +30,18 @@ class LandMortgagedInForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
-        def __init__(self, *args, **kwargs):
-            super(LandMortgagedInForm, self).__init__(*args, **kwargs)
-            type_of_land_purchased_list = LandType.objects.values_list('type')
-            self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list,name='type_of_land_purchased-list')
-            caste_of_seller_list = Caste.objects.values_list('caste')
-            self.fields['caste_of_mortgagor'].widget = ListTextWidget(data_list=caste_of_seller_list,name='caste_of_seller-list')
-            occupation_of_buyer_list = Occupation.objects.values_list('occupation')
-            self.fields['occupation_of_mortgagor'].widget = ListTextWidget(data_list=occupation_of_buyer_list,
+    def __init__(self, *args, **kwargs):
+        super(LandMortgagedInForm, self).__init__(*args, **kwargs)
+        type_of_land_purchased_list = LandType.objects.values_list('type')
+        self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list,name='type_of_land_purchased-list')
+        caste_of_seller_list = Caste.objects.values_list('caste')
+        self.fields['caste_of_mortgagor'].widget = ListTextWidget(data_list=caste_of_seller_list,name='caste_of_seller-list')
+        occupation_of_buyer_list = Occupation.objects.values_list('occupation')
+        self.fields['occupation_of_mortgagor'].widget = ListTextWidget(data_list=occupation_of_buyer_list,
                                                                        name='occupation_of_buyer-list')
+        interest_usufruct_list = InterestUsufruct.objects.values_list('interestusufruct')
+        self.fields['interest_usufruct'].widget = ListTextWidget(data_list=interest_usufruct_list,
+                                                                       name='interest_usufruct-list')
 
 class LandMortgagedOutForm(forms.ModelForm):
     class Meta:
@@ -60,6 +64,20 @@ class LandMortgagedOutForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def __init__(self, *args, **kwargs):
+        super(LandMortgagedOutForm, self).__init__(*args, **kwargs)
+        type_of_land_purchased_list = LandType.objects.values_list('type')
+        self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list,
+                                                         name='type_of_land_purchased-list')
+        caste_of_seller_list = Caste.objects.values_list('caste')
+        self.fields['caste_of_mortgagee'].widget = ListTextWidget(data_list=caste_of_seller_list,
+                                                                  name='caste_of_seller-list')
+        occupation_of_buyer_list = Occupation.objects.values_list('occupation')
+        self.fields['occupation_of_mortgagee'].widget = ListTextWidget(data_list=occupation_of_buyer_list,
+                                                                       name='occupation_of_buyer-list')
+        interest_usufruct_list = InterestUsufruct.objects.values_list('interestusufruct')
+        self.fields['interest_usufruct'].widget = ListTextWidget(data_list=interest_usufruct_list,
+                                                                 name='interest_usufruct-list')
 
 class LandLeasedInOnShareRentForm(forms.ModelForm):
     class Meta:
@@ -108,6 +126,24 @@ class LandLeasedInOnShareRentForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def __init__(self, *args, **kwargs):
+        super(LandLeasedInOnShareRentForm, self).__init__(*args, **kwargs)
+        type_of_land_purchased_list = LandType.objects.values_list('type')
+        self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list,
+                                                         name='type_of_land_purchased-list')
+        caste_list = Caste.objects.values_list('caste')
+        self.fields['caste_of_lessor'].widget = ListTextWidget(data_list=caste_list,
+                                                                  name='caste-list')
+        occupation_of_lessor_list = Occupation.objects.values_list('occupation')
+        self.fields['occupation_of_lessor'].widget = ListTextWidget(data_list=occupation_of_lessor_list,
+                                                                       name='occupation_of_lessor_list')
+        registration_list = Registration.objects.values_list('registration')
+        self.fields['registered_unregistered'].widget = ListTextWidget(data_list=registration_list,
+                                                                    name='registration_list')
+        season_list = SeasonalYearlyOther.objects.values_list('seasonalyearlyother')
+        self.fields['seasonal_yearly_other'].widget = ListTextWidget(data_list=season_list,
+                                                                       name='seasons')
+
 
 class LandLeasedOutOnShareRentForm(forms.ModelForm):
     class Meta:
@@ -155,3 +191,21 @@ class LandLeasedOutOnShareRentForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+    def __init__(self, *args, **kwargs):
+        super(LandLeasedOutOnShareRentForm, self).__init__(*args, **kwargs)
+        type_of_land_purchased_list = LandType.objects.values_list('type')
+        self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list,
+                                                         name='type_of_land_purchased-list')
+        caste_list = Caste.objects.values_list('caste')
+        self.fields['caste_of_sharecropper'].widget = ListTextWidget(data_list=caste_list,
+                                                                  name='caste-list')
+        occupation_of_sharecropper_list = Occupation.objects.values_list('occupation')
+        self.fields['occupation_of_sharecropper'].widget = ListTextWidget(data_list=occupation_of_sharecropper_list,
+                                                                       name='occupation_of_lessor_list')
+        registration_list = Registration.objects.values_list('registration')
+        self.fields['registered_unregistered'].widget = ListTextWidget(data_list=registration_list,
+                                                                    name='registration_list')
+        season_list = SeasonalYearlyOther.objects.values_list('seasonalyearlyother')
+        self.fields['seasonal_annual_other'].widget = ListTextWidget(data_list=season_list,
+                                                                       name='seasons')

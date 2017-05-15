@@ -53,13 +53,14 @@
         <div class='col-md-2 table-cell flex-column'>
             <label>comments</label>
         </div>
+        <div class="cross-width"></div>
     </div>
 
 
     {% csrf_token %}
     {{ formset_lm_in.management_form }}
     {% for form in formset_lm_in.forms %}
-    <div class='row flex-row '>
+    <div class='row flex-row formset_row_lnd_mrtg_in'>
         <div class='col-md-1 table-cell'>
             {{ form.land_type }}
         </div>

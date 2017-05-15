@@ -1,4 +1,7 @@
 from django import forms
+
+from fas_questionnaire.forms.common import ListTextWidget
+from fas_questionnaire.models.common import LandType, Caste, Occupation
 from ..models.page4 import LandMortgagedIn
 from ..models.page4 import LandMortgagedOut
 from ..models.page4 import LandLeasedInOnShareRent
@@ -25,6 +28,16 @@ class LandMortgagedInForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+        def __init__(self, *args, **kwargs):
+            super(LandMortgagedInForm, self).__init__(*args, **kwargs)
+            type_of_land_purchased_list = LandType.objects.values_list('type')
+            self.fields['land_type'].widget = ListTextWidget(data_list=type_of_land_purchased_list,name='type_of_land_purchased-list')
+            caste_of_seller_list = Caste.objects.values_list('caste')
+            self.fields['caste_of_mortgagor'].widget = ListTextWidget(data_list=caste_of_seller_list,name='caste_of_seller-list')
+            occupation_of_buyer_list = Occupation.objects.values_list('occupation')
+            self.fields['occupation_of_mortgagor'].widget = ListTextWidget(data_list=occupation_of_buyer_list,
+                                                                       name='occupation_of_buyer-list')
 
 class LandMortgagedOutForm(forms.ModelForm):
     class Meta:

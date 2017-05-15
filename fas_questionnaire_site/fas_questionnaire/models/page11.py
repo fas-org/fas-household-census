@@ -15,7 +15,7 @@ class LabourDaysEmployedInAgriculturalOperations(models.Model):
 
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    crop = models.ForeignKey('Crop', on_delete=models.CASCADE, blank=True, null=True)
+    crop = models.CharField(max_length=100, blank=True, null=True)
     crop_clean = models.CharField(db_column='Crop clean', max_length=250, blank=True, null=True)
     extent = models.FloatField(db_column='Extent', blank=True, null=True)
     tenurial_status = models.CharField(db_column='Tenurial status', max_length=50, blank=True, null=True)

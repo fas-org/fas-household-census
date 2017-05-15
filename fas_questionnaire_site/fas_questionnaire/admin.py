@@ -125,6 +125,7 @@ admin.site.register(TypeOfFloor)
 admin.site.register(SourceOfEnergyForCooking)
 admin.site.register(Latrine)
 admin.site.register(NatureOfDisbursement)
+admin.site.register(ElectricityConnection)
 
 #Page 20
 admin.site.register(SourceOfBorrowing)

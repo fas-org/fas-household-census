@@ -14,7 +14,7 @@ class Extension(models.Model):
     id = models.AutoField(primary_key=True)
     type_of_advice_received_description = models.CharField(db_column='Type of advice received-description',
                                                            max_length=250, blank=True, null=True)
-    from_whom_advice_received = models.ForeignKey('CultivationAdviser', models.DO_NOTHING,
+    from_whom_advice_received = models.CharField(max_length=100,
                                                   db_column='From whom advice received', blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     comments = models.CharField(max_length=255, blank=True, null=True)
@@ -51,10 +51,10 @@ class InstitutionalSupportCategory(models.Model):
 class InstitutionalSupport(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    category = models.ForeignKey('InstitutionalSupportCategory', models.DO_NOTHING, db_column='Category', blank=True, null=True)
-    name_of_institution = models.ForeignKey('Institution', models.DO_NOTHING, db_column='Name of Institution', blank=True, null=True)
+    category = models.CharField(max_length=100, db_column='Category', blank=True, null=True)
+    name_of_institution = models.CharField(max_length=100, db_column='Name of Institution', blank=True, null=True)
     year_of_support = models.CharField(db_column='Year of support', max_length=50, blank=True, null=True)
-    nature_of_support_or_purpose = models.ForeignKey('SupportNature', models.DO_NOTHING, db_column='Nature of support/purpose', blank=True, null=True)
+    nature_of_support_or_purpose = models.CharField(max_length=100, db_column='Nature of support/purpose', blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:

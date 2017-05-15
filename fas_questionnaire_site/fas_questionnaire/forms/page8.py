@@ -1,4 +1,7 @@
 from django import forms
+
+from fas_questionnaire.forms.common import ListTextWidget
+from fas_questionnaire.models.common import SupportNature, Institution
 from ..models.page8 import *
 
 
@@ -17,6 +20,12 @@ class ExtensionForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def __init__(self, *args, **kwargs):
+        super(ExtensionForm, self).__init__(*args, **kwargs)
+
+        extension_list = CultivationAdviser.objects.values_list('adviser')
+        self.fields['from_whom_advice_received'].widget = ListTextWidget(data_list=extension_list, name='extension-list')
+
 
 class InstitutionalSupportForm(forms.ModelForm):
 
@@ -29,3 +38,16 @@ class InstitutionalSupportForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+
+    def __init__(self, *args, **kwargs):
+        super(InstitutionalSupportForm, self).__init__(*args, **kwargs)
+
+        category_list = InstitutionalSupportCategory.objects.values_list('category_name')
+        self.fields['category'].widget = ListTextWidget(data_list=category_list,name='category_list')
+
+        support_nature_list = SupportNature.objects.values_list('support')
+        self.fields['nature_of_support_or_purpose'].widget = ListTextWidget(data_list=support_nature_list,name='support_nature_list')
+
+        institution_list = Institution.objects.values_list('name')
+        self.fields['name_of_institution'].widget = ListTextWidget(data_list=institution_list,name='institution_list')

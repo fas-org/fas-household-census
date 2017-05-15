@@ -1,4 +1,7 @@
 from django import forms
+
+from fas_questionnaire.forms.common import ListTextWidget
+from fas_questionnaire.models.common import Crop
 from ..models.page9 import *
 
 
@@ -64,7 +67,24 @@ class OwnershipWellsTubewellsForm(forms.ModelForm):
         localized_fields = None
         labels = {}
         help_texts = {}
-        error_messages = {}
+        error_messages  = {}
+
+    def __init__(self, *args, **kwargs):
+        super(OwnershipWellsTubewellsForm, self).__init__(*args, **kwargs)
+        ownership_type_list = OwnershipType.objects.values_list('type')
+        self.fields['ownership_type'].widget = ListTextWidget(data_list=ownership_type_list, name='ownership_type-list')
+        wellType_list = WellType.objects.values_list('type')
+        self.fields['type'].widget = ListTextWidget(data_list=wellType_list, name='wellType-list')
+        power_source_list = PowerSource.objects.values_list('source')
+        self.fields['power_source'].widget = ListTextWidget(data_list=power_source_list, name='power_source-list')
+        finance_source_list = SourceOfFinance.objects.values_list('source')
+        self.fields['finance_source'].widget = ListTextWidget(data_list=finance_source_list, name='finance_source-list')
+        irrigation_crop_list = Crop.objects.values_list('name')
+        self.fields['irrigation_crop'].widget = ListTextWidget(data_list=irrigation_crop_list, name='irrigation_crop-list')
+        exchange_nature_list = NatureExchange.objects.values_list('exchange')
+        self.fields['exchange_nature'].widget = ListTextWidget(data_list=exchange_nature_list, name='exchange_nature-list')
+
+
 
 
 class SpecifiedProductionMeansForm(forms.ModelForm):
@@ -79,6 +99,15 @@ class SpecifiedProductionMeansForm(forms.ModelForm):
         help_texts = {}
         error_messages = {}
 
+    def __init__(self, *args, **kwargs):
+        super(SpecifiedProductionMeansForm, self).__init__(*args, **kwargs)
+        production_item_code_list = ProductionMeans.objects.values_list('type')
+        self.fields['irrigation_item_code'].widget = ListTextWidget(data_list=production_item_code_list, name='production_item_code-list')
+        rental_earnings_units_list = Units.objects.values_list('unit')
+        self.fields['rental_earnings_units'].widget = ListTextWidget(data_list=rental_earnings_units_list, name='rental_earnings_units-list')
+
+
+
 
 class SpecifiedIrrigationMeansForm(forms.ModelForm):
 
@@ -91,3 +120,12 @@ class SpecifiedIrrigationMeansForm(forms.ModelForm):
         labels = {}
         help_texts = {}
         error_messages = {}
+
+    def __init__(self,*args,**kwargs):
+        super(SpecifiedIrrigationMeansForm,self).__init__(*args,**kwargs)
+        irrigation_item_code_list = IrrigationFlow.objects.values_list('type')
+        self.fields['irrigation_item_code'].widget = ListTextWidget(data_list=irrigation_item_code_list, name='irrigation_item_code-list')
+
+
+
+

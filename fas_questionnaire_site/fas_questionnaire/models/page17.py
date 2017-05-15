@@ -109,8 +109,8 @@ class FeedSource(models.Model):
 
 class AnimalResourcesFeed(models.Model):
     id = models.AutoField(primary_key=True)
-    type_of_feed = models.ForeignKey(FeedType,max_length=100,db_column='Type of Feed', blank=True, null=True)
-    household = models.CharField(max_length=100,db_column='household')
+    type_of_feed = models.CharField(max_length=100,db_column='Type of Feed', blank=True, null=True)
+    household = models.ForeignKey(Household,models.DO_NOTHING,db_column='household')
     source = models.ForeignKey(FeedSource,max_length=100,db_column='Feed Source', blank=True, null=True)
     qty = models.IntegerField(db_column='QTY', blank=True, null=True)
     value = models.IntegerField(db_column='Value', blank=True, null=True)

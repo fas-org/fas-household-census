@@ -1,7 +1,4 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.forms import modelformset_factory
-from django.forms.formsets import formset_factory, BaseFormSet
 from django.shortcuts import render, redirect
 
 from .common import *
@@ -16,6 +13,7 @@ def init(request):
     else:
         return edit(request, request.session['household'])
 
+
 @login_required(login_url='login')
 def edit(request, pk):
     request.session['household'] = pk
@@ -27,7 +25,7 @@ def edit(request, pk):
         irrigation_means_forms = irrigation_means_formset(request.POST, prefix='irrigation')
 
         if save_formset(current_ownership_forms, OwnershipWellsTubewells, pk) \
-                and save_formset(irrigation_means_forms, SpecifiedProductionMeans, pk)\
+                and save_formset(irrigation_means_forms, SpecifiedProductionMeans, pk) \
                 and save_formset(get_comments_formset_to_save(request), Comments, pk, 9):
             messages.success(request, 'Data saved successfully')
             return redirect('page9_edit', pk)

@@ -114,8 +114,7 @@ class ProductionMeans(models.Model):
 class SpecifiedProductionMeans(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    irrigation_item_code = models.CharField(max_length=100, db_column='Irrigation item code', blank=True, null=True)
-    production_item_code = models.CharField(max_length=100,db_column='Production item code', blank=True, null=True)
+    item_code = models.CharField(max_length=100, db_column='Irrigation item code', blank=True, null=True)
     ownership_number = models.IntegerField(db_column='Ownership Number', blank=True, null=True)
     year_of_purchase = models.IntegerField(db_column='Year of Purchase', blank=True, null=True)
     price_paid = models.IntegerField(db_column='Year when installed', blank=True, null=True)

@@ -180,20 +180,16 @@
     <div class='col-md-2 table-cell flex-column'>
         <label>Maintenance charges last year</label>
     </div>
-    <div class='col-md-2'>
-        <div class="row">
-            <div class='col-md-12 table-cell'>
+    <div class='col-md-2 flex-row-wrap'>
+            <div class='col-md-12 table-cell '>
                 <label>Rental earnings last year</label>
             </div>
-        </div>
-        <div class="row">
-            <div class='col-md-6 table-cell'>
+            <div class='col-md-6 table-cell '>
                 <label>Units</label>
             </div>
-            <div class='col-md-6 table-cell'>
+            <div class='col-md-6 table-cell '>
                 <label>Earnings</label>
             </div>
-        </div>
     </div>
     <div class='col-md-2 table-cell flex-column'>
         <label>Comments (discuss details of contract if necessary)</label>
@@ -205,7 +201,7 @@
 {% for form in irrigation_means_formset.forms %}
 <div class='row irrigation_means_formset_row flex-row'>
     <div class='col-md-1 table-cell flex-column'>
-        {{ form.irrigation_item_code }}
+        {{ form.item_code }}
     </div>
     <div class='col-md-5 flex-column'>
         <div class="row flex-row">

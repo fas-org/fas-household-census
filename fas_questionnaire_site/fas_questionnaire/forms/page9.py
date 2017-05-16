@@ -3,6 +3,7 @@ from django import forms
 from fas_questionnaire.forms.common import ListTextWidget
 from fas_questionnaire.models.common import Crop
 from ..models.page9 import *
+from itertools import chain
 
 
 class OwnershipTypeForm(forms.ModelForm):
@@ -85,37 +86,11 @@ class OwnershipWellsTubewellsForm(forms.ModelForm):
         self.fields['exchange_nature'].widget = ListTextWidget(data_list=exchange_nature_list, name='exchange_nature-list')
 
 
-
-
-class SpecifiedProductionMeansForm(forms.ModelForm):
-
-    class Meta:
-        model = SpecifiedProductionMeans
-        fields = ['household','production_item_code', 'ownership_number', 'year_of_purchase', 'price_paid', 'subsidy_received', 'present_value', 'maintenance_charges', 'rental_earnings', 'rental_earnings_units', 'comments']
-        exclude = ['household']
-        widgets = None
-        localized_fields = None
-        labels = {}
-        help_texts = {}
-        error_messages = {}
-
-    def __init__(self, *args, **kwargs):
-        super(SpecifiedProductionMeansForm, self).__init__(*args, **kwargs)
-        production_item_code_list = ProductionMeans.objects.values_list('type')
-        self.fields['irrigation_item_code'].widget = ListTextWidget(data_list=production_item_code_list, name='production_item_code-list')
-        rental_earnings_units_list = Units.objects.values_list('unit')
-        self.fields['rental_earnings_units'].widget = ListTextWidget(data_list=rental_earnings_units_list, name='rental_earnings_units-list')
-
-
-
-
 class SpecifiedIrrigationMeansForm(forms.ModelForm):
 
     class Meta:
         model = SpecifiedProductionMeans
-        fields = ['household','irrigation_item_code', 'ownership_number', 'year_of_purchase', 'price_paid', 'subsidy_received', 'present_value', 'maintenance_charges', 'rental_earnings', 'rental_earnings_units', 'comments']
         exclude = ['household']
-        widgets = None
         localized_fields = None
         labels = {}
         help_texts = {}
@@ -123,8 +98,13 @@ class SpecifiedIrrigationMeansForm(forms.ModelForm):
 
     def __init__(self,*args,**kwargs):
         super(SpecifiedIrrigationMeansForm,self).__init__(*args,**kwargs)
-        irrigation_item_code_list = IrrigationFlow.objects.values_list('type')
-        self.fields['irrigation_item_code'].widget = ListTextWidget(data_list=irrigation_item_code_list, name='irrigation_item_code-list')
+        item_code_list = IrrigationFlow.objects.values_list('type')
+        production_item_code_list = ProductionMeans.objects.values_list('type')
+        result_list = list(chain(item_code_list, production_item_code_list))
+        self.fields['item_code'].widget = ListTextWidget(data_list=result_list, name='item_code-list')
+        rental_earnings_units_list = Units.objects.values_list('unit')
+        self.fields['rental_earnings_units'].widget = ListTextWidget(data_list=rental_earnings_units_list, name='rental_earnings_units-list')
+
 
 
 

@@ -113,26 +113,26 @@
 
     <div class="col-md-4 flex-column-1 justify-content-start">
         <div>
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12 col-md-offset-1">
                 <h4 class='text-center'>7.2 Fertiliser</h4>
                 <div class="row flex-row">
-                    <div class="col-md-2 table-cell flex-column">
+                    <div class="col-md-2 table-cell flex-column-1">
                         <label>Crop code</label>
                     </div>
                     <div class="col-md-8 flex-row-wrap">
-                        <div class="col-md-12 table-cell flex-column">
+                        <div class="col-md-12 table-cell flex-column-1">
                             <label> Fertiliser</label>
                         </div>
-                        <div class="col-md-3 table-cell flex-column">
+                        <div class="col-md-4 table-cell flex-column-1">
                             <label>Type</label>
                         </div>
-                        <div class="col-md-3 table-cell flex-column">
+                        <div class="col-md-3 table-cell flex-column-1">
                             <label>Qty</label>
                         </div>
-                        <div class="col-md-3 table-cell flex-column">
+                        <div class="col-md-3 table-cell flex-column-1">
                             <label>Unit</label>
                         </div>
-                        <div class="col-md-3 table-cell flex-column">
+                        <div class="col-md-2 table-cell flex-column-1">
                             <label>Value </label>
                         </div>
                     </div>
@@ -147,20 +147,20 @@
                     {{ formset_fertiliser.management_form }}
                     {% for fertiliser_form in formset_fertiliser.forms %}
                     <div class="row flex-row fertiliser_form">
-                        <div class="col-md-2 table-cell flex-column">
+                        <div class="col-md-2 table-cell flex-column-1">
                             {{ fertiliser_form.crop_code }}
                         </div>
-                        <div class="col-md-8  flex-row-wrap">
-                            <div class="col-md-3 table-cell flex-column">
+                        <div class="col-md-8  flex-row">
+                            <div class="col-md-4 table-cell flex-column-1">
                                 {{ fertiliser_form.fertiliser_type }}
                             </div>
-                            <div class="col-md-3 table-cell flex-column">
+                            <div class="col-md-3 table-cell flex-column-1">
                                 {{ fertiliser_form.fertiliser_quantity }}
                             </div>
-                            <div class="col-md-3 table-cell flex-column">
+                            <div class="col-md-3 table-cell flex-column-1">
                                 {{ fertiliser_form.fertiliser_unit }}
                             </div>
-                            <div class="col-md-3 table-cell flex-column">
+                            <div class="col-md-2 table-cell flex-column-1">
                                 {{ fertiliser_form.fertiliser_value }}
                             </div>
                         </div>
@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <div class="col-md-5 flex-column-1 justify-content-start">
+    <div class="col-md-5 col-md-offset-1 flex-column-1 justify-content-start">
         <div>
             <h4 class='text-center'>7.3 Seeds</h4>
             <div class="row flex-row">

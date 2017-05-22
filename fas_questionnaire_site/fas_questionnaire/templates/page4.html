@@ -9,952 +9,994 @@
 </div>
 {% endfor %}
 {% endif %}
-    {% csrf_token %}
-    <h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4>
-    <br>
-    <b>5.2.1 Land mortgaged in</b><br>
-    <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
+{% csrf_token %}
+<h4 class='text-center'>5. LAND HOLDING: LEASED AND MORTGAGED</h4>
+<br>
+<b>5.2.1 Land mortgaged in</b><br>
+<div class='row flex-row'>
+    <div class="col-md-2 flex-row">
+        <div class='col-md-2 table-cell flex-column'>
+            <label>S.No</label>
+        </div>
+        <div class='col-md-5 table-cell flex-column'>
             <label>Land Type</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
+        <div class='col-md-5 table-cell flex-column'>
             <label>Extent</label>
         </div>
-        <div class='col-md-3'>
-            <div class='row'>
-                <div class='col-md-12 table-cell'>
-                    <label>Mortgagor</label>
-                </div>
-            </div>
-            <div class= 'row'>
-                <div class='col-md-4 table-cell'>
-                    <label>Name</label>
-                </div>
-                <div class='col-md-4 table-cell'>
-                    <label>Caste</label>
-                </div>
-                <div class='col-md-4 table-cell'>
-                    <label>Occupation</label>
-                </div>
+    </div>
+    <div class='col-md-3'>
+        <div class='row'>
+            <div class='col-md-12 table-cell'>
+                <label>Mortgagor</label>
             </div>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Year of mortgage</label>
+        <div class='row'>
+            <div class='col-md-4 table-cell'>
+                <label>Name</label>
+            </div>
+            <div class='col-md-4 table-cell'>
+                <label>Caste</label>
+            </div>
+            <div class='col-md-4 table-cell'>
+                <label>Occupation</label>
+            </div>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Mortgage period</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Mortgage money</label>
-        </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Interest/usufruct</label>
-        </div>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Year of mortgage</label>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Mortgage period</label>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Mortgage money</label>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Interest/usufruct</label>
+    </div>
+    <div class='col-md-2 table-cell flex-column'>
+        <label>comments</label>
+    </div>
+    <div class="cross-width"></div>
+</div>
+
+
+{% csrf_token %}
+{{ formset_lm_in.management_form }}
+{% for form in formset_lm_in.forms %}
+<div class='row flex-row formset_row_lnd_mrtg_in'>
+    <div class="col-md-2 flex-row">
         <div class='col-md-2 table-cell flex-column'>
-            <label>comments</label>
+            {{ form.sno }}
+        </div>
+        <div class='col-md-5 table-cell'>
+            {{ form.land_type }}
+        </div>
+        <div class='col-md-5 table-cell'>
+            {{ form.extent }}
+        </div>
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.name_of_mortgagor }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.caste_of_mortgagor }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.occupation_of_mortgagor }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.year_of_mortgage }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.mortgage_period }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.mortgage_money }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.interest_usufruct }}
+    </div>
+    <div class='col-md-2 table-cell'>
+        {{ form.comments }}
+    </div>
+</div>
+{% endfor %}
+<br>
+<br><br>
+<b>5.2.1 Land mortgaged out</b><br>
+<div class='row flex-row'>
+    <div class="col-md-2 flex-row">
+        <div class='col-md-2 table-cell flex-column'>
+            <label>S.No</label>
+        </div>
+        <div class='col-md-5 table-cell flex-column'>
+            <label>Land Type</label>
+        </div>
+        <div class='col-md-5 table-cell flex-column'>
+            <label>Extent</label>
+        </div>
+    </div>
+    <div class='col-md-3'>
+        <div class='row'>
+            <div class='col-md-12 table-cell'>
+                <label>Mortgagee</label>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-4 table-cell'>
+                <label>Name</label>
+            </div>
+            <div class='col-md-4 table-cell'>
+                <label>Caste</label>
+            </div>
+            <div class='col-md-4 table-cell'>
+                <label>Occupation</label>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Year of mortgage</label>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Mortgage period</label>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Mortgage money</label>
+    </div>
+    <div class='col-md-1 table-cell flex-column'>
+        <label>Interest/usufruct</label>
+    </div>
+    <div class='col-md-2 table-cell flex-column'>
+        <label>comments</label>
+    </div>
+</div>
+
+{% csrf_token %}
+{{ formset_lm_out.management_form }}
+{% for form in formset_lm_out.forms %}
+<div class='row flex-row formset_row_lnd_mrtg_out'>
+    <div class="col-md-2 flex-row">
+        <div class='col-md-2 table-cell flex-column'>
+            {{ form.sno}}
+        </div>
+        <div class='col-md-5 table-cell'>
+            {{ form.land_type }}
+        </div>
+        <div class='col-md-5 table-cell'>
+            {{ form.extent }}
+        </div>
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.name_of_mortgagee }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.caste_of_mortgagee }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.occupation_of_mortgagee }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.year_of_mortgage }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.mortgage_period }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.mortgage_money }}
+    </div>
+    <div class='col-md-1 table-cell'>
+        {{ form.interest_usufruct }}
+    </div>
+    <div class='col-md-2 table-cell'>
+        {{ form.comments }}
+    </div>
+</div>
+{% endfor %}
+<br>
+<br><br>
+<b>5.3.1 Land leased in on share-rent</b><br>
+<div class="table table-responsive">
+    <div class='row flex-row'>
+        <div class="col-md-3 flex-row-wrap-1">
+            <div class='col-md-1 table-cell flex-column-1'>
+                <label>S.No</label>
+            </div>
+            <div class='col-md-5 table-cell flex-column-1'>
+                <label>Operational Plot No</label>
+            </div>
+            <div class='col-md-5 table-cell flex-column-1'>
+                <label>Land Type</label>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Extent</label>
+        </div>
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-12 table-cell'>
+                <label>Land owner</label>
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                <label>Name</label>
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                <label>Caste</label>
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                <label>Occupation</label>
+            </div>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Registered or Unregistered</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Seasonal or yearly or other</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Year of lease</label>
+        </div>
+
+        <div class="col-md-4 flex-row-wrap-1">
+            <div class="col-md-12 table-cell">
+                <label> Owner's share </label>
+            </div>
+            <div class="col-md-6 table-cell">
+                <label>Crop</label>
+            </div>
+            <div class="col-md-6 table-cell">
+                <label>By Product</label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Percentage </label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Quantity </label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Percentage </label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Quantity </label>
+            </div>
+        </div>
+        <div class="col-md-12 flex-row-wrap-1">
+            <div class="col-md-12 table-cell flex-column">
+                <label>Inputs given by Owner (value and share)</label>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Fym</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Fertiliser</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Seed</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Pesticide</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Electricity</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Pumpset</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Labour</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Irrigation</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Machinery</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Interest free loan by owner</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Amount of other loan</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Interest of other loan</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Comments</label>
         </div>
         <div class="cross-width"></div>
     </div>
-
-
     {% csrf_token %}
-    {{ formset_lm_in.management_form }}
-    {% for form in formset_lm_in.forms %}
-    <div class='row flex-row formset_row_lnd_mrtg_in'>
-        <div class='col-md-1 table-cell'>
-            {{ form.land_type }}
+    {{ formset_lnd_lsd_in_shr_rent.management_form }}
+    {% for form in formset_lnd_lsd_in_shr_rent.forms %}
+    <div class="row formset_row_lnd_lsd_in_shr_rent flex-row">
+        <div class="col-md-3 flex-row-wrap-1">
+            <div class='col-md-1 table-cell flex-column-1'>
+                {{ form.sno }}
+            </div>
+            <div class='col-md-5 table-cell flex-column-1'>
+                {{ form.operational_plot_no }}
+            </div>
+            <div class='col-md-5 table-cell flex-column-1'>
+                {{ form.land_type }}
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
+        <div class='col-md-1 table-cell flex-column-1'>
             {{ form.extent }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.name_of_mortgagor }}
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-4 table-cell'>
+                {{ form.name_of_lessor }}
+            </div>
+            <div class='col-md-4 table-cell'>
+                {{ form.caste_of_lessor }}
+            </div>
+            <div class='col-md-4 table-cell'>
+                {{ form.occupation_of_lessor }}
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.caste_of_mortgagor }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.registered_unregistered }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.occupation_of_mortgagor }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.seasonal_yearly_other }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.year_of_mortgage }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.year_of_lease }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.mortgage_period }}
+
+        <div class="col-md-4 flex-row-wrap-1">
+
+            <div class="col-md-3 table-cell">
+                {{ form.percentage_share_of_crop }}
+            </div>
+            <div class="col-md-3 table-cell">
+                {{ form.quantity_share_of_crop }}
+            </div>
+            <div class="col-md-3 table-cell">
+                {{ form.percentage_share_of_by_product }}
+            </div>
+            <div class="col-md-3 table-cell">
+                {{ form.quantity_share_in_by_product }}
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.mortgage_money }}
+
+
+        <div class="col-md-12 flex-row-wrap-1">
+
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_fym_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_fym_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_fertiliser_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_fertiliser_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_seed_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_seed_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_pesticide_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_pesticide_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_electricity_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_electricity_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_pumpset_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_pumpset_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_labour_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_labour_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_irrigation_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_irrigation_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_machinery_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_machinery_quantity_field }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.interest_usufruct }}
+
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.interest_free_loan_by_owner }}
         </div>
-        <div class='col-md-2 table-cell'>
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.amount_of_other_loan }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.interest_of_other_loan }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
             {{ form.comments }}
         </div>
     </div>
     {% endfor %}
-    <br>
-    <br><br>
-    <b>5.2.1 Land mortgaged out</b><br>
+    <br><br><br>
+</div>
+<b>5.3.2 Land Leased out on share-rent</b><br>
+<div class="table table-responsive">
     <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column'>
+        <div class="col-md-3 flex-row-wrap-1">
+            <div class='col-md-1 table-cell flex-column-1'>
+            <label>S.No</label>
+        </div>
+        <div class='col-md-5 table-cell flex-column-1'>
+            <label>Operational Plot No</label>
+        </div>
+        <div class='col-md-5 table-cell flex-column-1'>
             <label>Land Type</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
+    </div>
+        <div class='col-md-1 table-cell flex-column-1'>
             <label>Extent</label>
         </div>
-        <div class='col-md-3'>
-            <div class='row'>
-                <div class='col-md-12 table-cell'>
-                    <label>Mortgagee</label>
-                </div>
+        <div class='col-md-3 flex-row-wrap-1'>
+            <div class='col-md-12 table-cell'>
+                <label>Sharecropper</label>
             </div>
-            <div class= 'row'>
-                <div class='col-md-4 table-cell'>
-                    <label>Name</label>
-                </div>
-                <div class='col-md-4 table-cell'>
-                    <label>Caste</label>
-                </div>
-                <div class='col-md-4 table-cell'>
-                    <label>Occupation</label>
-                </div>
+            <div class='col-md-4 table-cell flex-column'>
+                <label>Name</label>
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                <label>Caste</label>
+            </div>
+            <div class='col-md-4 table-cell flex-column'>
+                <label>Occupation</label>
             </div>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Year of mortgage</label>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Registered or Unregistered</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Mortgage period</label>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Seasonal or yearly or other</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Mortgage money</label>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Year of lease</label>
         </div>
-        <div class='col-md-1 table-cell flex-column'>
-            <label>Interest/usufruct</label>
-        </div>
-        <div class='col-md-2 table-cell flex-column'>
-            <label>comments</label>
-        </div>
-    </div>
 
+        <div class="col-md-4 flex-row-wrap-1">
+            <div class="col-md-12 table-cell">
+                <label> Your's share </label>
+            </div>
+            <div class="col-md-6 table-cell">
+                <label>Crop</label>
+            </div>
+            <div class="col-md-6 table-cell">
+                <label>By Product</label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Percentage </label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Quantity </label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Percentage </label>
+            </div>
+            <div class="col-md-3 table-cell">
+                <label> Quantity </label>
+            </div>
+        </div>
+
+
+        <div class="col-md-12 flex-row-wrap-1">
+            <div class="col-md-12 table-cell flex-column">
+                <label>Inputs given by you (value and share)</label>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Fym</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Fertiliser</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Seed</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Pesticide</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Electricity</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Pumpset</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Labour</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Irrigation</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+                <div class="row flex-row">
+                    <div class="col-md-12 table-cell flex-column">
+                        <label>Machinery</label>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        <label>Percentage</label>
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        <label>Rs</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Interest free loan by owner</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Amount of other loan</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Interest of other loan</label>
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            <label>Comment</label>
+        </div>
+        <div class="cross-width"></div>
+    </div>
     {% csrf_token %}
-    {{ formset_lm_out.management_form }}
-    {% for form in formset_lm_out.forms %}
-    <div class='row flex-row formset_row_lnd_mrtg_out'>
-        <div class='col-md-1 table-cell'>
+    {{ formset_lnd_lsd_out_shr_rent.management_form }}
+    {% for form in formset_lnd_lsd_out_shr_rent.forms %}
+    <div class="row formset_row_lnd_lsd_out_shr_rent flex-row">
+        <div class="col-md-3 flex-row-wrap-1">
+        <div class='col-md-1 table-cell flex-column-1'>
+                {{ form.sno }}
+            </div>
+        <div class='col-md-5 table-cell flex-column-1'>
+            {{ form.ownership_plot_no }}
+        </div>
+        <div class='col-md-5 table-cell flex-column-1'>
             {{ form.land_type }}
         </div>
-        <div class='col-md-1 table-cell'>
+            </div>
+        <div class='col-md-1 table-cell flex-column-1'>
             {{ form.extent }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.name_of_mortgagee }}
+        <div class='col-md-3 flex-row-wrap-1'>
+
+            <div class='col-md-4 table-cell'>
+                {{ form.name_of_sharecropper }}
+            </div>
+            <div class='col-md-4 table-cell'>
+                {{ form.caste_of_sharecropper }}
+            </div>
+            <div class='col-md-4 table-cell'>
+                {{ form.occupation_of_sharecropper }}
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.caste_of_mortgagee }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.registered_unregistered }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.occupation_of_mortgagee }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.seasonal_annual_other }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.year_of_mortgage }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.year_of_lease }}
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.mortgage_period }}
+
+        <div class="col-md-4 flex-row-wrap-1">
+
+            <div class="col-md-3 table-cell">
+                {{ form.percentage_share_of_crop }}
+            </div>
+            <div class="col-md-3 table-cell">
+                {{ form.quantity_share_of_crop }}
+            </div>
+            <div class="col-md-3 table-cell">
+                {{ form.percentage_share_of_by_product }}
+            </div>
+            <div class="col-md-3 table-cell">
+                {{ form.quantity_share_of_by_product }}
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.mortgage_money }}
+
+
+        <div class="col-md-12 flex-row-wrap-1">
+
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_fym_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_fym_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_fertiliser_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_fertiliser_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_seed_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_seed_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_pesticide_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_pesticide_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_electricity_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_electricity_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_pumpset_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_pumpset_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_labour_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_labour_quantity_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_irrigation_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_irrigation_rs_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 flex-column-1">
+
+                <div class="row flex-row">
+                    <div class="col-md-8 table-cell flex-column">
+                        {{ form.share_in_machinery_field }}
+                    </div>
+                    <div class="col-md-4 table-cell flex-column">
+                        {{ form.share_in_machinery_quantity_field }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class='col-md-1 table-cell'>
-            {{ form.interest_usufruct }}
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.interest_free_loan_by_owner }}
         </div>
-        <div class='col-md-2 table-cell'>
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.amount_of_other_loan }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
+            {{ form.interest_of_other_loan }}
+        </div>
+        <div class='col-md-1 table-cell flex-column-1'>
             {{ form.comments }}
         </div>
     </div>
     {% endfor %}
-    <br>
-    <br><br>
-    <b>5.3.1 Land leased in on share-rent</b><br>
-      <div class="table table-responsive">
-      <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Operational Plot No</label>
-        </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Land Type</label>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Extent</label>
-          </div>
-          <div class='col-md-3 flex-row-wrap-1'>
-                  <div class='col-md-12 table-cell'>
-                      <label>Land owner</label>
-                  </div>
-                  <div class='col-md-4 table-cell flex-column'>
-                      <label>Name</label>
-                  </div>
-                  <div class='col-md-4 table-cell flex-column'>
-                      <label>Caste</label>
-                  </div>
-                  <div class='col-md-4 table-cell flex-column'>
-                      <label>Occupation</label>
-                  </div>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Registered or Unregistered</label>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Seasonal or yearly or other</label>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Year of lease</label>
-          </div>
-
-          <div class="col-md-4 flex-row-wrap-1">
-              <div class="col-md-12 table-cell">
-                  <label> Owner's share </label>
-              </div>
-                  <div class="col-md-6 table-cell">
-                      <label>Crop</label>
-                  </div>
-                  <div class="col-md-6 table-cell">
-                  <label>By Product</label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Percentage </label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Quantity </label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Percentage </label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Quantity </label>
-                  </div>
-          </div>
-              <div class="col-md-12 flex-row-wrap-1">
-                  <div class="col-md-12 table-cell flex-column">
-                      <label>Inputs given by Owner (value and share)</label>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Fym</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Fertiliser</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Seed</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Pesticide</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Electricity</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Pumpset</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Labour</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Irrigation</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Machinery</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Interest free loan by owner</label>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Amount of other loan</label>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Interest of other loan</label>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Comments</label>
-            </div>
-            <div class="cross-width"></div>
-          </div>
-        {% csrf_token %}
-        {{ formset_lnd_lsd_in_shr_rent.management_form }}
-        {% for form in formset_lnd_lsd_in_shr_rent.forms %}
-        <div class="row formset_row_lnd_lsd_in_shr_rent flex-row">
-          <div class='col-md-1 table-cell flex-column-1'>
-            {{ form.operational_plot_no }}
-          </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.land_type }}
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.extent }}
-            </div>
-            <div class='col-md-3 flex-row-wrap-1'>
-                    <div class='col-md-4 table-cell'>
-                      {{ form.name_of_lessor }}
-                    </div>
-                    <div class='col-md-4 table-cell'>
-                      {{ form.caste_of_lessor }}
-                    </div>
-                    <div class='col-md-4 table-cell'>
-                      {{ form.occupation_of_lessor }}
-                    </div>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.registered_unregistered }}
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.seasonal_yearly_other }}
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.year_of_lease }}
-            </div>
-
-            <div class="col-md-4 flex-row-wrap-1">
-
-                    <div class="col-md-3 table-cell">
-                      {{ form.percentage_share_of_crop }}
-                    </div>
-                    <div class="col-md-3 table-cell">
-                      {{ form.quantity_share_of_crop }}
-                    </div>
-                    <div class="col-md-3 table-cell">
-                      {{ form.percentage_share_of_by_product }}
-                    </div>
-                    <div class="col-md-3 table-cell">
-                      {{ form.quantity_share_in_by_product }}
-                    </div>
-            </div>
-
-
-
-            <div class="col-md-12 flex-row-wrap-1">
-
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              {{ form.share_in_fym_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              {{ form.share_in_fym_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_fertiliser_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_fertiliser_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_seed_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_seed_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_pesticide_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_pesticide_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_electricity_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                 {{ form.share_in_electricity_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_pumpset_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_pumpset_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_labour_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_labour_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_irrigation_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_irrigation_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_machinery_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_machinery_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.interest_free_loan_by_owner }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.amount_of_other_loan }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.interest_of_other_loan }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.comments }}
-              </div>
-            </div>
-        {% endfor %}
-      <br><br><br>
-      </div>
-    <b>5.3.2 Land Leased out on share-rent</b><br>
-      <div class="table table-responsive">
-      <div class='row flex-row'>
-        <div class='col-md-1 table-cell flex-column-1'>
-            <label>Operational Plot No</label>
-        </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Land Type</label>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Extent</label>
-          </div>
-          <div class='col-md-3 flex-row-wrap-1'>
-                  <div class='col-md-12 table-cell'>
-                      <label>Sharecropper</label>
-                  </div>
-                  <div class='col-md-4 table-cell flex-column'>
-                      <label>Name</label>
-                  </div>
-                  <div class='col-md-4 table-cell flex-column'>
-                      <label>Caste</label>
-                  </div>
-                  <div class='col-md-4 table-cell flex-column'>
-                      <label>Occupation</label>
-                  </div>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Registered or Unregistered</label>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Seasonal or yearly or other</label>
-          </div>
-          <div class='col-md-1 table-cell flex-column-1'>
-              <label>Year of lease</label>
-          </div>
-
-          <div class="col-md-4 flex-row-wrap-1">
-              <div class="col-md-12 table-cell">
-                  <label> Your's share </label>
-              </div>
-                  <div class="col-md-6 table-cell">
-                      <label>Crop</label>
-                  </div>
-                  <div class="col-md-6 table-cell">
-                  <label>By Product</label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Percentage </label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Quantity </label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Percentage </label>
-                  </div>
-                  <div class="col-md-3 table-cell">
-                      <label> Quantity </label>
-                  </div>
-          </div>
-
-
-               <div class="col-md-12 flex-row-wrap-1">
-                  <div class="col-md-12 table-cell flex-column">
-                      <label>Inputs given by you (value and share)</label>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Fym</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Fertiliser</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Seed</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Pesticide</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Electricity</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Pumpset</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Labour</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Irrigation</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-                    <div class="row flex-row">
-                        <div class="col-md-12 table-cell flex-column">
-                            <label>Machinery</label>
-                        </div>
-                    </div>
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              <label>Percentage</label>
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              <label>Rs</label>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-
-
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Interest free loan by owner</label>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Amount of other loan</label>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Interest of other loan</label>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-                <label>Comment</label>
-            </div>
-            <div class="cross-width"></div>
-          </div>
-        {% csrf_token %}
-        {{ formset_lnd_lsd_out_shr_rent.management_form }}
-        {% for form in formset_lnd_lsd_out_shr_rent.forms %}
-        <div class="row formset_row_lnd_lsd_out_shr_rent flex-row">
-          <div class='col-md-1 table-cell flex-column-1'>
-            {{ form.ownership_plot_no }}
-          </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.land_type }}
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.extent }}
-            </div>
-            <div class='col-md-3 flex-row-wrap-1'>
-
-                    <div class='col-md-4 table-cell'>
-                      {{ form.name_of_sharecropper }}
-                    </div>
-                    <div class='col-md-4 table-cell'>
-                      {{ form.caste_of_sharecropper }}
-                    </div>
-                    <div class='col-md-4 table-cell'>
-                      {{ form.occupation_of_sharecropper }}
-                    </div>
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.registered_unregistered }}
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.seasonal_annual_other }}
-            </div>
-            <div class='col-md-1 table-cell flex-column-1'>
-              {{ form.year_of_lease }}
-            </div>
-
-            <div class="col-md-4 flex-row-wrap-1">
-
-                    <div class="col-md-3 table-cell">
-                      {{ form.percentage_share_of_crop }}
-                    </div>
-                    <div class="col-md-3 table-cell">
-                      {{ form.quantity_share_of_crop }}
-                    </div>
-                    <div class="col-md-3 table-cell">
-                      {{ form.percentage_share_of_by_product }}
-                    </div>
-                    <div class="col-md-3 table-cell">
-                      {{ form.quantity_share_of_by_product }}
-                    </div>
-            </div>
-
-
-            <div class="col-md-12 flex-row-wrap-1">
-
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                              {{ form.share_in_fym_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                              {{ form.share_in_fym_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_fertiliser_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_fertiliser_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_seed_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_seed_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_pesticide_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_pesticide_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_electricity_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                 {{ form.share_in_electricity_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_pumpset_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_pumpset_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_labour_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_labour_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_irrigation_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_irrigation_rs_field }}
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-1 flex-column-1">
-
-                      <div class="row flex-row">
-                          <div class="col-md-8 table-cell flex-column">
-                                {{ form.share_in_machinery_field }}
-                          </div>
-                          <div class="col-md-4 table-cell flex-column">
-                                {{ form.share_in_machinery_quantity_field }}
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.interest_free_loan_by_owner }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.amount_of_other_loan }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.interest_of_other_loan }}
-              </div>
-              <div class='col-md-1 table-cell flex-column-1'>
-                {{ form.comments }}
-              </div>
-            </div>
-            {% endfor %}
-      <br><br><br>
-          </div>
+    <br><br><br>
+</div>
 
 <script type="text/javascript">
     $('.formset_row_lnd_mrtg_in').formset();
     $('.formset_row_lnd_mrtg_out').formset();
     $('.formset_row_lnd_lsd_in_shr_rent').formset();
     $('.formset_row_lnd_lsd_out_shr_rent').formset();
+
+
+
+
 </script>
-    {% include 'common/comments.html' %}
+{% include 'common/comments.html' %}
 {% endblock %}

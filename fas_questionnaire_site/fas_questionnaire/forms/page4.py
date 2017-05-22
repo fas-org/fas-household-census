@@ -13,6 +13,7 @@ class LandMortgagedInForm(forms.ModelForm):
     class Meta:
         model = LandMortgagedIn
         fields = ['household',
+                  'sno',
                   'land_type',
                   'extent',
                   'name_of_mortgagor',
@@ -47,6 +48,7 @@ class LandMortgagedOutForm(forms.ModelForm):
     class Meta:
         model = LandMortgagedOut
         fields = ['household',
+                  'sno',
                   'land_type',
                   'extent',
                   'name_of_mortgagee',
@@ -83,6 +85,7 @@ class LandLeasedInOnShareRentForm(forms.ModelForm):
     class Meta:
         model = LandLeasedInOnShareRent
         fields = ['household',
+                  'sno',
                   'operational_plot_no',
                   'land_type',
                   'extent',
@@ -149,6 +152,7 @@ class LandLeasedOutOnShareRentForm(forms.ModelForm):
     class Meta:
         model = LandLeasedOutOnShareRent
         fields = ['household',
+                  'sno',
                   'ownership_plot_no',
                   'land_type',
                   'extent',

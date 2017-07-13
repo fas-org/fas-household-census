@@ -21,7 +21,7 @@ class OtherCostsItems(models.Model):
     class Meta:
         managed = True
         db_table = 'other_costs_items'
-
+        verbose_name_plural = 'other costs items'
 
 class PaymentsToManagersAndLongTermWorkers(models.Model):
     name_of_worker = models.IntegerField(blank=True, null=True)

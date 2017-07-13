@@ -43,6 +43,7 @@ class Sex(models.Model):
     class Meta:
         managed = True
         db_table = 'sex'
+        verbose_name_plural = 'sexes'
 
     def __str__(self):
         return self.sex
@@ -79,6 +80,7 @@ class Units(models.Model):
     class Meta:
         managed = True
         db_table = 'units'
+        verbose_name_plural = 'units'
 
     def __str__(self):
         return self.unit

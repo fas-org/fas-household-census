@@ -61,6 +61,7 @@ class AnimalTypes(models.Model):
     class Meta:
         managed = True
         db_table = 'Animal Types'
+        verbose_name_plural = 'animal types'
 
     def __str__(self):
         return self.name

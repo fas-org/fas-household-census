@@ -11,6 +11,7 @@ class DescriptionOfAssets(models.Model):
     class Meta:
         managed = True
         db_table = 'Description of assets'
+        verbose_name_plural = 'description of assets'
 
     def __str__(self):
         return self.asset_name

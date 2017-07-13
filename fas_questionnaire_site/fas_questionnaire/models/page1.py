@@ -104,6 +104,7 @@ class LiteracyStatus(models.Model):
     class Meta:
         managed = True
         db_table = 'literacy_status'
+        verbose_name_plural = "literacy status"
 
     def __str__(self):
         return self.status
@@ -115,6 +116,7 @@ class MaritalStatus(models.Model):
     class Meta:
         managed = True
         db_table = 'marital_status'
+        verbose_name_plural = "marital status"
 
     def __str__(self):
         return self.status

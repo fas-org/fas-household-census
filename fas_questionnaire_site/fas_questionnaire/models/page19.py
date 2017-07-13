@@ -105,6 +105,7 @@ class PurposeForWhichUsed(models.Model):
     class Meta:
         managed = True
         db_table = 'purpose_for_which_used'
+        verbose_name_plural = 'purpose for which used'
 
     def __str__(self):
         return self.purpose

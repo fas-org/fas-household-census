@@ -23,6 +23,9 @@ class OtherCostsItems(models.Model):
         db_table = 'other_costs_items'
         verbose_name_plural = 'other costs items'
 
+    def __str__(self):
+        return self.item
+
 class PaymentsToManagersAndLongTermWorkers(models.Model):
     name_of_worker = models.IntegerField(blank=True, null=True)
     household = models.ForeignKey('Household', models.DO_NOTHING, db_column='household', blank=True, null=True)

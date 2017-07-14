@@ -165,8 +165,6 @@ class LandSold(models.Model):
         null=True)
     price_of_land_sold = models.IntegerField(db_column='Price of land',
                                              blank=True, null=True)
-    sale_transaction_number = models.FloatField(db_column='Sale transaction number',
-                                                blank=True, null=True)
     reasons_for_sale = models.CharField(db_column='Reasons for sale',
                                         max_length=250, blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)

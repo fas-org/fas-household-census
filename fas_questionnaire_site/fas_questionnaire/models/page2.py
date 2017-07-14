@@ -66,7 +66,7 @@ class CurrentOwnershipHolding(models.Model):
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_plot_no = models.FloatField(db_column='Ownership plot no', blank=True, null=True)
     land_type = models.CharField(max_length=100,db_column='Land type', blank=True, null=True)
-    extent_owned_land = models.FloatField(db_column='Extent of owned land', blank=True, null=True)
+    extent_owned_land = models.CharField(max_length=100,db_column='Extent of owned land', blank=True, null=True)
     acquisition_mode = models.CharField(max_length=100,db_column='acquisition_mode', blank=True,
                                          null=True)
     irrigation_source = models.CharField(max_length=100,db_column='Irrigation source',
@@ -116,7 +116,7 @@ class LandPurchased(models.Model):
                                   db_column='household')
     year_of_purchase = models.IntegerField(db_column='Year of purchase',
                                            blank=True, null=True)
-    extent_of_land_bought = models.FloatField(db_column='Extent of land bought',
+    extent_of_land_bought = models.CharField(max_length=100,db_column='Extent of land bought',
                                               blank=True, null=True)
     type_of_land_purchased = models.CharField(max_length=100,
                                                db_column='Type of land',
@@ -147,9 +147,9 @@ class LandSold(models.Model):
     sno = models.IntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
-    year_of_sale = models.IntegerField(db_column='Year of sale', blank=True,
+    year_of_sale = models.CharField(max_length=100,db_column='Year of sale', blank=True,
                                        null=True)
-    extent_of_land_sold = models.FloatField(db_column='Extent of land sold',
+    extent_of_land_sold = models.CharField(max_length=100,db_column='Extent of land sold',
                                             blank=True, null=True)
     type_of_land_sold = models.CharField(max_length=100,
                                           db_column='Type of land', blank=True,

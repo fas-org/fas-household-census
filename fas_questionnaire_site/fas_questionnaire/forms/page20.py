@@ -62,8 +62,6 @@ class MembershipInSelfHelpGroupsForm(forms.ModelForm):
         super(MembershipInSelfHelpGroupsForm, self).__init__(*args, **kwargs)
         bank_ngo_to_which_the_group_is_linked_list = BankNgoToWhichTheGroupIsLinked.objects.values_list('bank_ngo_to_which_the_group_is_linked')
         self.fields['bank_ngo_to_which_the_group_is_linked'].widget = ListTextWidget(data_list=bank_ngo_to_which_the_group_is_linked_list, name='bank_ngo_to_which_the_group_is_linked-list')
-        period_of_membership_list = PeriodOfMembership.objects.values_list('period_of_membership')
-        self.fields['period_of_membership'].widget = ListTextWidget(data_list=period_of_membership_list, name='period_of_membership-list')
 
 
 class DetailsOfBankPostofficeAccountOfTheHouseholdForm(forms.ModelForm):

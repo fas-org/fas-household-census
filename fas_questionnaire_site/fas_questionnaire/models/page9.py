@@ -106,6 +106,7 @@ class ProductionMeans(models.Model):
     class Meta:
         managed = True
         db_table = 'Production Means'
+        verbose_name_plural = 'Production means'
 
     def __str__(self):
         return self.type

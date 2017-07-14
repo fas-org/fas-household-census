@@ -81,16 +81,6 @@ class BankNgoToWhichTheGroupIsLinked(models.Model):
     def __str__(self):
         return self.bank_ngo_to_which_the_group_is_linked
 
-class PeriodOfMembership(models.Model):
-    id = models.AutoField(primary_key=True)
-    period_of_membership = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'period_of_membership'
-
-    def __str__(self):
-        return self.period_of_membership
 
 class MembershipInSelfHelpGroups(models.Model):
     id = models.AutoField(primary_key=True)

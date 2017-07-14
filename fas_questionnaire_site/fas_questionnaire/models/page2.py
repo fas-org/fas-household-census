@@ -133,8 +133,6 @@ class LandPurchased(models.Model):
         null=True)
     price_of_land_purchased = models.IntegerField(db_column='Price of land',
                                                   blank=True, null=True)
-    purchase_transaction_number = models.FloatField(db_column='Purchase transaction number',
-                                                    blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:

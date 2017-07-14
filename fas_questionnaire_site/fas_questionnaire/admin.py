@@ -20,7 +20,7 @@ from .models.page18 import DescriptionOfAssets
 from .models.page17 import AnimalTypes,AnimalCattleType,FeedType,FeedSource,ItemType,ProductType
 
 from .models.common import Sex, Crop, PlaceOfWork, Caste, LandType, Units, Month, YesOrNo, Institution, SupportNature
-from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, PeriodOfMembership, NameOfBankPostOffice, TypeOfAccount
+from .models.page20 import SourceOfBorrowing, PurposeOfBorrowing, BankNgoToWhichTheGroupIsLinked, NameOfBankPostOffice, TypeOfAccount
 
 #Common
 admin.site.register(Sex)
@@ -131,7 +131,6 @@ admin.site.register(ElectricityConnection)
 admin.site.register(SourceOfBorrowing)
 admin.site.register(PurposeOfBorrowing)
 admin.site.register(BankNgoToWhichTheGroupIsLinked)
-admin.site.register(PeriodOfMembership)
 admin.site.register(NameOfBankPostOffice)
 admin.site.register(TypeOfAccount)
 

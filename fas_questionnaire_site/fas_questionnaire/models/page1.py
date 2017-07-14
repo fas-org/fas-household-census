@@ -58,7 +58,7 @@ class HouseholdIntroduction(models.Model):
     religion = models.CharField(max_length=100,db_column='Religion', blank=True, null=True)
     father_name = models.CharField(db_column="Father's name", max_length=50, blank=True, null=True)
     father_occupation = models.CharField(max_length=100,db_column="Father's occupation", blank=True, null=True)
-    telephone_no = models.IntegerField(db_column='Telephone number', blank=True, null=True)
+    telephone_no = models.CharField(max_length=100,db_column='Telephone number', blank=True, null=True)
     comments = models.CharField(db_column='Comments', max_length=100, blank=True, null=True)
 
     class Meta:

@@ -101,7 +101,7 @@ class HomesteadArea(models.Model):
     sno = models.IntegerField(blank=True, null=True)
     components = models.CharField(max_length=100, db_column='Components', blank=True,
                                    null=True)
-    area = models.FloatField(db_column='Area', blank=True, null=True)
+    area = models.CharField(max_length=100, db_column='Area', blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:

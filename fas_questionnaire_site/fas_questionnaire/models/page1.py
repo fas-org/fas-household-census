@@ -48,7 +48,7 @@ class HouseholdIntroduction(models.Model):
     sex = models.CharField(max_length=50, db_column='Sex')
     age = models.IntegerField(db_column='Age', blank=True, null=True)
     address = models.CharField(max_length=50, db_column='Address', blank=True, null=True)
-    birth_village = models.CharField(max_length=50, db_column='Village of birth', blank=True, null=True)
+    birth_village = models.CharField(max_length=50, db_column='Birth village', blank=True, null=True)
     birth_tehsil = models.CharField(max_length=100,db_column='Tehsil of birth', blank=True,
                                      null=True)
     birth_district = models.CharField(max_length=50, db_column='District of birth', blank=True, null=True)
@@ -108,6 +108,17 @@ class LiteracyStatus(models.Model):
 
     def __str__(self):
         return self.status
+
+
+class BirthVillage(models.Model):
+    villageName = models.CharField(max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'birth_village'
+
+    def __str__(self):
+        return self.villageName
 
 
 class MaritalStatus(models.Model):

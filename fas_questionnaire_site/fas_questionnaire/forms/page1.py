@@ -3,7 +3,7 @@ from django import forms
 from fas_questionnaire.forms.common import ListTextWidget
 from fas_questionnaire.models.common import Caste, Sex, Occupation, Relationship, PlaceOfWork
 from ..models.page1 import HouseholdIntroduction, HouseholdMembers, Religion, TehsilOfBirth, CalendarGranularity, \
-    MaritalStatus, LiteracyStatus, Education
+    MaritalStatus, LiteracyStatus, Education, BirthVillage
 
 
 class HouseholdIntroductionForm(forms.ModelForm):
@@ -29,6 +29,8 @@ class HouseholdIntroductionForm(forms.ModelForm):
         self.fields['father_occupation'].widget = ListTextWidget(data_list=father_occupation_list, name='father_occupation-list')
         tehsil_of_birth_list = TehsilOfBirth.objects.values_list('tehsil')
         self.fields['birth_tehsil'].widget = ListTextWidget(data_list=tehsil_of_birth_list, name='birth_tehsil-list')
+        birth_village_list = BirthVillage.objects.values_list('villageName')
+        self.fields['birth_village'].widget = ListTextWidget(data_list=birth_village_list, name='birth-village-list')
 
 
 class HouseholdMembersForm(forms.ModelForm):

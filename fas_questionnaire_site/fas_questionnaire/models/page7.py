@@ -62,12 +62,23 @@ class InputUseIrrigation(models.Model):
     crop_code = models.IntegerField(blank=True, null=True)
     irrigation_source = models.CharField(max_length=100, blank=True, null=True)
     irrigation_cost = models.FloatField(blank=True, null=True)
-    irrigation_unit_price = models.CharField(max_length=100, blank=True, null=True)
+    irrigation_unit_price = models.CharField(max_length=100, db_column='irrigation unit price', blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'input_use_irrigation'
+
+
+class UnitPrice(models.Model):
+    unit_price = models.CharField(max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'irrigation_unit_price'
+
+    def __str__(self):
+        return self.unit_price
 
 
 class InputUseFertiliser(models.Model):

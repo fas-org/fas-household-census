@@ -4,7 +4,7 @@ from fas_questionnaire.forms.common import ListTextWidget
 from fas_questionnaire.models.common import Units
 from fas_questionnaire.models.page2 import IrrigationSource
 from ..models.page7 import InputUseSeeds, InputUseFertiliser, InputUseManure, InputUsePlantProtection, \
-    InputUseIrrigation, ManureType, FertilizerType
+    InputUseIrrigation, ManureType, FertilizerType, UnitPrice
 
 
 class InputUseManureForm(forms.ModelForm):
@@ -58,7 +58,7 @@ class InputUseIrrigationForm(forms.ModelForm):
         irrigation_source_list = IrrigationSource.objects.values_list('source')
         self.fields['irrigation_source'].widget = ListTextWidget(data_list=irrigation_source_list, name='irrigation_source_list')
 
-        irrigation_unit_price_list = Units.objects.values_list('unit')
+        irrigation_unit_price_list = UnitPrice.objects.values_list('unit_price')
         self.fields['irrigation_unit_price'].widget = ListTextWidget(data_list=irrigation_unit_price_list, name='irrigation_unit_price_list')
 
 

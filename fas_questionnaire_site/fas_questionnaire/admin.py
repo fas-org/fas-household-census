@@ -6,7 +6,7 @@ from fas_questionnaire.models.page3 import Registration, TypeOfContract
 from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
 from fas_questionnaire.models.page5 import Tenurial, HomesteadLand
 from fas_questionnaire.models.page6 import WhereMarketed, MarketingAgencies, ModeOfTransport
-from fas_questionnaire.models.page7 import ManureType, FertilizerType
+from fas_questionnaire.models.page7 import ManureType, FertilizerType, UnitPrice
 from fas_questionnaire.models.page9 import ProductionMeans, NatureExchange, SourceOfFinance, PowerSource, WellType, \
     OwnershipType
 from fas_questionnaire.models.page8 import CultivationAdviser, InstitutionalSupportCategory
@@ -74,6 +74,7 @@ admin.site.register(ModeOfTransport)
 #page7
 admin.site.register(ManureType)
 admin.site.register(FertilizerType)
+admin.site.register(UnitPrice)
 
 #page8
 admin.site.register(CultivationAdviser)

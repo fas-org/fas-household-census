@@ -48,6 +48,7 @@ admin.site.register(Education)
 admin.site.register(Religion)
 admin.site.register(TehsilOfBirth)
 admin.site.register(BirthDistrict)
+admin.site.register(SC_ST_others)
 
 #page2
 admin.site.register(AcquisitionMode)

@@ -54,7 +54,7 @@ class HouseholdIntroduction(models.Model):
     birth_district = models.CharField(max_length=50, db_column='District of birth', blank=True, null=True)
     year_of_migration = models.IntegerField(db_column='Year of migration', blank=True, null=True)
     caste_tribe = models.CharField(max_length=100,db_column='Caste/tribe', blank=True, null=True)
-    sc_st = models.CharField(db_column='If SC/ST?', max_length=50, blank=True, null=True)
+    sc_st_others = models.CharField(db_column='If SC/ST?', max_length=50, blank=True, null=True)
     religion = models.CharField(max_length=100,db_column='Religion', blank=True, null=True)
     father_name = models.CharField(db_column="Father's name", max_length=50, blank=True, null=True)
     father_occupation = models.CharField(max_length=100,db_column="Father's occupation", blank=True, null=True)
@@ -130,6 +130,19 @@ class BirthDistrict(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SC_ST_others(models.Model):
+    caste = models.CharField(max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'sc_st_others'
+        verbose_name_plural = 'SC/ST/others'
+        verbose_name = 'SC/ST/others'
+
+    def __str__(self):
+        return self.caste
 
 
 class MaritalStatus(models.Model):

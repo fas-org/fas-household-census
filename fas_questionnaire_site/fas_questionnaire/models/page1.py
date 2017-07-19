@@ -42,8 +42,9 @@ class HouseholdIntroduction(models.Model):
     id = models.AutoField(primary_key=True, db_column='id')
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     sample_number = models.CharField(max_length=50, db_column='Sample number', blank=True, null=True)
-    os_rs_reason = models.CharField(max_length=50, db_column='Reason if OS not canvassed or if RS canvassed',
-                                    blank=True, null=True)
+    sample_household_number = models.CharField(max_length=50, db_column='Reason if OS not canvassed or if RS canvassed',
+                                               blank=True, null=True)
+    multiplier = models.CharField(max_length=50, db_column='multiplier', blank=True, null=True)
     household_head_name = models.CharField(max_length=50, db_column='Name of head of household')
     sex = models.CharField(max_length=50, db_column='Sex')
     age = models.IntegerField(db_column='Age', blank=True, null=True)

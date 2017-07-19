@@ -37,7 +37,7 @@ class SeasonalYearlyOther(models.Model):
 
 class LandMortgagedIn(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='Household number')
     land_type = models.CharField(max_length=100, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
@@ -56,7 +56,7 @@ class LandMortgagedIn(models.Model):
 
 class LandMortgagedOut(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='Household number')
     land_type = models.CharField(max_length=100, db_column='Land type', blank=True, null=True)
     extent = models.IntegerField(db_column='Extent', blank=True, null=True)
@@ -76,7 +76,7 @@ class LandMortgagedOut(models.Model):
 
 class LandLeasedInOnShareRent(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household= models.ForeignKey(Household, models.DO_NOTHING,db_column='Household number')
     operational_plot_no = models.CharField(db_column='Operational plot no', max_length=50, blank=True, null=True)
     land_type = models.CharField(max_length=100, db_column='Land type', blank=True, null=True)
@@ -122,7 +122,7 @@ class LandLeasedInOnShareRent(models.Model):
 
 class LandLeasedOutOnShareRent(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,db_column='Household number')
     ownership_plot_no = models.CharField(db_column='Ownership plot no', max_length=50,blank=True, null=True)
     land_type = models.CharField(max_length=100, db_column='Land type', blank=True, null=True)

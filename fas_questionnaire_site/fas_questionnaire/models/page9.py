@@ -76,7 +76,7 @@ class NatureExchange(models.Model):
 
 class OwnershipWellsTubewells(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_type = models.CharField(max_length=100,db_column='Type of Ownership', blank=True, null=True)
     year_when_installed = models.IntegerField(db_column='Year when installed', blank=True, null=True)

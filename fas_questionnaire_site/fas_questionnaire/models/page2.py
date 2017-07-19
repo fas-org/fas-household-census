@@ -62,7 +62,7 @@ class IrrigationSource(models.Model):
 
 class CurrentOwnershipHolding(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
     ownership_plot_no = models.FloatField(db_column='Ownership plot no', blank=True, null=True)
     land_type = models.CharField(max_length=100,db_column='Land type', blank=True, null=True)
@@ -98,7 +98,7 @@ class HomesteadComponents(models.Model):
 class HomesteadArea(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, models.DO_NOTHING, db_column='household')
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     components = models.CharField(max_length=100, db_column='Components', blank=True,
                                    null=True)
     area = models.CharField(max_length=100, db_column='Area', blank=True, null=True)
@@ -111,7 +111,7 @@ class HomesteadArea(models.Model):
 
 class LandPurchased(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
     year_of_purchase = models.IntegerField(db_column='Year of purchase',
@@ -142,7 +142,7 @@ class LandPurchased(models.Model):
 
 class LandSold(models.Model):
     id = models.AutoField(primary_key=True)
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
     year_of_sale = models.CharField(max_length=100,db_column='Year of sale', blank=True,

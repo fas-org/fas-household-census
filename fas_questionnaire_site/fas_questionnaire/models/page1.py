@@ -121,6 +121,17 @@ class BirthVillage(models.Model):
         return self.villageName
 
 
+class BirthDistrict(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'birth_district'
+
+    def __str__(self):
+        return self.name
+
+
 class MaritalStatus(models.Model):
     status = models.CharField(max_length=100)
 

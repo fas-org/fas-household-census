@@ -47,6 +47,7 @@ admin.site.register(Occupation)
 admin.site.register(Education)
 admin.site.register(Religion)
 admin.site.register(TehsilOfBirth)
+admin.site.register(BirthDistrict)
 
 #page2
 admin.site.register(AcquisitionMode)

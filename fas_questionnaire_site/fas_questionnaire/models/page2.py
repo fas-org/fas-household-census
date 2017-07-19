@@ -113,7 +113,7 @@ class LandPurchased(models.Model):
     sno = models.PositiveIntegerField(blank=True, null=True)
     household = models.ForeignKey(Household, models.DO_NOTHING,
                                   db_column='household')
-    year_of_purchase = models.IntegerField(db_column='Year of purchase',
+    year_of_purchase = models.CharField(max_length=100, db_column='Year of purchase',
                                            blank=True, null=True)
     extent_of_land_bought = models.CharField(max_length=100,db_column='Extent of land bought',
                                               blank=True, null=True)

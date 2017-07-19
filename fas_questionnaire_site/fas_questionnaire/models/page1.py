@@ -87,7 +87,7 @@ class HouseholdMembers(models.Model):
                                         blank=True, null=True)
     education_level = models.CharField(max_length=100,db_column='education_level',blank=True, null=True)
     years_of_schooling = models.IntegerField(blank=True, null=True)
-    name_location_of_institution = models.CharField(max_length=255, blank=True, null=True)
+    name_location_of_institution = models.CharField(max_length=255, db_column='name_location_of_institution', blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
     household = models.ForeignKey('Household', on_delete=models.CASCADE)
 
@@ -144,6 +144,17 @@ class SC_ST_others(models.Model):
 
     def __str__(self):
         return self.caste
+
+
+class NameLocationOfInstitution(models.Model):
+    value = models.CharField(max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'name_location_of_institution'
+
+    def __str__(self):
+        return self.value
 
 
 class MaritalStatus(models.Model):

@@ -127,7 +127,7 @@ class LandPurchased(models.Model):
     occupation_of_seller = models.CharField(max_length=100, db_column='Occupation of seller',
                                              blank=True,
                                              null=True)
-    place_of_residence_of_seller = models.CharField(
+    place_of_residence = models.CharField(
         db_column='Place of residence of seller', max_length=50, blank=True,
         null=True)
     price_of_land_purchased = models.IntegerField(db_column='Price of land',
@@ -157,7 +157,7 @@ class LandSold(models.Model):
                                        blank=True, null=True)
     occupation_of_buyer = models.CharField(max_length=100, db_column='Occupation of buyer', blank=True,
                                             null=True)
-    place_of_residence_of_buyer = models.CharField(
+    place_of_residence = models.CharField(
         db_column='Place of residence of buyer', max_length=50, blank=True,
         null=True)
     price_of_land_sold = models.IntegerField(db_column='Price of land',
@@ -169,3 +169,14 @@ class LandSold(models.Model):
     class Meta:
         managed = True
         db_table = 'Land sold'
+
+
+class PlaceOfResidence(models.Model):
+    place = models.CharField(max_length=100)
+
+    class Meta:
+        managed = True
+        db_table = 'place_of_residence'
+
+    def __str__(self):
+        return self.place

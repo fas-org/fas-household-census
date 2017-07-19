@@ -1,6 +1,6 @@
 from django.contrib import admin
 from fas_questionnaire.models.page2 import AcquisitionMode, IrrigationSource, IrrigationFlow, IrrigationOwnership, \
-    HomesteadComponents
+    HomesteadComponents, PlaceOfResidence
 from fas_questionnaire.models.page21 import AssetType
 from fas_questionnaire.models.page3 import Registration, TypeOfContract
 from fas_questionnaire.models.page4 import InterestUsufruct, SeasonalYearlyOther
@@ -56,6 +56,7 @@ admin.site.register(AcquisitionMode)
 admin.site.register(IrrigationSource)
 admin.site.register(IrrigationOwnership)
 admin.site.register(HomesteadComponents)
+admin.site.register(PlaceOfResidence)
 
 #page3
 admin.site.register(TypeOfContract)

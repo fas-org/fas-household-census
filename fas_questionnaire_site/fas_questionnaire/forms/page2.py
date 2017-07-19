@@ -133,6 +133,9 @@ class LandPurchasedForm(forms.ModelForm):
         occupation_of_seller_list = Occupation.objects.values_list('occupation')
         self.fields['occupation_of_seller'].widget = ListTextWidget(data_list=occupation_of_seller_list,
                                                                  name='occupation_of_seller-list')
+        place_of_residence_list = PlaceOfResidence.objects.values_list('place')
+        self.fields['place_of_residence'].widget = ListTextWidget(data_list=place_of_residence_list,
+                                                                  name='place_of_residence-list')
 
 
 
@@ -156,6 +159,9 @@ class LandSoldForm(forms.ModelForm):
         occupation_of_buyer_list = Occupation.objects.values_list('occupation')
         self.fields['occupation_of_buyer'].widget = ListTextWidget(data_list=occupation_of_buyer_list,
                                                                  name='occupation_of_buyer-list')
+        place_of_residence_list = PlaceOfResidence.objects.values_list('place')
+        self.fields['place_of_residence'].widget = ListTextWidget(data_list=place_of_residence_list,
+                                                                 name='place_of_residence-list')
 
 
 

@@ -1,7 +1,7 @@
 from django import forms
 
 from fas_questionnaire.forms.common import ListTextWidget
-from fas_questionnaire.models.common import LandType, Caste
+from fas_questionnaire.models.common import LandType, Caste, Occupation
 from ..models.page3 import LandLeasedInOnFixedRent, Registration, TypeOfContract
 from ..models.page3 import LandLeasedOutOnFixedRent
 
@@ -49,6 +49,9 @@ class LandLeasedInOnFixedRentForm(forms.ModelForm):
         self.fields['registered_unregistered'].widget = ListTextWidget(data_list=registered_unregistered_list, name='registered_unregistered_list')
         contract_list = TypeOfContract.objects.values_list('type_of_contract')
         self.fields['type_of_contract'].widget = ListTextWidget(data_list=contract_list, name='contract-list')
+        occupation_of_lessor_list = Occupation.objects.values_list('occupation')
+        self.fields['occupation_of_lessor'].widget = ListTextWidget(data_list=occupation_of_lessor_list,
+                                                                   name='occupation_of_lessor-list')
 
 
 class LandLeasedOutOnFixedRentForm(forms.ModelForm):
@@ -97,3 +100,6 @@ class LandLeasedOutOnFixedRentForm(forms.ModelForm):
         self.fields['registered_unregistered'].widget = ListTextWidget(data_list=registered_unregistered_list,name='registered_unregistered_list')
         contract_list = TypeOfContract.objects.values_list('type_of_contract')
         self.fields['type_of_contract'].widget = ListTextWidget(data_list=contract_list, name='contract-list')
+        occupation_of_lessee_list = Occupation.objects.values_list('occupation')
+        self.fields['occupation_of_lessee'].widget = ListTextWidget(data_list=occupation_of_lessee_list,
+                                                                   name='occupation_of_lessee-list')

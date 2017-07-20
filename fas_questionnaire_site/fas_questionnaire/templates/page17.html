@@ -15,7 +15,10 @@
         <div class="col-md-8">
             <h4 class="text-center">A.Inventory</h4>
             <div class='row flex-row'>
-                <div class='col-md-8 flex-column'>
+                <div class='col-md-1 table-cell flex-column'>
+                    <label>S.No</label>
+                </div>
+                <div class='col-md-7 flex-column'>
                     <div class='col-md-12 table-cell flex-column'>
                         <label>Description</label>
                     </div>
@@ -61,7 +64,10 @@
             {{ animal_inventory_formset.management_form }}
             {% for inventory_form in animal_inventory_formset.forms %}
                 <div class='row animal_inventory_formset_row flex-row'>
-                    <div class='col-md-8'>
+                    <div class='col-md-1 table-cell'>
+                        {{ inventory_form.sno }}
+                    </div>
+                    <div class='col-md-7'>
                         <div class='row flex-row'>
                             <div class='col-md-4 table-cell'>
                                 {{ inventory_form.type }}

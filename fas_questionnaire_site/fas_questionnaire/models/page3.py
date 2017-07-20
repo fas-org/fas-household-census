@@ -55,8 +55,6 @@ class LandLeasedInOnFixedRent(models.Model):
     annual_rent_in_kind = models.CharField(db_column='Annual rent in kind', max_length=50, blank=True, null=True)
     any_loans_or_advances_from_owner = models.CharField(db_column='Any loans or advances from owner', max_length=50, blank=True,
                                                null=True)
-    qty_of_hay_taken_by_owner = models.CharField(db_column='Qty of hay taken by owner', max_length=50, blank=True,
-                                                 null=True)
     value_of_manure_provided_by_owner = models.CharField(db_column='Value of manure provided by owner', max_length=50,
                                                          blank=True, null=True)
     value_of_fertiliser_provided_by_owner = models.CharField(db_column='Value of fertiliser provided by owner',

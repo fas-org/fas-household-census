@@ -23,7 +23,6 @@ class LandLeasedInOnFixedRentForm(forms.ModelForm):
                   'annual_rent_in_cash',
                   'annual_rent_in_kind',
                   'any_loans_or_advances_from_owner',
-                  'qty_of_hay_taken_by_owner',
                   'value_of_manure_provided_by_owner',
                   'value_of_fertiliser_provided_by_owner',
                   'value_of_seed_provided_by_owner',

@@ -25,7 +25,7 @@
             </div>
             <div class='col-md-3 flex-row-wrap-1'>
                 <div class='col-md-12 table-cell flex-column'>
-                    <label>Lessor</label>
+                    <label>Land owner</label>
                 </div>
                 <div class='col-md-4 table-cell flex-column'>
                     <label>Name</label>
@@ -72,28 +72,28 @@
                     <label>Inputs provided by owner</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of manure provided</label>
+                    <label>Manure</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of fertiliser provided</label>
+                    <label>Fertiliser</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of seed provided</label>
+                    <label>Seed</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of pesticide provided</label>
+                    <label>Pesticides</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of electricity paid</label>
+                    <label>Irrigation</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>If pumpset provided</label>
+                    <label>Electricity</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>If irrigation provided</label>
+                    <label>Pumpset</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>If machinery provided</label>
+                    <label>Machinery</label>
                 </div>
                 <div class="col-md-4 table-cell flex-column">
                     <label> Comments </label>
@@ -168,13 +168,13 @@
                         {{ form.value_of_pesticide_provided_by_owner }}
                     </div>
                     <div class="col-md-1 table-cell">
+                        {{ form.if_irrigation_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
                         {{ form.value_of_electricity_provided_by_owner }}
                     </div>
                     <div class="col-md-1 table-cell">
                         {{ form.if_pumpset_provided_by_owner }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ form.if_irrigation_provided_by_owner }}
                     </div>
                     <div class="col-md-1 table-cell">
                         {{ form.if_machinery_provided_by_owner }}
@@ -260,28 +260,28 @@
                     <label>Qty of hay taken</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of manure provided</label>
+                    <label>Manure</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of fertiliser provided</label>
+                    <label>Fertiliser</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of seed provided</label>
+                    <label>Seed</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of pesticide provided</label>
+                    <label>Pesticides</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>Value of electricity paid</label>
+                    <label>Irrigation</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>If pumpset provided</label>
+                    <label>Electricity</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>If irrigation provided</label>
+                    <label>Pumpset</label>
                 </div>
                 <div class="col-md-1 table-cell flex-column">
-                    <label>If machinery provided</label>
+                    <label>Machinery</label>
                 </div>
                 <div class="col-md-2 table-cell flex-column">
                     <label> Comments </label>
@@ -364,13 +364,13 @@
                         {{ form.value_of_pesticide_provided_by_you }}
                     </div>
                     <div class="col-md-1 table-cell">
+                        {{ form.if_irrigation_provided_by_owner }}
+                    </div>
+                    <div class="col-md-1 table-cell">
                         {{ form.value_of_electricity_paid_for_by_you }}
                     </div>
                     <div class="col-md-1 table-cell">
                         {{ form.if_you_provided_the_pumpset }}
-                    </div>
-                    <div class="col-md-1 table-cell">
-                        {{ form.if_irrigation_provided_by_owner }}
                     </div>
                     <div class="col-md-1 table-cell">
                         {{ form.if_machinery_provided_by_owner }}

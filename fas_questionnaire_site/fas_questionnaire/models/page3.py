@@ -46,6 +46,7 @@ class LandLeasedInOnFixedRent(models.Model):
     name_of_lessor = models.CharField(db_column='Name of lessor', max_length=50, blank=True, null=True)
     caste_of_lessor = models.CharField(max_length=100,db_column='Caste of lessor', blank=True, null=True)
     occupation_of_lessor = models.CharField(db_column='Occupation of lessor', max_length=50, blank=True, null=True)
+    extent_of_land_holding_lessor = models.CharField(db_column='Extent of land holding lessor', max_length=50, blank=True, null=True)
     registered_unregistered = models.CharField(max_length=100,db_column='Registered/unregistered',
                                                 blank=True, null=True)
     type_of_contract = models.CharField(max_length=100,db_column='Type of contract', blank=True,

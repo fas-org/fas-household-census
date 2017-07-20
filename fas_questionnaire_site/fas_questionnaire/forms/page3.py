@@ -17,6 +17,7 @@ class LandLeasedInOnFixedRentForm(forms.ModelForm):
                   'name_of_lessor',
                   'caste_of_lessor',
                   'occupation_of_lessor',
+                  'extent_of_land_holding_lessor',
                   'registered_unregistered',
                   'type_of_contract',
                   'since_when_leased_in',

@@ -284,7 +284,9 @@
         {% endfor %}
     </div>
     <script type="text/javascript">
-        $('.formset_row').formset();
+        $('.formset_row').formset({
+            prefix:"{{ formset.prefix }}",
+        });
     </script>
     <br><br>
 

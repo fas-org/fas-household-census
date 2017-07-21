@@ -365,10 +365,18 @@
     <br>
 
     <script type="text/javascript">
-        $('.current_ownership_formset_row').formset();
-        $('.homestead_formset_row').formset();
-        $('.landsale_formset_row').formset();
-        $('.landpurchased_formset_row').formset();
+        $('.current_ownership_formset_row').formset({
+            prefix: "{{ current_ownership_formset.prefix }}",
+        });
+        $('.homestead_formset_row').formset({
+            prefix: "{{ homesteadformset.prefix }}",
+        });
+        $('.landsale_formset_row').formset({
+            prefix: "{{ landsold_formset.prefix }}",
+        });
+        $('.landpurchased_formset_row').formset({
+            prefix: "{{ landpurchased_formset.prefix }}",
+        });
 
     </script>
     {% include 'common/comments.html' %}

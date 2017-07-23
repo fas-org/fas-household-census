@@ -237,8 +237,12 @@
 
     <br>
     <script type="text/javascript">
-        $('.agri_formset_row').formset();
-        $('.non_agri_formset_row').formset();
+        $('.agri_formset_row').formset({
+            prefix:"{{ agri_formset.prefix }}"
+        });
+        $('.non_agri_formset_row').formset({
+            prefix:"{{ non_agri_formset.prefix }}"
+        });
     </script>
     {% include 'common/comments.html' %}
 {% endblock %}

@@ -260,8 +260,12 @@
     </div>
 
     <script type="text/javascript">
-        $('.income_from_state_formset_row').formset();
-        $('.aggri_or_non_aggri_labour_service_row').formset();
+        $('.income_from_state_formset_row').formset({
+            prefix:"{{ income_from_state_formset.prefix }}"
+        });
+        $('.aggri_or_non_aggri_labour_service_row').formset({
+            prefix:"{{ aggri_or_non_aggri_labour_service_formset.prefix }}"
+        });
     </script>
     {% include 'common/comments.html' %}
 {% endblock %}

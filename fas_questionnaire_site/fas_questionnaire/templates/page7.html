@@ -351,11 +351,21 @@
 </div>
 
 <script type="text/javascript">
-$('.manure_form').formset();
-$('.fertiliser_form').formset();
-$('.seeds_form').formset();
-$('.plant_protection_form').formset();
-$('.irrigation_form').formset();
+$('.manure_form').formset({
+    prefix:"{{ formset_manure.prefix }}"
+});
+$('.fertiliser_form').formset({
+    prefix:"{{ formset_fertiliser.prefix }}"
+});
+$('.seeds_form').formset({
+    prefix:"{{ formset_seeds.prefix }}"
+});
+$('.plant_protection_form').formset({
+    prefix:"{{ formset_plant_protection.prefix }}"
+});
+$('.irrigation_form').formset({
+    prefix:"{{ formset_irrigation.prefix }}"
+});
 </script>
 {% include 'common/comments.html' %}
 {%  endblock %}

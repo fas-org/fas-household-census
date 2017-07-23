@@ -108,7 +108,9 @@
 <br>
 
 <script type="text/javascript">
-    $('.croppingpattern_formset_row').formset();
+    $('.croppingpattern_formset_row').formset({
+        prefix: "{{ production_and_sales_on_operational_holding_formset.prefix}}"
+    });
 </script>
 
 {% include 'common/comments.html' %}

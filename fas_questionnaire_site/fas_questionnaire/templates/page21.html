@@ -322,13 +322,27 @@
 
 
 <script type="text/javascript">
-        $('.immovables_formset_row').formset();
-        $('.transport_formset_row').formset();
-        $('.furniture_formset_row').formset();
-        $('.electrical_formset_row').formset();
-        $('.othergoods_formset_row').formset();
-        $('.inventories_formset_row').formset();
-        $('.miscellaneous_formset_row').formset();
+        $('.immovables_formset_row').formset({
+            prefix:"{{ immovables_form_set.prefix }}"
+        });
+        $('.transport_formset_row').formset({
+            prefix:"{{ meansoftransport_form_set.prefix }}"
+        });
+        $('.furniture_formset_row').formset({
+            prefix:"{{ furniture_form_set.prefix }}"
+        });
+        $('.electrical_formset_row').formset({
+            prefix:"{{ electricEquipments_form_set.prefix }}"
+        });
+        $('.othergoods_formset_row').formset({
+            prefix:"{{ otherDomesticDurableGoods_form_set.prefix }}"
+        });
+        $('.inventories_formset_row').formset({
+            prefix:"{{ inventories_form_set.prefix }}"
+        });
+        $('.miscellaneous_formset_row').formset({
+            prefix:"{{ miscellaneous_form_set.prefix }}"
+        });
 </script>
 {% include 'common/comments.html' %}
 {% endblock %}

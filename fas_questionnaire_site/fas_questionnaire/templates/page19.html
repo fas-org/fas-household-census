@@ -304,8 +304,12 @@
     </div>
 
     <script type="text/javascript">
-        $('.water_formset_row').formset();
-        $('.housing_formset_row').formset();
+        $('.water_formset_row').formset({
+            prefix:"{{ water_formset.prefix }}"
+        });
+        $('.housing_formset_row').formset({
+            prefix:"{{ housing_formset.prefix }}"
+        });
         $('input[name="water-INITIAL_FORMS"]').val(0);
         $('input[name="housing-INITIAL_FORMS"]').val(0);
     </script>

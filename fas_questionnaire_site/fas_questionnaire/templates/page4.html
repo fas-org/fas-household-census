@@ -989,10 +989,18 @@
 </div>
 
 <script type="text/javascript">
-    $('.formset_row_lnd_mrtg_in').formset();
-    $('.formset_row_lnd_mrtg_out').formset();
-    $('.formset_row_lnd_lsd_in_shr_rent').formset();
-    $('.formset_row_lnd_lsd_out_shr_rent').formset();
+    $('.formset_row_lnd_mrtg_in').formset({
+        prefix:"{{formset_lm_in.prefix}}"
+    });
+    $('.formset_row_lnd_mrtg_out').formset({
+        prefix:"{{formset_lm_out.prefix}}"
+    });
+    $('.formset_row_lnd_lsd_in_shr_rent').formset({
+        prefix:"{{formset_lnd_lsd_in_shr_rent.prefix}}"
+    });
+    $('.formset_row_lnd_lsd_out_shr_rent').formset({
+        prefix:"{{formset_lnd_lsd_out_shr_rent.prefix}}"
+    });
 
 
 

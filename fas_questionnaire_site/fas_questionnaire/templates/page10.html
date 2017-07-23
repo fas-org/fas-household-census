@@ -218,9 +218,15 @@
 
 <script src="{% static 'js/jquery.formset.js' %}"></script>
 <script type="text/javascript">
-        $('.formset_row_1').formset();
-        $('.formset_row_2').formset();
-        $('.formset_row_3').formset()
+        $('.formset_row_1').formset({
+            prefix:"{{ current_ownership_formset.prefix }}"
+        });
+        $('.formset_row_2').formset({
+            prefix:"{{ current_ownership_formset.prefix }}"
+        });
+        $('.formset_row_3').formset({
+            prefix:"{{ current_ownership_formset.prefix }}"
+        });
 
 
 </script>

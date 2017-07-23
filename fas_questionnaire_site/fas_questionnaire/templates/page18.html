@@ -194,8 +194,12 @@
 <br>
 
 <script type="text/javascript">
-    $('.asset_acquisition_formset_row').formset();
-    $('.children_formset_row').formset();
+    $('.asset_acquisition_formset_row').formset({
+        prefix:"{{ asset_acquisition_formset.prefix }}"
+    });
+    $('.children_formset_row').formset({
+        prefix:"{{ children_formset.prefix }}"
+    });
 </script>
 {% include 'common/comments.html' %}
 {% endblock %}

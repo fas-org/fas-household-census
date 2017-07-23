@@ -26,5 +26,7 @@
 {% endfor %}
 <br><br>
 <script type="text/javascript">
-    $('.comments-form').formset();
+    $('.comments-form').formset({
+        prefix:"{{ comments.prefix }}"
+    });
 </script>

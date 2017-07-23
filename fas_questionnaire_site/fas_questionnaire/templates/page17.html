@@ -406,12 +406,24 @@
     {% endfor %}
 
     <script type="text/javascript">
-        $('.animal_inventory_formset_row').formset();
-        $('.animal_feed_formset_row').formset();
-        $('.other_expenditure_formset_row').formset();
-        $('.output_and_income_formset').formset();
-        $('.income_business_formset_row').formset();
-        $('.income_salary_formset_row').formset();
+        $('.animal_inventory_formset_row').formset({
+            prefix:"{{ animal_inventory_formset.prefix }}"
+        });
+        $('.animal_feed_formset_row').formset({
+            prefix:"{{ animal_feed_formset.prefix }}"
+        });
+        $('.other_expenditure_formset_row').formset({
+            prefix:"{{ other_expenditure_formset.prefix }}"
+        });
+        $('.output_and_income_formset').formset({
+            prefix:"{{ output_and_income_formset.prefix }}"
+        });
+        $('.income_business_formset_row').formset({
+            prefix:"{{ income_business_formset.prefix }}"
+        });
+        $('.income_salary_formset_row').formset({
+            prefix:"{{ income_salary_formset.prefix }}"
+        });
     </script>
     {% include 'common/comments.html' %}
 {% endblock %}

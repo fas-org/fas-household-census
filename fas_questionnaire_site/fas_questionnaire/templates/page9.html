@@ -242,8 +242,12 @@
 </div>
 {% endfor %}
 <script type="text/javascript">
-    $('.current_ownership_formset_row').formset({});
-    $('.irrigation_means_formset_row').formset({});
+    $('.current_ownership_formset_row').formset({
+        prefix:"{{ current_ownership_formset.prefix }}"
+    });
+    $('.irrigation_means_formset_row').formset({
+        prefix:"{{ irrigation_means_formset.prefix }}"
+    });
 </script>
 {% include 'common/comments.html' %}
 {% endblock %}

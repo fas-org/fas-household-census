@@ -437,7 +437,9 @@
         {% endfor %}
     </div>
     <script type="text/javascript">
-        $('.labour_days_employed_row').formset();
+        $('.labour_days_employed_row').formset({
+            prefix:"{{ current_ownership_formset.prefix }}"
+        });
     </script>
     {% include 'common/comments.html' %}
 {% endblock %}

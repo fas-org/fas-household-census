@@ -309,10 +309,18 @@
     </div>
     <br><br><br><br>
     <script type="text/javascript">
-        $('.formset_outstanding_loans').formset();
-        $('.formset_loans_brwd_lst_yr_and_paid').formset();
-        $('.formset_mem_shp_in_slf_hlp_grps').formset();
-        $('.formset_dtls_of_bank_pst_offc_of_the_household').formset();
+        $('.formset_outstanding_loans').formset({
+            prefix:"{{ formset_outstanding_loans.prefix }}"
+        });
+        $('.formset_loans_brwd_lst_yr_and_paid').formset({
+            prefix:"{{ formset_loans_brwd_lst_yr_and_paid.prefix }}"
+        });
+        $('.formset_mem_shp_in_slf_hlp_grps').formset({
+            prefix:"{{ formset_mem_shp_in_slf_hlp_grps.prefix }}"
+        });
+        $('.formset_dtls_of_bank_pst_offc_of_the_household').formset({
+            prefix:"{{ formset_dtls_of_bank_pst_offc_of_the_household.prefix }}"
+        });
     </script>
     {% include 'common/comments.html' %}
 {% endblock %}

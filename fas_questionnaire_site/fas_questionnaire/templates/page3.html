@@ -391,8 +391,12 @@
     </div>
 
     <script type="text/javascript">
-        $('.formset_row_lnd_lsd_in_fxd_rnt').formset();
-        $('.formset_row_lnd_lsd_out_fxd_rnt').formset();
+        $('.formset_row_lnd_lsd_in_fxd_rnt').formset({
+            prefix:"{{formset_lnd_lsd_in_fxd_rnt.prefix}}"
+        });
+        $('.formset_row_lnd_lsd_out_fxd_rnt').formset({
+            prefix:"{{formset_lnd_lsd_out_fxd_rnt.prefix}}"
+        });
     </script>
     {% include 'common/comments.html' %}
 {% endblock %}
